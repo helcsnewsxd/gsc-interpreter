@@ -1,6 +1,5 @@
 CXX := g++
-CXXFLAGS := -std=c++20 -Wall -Wextra -pedantic -ggdb -Ilib/gsc
-CXXFLAGSTEST := $(CXXFLAGS) -Ilib/catch2
+CXXFLAGS := -std=c++20 -Wall -Wextra -pedantic -ggdb -Ilib
 
 PROJECT := gsc
 
@@ -10,17 +9,8 @@ APP_OBJ := $(APP:.cpp=.o)
 SRCS := $(wildcard src/*.cpp)
 OBJS := $(SRCS:.cpp=.o)
 
-app/%.o: app/%.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
-
-src/%.o: src/%.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
-
-TEST_SRCS := $(wildcard test/*.cpp)
+TEST_SRCS := $(wildcard test/*.cpp) lib/catch2/catch_amalgamated.cpp
 TEST_OBJS := $(TEST_SRCS:.cpp=.o)
-
-test/%.o: test/%.cpp
-	$(CXX) $(CXXFLAGSTEST) -c $< -o $@
 
 .PHONY: all build build-test run test clean partial_clean bear
 
@@ -32,7 +22,7 @@ build: $(APP_OBJ) $(OBJS)
 	@echo
 
 build-test: $(OBJS) $(TEST_OBJS)
-	$(CXX) $(CXXFLAGSTEST) $^ -o $(PROJECT)Test
+	$(CXX) $(CXXFLAGS) $^ -o $(PROJECT)Test
 	@echo "[+] Test build complete."
 	@echo
 

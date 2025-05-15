@@ -37,6 +37,6 @@ TEST_CASE("toString for TokenType works", "[TokenType][toString]") {
       {END_OF_FILE, "END_OF_FILE"}};
 
   for (const auto &[tokenType, expectedString] : tokenCases) {
-    REQUIRE(::toString(tokenType) == expectedString);
+    CHECK(::toString(tokenType) == expectedString);
   }
 }

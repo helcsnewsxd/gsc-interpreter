@@ -63,4 +63,4 @@ static const std::string tokenStrings[] = {
  * @param type The TokenType to convert.
  * @return The string representation of the TokenType.
  */
-std::string toString(const TokenType &type);
+std::string toString(TokenType type);

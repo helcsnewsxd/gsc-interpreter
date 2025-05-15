@@ -59,8 +59,4 @@ static const std::string tokenStrings[] = {
     "FALSE",      "FOR",         "WHILE",       "NIL",         "PRINT",
     "VAR",        "END_OF_FILE"};
 
-/** @brief Converts a TokenType to a string.
- * @param type The TokenType to convert.
- * @return The string representation of the TokenType.
- */
 std::string toString(TokenType type);

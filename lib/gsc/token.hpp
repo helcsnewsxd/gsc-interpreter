@@ -32,35 +32,13 @@ public:
    */
   Token(TokenType type, std::string lexeme, std::any literal, int line);
 
-  /** @brief Retrieves the type of the token.
-   *
-   * @return The type of the token.
-   */
   TokenType getType() const;
 
-  /** @brief Retrieves the lexeme of the token.
-   *
-   * @return The lexeme of the token.
-   */
   std::string getLexeme() const;
 
-  /** @brief Retrieves the literal value of the token.
-   *
-   * @return The literal value of the token.
-   *
-   * @note The return type is std::any, so it may need to be cast.
-   */
   std::any getLiteral() const;
 
-  /** @brief Retrieves the line number of the token.
-   *
-   * @return The line number of the token.
-   */
   int getLine() const;
 
-  /** @brief Retrieves a string representation of the token.
-   *
-   * @return A string representation of the token.
-   */
   std::string toString() const;
 };

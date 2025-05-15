@@ -1,7 +1,7 @@
 .cache
 
 **/*.o 
-verboseLIS
-testverboseLIS
+./gsc 
+./gscTest
 
 compile_commands.json

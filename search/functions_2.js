@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['getlexeme_0',['getLexeme',['../classToken.html#a143dd2918c6d43f95010e101012a6d2e',1,'Token']]],
-  ['getline_1',['getLine',['../classToken.html#aabfcea7b4d2df9591a87095440764993',1,'Token']]],
-  ['getliteral_2',['getLiteral',['../classToken.html#a46bd29eb731d9dbd6d66893fd92c3e2d',1,'Token']]],
-  ['gettokens_3',['getTokens',['../classScanner.html#a6eb4aff85fbd5e331831815ed9b3cbf4',1,'Scanner']]],
-  ['gettype_4',['getType',['../classToken.html#a31eae18f897e22a446c82e864dfbf5d4',1,'Token']]]
+  ['checkeoftoken_0',['checkEOFToken',['../scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f',1,'scannerTest.cpp']]],
+  ['checknumbertoken_1',['checkNumberToken',['../scannerTest_8cpp.html#a460971eabd5ce2d15d3e64a93259831e',1,'scannerTest.cpp']]],
+  ['checksimpletokens_2',['checkSimpleTokens',['../scannerTest_8cpp.html#a8ca6d115c44809c30668348a91e197d5',1,'scannerTest.cpp']]],
+  ['checkstringtoken_3',['checkStringToken',['../scannerTest_8cpp.html#aec6ff788fa30cc93e9e0386e65814231',1,'scannerTest.cpp']]],
+  ['checktokensize_4',['checkTokenSize',['../scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64',1,'scannerTest.cpp']]]
 ];

@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['report_0',['report',['../error_8hpp.html#aef92bba490af31bffca743240f705016',1,'report(const int &amp;line, const std::string &amp;where, const std::string &amp;message):&#160;error.cpp'],['../error_8cpp.html#aef92bba490af31bffca743240f705016',1,'report(const int &amp;line, const std::string &amp;where, const std::string &amp;message):&#160;error.cpp']]]
+  ['isalpha_0',['isAlpha',['../scanner_8cpp.html#ac9f87bd5d8196d16c720b643f2bd0398',1,'scanner.cpp']]],
+  ['isalphanumeric_1',['isAlphaNumeric',['../scanner_8cpp.html#af9bdc7131071ce42bb0f8af6c14a0920',1,'scanner.cpp']]],
+  ['isdigit_2',['isDigit',['../scanner_8cpp.html#a337dc0e57490283949287f4d93ecc03e',1,'scanner.cpp']]]
 ];

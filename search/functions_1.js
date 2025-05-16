@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['error_0',['error',['../error_8hpp.html#a057203d3ddd2dc7ffdbacf4be430a2e7',1,'error(const int &amp;line, const std::string &amp;message):&#160;error.cpp'],['../error_8cpp.html#a057203d3ddd2dc7ffdbacf4be430a2e7',1,'error(const int &amp;line, const std::string &amp;message):&#160;error.cpp']]]
+  ['binary_0',['Binary',['../classBinary.html#a4a248bd0bf56ad5ca4dcf5e1034c30bc',1,'Binary']]]
 ];

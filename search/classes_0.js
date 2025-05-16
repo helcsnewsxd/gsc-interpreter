@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['scanner_0',['Scanner',['../classScanner.html',1,'']]]
+  ['binary_0',['Binary',['../classBinary.html',1,'']]]
 ];

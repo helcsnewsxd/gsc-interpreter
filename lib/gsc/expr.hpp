@@ -9,6 +9,12 @@ class Grouping;
 class Literal;
 class Unary;
 
+/** @class ExprVisitor
+ * @brief Abstract base class for expression visitors.
+ *
+ * This class defines the interface for visitors that can traverse and process
+ * different types of expressions in an abstract syntax tree (AST).
+ */
 class ExprVisitor {
 public:
   virtual std::any visitBinaryExpr(std::shared_ptr<Binary> expr) = 0;
@@ -19,10 +25,24 @@ public:
   virtual ~ExprVisitor() = default;
 };
 
+/** @class Expr
+ * @brief Abstract base class for expressions.
+ *
+ * This class serves as the base class for all expression types in the AST.
+ * It defines a method for accepting visitors that implement the ExprVisitor
+ * interface.
+ */
 class Expr {
   virtual std::any accept(ExprVisitor &visitor) = 0;
 };
 
+/** @class Binary
+ * @brief Class representing a binary expression.
+ *
+ * This class represents a binary expression in the AST, which consists of a
+ * left operand, an operator, and a right operand. It inherits from the Expr
+ * class and implements the accept method for visitor pattern.
+ */
 class Binary : public Expr, public std::enable_shared_from_this<Binary> {
 private:
   const std::shared_ptr<Expr> left;
@@ -42,6 +62,13 @@ public:
   Token getOp() const { return op; }
 };
 
+/** @class Grouping
+ * @brief Class representing a grouping expression.
+ *
+ * This class represents a grouping expression in the AST, which is used to
+ * group sub-expressions. It inherits from the Expr class and implements the
+ * accept method for visitor pattern.
+ */
 class Grouping : public Expr, public std::enable_shared_from_this<Grouping> {
 private:
   const std::shared_ptr<Expr> expression;
@@ -57,6 +84,13 @@ public:
   std::shared_ptr<Expr> getExpression() const { return expression; }
 };
 
+/** @class Literal
+ * @brief Class representing a literal expression.
+ *
+ * This class represents a literal expression in the AST, which can hold a
+ * value of any type. It inherits from the Expr class and implements the accept
+ * method for visitor pattern.
+ */
 class Literal : public Expr, public std::enable_shared_from_this<Literal> {
 private:
   const std::any value;
@@ -71,6 +105,13 @@ public:
   std::any getValue() const { return value; }
 };
 
+/** @class Unary
+ * @brief Class representing a unary expression.
+ *
+ * This class represents a unary expression in the AST, which consists of an
+ * operator and a right operand. It inherits from the Expr class and implements
+ * the accept method for visitor pattern.
+ */
 class Unary : public Expr, public std::enable_shared_from_this<Unary> {
 private:
   const Token op;

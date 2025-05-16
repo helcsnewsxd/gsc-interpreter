@@ -33,6 +33,7 @@ public:
  * interface.
  */
 class Expr {
+public:
   virtual std::any accept(ExprVisitor &visitor) = 0;
 };
 

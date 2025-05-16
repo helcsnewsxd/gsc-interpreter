@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['report_0',['report',['../error_8hpp.html#aef92bba490af31bffca743240f705016',1,'report(const int &amp;line, const std::string &amp;where, const std::string &amp;message):&#160;error.cpp'],['../error_8cpp.html#aef92bba490af31bffca743240f705016',1,'report(const int &amp;line, const std::string &amp;where, const std::string &amp;message):&#160;error.cpp']]]
+  ['print_0',['print',['../classAstPrinter.html#a656a66e96510a3b2ff8edef2c1a5c61c',1,'AstPrinter']]]
 ];

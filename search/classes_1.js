@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['expr_0',['Expr',['../classExpr.html',1,'']]],
-  ['exprvisitor_1',['ExprVisitor',['../classExprVisitor.html',1,'']]]
+  ['binary_0',['Binary',['../classBinary.html',1,'']]]
 ];

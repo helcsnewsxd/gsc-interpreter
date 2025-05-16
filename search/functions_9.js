@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['scanner_0',['Scanner',['../classScanner.html#a6f18ebbdbaec62fc3173a117e0221d0b',1,'Scanner']]],
-  ['scantokens_1',['scanTokens',['../classScanner.html#ac13eb6af23aada11ff2525f02577cd8e',1,'Scanner']]]
+  ['report_0',['report',['../error_8hpp.html#aef92bba490af31bffca743240f705016',1,'report(const int &amp;line, const std::string &amp;where, const std::string &amp;message):&#160;error.cpp'],['../error_8cpp.html#aef92bba490af31bffca743240f705016',1,'report(const int &amp;line, const std::string &amp;where, const std::string &amp;message):&#160;error.cpp']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['binary_0',['Binary',['../classBinary.html',1,'']]]
+  ['astprinter_0',['AstPrinter',['../classAstPrinter.html',1,'']]]
 ];

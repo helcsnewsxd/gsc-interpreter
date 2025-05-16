@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['token_0',['Token',['../classToken.html',1,'']]]
+  ['scanner_0',['Scanner',['../classScanner.html',1,'']]]
 ];

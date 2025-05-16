@@ -1,19 +1,18 @@
-name: C/C++ CI
+name: Run tests
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
-  build:
-
+  test:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: make
-      run: make
-    - name: make test
-      run: make test
+      - uses: actions/checkout@v4
+      - name: make
+        run: make
+      - name: make test
+        run: make test

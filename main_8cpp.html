@@ -78,11 +78,32 @@ $(function() {
   <div class="headertitle"><div class="title">main.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<table class="memberdecls">
+<div class="textblock"><code>#include &quot;<a class="el" href="astPrinter_8hpp_source.html">dbg/astPrinter.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="error_8hpp_source.html">gsc/error.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="parser_8hpp_source.html">gsc/parser.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="scanner_8hpp_source.html">gsc/scanner.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="token_8hpp_source.html">gsc/token.hpp</a>&quot;</code><br />
+<code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for main.cpp:</div>
+<div class="dyncontent">
+<div class="center"><img src="main_8cpp__incl.png" border="0" usemap="#aapp_2main_8cpp" alt=""/></div>
+</div>
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:abd88a82eb70f9e68f4ca9b5ebb923556" id="r_abd88a82eb70f9e68f4ca9b5ebb923556"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#abd88a82eb70f9e68f4ca9b5ebb923556">runFile</a> (std::string_view filename)</td></tr>
+<tr class="separator:abd88a82eb70f9e68f4ca9b5ebb923556"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2177fc6f8c300b3c24f38817ba64da30" id="r_a2177fc6f8c300b3c24f38817ba64da30"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a2177fc6f8c300b3c24f38817ba64da30">runPrompt</a> ()</td></tr>
+<tr class="separator:a2177fc6f8c300b3c24f38817ba64da30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97" id="r_a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
 <tr class="separator:a0ddf1224851353fc92bfbff6f499fa97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1a550a8cd1bd8cad05c963707a9d482" id="r_ad1a550a8cd1bd8cad05c963707a9d482"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#ad1a550a8cd1bd8cad05c963707a9d482">readFile</a> (std::string_view filename)</td></tr>
+<tr class="separator:ad1a550a8cd1bd8cad05c963707a9d482"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a2843aa356425e41907f7b3bc255b15" id="r_a7a2843aa356425e41907f7b3bc255b15"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a7a2843aa356425e41907f7b3bc255b15">run</a> (std::string_view program)</td></tr>
+<tr class="separator:a7a2843aa356425e41907f7b3bc255b15"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a0ddf1224851353fc92bfbff6f499fa97" name="a0ddf1224851353fc92bfbff6f499fa97"></a>
@@ -110,6 +131,117 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="main_8cpp_a0ddf1224851353fc92bfbff6f499fa97_cgraph.png" border="0" usemap="#amain_8cpp_a0ddf1224851353fc92bfbff6f499fa97_cgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="ad1a550a8cd1bd8cad05c963707a9d482" name="ad1a550a8cd1bd8cad05c963707a9d482"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1a550a8cd1bd8cad05c963707a9d482">&#9670;&#160;</a></span>readFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string readFile </td>
+          <td>(</td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="main_8cpp_ad1a550a8cd1bd8cad05c963707a9d482_icgraph.png" border="0" usemap="#amain_8cpp_ad1a550a8cd1bd8cad05c963707a9d482_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a7a2843aa356425e41907f7b3bc255b15" name="a7a2843aa356425e41907f7b3bc255b15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a2843aa356425e41907f7b3bc255b15">&#9670;&#160;</a></span>run()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void run </td>
+          <td>(</td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>program</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="main_8cpp_a7a2843aa356425e41907f7b3bc255b15_cgraph.png" border="0" usemap="#amain_8cpp_a7a2843aa356425e41907f7b3bc255b15_cgraph" alt=""/></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="main_8cpp_a7a2843aa356425e41907f7b3bc255b15_icgraph.png" border="0" usemap="#amain_8cpp_a7a2843aa356425e41907f7b3bc255b15_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="abd88a82eb70f9e68f4ca9b5ebb923556" name="abd88a82eb70f9e68f4ca9b5ebb923556"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd88a82eb70f9e68f4ca9b5ebb923556">&#9670;&#160;</a></span>runFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void runFile </td>
+          <td>(</td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="main_8cpp_abd88a82eb70f9e68f4ca9b5ebb923556_cgraph.png" border="0" usemap="#amain_8cpp_abd88a82eb70f9e68f4ca9b5ebb923556_cgraph" alt=""/></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="main_8cpp_abd88a82eb70f9e68f4ca9b5ebb923556_icgraph.png" border="0" usemap="#amain_8cpp_abd88a82eb70f9e68f4ca9b5ebb923556_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a2177fc6f8c300b3c24f38817ba64da30" name="a2177fc6f8c300b3c24f38817ba64da30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2177fc6f8c300b3c24f38817ba64da30">&#9670;&#160;</a></span>runPrompt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void runPrompt </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="main_8cpp_a2177fc6f8c300b3c24f38817ba64da30_cgraph.png" border="0" usemap="#amain_8cpp_a2177fc6f8c300b3c24f38817ba64da30_cgraph" alt=""/></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="main_8cpp_a2177fc6f8c300b3c24f38817ba64da30_icgraph.png" border="0" usemap="#amain_8cpp_a2177fc6f8c300b3c24f38817ba64da30_icgraph" alt=""/></div>
+</div>
 
 </div>
 </div>

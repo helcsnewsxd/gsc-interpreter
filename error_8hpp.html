@@ -79,7 +79,8 @@ $(function() {
   <div class="headertitle"><div class="title">error.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;string&gt;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="token_8hpp_source.html">gsc/token.hpp</a>&quot;</code><br />
+<code>#include &lt;string&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for error.hpp:</div>
 <div class="dyncontent">
@@ -101,6 +102,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a057203d3ddd2dc7ffdbacf4be430a2e7" id="r_a057203d3ddd2dc7ffdbacf4be430a2e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="error_8hpp.html#a057203d3ddd2dc7ffdbacf4be430a2e7">error</a> (const int &amp;line, const std::string &amp;message)</td></tr>
 <tr class="memdesc:a057203d3ddd2dc7ffdbacf4be430a2e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Report an error in the given line.  <br /></td></tr>
 <tr class="separator:a057203d3ddd2dc7ffdbacf4be430a2e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa57d460cf6161b889466f19635b8c07" id="r_afa57d460cf6161b889466f19635b8c07"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="error_8hpp.html#afa57d460cf6161b889466f19635b8c07">error</a> (const <a class="el" href="classToken.html">Token</a> &amp;token, const std::string &amp;message)</td></tr>
+<tr class="memdesc:afa57d460cf6161b889466f19635b8c07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Report an error in the given token.  <br /></td></tr>
+<tr class="separator:afa57d460cf6161b889466f19635b8c07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -109,7 +113,7 @@ Variables</h2></td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a057203d3ddd2dc7ffdbacf4be430a2e7" name="a057203d3ddd2dc7ffdbacf4be430a2e7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a057203d3ddd2dc7ffdbacf4be430a2e7">&#9670;&#160;</a></span>error()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a057203d3ddd2dc7ffdbacf4be430a2e7">&#9670;&#160;</a></span>error() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -153,6 +157,50 @@ Here is the call graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="error_8hpp_a057203d3ddd2dc7ffdbacf4be430a2e7_icgraph.png" border="0" usemap="#aerror_8hpp_a057203d3ddd2dc7ffdbacf4be430a2e7_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="afa57d460cf6161b889466f19635b8c07" name="afa57d460cf6161b889466f19635b8c07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa57d460cf6161b889466f19635b8c07">&#9670;&#160;</a></span>error() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void error </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classToken.html">Token</a> &amp;&#160;</td>
+          <td class="paramname"><em>token</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>message</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Report an error in the given token. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">token</td><td>The token where the error occurred. </td></tr>
+    <tr><td class="paramname">message</td><td>The error message to display.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>This function sets the global variable <code>hadError</code> to true and writes in stderr. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="error_8hpp.html#aef92bba490af31bffca743240f705016" title="Report an error in the given line and location.">report</a> </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="error_8hpp_afa57d460cf6161b889466f19635b8c07_cgraph.png" border="0" usemap="#aerror_8hpp_afa57d460cf6161b889466f19635b8c07_cgraph" alt=""/></div>
 </div>
 
 </div>

@@ -32,9 +32,11 @@ digraph "Token::getLexeme"
   Node10 [id="Node000010",label="checkStringToken",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$scannerTest_8cpp.html#aec6ff788fa30cc93e9e0386e65814231",tooltip=" "];
   Node10 -> Node4 [id="edge16_Node000010_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
   Node1 -> Node11 [id="edge17_Node000001_Node000011",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node11 [id="Node000011",label="TEST_CASE",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$exprTest_8cpp.html#a37072de29663c0546907647d63284a5b",tooltip=" "];
+  Node11 [id="Node000011",label="error",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$error_8cpp.html#afa57d460cf6161b889466f19635b8c07",tooltip="Report an error in the given token."];
   Node1 -> Node12 [id="edge18_Node000001_Node000012",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node12 [id="Node000012",label="TEST_CASE",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$tokenTest_8cpp.html#abe5a2cbcef035c08831819ab87efc4ca",tooltip=" "];
+  Node12 [id="Node000012",label="TEST_CASE",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$exprTest_8cpp.html#a37072de29663c0546907647d63284a5b",tooltip=" "];
   Node1 -> Node13 [id="edge19_Node000001_Node000013",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node13 [id="Node000013",label="TEST_CASE",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$exprTest_8cpp.html#af46c99fa38ede76a0411394f784c16ee",tooltip=" "];
+  Node13 [id="Node000013",label="TEST_CASE",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$tokenTest_8cpp.html#abe5a2cbcef035c08831819ab87efc4ca",tooltip=" "];
+  Node1 -> Node14 [id="edge20_Node000001_Node000014",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node14 [id="Node000014",label="TEST_CASE",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$exprTest_8cpp.html#af46c99fa38ede76a0411394f784c16ee",tooltip=" "];
 }

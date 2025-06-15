@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['unary_0',['Unary',['../classUnary.html',1,'']]]
+  ['token_0',['Token',['../classToken.html',1,'']]]
 ];

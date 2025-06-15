@@ -1,0 +1,11 @@
+digraph "app"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  compound=true
+  dir_d422163b96683743ed3963d4aac17747 [label="app", fillcolor="#edf0f7", color="grey25", style="filled,bold", URL="dir_d422163b96683743ed3963d4aac17747.html",tooltip=""];
+  dir_97aefd0d527b934f1d99a682da8fe6a9 [label="lib", fillcolor="#edf0f7", color="red", style="filled", URL="dir_97aefd0d527b934f1d99a682da8fe6a9.html",tooltip=""];
+  dir_d422163b96683743ed3963d4aac17747->dir_97aefd0d527b934f1d99a682da8fe6a9 [headlabel="5", labeldistance=1.5 headhref="dir_000000_000004.html" href="dir_000000_000004.html" color="steelblue1" fontcolor="steelblue1"];
+}

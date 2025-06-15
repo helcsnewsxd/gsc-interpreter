@@ -48,7 +48,6 @@ void run(std::string_view program) {
 
   if (hadError) {
     std::cerr << "Error while parsing the program." << std::endl;
-    std::exit(EXIT_FAILURE);
   } else {
     std::cout << "Parsed expression: " << AstPrinter().print(expression)
               << std::endl;

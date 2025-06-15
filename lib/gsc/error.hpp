@@ -1,5 +1,6 @@
 #pragma once
 
+#include "gsc/token.hpp"
 #include <string>
 
 inline bool hadError = false;
@@ -28,3 +29,16 @@ void report(const int &line, const std::string &where,
  * @see report
  */
 void error(const int &line, const std::string &message);
+
+/** @brief
+ * Report an error in the given token.
+ *
+ * @param token The token where the error occurred.
+ * @param message The error message to display.
+ *
+ * @note This function sets the global variable `hadError` to true and writes in
+ * stderr.
+ * @see report
+ *
+ */
+void error(const Token &token, const std::string &message);

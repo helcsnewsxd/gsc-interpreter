@@ -1,5 +1,6 @@
 #include "gsc/error.hpp"
 #include "catch2/catch_amalgamated.hpp"
+#include "gsc/token.hpp"
 #include <iostream>
 #include <sstream>
 
@@ -17,6 +18,13 @@ TEST_CASE("Error handling", "[error]") {
   SECTION("Report function") {
     hadError = false;
     report(1, "Test location", "Test error");
+    CHECK(hadError == true);
+  }
+
+  SECTION("Token error reporting") {
+    hadError = false;
+    Token token(TokenType::NUMBER, "2", 2, 1);
+    error(token, "Test token error");
     CHECK(hadError == true);
   }
 

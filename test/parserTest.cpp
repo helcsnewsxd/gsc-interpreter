@@ -78,7 +78,7 @@ TEST_CASE("Parse a primary expression", "[parser][expression][primary]") {
   }
 
   SECTION("String token") {
-    Token stringToken = {TokenType::STRING, "hello", nullptr, 1};
+    Token stringToken = {TokenType::STRING, "hello", std::string("hello"), 1};
     std::vector<Token> tokens = {stringToken, EOFToken};
     Parser parser(tokens);
 
@@ -87,7 +87,8 @@ TEST_CASE("Parse a primary expression", "[parser][expression][primary]") {
     std::shared_ptr<Literal> literalExpr =
         std::dynamic_pointer_cast<Literal>(expr);
     REQUIRE(literalExpr != nullptr);
-    REQUIRE(literalExpr->getValue().type() == typeid(std::nullptr_t));
+    REQUIRE(literalExpr->getValue().type() == typeid(std::string));
+    CHECK(std::any_cast<std::string>(literalExpr->getValue()) == "hello");
   }
 
   SECTION("Grouping expression") {

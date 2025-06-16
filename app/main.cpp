@@ -11,7 +11,7 @@
 void runFile(std::string_view filename);
 void runPrompt();
 
-Interpreter interpreter;
+Interpreter interpreter{};
 
 int main(int argc, char *argv[]) {
   if (argc > 2) {
@@ -42,12 +42,12 @@ void run(std::string_view program) {
   scanner.scanTokens();
   std::vector<Token> tokens = scanner.getTokens();
   Parser parser{tokens};
-  std::shared_ptr<Expr> expression = parser.parse();
+  std::vector<std::shared_ptr<Stmt>> statements = parser.parse();
 
   if (hadError) {
     std::cerr << "Error while parsing the program." << std::endl;
   } else {
-    std::cout << interpreter.interpret(expression) << std::endl;
+    interpreter.interpret(statements);
   }
 }
 

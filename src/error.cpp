@@ -20,3 +20,9 @@ void error(const Token &token, const std::string &message) {
     report(token.getLine(), "at '" + token.getLexeme() + "'", message);
   }
 }
+
+void runtimeError(const RuntimeError &error) {
+  std::cerr << error.getMessage() << "\n[line " << error.getToken()->getLine()
+            << "]" << std::endl;
+  hadRuntimeError = true;
+}

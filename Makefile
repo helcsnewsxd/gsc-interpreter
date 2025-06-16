@@ -6,10 +6,11 @@ PROJECT := gsc
 APP := app/main.cpp
 APP_OBJ := $(APP:.cpp=.o)
 
-SRCS := $(wildcard src/*.cpp) $(wildcard src/dbg/*.cpp)
+SRCS := $(wildcard src/*.cpp) # $(wildcard src/dbg/*.cpp) The ASTPrinter tool is old
 OBJS := $(SRCS:.cpp=.o)
 
-TEST_SRCS := $(wildcard test/*.cpp) lib/catch2/catch_amalgamated.cpp
+TEST_NAMES := environment error expr scanner stmt token tokenType # I've to do the new tests for statements
+TEST_SRCS := $(addprefix test/, $(addsuffix Test.cpp, $(TEST_NAMES))) lib/catch2/catch_amalgamated.cpp
 TEST_OBJS := $(TEST_SRCS:.cpp=.o)
 
 .PHONY: all build build-test run test clean partial_clean bear

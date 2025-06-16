@@ -47,7 +47,7 @@ void run(std::string_view program) {
   if (hadError) {
     std::cerr << "Error while parsing the program." << std::endl;
   } else {
-    interpreter.interpret(expression);
+    std::cout << interpreter.interpret(expression) << std::endl;
   }
 }
 

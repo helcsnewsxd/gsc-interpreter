@@ -1,19 +1,41 @@
 #include "gsc/interpreter.hpp"
 #include "gsc/error.hpp"
 #include <cassert>
+#include <iostream>
 
-std::string Interpreter::interpret(std::shared_ptr<Expr> expr) {
+void Interpreter::interpret(
+    const std::vector<std::shared_ptr<Stmt>> &statements) {
   try {
-    std::any value = evaluate(expr);
-    return stringify(value);
+    for (const std::shared_ptr<Stmt> &stmt : statements) {
+      execute(stmt);
+    }
   } catch (RuntimeError &error) {
     runtimeError(error);
-    return "";
   }
 }
 
 std::any Interpreter::evaluate(std::shared_ptr<Expr> expr) {
   return expr->accept(*this);
+}
+
+void Interpreter::execute(std::shared_ptr<Stmt> stmt) { stmt->accept(*this); }
+
+void Interpreter::executeBlock(
+    const std::vector<std::shared_ptr<Stmt>> statements,
+    std::shared_ptr<Environment> environment) {
+  std::shared_ptr<Environment> previous = this->environment;
+  try {
+    this->environment = environment;
+
+    for (const std::shared_ptr<Stmt> &stmt : statements) {
+      execute(stmt);
+    }
+  } catch (...) {
+    this->environment = previous;
+    throw; // Re-throw the exception to be handled by the caller
+  }
+
+  this->environment = previous;
 }
 
 template <class... N>
@@ -145,4 +167,40 @@ std::any Interpreter::visitBinaryExpr(std::shared_ptr<Binary> expr) {
     assert(false && "Unknown binary operator");
     return {};
   }
+}
+
+std::any Interpreter::visitAssignExpr(std::shared_ptr<Assign> expr) {
+  std::any value = evaluate(expr->getValue());
+  environment->assign(expr->getName(), value);
+  return value;
+}
+
+std::any Interpreter::visitVariableExpr(std::shared_ptr<Variable> expr) {
+  return environment->get(expr->getName());
+}
+
+std::any Interpreter::visitBlockStmt(std::shared_ptr<Block> stmt) {
+  executeBlock(stmt->getStatements(),
+               std::make_shared<Environment>(environment));
+  return {};
+}
+
+std::any Interpreter::visitExpressionStmt(std::shared_ptr<Expression> stmt) {
+  evaluate(stmt->getExpression());
+  return {};
+}
+
+std::any Interpreter::visitPrintStmt(std::shared_ptr<Print> stmt) {
+  std::any value = evaluate(stmt->getExpression());
+  std::cout << stringify(value) << std::endl;
+  return {};
+}
+
+std::any Interpreter::visitVarStmt(std::shared_ptr<Var> stmt) {
+  std::any value = nullptr;
+  if (stmt->getInitializer()) {
+    value = evaluate(stmt->getInitializer());
+  }
+  environment->define(stmt->getName().getLexeme(), std::move(value));
+  return {};
 }

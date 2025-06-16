@@ -4,6 +4,10 @@
 #include <iostream>
 
 TEST_CASE("Parse an empty experssion", "[parser][expression][empty]") {
+  // Hide the error output
+  std::ostringstream oss;
+  auto oldCerr = std::cerr.rdbuf(oss.rdbuf());
+
   SECTION("EOF token") {
     Token EOFToken = {TokenType::END_OF_FILE, "", nullptr, 1};
     std::vector<Token> tokens = {EOFToken};
@@ -12,6 +16,9 @@ TEST_CASE("Parse an empty experssion", "[parser][expression][empty]") {
     std::shared_ptr<Expr> expr = parser.parse();
     CHECK(expr == nullptr);
   }
+
+  // Restore the original cerr buffer
+  std::cerr.rdbuf(oldCerr);
 }
 
 TEST_CASE("Parse a primary expression", "[parser][expression][primary]") {

@@ -43,10 +43,10 @@ public:
  */
 class Block : public Stmt, public std::enable_shared_from_this<Block> {
 private:
-  const std::vector<std::shared_ptr<Stmt>> &statements;
+  const std::vector<std::shared_ptr<Stmt>> statements;
 
 public:
-  Block(const std::vector<std::shared_ptr<Stmt>> &statements)
+  Block(std::vector<std::shared_ptr<Stmt>> statements)
       : statements(std::move(statements)) {}
 
   std::any accept(StmtVisitor &visitor) override {

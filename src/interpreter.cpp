@@ -63,6 +63,8 @@ std::string Interpreter::stringify(const std::any &value) const {
     return std::to_string(std::any_cast<int>(value));
   } else if (value.type() == typeid(std::string)) {
     return std::any_cast<std::string>(value);
+  } else if (value.type() == typeid(const char *)) {
+    return std::any_cast<const char *>(value);
   }
   return "Internal error (interpreter): object type not recognized"; // Unsupported
                                                                      // types

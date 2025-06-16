@@ -33,9 +33,14 @@ public:
    *
    * @param expr The expression to interpret.
    *
-   * @note This method evaluates the expression and prints the result to
-   * stdout. If an error occurs during evaluation, it will print a runtime
-   * error and set the global variable `hadRuntimeError` to true.
+   * @return A string representation of the result of the evaluation.
+   *
+   * @note This method serves as the entry point for interpreting GSC
+   * expressions.
+   * @note It returns a string representation of the evaluated result.
+   * @note If an error occurs during interpretation, it will simply return an
+   * empty string, shown an error message to the user and set the
+   * `hadRuntimeError` variable to true.
    */
-  void interpret(std::shared_ptr<Expr> expr);
+  std::string interpret(std::shared_ptr<Expr> expr);
 };

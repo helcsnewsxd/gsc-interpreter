@@ -1,14 +1,14 @@
 #include "gsc/interpreter.hpp"
 #include "gsc/error.hpp"
 #include <cassert>
-#include <iostream>
 
-void Interpreter::interpret(std::shared_ptr<Expr> expr) {
+std::string Interpreter::interpret(std::shared_ptr<Expr> expr) {
   try {
     std::any value = evaluate(expr);
-    std::cout << stringify(value) << std::endl;
+    return stringify(value);
   } catch (RuntimeError &error) {
     runtimeError(error);
+    return "";
   }
 }
 

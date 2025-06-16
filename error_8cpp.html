@@ -97,6 +97,9 @@ Functions</h2></td></tr>
 <tr class="memitem:afa57d460cf6161b889466f19635b8c07" id="r_afa57d460cf6161b889466f19635b8c07"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="error_8cpp.html#afa57d460cf6161b889466f19635b8c07">error</a> (const <a class="el" href="classToken.html">Token</a> &amp;token, const std::string &amp;message)</td></tr>
 <tr class="memdesc:afa57d460cf6161b889466f19635b8c07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Report an error in the given token.  <br /></td></tr>
 <tr class="separator:afa57d460cf6161b889466f19635b8c07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52e9d0438880e071985009848bab2d32" id="r_a52e9d0438880e071985009848bab2d32"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="error_8cpp.html#a52e9d0438880e071985009848bab2d32">runtimeError</a> (const <a class="el" href="classRuntimeError.html">RuntimeError</a> &amp;<a class="el" href="error_8hpp.html#a057203d3ddd2dc7ffdbacf4be430a2e7">error</a>)</td></tr>
+<tr class="memdesc:a52e9d0438880e071985009848bab2d32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Report a runtime error given a <a class="el" href="classRuntimeError.html" title="Represents a runtime error in the GSC interpreter.">RuntimeError</a> object.  <br /></td></tr>
+<tr class="separator:a52e9d0438880e071985009848bab2d32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a057203d3ddd2dc7ffdbacf4be430a2e7" name="a057203d3ddd2dc7ffdbacf4be430a2e7"></a>
@@ -238,6 +241,43 @@ Here is the call graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="error_8cpp_aef92bba490af31bffca743240f705016_icgraph.png" border="0" usemap="#aerror_8cpp_aef92bba490af31bffca743240f705016_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a52e9d0438880e071985009848bab2d32" name="a52e9d0438880e071985009848bab2d32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52e9d0438880e071985009848bab2d32">&#9670;&#160;</a></span>runtimeError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void runtimeError </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classRuntimeError.html">RuntimeError</a> &amp;&#160;</td>
+          <td class="paramname"><em>error</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Report a runtime error given a <a class="el" href="classRuntimeError.html" title="Represents a runtime error in the GSC interpreter.">RuntimeError</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">error</td><td>The <a class="el" href="classRuntimeError.html" title="Represents a runtime error in the GSC interpreter.">RuntimeError</a> object containing the error details.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>This function sets the global variable <code>hadRuntimeError</code> to true and writes in stderr. </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="error_8cpp_a52e9d0438880e071985009848bab2d32_cgraph.png" border="0" usemap="#aerror_8cpp_a52e9d0438880e071985009848bab2d32_cgraph" alt=""/></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="error_8cpp_a52e9d0438880e071985009848bab2d32_icgraph.png" border="0" usemap="#aerror_8cpp_a52e9d0438880e071985009848bab2d32_icgraph" alt=""/></div>
 </div>
 
 </div>

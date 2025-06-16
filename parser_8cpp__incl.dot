@@ -29,8 +29,12 @@ digraph "src/parser.cpp"
   Node10 [id="Node000010",label="vector",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
   Node1 -> Node11 [id="edge14_Node000001_Node000011",color="steelblue1",style="solid",tooltip=" "];
   Node11 [id="Node000011",label="gsc/error.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$error_8hpp.html",tooltip=" "];
-  Node11 -> Node4 [id="edge15_Node000011_Node000004",color="steelblue1",style="solid",tooltip=" "];
-  Node11 -> Node6 [id="edge16_Node000011_Node000006",color="steelblue1",style="solid",tooltip=" "];
-  Node1 -> Node12 [id="edge17_Node000001_Node000012",color="steelblue1",style="solid",tooltip=" "];
-  Node12 [id="Node000012",label="cassert",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node11 -> Node12 [id="edge15_Node000011_Node000012",color="steelblue1",style="solid",tooltip=" "];
+  Node12 [id="Node000012",label="gsc/runtimeError.hpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$runtimeError_8hpp.html",tooltip=" "];
+  Node12 -> Node4 [id="edge16_Node000012_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node12 -> Node8 [id="edge17_Node000012_Node000008",color="steelblue1",style="solid",tooltip=" "];
+  Node12 -> Node9 [id="edge18_Node000012_Node000009",color="steelblue1",style="solid",tooltip=" "];
+  Node11 -> Node6 [id="edge19_Node000011_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node13 [id="edge20_Node000001_Node000013",color="steelblue1",style="solid",tooltip=" "];
+  Node13 [id="Node000013",label="cassert",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
 }

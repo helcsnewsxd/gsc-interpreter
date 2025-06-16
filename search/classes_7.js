@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['token_0',['Token',['../classToken.html',1,'']]]
+  ['runtimeerror_0',['RuntimeError',['../classRuntimeError.html',1,'']]]
 ];

@@ -79,7 +79,7 @@ $(function() {
   <div class="headertitle"><div class="title">error.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="token_8hpp_source.html">gsc/token.hpp</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="runtimeError_8hpp_source.html">gsc/runtimeError.hpp</a>&quot;</code><br />
 <code>#include &lt;string&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for error.hpp:</div>
@@ -105,11 +105,16 @@ Functions</h2></td></tr>
 <tr class="memitem:afa57d460cf6161b889466f19635b8c07" id="r_afa57d460cf6161b889466f19635b8c07"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="error_8hpp.html#afa57d460cf6161b889466f19635b8c07">error</a> (const <a class="el" href="classToken.html">Token</a> &amp;token, const std::string &amp;message)</td></tr>
 <tr class="memdesc:afa57d460cf6161b889466f19635b8c07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Report an error in the given token.  <br /></td></tr>
 <tr class="separator:afa57d460cf6161b889466f19635b8c07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52e9d0438880e071985009848bab2d32" id="r_a52e9d0438880e071985009848bab2d32"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="error_8hpp.html#a52e9d0438880e071985009848bab2d32">runtimeError</a> (const <a class="el" href="classRuntimeError.html">RuntimeError</a> &amp;<a class="el" href="error_8hpp.html#a057203d3ddd2dc7ffdbacf4be430a2e7">error</a>)</td></tr>
+<tr class="memdesc:a52e9d0438880e071985009848bab2d32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Report a runtime error given a <a class="el" href="classRuntimeError.html" title="Represents a runtime error in the GSC interpreter.">RuntimeError</a> object.  <br /></td></tr>
+<tr class="separator:a52e9d0438880e071985009848bab2d32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a5acd1c773774df929c1a561128c90189" id="r_a5acd1c773774df929c1a561128c90189"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="error_8hpp.html#a5acd1c773774df929c1a561128c90189">hadError</a> = false</td></tr>
 <tr class="separator:a5acd1c773774df929c1a561128c90189"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51dd2e05059c20ac148bfbca33e832e3" id="r_a51dd2e05059c20ac148bfbca33e832e3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="error_8hpp.html#a51dd2e05059c20ac148bfbca33e832e3">hadRuntimeError</a> = false</td></tr>
+<tr class="separator:a51dd2e05059c20ac148bfbca33e832e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a057203d3ddd2dc7ffdbacf4be430a2e7" name="a057203d3ddd2dc7ffdbacf4be430a2e7"></a>
@@ -255,6 +260,43 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="a52e9d0438880e071985009848bab2d32" name="a52e9d0438880e071985009848bab2d32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52e9d0438880e071985009848bab2d32">&#9670;&#160;</a></span>runtimeError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void runtimeError </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classRuntimeError.html">RuntimeError</a> &amp;&#160;</td>
+          <td class="paramname"><em>error</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Report a runtime error given a <a class="el" href="classRuntimeError.html" title="Represents a runtime error in the GSC interpreter.">RuntimeError</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">error</td><td>The <a class="el" href="classRuntimeError.html" title="Represents a runtime error in the GSC interpreter.">RuntimeError</a> object containing the error details.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>This function sets the global variable <code>hadRuntimeError</code> to true and writes in stderr. </dd></dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="error_8hpp_a52e9d0438880e071985009848bab2d32_cgraph.png" border="0" usemap="#aerror_8hpp_a52e9d0438880e071985009848bab2d32_cgraph" alt=""/></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="error_8hpp_a52e9d0438880e071985009848bab2d32_icgraph.png" border="0" usemap="#aerror_8hpp_a52e9d0438880e071985009848bab2d32_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
 <h2 class="groupheader">Variable Documentation</h2>
 <a id="a5acd1c773774df929c1a561128c90189" name="a5acd1c773774df929c1a561128c90189"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5acd1c773774df929c1a561128c90189">&#9670;&#160;</a></span>hadError</h2>
@@ -267,6 +309,28 @@ Here is the caller graph for this function:</div>
       <table class="memname">
         <tr>
           <td class="memname">bool hadError = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a51dd2e05059c20ac148bfbca33e832e3" name="a51dd2e05059c20ac148bfbca33e832e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51dd2e05059c20ac148bfbca33e832e3">&#9670;&#160;</a></span>hadRuntimeError</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool hadRuntimeError = false</td>
         </tr>
       </table>
   </td>

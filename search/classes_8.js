@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['unary_0',['Unary',['../classUnary.html',1,'']]]
+  ['scanner_0',['Scanner',['../classScanner.html',1,'']]]
 ];

@@ -13,12 +13,19 @@ digraph "main"
   Node2 -> Node4 [id="edge3_Node000002_Node000004",color="steelblue1",style="solid",tooltip=" "];
   Node4 [id="Node000004",label="run",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$main_8cpp.html#a7a2843aa356425e41907f7b3bc255b15",tooltip=" "];
   Node4 -> Node5 [id="edge4_Node000004_Node000005",color="steelblue1",style="solid",tooltip=" "];
-  Node5 [id="Node000005",label="Parser::parse",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classParser.html#ac665654e96249792d2929d6bab95beec",tooltip="Parses the tokens and returns the root expression of the AST."];
-  Node4 -> Node6 [id="edge5_Node000004_Node000006",color="steelblue1",style="solid",tooltip=" "];
-  Node6 [id="Node000006",label="AstPrinter::print",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classAstPrinter.html#a656a66e96510a3b2ff8edef2c1a5c61c",tooltip="Prints the expression in a parenthesized format."];
-  Node4 -> Node7 [id="edge6_Node000004_Node000007",color="steelblue1",style="solid",tooltip=" "];
-  Node7 [id="Node000007",label="Scanner::scanTokens",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classScanner.html#ac13eb6af23aada11ff2525f02577cd8e",tooltip="Scans the entire source code and generates a list of tokens."];
-  Node1 -> Node8 [id="edge7_Node000001_Node000008",color="steelblue1",style="solid",tooltip=" "];
-  Node8 [id="Node000008",label="runPrompt",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$main_8cpp.html#a2177fc6f8c300b3c24f38817ba64da30",tooltip=" "];
-  Node8 -> Node4 [id="edge8_Node000008_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="Interpreter::interpret",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classInterpreter.html#a1399e6d166e3e4a97398c0cbf157a78d",tooltip="Interpret the given expression."];
+  Node5 -> Node6 [id="edge5_Node000005_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="error",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$error_8cpp.html#a057203d3ddd2dc7ffdbacf4be430a2e7",tooltip="Report an error in the given line."];
+  Node6 -> Node7 [id="edge6_Node000006_Node000007",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="report",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$error_8cpp.html#aef92bba490af31bffca743240f705016",tooltip="Report an error in the given line and location."];
+  Node5 -> Node8 [id="edge7_Node000005_Node000008",color="steelblue1",style="solid",tooltip=" "];
+  Node8 [id="Node000008",label="runtimeError",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$error_8cpp.html#a52e9d0438880e071985009848bab2d32",tooltip="Report a runtime error given a RuntimeError object."];
+  Node8 -> Node6 [id="edge8_Node000008_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node4 -> Node9 [id="edge9_Node000004_Node000009",color="steelblue1",style="solid",tooltip=" "];
+  Node9 [id="Node000009",label="Parser::parse",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classParser.html#ac665654e96249792d2929d6bab95beec",tooltip="Parses the tokens and returns the root expression of the AST."];
+  Node4 -> Node10 [id="edge10_Node000004_Node000010",color="steelblue1",style="solid",tooltip=" "];
+  Node10 [id="Node000010",label="Scanner::scanTokens",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classScanner.html#ac13eb6af23aada11ff2525f02577cd8e",tooltip="Scans the entire source code and generates a list of tokens."];
+  Node1 -> Node11 [id="edge11_Node000001_Node000011",color="steelblue1",style="solid",tooltip=" "];
+  Node11 [id="Node000011",label="runPrompt",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$main_8cpp.html#a2177fc6f8c300b3c24f38817ba64da30",tooltip=" "];
+  Node11 -> Node4 [id="edge12_Node000011_Node000004",color="steelblue1",style="solid",tooltip=" "];
 }

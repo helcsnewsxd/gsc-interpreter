@@ -28,6 +28,14 @@ TEST_CASE("Error handling", "[error]") {
     CHECK(hadError == true);
   }
 
+  SECTION("Runtime error reporting") {
+    hadRuntimeError = false;
+    Token token(TokenType::NUMBER, "2", 2, 1);
+    RuntimeError runErr(std::make_shared<Token>(token), "Test runtime error");
+    runtimeError(runErr);
+    CHECK(hadRuntimeError == true);
+  }
+
   // Restore the original cerr buffer
   std::cerr.rdbuf(oldCerr);
 }

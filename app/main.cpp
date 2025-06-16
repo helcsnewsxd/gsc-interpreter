@@ -1,5 +1,6 @@
 #include "dbg/astPrinter.hpp"
 #include "gsc/error.hpp"
+#include "gsc/interpreter.hpp"
 #include "gsc/parser.hpp"
 #include "gsc/scanner.hpp"
 #include "gsc/token.hpp"
@@ -9,6 +10,8 @@
 
 void runFile(std::string_view filename);
 void runPrompt();
+
+Interpreter interpreter;
 
 int main(int argc, char *argv[]) {
   if (argc > 2) {
@@ -41,17 +44,10 @@ void run(std::string_view program) {
   Parser parser{tokens};
   std::shared_ptr<Expr> expression = parser.parse();
 
-  // To debug
-  for (const auto &token : tokens) {
-    std::cout << token.toString() << std::endl;
-  }
-
   if (hadError) {
     std::cerr << "Error while parsing the program." << std::endl;
-    std::exit(EXIT_FAILURE);
   } else {
-    std::cout << "Parsed expression: " << AstPrinter().print(expression)
-              << std::endl;
+    std::cout << interpreter.interpret(expression) << std::endl;
   }
 }
 
@@ -61,6 +57,10 @@ void runFile(std::string_view filename) {
 
   if (hadError) {
     std::cerr << "Error while running file: " << filename << std::endl;
+    std::exit(EXIT_FAILURE);
+  } else if (hadRuntimeError) {
+    std::cerr << "Runtime error occurred while running file: " << filename
+              << std::endl;
     std::exit(EXIT_FAILURE);
   }
 }

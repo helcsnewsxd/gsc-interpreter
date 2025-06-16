@@ -1,9 +1,10 @@
 #pragma once
 
-#include "gsc/token.hpp"
+#include "gsc/runtimeError.hpp"
 #include <string>
 
 inline bool hadError = false;
+inline bool hadRuntimeError = false;
 
 /** @brief
  * Report an error in the given line and location.
@@ -42,3 +43,13 @@ void error(const int &line, const std::string &message);
  *
  */
 void error(const Token &token, const std::string &message);
+
+/** @brief
+ * Report a runtime error given a RuntimeError object.
+ *
+ * @param error The RuntimeError object containing the error details.
+ *
+ * @note This function sets the global variable `hadRuntimeError` to true and
+ * writes in stderr.
+ */
+void runtimeError(const RuntimeError &error);

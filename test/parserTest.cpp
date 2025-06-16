@@ -1,9 +1,11 @@
 #include "gsc/parser.hpp"
 #include "catch2/catch_amalgamated.hpp"
-#include "dbg/astPrinter.hpp"
+#include "gsc/expr.hpp"
+#include "gsc/stmt.hpp"
 #include <iostream>
+#include <memory>
 
-TEST_CASE("Parse an empty experssion", "[parser][expression][empty]") {
+TEST_CASE("Parse an empty program", "[parser][program][empty]") {
   // Hide the error output
   std::ostringstream oss;
   auto oldCerr = std::cerr.rdbuf(oss.rdbuf());
@@ -13,8 +15,8 @@ TEST_CASE("Parse an empty experssion", "[parser][expression][empty]") {
     std::vector<Token> tokens = {EOFToken};
     Parser parser(tokens);
 
-    std::shared_ptr<Expr> expr = parser.parse();
-    CHECK(expr == nullptr);
+    std::vector<std::shared_ptr<Stmt>> statements = parser.parse();
+    CHECK(statements.empty());
   }
 
   // Restore the original cerr buffer
@@ -23,6 +25,7 @@ TEST_CASE("Parse an empty experssion", "[parser][expression][empty]") {
 
 TEST_CASE("Parse a primary expression", "[parser][expression][primary]") {
   Token EOFToken = {TokenType::END_OF_FILE, "", nullptr, 1};
+  Token semicolonToken = {TokenType::SEMICOLON, ";", nullptr, 1};
 
   // Hide the error output
   std::ostringstream oss;
@@ -30,11 +33,18 @@ TEST_CASE("Parse a primary expression", "[parser][expression][primary]") {
 
   SECTION("NIL token") {
     Token nilToken = {TokenType::NIL, "nil", nullptr, 1};
-    std::vector<Token> tokens = {nilToken, EOFToken};
+    std::vector<Token> tokens = {nilToken, semicolonToken, EOFToken};
     Parser parser(tokens);
 
-    std::shared_ptr<Expr> expr = parser.parse();
-    REQUIRE(expr != nullptr);
+    std::vector<std::shared_ptr<Stmt>> statements = parser.parse();
+    REQUIRE(statements.size() == 1);
+    REQUIRE(statements[0] != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<Expression>(statements[0]) != nullptr);
+    std::shared_ptr<Expression> exprStmt =
+        std::dynamic_pointer_cast<Expression>(statements[0]);
+    REQUIRE(exprStmt->getExpression() != nullptr);
+    std::shared_ptr<Expr> expr =
+        std::dynamic_pointer_cast<Expr>(exprStmt->getExpression());
     std::shared_ptr<Literal> literalExpr =
         std::dynamic_pointer_cast<Literal>(expr);
     REQUIRE(literalExpr != nullptr);
@@ -44,10 +54,17 @@ TEST_CASE("Parse a primary expression", "[parser][expression][primary]") {
 
   SECTION("True token") {
     Token trueToken = {TokenType::TRUE, "true", nullptr, 1};
-    std::vector<Token> tokens = {trueToken, EOFToken};
+    std::vector<Token> tokens = {trueToken, semicolonToken, EOFToken};
     Parser parser(tokens);
 
-    std::shared_ptr<Expr> expr = parser.parse();
+    std::vector<std::shared_ptr<Stmt>> statements = parser.parse();
+    REQUIRE(statements.size() == 1);
+    REQUIRE(statements[0] != nullptr);
+    std::shared_ptr<Expression> exprStmt =
+        std::dynamic_pointer_cast<Expression>(statements[0]);
+    REQUIRE(exprStmt != nullptr);
+    std::shared_ptr<Expr> expr =
+        std::dynamic_pointer_cast<Expr>(exprStmt->getExpression());
     REQUIRE(expr != nullptr);
     std::shared_ptr<Literal> literalExpr =
         std::dynamic_pointer_cast<Literal>(expr);
@@ -58,11 +75,18 @@ TEST_CASE("Parse a primary expression", "[parser][expression][primary]") {
 
   SECTION("False token") {
     Token falseToken = {TokenType::FALSE, "false", nullptr, 1};
-    std::vector<Token> tokens = {falseToken, EOFToken};
+    std::vector<Token> tokens = {falseToken, semicolonToken, EOFToken};
     Parser parser(tokens);
 
-    std::shared_ptr<Expr> expr = parser.parse();
-    REQUIRE(expr != nullptr);
+    std::vector<std::shared_ptr<Stmt>> statements = parser.parse();
+    REQUIRE(statements.size() == 1);
+    REQUIRE(statements[0] != nullptr);
+    std::shared_ptr<Expression> exprStmt =
+        std::dynamic_pointer_cast<Expression>(statements[0]);
+    REQUIRE(exprStmt != nullptr);
+    REQUIRE(exprStmt->getExpression() != nullptr);
+    std::shared_ptr<Expr> expr =
+        std::dynamic_pointer_cast<Expr>(exprStmt->getExpression());
     std::shared_ptr<Literal> literalExpr =
         std::dynamic_pointer_cast<Literal>(expr);
     REQUIRE(literalExpr != nullptr);
@@ -72,11 +96,18 @@ TEST_CASE("Parse a primary expression", "[parser][expression][primary]") {
 
   SECTION("Number token") {
     Token numberToken = {TokenType::NUMBER, "42", 42, 1};
-    std::vector<Token> tokens = {numberToken, EOFToken};
+    std::vector<Token> tokens = {numberToken, semicolonToken, EOFToken};
     Parser parser(tokens);
 
-    std::shared_ptr<Expr> expr = parser.parse();
-    REQUIRE(expr != nullptr);
+    std::vector<std::shared_ptr<Stmt>> statements = parser.parse();
+    REQUIRE(statements.size() == 1);
+    REQUIRE(statements[0] != nullptr);
+    std::shared_ptr<Expression> exprStmt =
+        std::dynamic_pointer_cast<Expression>(statements[0]);
+    REQUIRE(exprStmt != nullptr);
+    REQUIRE(exprStmt->getExpression() != nullptr);
+    std::shared_ptr<Expr> expr =
+        std::dynamic_pointer_cast<Expr>(exprStmt->getExpression());
     std::shared_ptr<Literal> literalExpr =
         std::dynamic_pointer_cast<Literal>(expr);
     REQUIRE(literalExpr != nullptr);
@@ -86,11 +117,18 @@ TEST_CASE("Parse a primary expression", "[parser][expression][primary]") {
 
   SECTION("String token") {
     Token stringToken = {TokenType::STRING, "hello", std::string("hello"), 1};
-    std::vector<Token> tokens = {stringToken, EOFToken};
+    std::vector<Token> tokens = {stringToken, semicolonToken, EOFToken};
     Parser parser(tokens);
 
-    std::shared_ptr<Expr> expr = parser.parse();
-    REQUIRE(expr != nullptr);
+    std::vector<std::shared_ptr<Stmt>> statements = parser.parse();
+    REQUIRE(statements.size() == 1);
+    REQUIRE(statements[0] != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<Expression>(statements[0]) != nullptr);
+    std::shared_ptr<Expression> exprStmt =
+        std::dynamic_pointer_cast<Expression>(statements[0]);
+    REQUIRE(exprStmt->getExpression() != nullptr);
+    std::shared_ptr<Expr> expr =
+        std::dynamic_pointer_cast<Expr>(exprStmt->getExpression());
     std::shared_ptr<Literal> literalExpr =
         std::dynamic_pointer_cast<Literal>(expr);
     REQUIRE(literalExpr != nullptr);
@@ -103,11 +141,18 @@ TEST_CASE("Parse a primary expression", "[parser][expression][primary]") {
     Token rightParenToken = {TokenType::RIGHT_PAREN, ")", nullptr, 1};
     Token numberToken = {TokenType::NUMBER, "42", 42, 1};
     std::vector<Token> tokens = {leftParenToken, numberToken, rightParenToken,
-                                 EOFToken};
+                                 semicolonToken, EOFToken};
     Parser parser(tokens);
 
-    std::shared_ptr<Expr> expr = parser.parse();
-    REQUIRE(expr != nullptr);
+    std::vector<std::shared_ptr<Stmt>> statements = parser.parse();
+    REQUIRE(statements.size() == 1);
+    REQUIRE(statements[0] != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<Expression>(statements[0]) != nullptr);
+    std::shared_ptr<Expression> exprStmt =
+        std::dynamic_pointer_cast<Expression>(statements[0]);
+    REQUIRE(exprStmt->getExpression() != nullptr);
+    std::shared_ptr<Expr> expr =
+        std::dynamic_pointer_cast<Expr>(exprStmt->getExpression());
     std::shared_ptr<Grouping> groupingExpr =
         std::dynamic_pointer_cast<Grouping>(expr);
     REQUIRE(groupingExpr != nullptr);
@@ -123,11 +168,12 @@ TEST_CASE("Parse a primary expression", "[parser][expression][primary]") {
   SECTION("Grouping expression without right parenthesis") {
     Token leftParenToken = {TokenType::LEFT_PAREN, "(", nullptr, 1};
     Token numberToken = {TokenType::NUMBER, "42", 42, 1};
-    std::vector<Token> tokens = {leftParenToken, numberToken, EOFToken};
+    std::vector<Token> tokens = {leftParenToken, numberToken, semicolonToken,
+                                 EOFToken};
     Parser parser(tokens);
 
-    std::shared_ptr<Expr> expr = parser.parse();
-    REQUIRE(expr == nullptr);
+    std::vector<std::shared_ptr<Stmt>> statements;
+    REQUIRE(statements.empty());
   }
 
   // Restore the original cerr buffer
@@ -144,13 +190,22 @@ TEST_CASE("Parse an unary expression", "[parser][expression][unary]") {
   Token numberToken = {TokenType::NUMBER, "42", 42, 1};
   Token boolToken = {TokenType::TRUE, "true", nullptr, 1};
   Token EOFToken = {TokenType::END_OF_FILE, "", nullptr, 1};
+  Token semicolonToken = {TokenType::SEMICOLON, ";", nullptr, 1};
 
   SECTION("Minus token with a number") {
-    std::vector<Token> tokens = {minusToken, numberToken, EOFToken};
+    std::vector<Token> tokens = {minusToken, numberToken, semicolonToken,
+                                 EOFToken};
     Parser parser(tokens);
 
-    std::shared_ptr<Expr> expr = parser.parse();
-    REQUIRE(expr != nullptr);
+    std::vector<std::shared_ptr<Stmt>> statements = parser.parse();
+    REQUIRE(statements.size() == 1);
+    REQUIRE(statements[0] != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<Expression>(statements[0]) != nullptr);
+    std::shared_ptr<Expression> exprStmt =
+        std::dynamic_pointer_cast<Expression>(statements[0]);
+    REQUIRE(exprStmt->getExpression() != nullptr);
+    std::shared_ptr<Expr> expr =
+        std::dynamic_pointer_cast<Expr>(exprStmt->getExpression());
     REQUIRE(std::dynamic_pointer_cast<Unary>(expr) != nullptr);
     std::shared_ptr<Unary> unaryExpr = std::dynamic_pointer_cast<Unary>(expr);
     REQUIRE(unaryExpr->getRight() != nullptr);
@@ -164,11 +219,19 @@ TEST_CASE("Parse an unary expression", "[parser][expression][unary]") {
   }
 
   SECTION("Minus (x2 times) with a number") {
-    std::vector<Token> tokens = {minusToken, minusToken, numberToken, EOFToken};
+    std::vector<Token> tokens = {minusToken, minusToken, numberToken,
+                                 semicolonToken, EOFToken};
     Parser parser(tokens);
 
-    std::shared_ptr<Expr> expr = parser.parse();
-    REQUIRE(expr != nullptr);
+    std::vector<std::shared_ptr<Stmt>> statements = parser.parse();
+    REQUIRE(statements.size() == 1);
+    REQUIRE(statements[0] != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<Expression>(statements[0]) != nullptr);
+    std::shared_ptr<Expression> exprStmt =
+        std::dynamic_pointer_cast<Expression>(statements[0]);
+    REQUIRE(exprStmt->getExpression() != nullptr);
+    std::shared_ptr<Expr> expr =
+        std::dynamic_pointer_cast<Expr>(exprStmt->getExpression());
     REQUIRE(std::dynamic_pointer_cast<Unary>(expr) != nullptr);
     std::shared_ptr<Unary> unaryExpr = std::dynamic_pointer_cast<Unary>(expr);
     REQUIRE(unaryExpr->getRight() != nullptr);
@@ -187,11 +250,19 @@ TEST_CASE("Parse an unary expression", "[parser][expression][unary]") {
   }
 
   SECTION("Neg/Bang with a boolean") {
-    std::vector<Token> tokens = {bangToken, boolToken, EOFToken};
+    std::vector<Token> tokens = {bangToken, boolToken, semicolonToken,
+                                 EOFToken};
     Parser parser(tokens);
 
-    std::shared_ptr<Expr> expr = parser.parse();
-    REQUIRE(expr != nullptr);
+    std::vector<std::shared_ptr<Stmt>> statements = parser.parse();
+    REQUIRE(statements.size() == 1);
+    REQUIRE(statements[0] != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<Expression>(statements[0]) != nullptr);
+    std::shared_ptr<Expression> exprStmt =
+        std::dynamic_pointer_cast<Expression>(statements[0]);
+    REQUIRE(exprStmt->getExpression() != nullptr);
+    std::shared_ptr<Expr> expr =
+        std::dynamic_pointer_cast<Expr>(exprStmt->getExpression());
     REQUIRE(std::dynamic_pointer_cast<Unary>(expr) != nullptr);
     std::shared_ptr<Unary> unaryExpr = std::dynamic_pointer_cast<Unary>(expr);
     REQUIRE(unaryExpr->getRight() != nullptr);
@@ -205,11 +276,19 @@ TEST_CASE("Parse an unary expression", "[parser][expression][unary]") {
   }
 
   SECTION("Neg/Bang (x2 times) with a boolean") {
-    std::vector<Token> tokens = {bangToken, bangToken, boolToken, EOFToken};
+    std::vector<Token> tokens = {bangToken, bangToken, boolToken,
+                                 semicolonToken, EOFToken};
     Parser parser(tokens);
 
-    std::shared_ptr<Expr> expr = parser.parse();
-    REQUIRE(expr != nullptr);
+    std::vector<std::shared_ptr<Stmt>> statements = parser.parse();
+    REQUIRE(statements.size() == 1);
+    REQUIRE(statements[0] != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<Expression>(statements[0]) != nullptr);
+    std::shared_ptr<Expression> exprStmt =
+        std::dynamic_pointer_cast<Expression>(statements[0]);
+    REQUIRE(exprStmt->getExpression() != nullptr);
+    std::shared_ptr<Expr> expr =
+        std::dynamic_pointer_cast<Expr>(exprStmt->getExpression());
     REQUIRE(std::dynamic_pointer_cast<Unary>(expr) != nullptr);
     std::shared_ptr<Unary> unaryExpr = std::dynamic_pointer_cast<Unary>(expr);
     CHECK(unaryExpr->getOp().getType() == TokenType::BANG);
@@ -238,13 +317,22 @@ TEST_CASE("Parse a factor expression", "[parser][expression][factor]") {
   Token starToken = {TokenType::STAR, "*", nullptr, 1};
   Token slashToken = {TokenType::SLASH, "/", nullptr, 1};
   Token EOFToken = {TokenType::END_OF_FILE, "", nullptr, 1};
+  Token semicolonToken = {TokenType::SEMICOLON, ";", nullptr, 1};
 
   SECTION("Multiplication of two numbers") {
-    std::vector<Token> tokens = {oneNumToken, starToken, twoNumToken, EOFToken};
+    std::vector<Token> tokens = {oneNumToken, starToken, twoNumToken,
+                                 semicolonToken, EOFToken};
     Parser parser(tokens);
 
-    std::shared_ptr<Expr> expr = parser.parse();
-    REQUIRE(expr != nullptr);
+    std::vector<std::shared_ptr<Stmt>> statements = parser.parse();
+    REQUIRE(statements.size() == 1);
+    REQUIRE(statements[0] != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<Expression>(statements[0]) != nullptr);
+    std::shared_ptr<Expression> exprStmt =
+        std::dynamic_pointer_cast<Expression>(statements[0]);
+    REQUIRE(exprStmt->getExpression() != nullptr);
+    std::shared_ptr<Expr> expr =
+        std::dynamic_pointer_cast<Expr>(exprStmt->getExpression());
     REQUIRE(std::dynamic_pointer_cast<Binary>(expr) != nullptr);
     std::shared_ptr<Binary> binaryExpr =
         std::dynamic_pointer_cast<Binary>(expr);
@@ -269,11 +357,18 @@ TEST_CASE("Parse a factor expression", "[parser][expression][factor]") {
 
   SECTION("Division of two numbers") {
     std::vector<Token> tokens = {oneNumToken, slashToken, twoNumToken,
-                                 EOFToken};
+                                 semicolonToken, EOFToken};
     Parser parser(tokens);
 
-    std::shared_ptr<Expr> expr = parser.parse();
-    REQUIRE(expr != nullptr);
+    std::vector<std::shared_ptr<Stmt>> statements = parser.parse();
+    REQUIRE(statements.size() == 1);
+    REQUIRE(statements[0] != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<Expression>(statements[0]) != nullptr);
+    std::shared_ptr<Expression> exprStmt =
+        std::dynamic_pointer_cast<Expression>(statements[0]);
+    REQUIRE(exprStmt->getExpression() != nullptr);
+    std::shared_ptr<Expr> expr =
+        std::dynamic_pointer_cast<Expr>(exprStmt->getExpression());
     REQUIRE(std::dynamic_pointer_cast<Binary>(expr) != nullptr);
     std::shared_ptr<Binary> binaryExpr =
         std::dynamic_pointer_cast<Binary>(expr);
@@ -299,11 +394,19 @@ TEST_CASE("Parse a factor expression", "[parser][expression][factor]") {
   SECTION(
       "Factor expression with three numbers (checking left associativity)") {
     std::vector<Token> tokens = {oneNumToken, starToken,     twoNumToken,
-                                 slashToken,  threeNumToken, EOFToken};
+                                 slashToken,  threeNumToken, semicolonToken,
+                                 EOFToken};
     Parser parser(tokens);
 
-    std::shared_ptr<Expr> expr = parser.parse();
-    REQUIRE(expr != nullptr);
+    std::vector<std::shared_ptr<Stmt>> statements = parser.parse();
+    REQUIRE(statements.size() == 1);
+    REQUIRE(statements[0] != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<Expression>(statements[0]) != nullptr);
+    std::shared_ptr<Expression> exprStmt =
+        std::dynamic_pointer_cast<Expression>(statements[0]);
+    REQUIRE(exprStmt->getExpression() != nullptr);
+    std::shared_ptr<Expr> expr =
+        std::dynamic_pointer_cast<Expr>(exprStmt->getExpression());
     REQUIRE(std::dynamic_pointer_cast<Binary>(expr) != nullptr);
     std::shared_ptr<Binary> binaryExpr =
         std::dynamic_pointer_cast<Binary>(expr);
@@ -348,13 +451,22 @@ TEST_CASE("Parse a term expression", "[parser][expression][term]") {
   Token minusToken = {TokenType::MINUS, "-", nullptr, 1};
   Token plusToken = {TokenType::PLUS, "+", nullptr, 1};
   Token EOFToken = {TokenType::END_OF_FILE, "", nullptr, 1};
+  Token semicolonToken = {TokenType::SEMICOLON, ";", nullptr, 1};
 
   SECTION("Sum Expression") {
-    std::vector<Token> tokens = {oneNumToken, plusToken, twoNumToken, EOFToken};
+    std::vector<Token> tokens = {oneNumToken, plusToken, twoNumToken,
+                                 semicolonToken, EOFToken};
     Parser parser(tokens);
 
-    std::shared_ptr<Expr> expr = parser.parse();
-    REQUIRE(expr != nullptr);
+    std::vector<std::shared_ptr<Stmt>> statements = parser.parse();
+    REQUIRE(statements.size() == 1);
+    REQUIRE(statements[0] != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<Expression>(statements[0]) != nullptr);
+    std::shared_ptr<Expression> exprStmt =
+        std::dynamic_pointer_cast<Expression>(statements[0]);
+    REQUIRE(exprStmt->getExpression() != nullptr);
+    std::shared_ptr<Expr> expr =
+        std::dynamic_pointer_cast<Expr>(exprStmt->getExpression());
     REQUIRE(std::dynamic_pointer_cast<Binary>(expr) != nullptr);
     std::shared_ptr<Binary> binaryExpr =
         std::dynamic_pointer_cast<Binary>(expr);
@@ -379,11 +491,18 @@ TEST_CASE("Parse a term expression", "[parser][expression][term]") {
 
   SECTION("Minux Expression") {
     std::vector<Token> tokens = {oneNumToken, minusToken, twoNumToken,
-                                 EOFToken};
+                                 semicolonToken, EOFToken};
     Parser parser(tokens);
 
-    std::shared_ptr<Expr> expr = parser.parse();
-    REQUIRE(expr != nullptr);
+    std::vector<std::shared_ptr<Stmt>> statements = parser.parse();
+    REQUIRE(statements.size() == 1);
+    REQUIRE(statements[0] != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<Expression>(statements[0]) != nullptr);
+    std::shared_ptr<Expression> exprStmt =
+        std::dynamic_pointer_cast<Expression>(statements[0]);
+    REQUIRE(exprStmt->getExpression() != nullptr);
+    std::shared_ptr<Expr> expr =
+        std::dynamic_pointer_cast<Expr>(exprStmt->getExpression());
     REQUIRE(std::dynamic_pointer_cast<Binary>(expr) != nullptr);
     std::shared_ptr<Binary> binaryExpr =
         std::dynamic_pointer_cast<Binary>(expr);
@@ -415,14 +534,22 @@ TEST_CASE("Parse a comparison expression", "[parser][expression][comparison]") {
   Token lessToken = {TokenType::LESS, "<", nullptr, 1};
   Token lessEqualToken = {TokenType::LESS_EQUAL, "<=", nullptr, 1};
   Token EOFToken = {TokenType::END_OF_FILE, "", nullptr, 1};
+  Token semicolonToken = {TokenType::SEMICOLON, ";", nullptr, 1};
 
   SECTION("Greater than comparison") {
     std::vector<Token> tokens = {oneNumToken, greaterToken, twoNumToken,
-                                 EOFToken};
+                                 semicolonToken, EOFToken};
     Parser parser(tokens);
 
-    std::shared_ptr<Expr> expr = parser.parse();
-    REQUIRE(expr != nullptr);
+    std::vector<std::shared_ptr<Stmt>> statements = parser.parse();
+    REQUIRE(statements.size() == 1);
+    REQUIRE(statements[0] != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<Expression>(statements[0]) != nullptr);
+    std::shared_ptr<Expression> exprStmt =
+        std::dynamic_pointer_cast<Expression>(statements[0]);
+    REQUIRE(exprStmt->getExpression() != nullptr);
+    std::shared_ptr<Expr> expr =
+        std::dynamic_pointer_cast<Expr>(exprStmt->getExpression());
     REQUIRE(std::dynamic_pointer_cast<Binary>(expr) != nullptr);
     std::shared_ptr<Binary> binaryExpr =
         std::dynamic_pointer_cast<Binary>(expr);
@@ -447,11 +574,18 @@ TEST_CASE("Parse a comparison expression", "[parser][expression][comparison]") {
 
   SECTION("Greater or equal than comparison") {
     std::vector<Token> tokens = {oneNumToken, greaterEqualToken, twoNumToken,
-                                 EOFToken};
+                                 semicolonToken, EOFToken};
     Parser parser(tokens);
 
-    std::shared_ptr<Expr> expr = parser.parse();
-    REQUIRE(expr != nullptr);
+    std::vector<std::shared_ptr<Stmt>> statements = parser.parse();
+    REQUIRE(statements.size() == 1);
+    REQUIRE(statements[0] != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<Expression>(statements[0]) != nullptr);
+    std::shared_ptr<Expression> exprStmt =
+        std::dynamic_pointer_cast<Expression>(statements[0]);
+    REQUIRE(exprStmt->getExpression() != nullptr);
+    std::shared_ptr<Expr> expr =
+        std::dynamic_pointer_cast<Expr>(exprStmt->getExpression());
     REQUIRE(std::dynamic_pointer_cast<Binary>(expr) != nullptr);
     std::shared_ptr<Binary> binaryExpr =
         std::dynamic_pointer_cast<Binary>(expr);
@@ -475,11 +609,19 @@ TEST_CASE("Parse a comparison expression", "[parser][expression][comparison]") {
   }
 
   SECTION("Less than comparison") {
-    std::vector<Token> tokens = {oneNumToken, lessToken, twoNumToken, EOFToken};
+    std::vector<Token> tokens = {oneNumToken, lessToken, twoNumToken,
+                                 semicolonToken, EOFToken};
     Parser parser(tokens);
 
-    std::shared_ptr<Expr> expr = parser.parse();
-    REQUIRE(expr != nullptr);
+    std::vector<std::shared_ptr<Stmt>> statements = parser.parse();
+    REQUIRE(statements.size() == 1);
+    REQUIRE(statements[0] != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<Expression>(statements[0]) != nullptr);
+    std::shared_ptr<Expression> exprStmt =
+        std::dynamic_pointer_cast<Expression>(statements[0]);
+    REQUIRE(exprStmt->getExpression() != nullptr);
+    std::shared_ptr<Expr> expr =
+        std::dynamic_pointer_cast<Expr>(exprStmt->getExpression());
     REQUIRE(std::dynamic_pointer_cast<Binary>(expr) != nullptr);
     std::shared_ptr<Binary> binaryExpr =
         std::dynamic_pointer_cast<Binary>(expr);
@@ -504,11 +646,18 @@ TEST_CASE("Parse a comparison expression", "[parser][expression][comparison]") {
 
   SECTION("Less or equal than comparison") {
     std::vector<Token> tokens = {oneNumToken, lessEqualToken, twoNumToken,
-                                 EOFToken};
+                                 semicolonToken, EOFToken};
     Parser parser(tokens);
 
-    std::shared_ptr<Expr> expr = parser.parse();
-    REQUIRE(expr != nullptr);
+    std::vector<std::shared_ptr<Stmt>> statements = parser.parse();
+    REQUIRE(statements.size() == 1);
+    REQUIRE(statements[0] != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<Expression>(statements[0]) != nullptr);
+    std::shared_ptr<Expression> exprStmt =
+        std::dynamic_pointer_cast<Expression>(statements[0]);
+    REQUIRE(exprStmt->getExpression() != nullptr);
+    std::shared_ptr<Expr> expr =
+        std::dynamic_pointer_cast<Expr>(exprStmt->getExpression());
     REQUIRE(std::dynamic_pointer_cast<Binary>(expr) != nullptr);
     std::shared_ptr<Binary> binaryExpr =
         std::dynamic_pointer_cast<Binary>(expr);
@@ -538,14 +687,22 @@ TEST_CASE("Parse equality expression", "[parser][expression][equality]") {
   Token bangEqualToken = {TokenType::BANG_EQUAL, "!=", nullptr, 1};
   Token equalEqualToken = {TokenType::EQUAL_EQUAL, "==", nullptr, 1};
   Token EOFToken = {TokenType::END_OF_FILE, "", nullptr, 1};
+  Token semicolonToken = {TokenType::SEMICOLON, ";", nullptr, 1};
 
   SECTION("Equal comparison") {
     std::vector<Token> tokens = {oneNumToken, equalEqualToken, twoNumToken,
-                                 EOFToken};
+                                 semicolonToken, EOFToken};
     Parser parser(tokens);
 
-    std::shared_ptr<Expr> expr = parser.parse();
-    REQUIRE(expr != nullptr);
+    std::vector<std::shared_ptr<Stmt>> statements = parser.parse();
+    REQUIRE(statements.size() == 1);
+    REQUIRE(statements[0] != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<Expression>(statements[0]) != nullptr);
+    std::shared_ptr<Expression> exprStmt =
+        std::dynamic_pointer_cast<Expression>(statements[0]);
+    REQUIRE(exprStmt->getExpression() != nullptr);
+    std::shared_ptr<Expr> expr =
+        std::dynamic_pointer_cast<Expr>(exprStmt->getExpression());
     REQUIRE(std::dynamic_pointer_cast<Binary>(expr) != nullptr);
     std::shared_ptr<Binary> binaryExpr =
         std::dynamic_pointer_cast<Binary>(expr);
@@ -570,11 +727,18 @@ TEST_CASE("Parse equality expression", "[parser][expression][equality]") {
 
   SECTION("Different comparison") {
     std::vector<Token> tokens = {oneNumToken, bangEqualToken, twoNumToken,
-                                 EOFToken};
+                                 semicolonToken, EOFToken};
     Parser parser(tokens);
 
-    std::shared_ptr<Expr> expr = parser.parse();
-    REQUIRE(expr != nullptr);
+    std::vector<std::shared_ptr<Stmt>> statements = parser.parse();
+    REQUIRE(statements.size() == 1);
+    REQUIRE(statements[0] != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<Expression>(statements[0]) != nullptr);
+    std::shared_ptr<Expression> exprStmt =
+        std::dynamic_pointer_cast<Expression>(statements[0]);
+    REQUIRE(exprStmt->getExpression() != nullptr);
+    std::shared_ptr<Expr> expr =
+        std::dynamic_pointer_cast<Expr>(exprStmt->getExpression());
     REQUIRE(std::dynamic_pointer_cast<Binary>(expr) != nullptr);
     std::shared_ptr<Binary> binaryExpr =
         std::dynamic_pointer_cast<Binary>(expr);

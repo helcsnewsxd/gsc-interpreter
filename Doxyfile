@@ -1,5 +1,5 @@
 
-PROJECT_NAME           = "Simplified C/C++ (GSC)"
+PROJECT_NAME           = "GSC Interpreter"
 PROJECT_BRIEF          = "A Turing-complete interpreter developed for a compiler course"
 PROJECT_LOGO           = 
 OUTPUT_DIRECTORY       = docs

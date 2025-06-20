@@ -101,6 +101,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a8bc287a0d1a084a7821902eae24bbfa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d10e7949ac83818ffb9ad466fa33754" id="r_a9d10e7949ac83818ffb9ad466fa33754"><td class="memItemLeft" align="right" valign="top">virtual std::any&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStmtVisitor.html#a9d10e7949ac83818ffb9ad466fa33754">visitVarStmt</a> (std::shared_ptr&lt; <a class="el" href="classVar.html">Var</a> &gt; stmt)=0</td></tr>
 <tr class="separator:a9d10e7949ac83818ffb9ad466fa33754"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa79c4ee6e7ea194a91f187a3aa6b1ea1" id="r_aa79c4ee6e7ea194a91f187a3aa6b1ea1"><td class="memItemLeft" align="right" valign="top">virtual std::any&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStmtVisitor.html#aa79c4ee6e7ea194a91f187a3aa6b1ea1">visitIfStmt</a> (std::shared_ptr&lt; <a class="el" href="classIf.html">If</a> &gt; stmt)=0</td></tr>
+<tr class="separator:aa79c4ee6e7ea194a91f187a3aa6b1ea1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48d1d3d4a038e30868343a48f2f2fc92" id="r_a48d1d3d4a038e30868343a48f2f2fc92"><td class="memItemLeft" align="right" valign="top">virtual std::any&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStmtVisitor.html#a48d1d3d4a038e30868343a48f2f2fc92">visitWhileStmt</a> (std::shared_ptr&lt; <a class="el" href="classWhile.html">While</a> &gt; stmt)=0</td></tr>
+<tr class="separator:a48d1d3d4a038e30868343a48f2f2fc92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae29129715d730242bdccd414fdfdac34" id="r_ae29129715d730242bdccd414fdfdac34"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStmtVisitor.html#ae29129715d730242bdccd414fdfdac34">~StmtVisitor</a> ()=default</td></tr>
 <tr class="separator:ae29129715d730242bdccd414fdfdac34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -196,6 +200,37 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="aa79c4ee6e7ea194a91f187a3aa6b1ea1" name="aa79c4ee6e7ea194a91f187a3aa6b1ea1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa79c4ee6e7ea194a91f187a3aa6b1ea1">&#9670;&#160;</a></span>visitIfStmt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::any StmtVisitor::visitIfStmt </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classIf.html">If</a> &gt;&#160;</td>
+          <td class="paramname"><em>stmt</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classStmtVisitor_aa79c4ee6e7ea194a91f187a3aa6b1ea1_icgraph.png" border="0" usemap="#aclassStmtVisitor_aa79c4ee6e7ea194a91f187a3aa6b1ea1_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
 <a id="a8bc287a0d1a084a7821902eae24bbfa9" name="a8bc287a0d1a084a7821902eae24bbfa9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8bc287a0d1a084a7821902eae24bbfa9">&#9670;&#160;</a></span>visitPrintStmt()</h2>
 
@@ -254,6 +289,37 @@ Here is the caller graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classStmtVisitor_a9d10e7949ac83818ffb9ad466fa33754_icgraph.png" border="0" usemap="#aclassStmtVisitor_a9d10e7949ac83818ffb9ad466fa33754_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a48d1d3d4a038e30868343a48f2f2fc92" name="a48d1d3d4a038e30868343a48f2f2fc92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48d1d3d4a038e30868343a48f2f2fc92">&#9670;&#160;</a></span>visitWhileStmt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::any StmtVisitor::visitWhileStmt </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classWhile.html">While</a> &gt;&#160;</td>
+          <td class="paramname"><em>stmt</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classStmtVisitor_a48d1d3d4a038e30868343a48f2f2fc92_icgraph.png" border="0" usemap="#aclassStmtVisitor_a48d1d3d4a038e30868343a48f2f2fc92_icgraph" alt=""/></div>
 </div>
 
 </div>

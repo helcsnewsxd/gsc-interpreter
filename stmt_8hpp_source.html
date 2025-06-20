@@ -92,143 +92,215 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">class </span><a class="code hl_class" href="classExpression.html">Expression</a>;</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">class </span><a class="code hl_class" href="classPrint.html">Print</a>;</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">class </span><a class="code hl_class" href="classVar.html">Var</a>;</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="foldopen" id="foldopen00019" data-start="{" data-end="};">
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="classStmtVisitor.html">   19</a></span><span class="keyword">class </span><a class="code hl_class" href="classStmtVisitor.html">StmtVisitor</a> {</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="classStmtVisitor.html#af1d8e7944c0ae05925f46874b6e20013">   21</a></span>  <span class="keyword">virtual</span> std::any <a class="code hl_function" href="classStmtVisitor.html#af1d8e7944c0ae05925f46874b6e20013">visitBlockStmt</a>(std::shared_ptr&lt;Block&gt; stmt) = 0;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classStmtVisitor.html#a279d83c06a1a88a62bd175b8a883ce8c">   22</a></span>  <span class="keyword">virtual</span> std::any <a class="code hl_function" href="classStmtVisitor.html#a279d83c06a1a88a62bd175b8a883ce8c">visitExpressionStmt</a>(std::shared_ptr&lt;Expression&gt; expr) = 0;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classStmtVisitor.html#a8bc287a0d1a084a7821902eae24bbfa9">   23</a></span>  <span class="keyword">virtual</span> std::any <a class="code hl_function" href="classStmtVisitor.html#a8bc287a0d1a084a7821902eae24bbfa9">visitPrintStmt</a>(std::shared_ptr&lt;Print&gt; stmt) = 0;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="classStmtVisitor.html#a9d10e7949ac83818ffb9ad466fa33754">   24</a></span>  <span class="keyword">virtual</span> std::any <a class="code hl_function" href="classStmtVisitor.html#a9d10e7949ac83818ffb9ad466fa33754">visitVarStmt</a>(std::shared_ptr&lt;Var&gt; stmt) = 0;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classStmtVisitor.html#ae29129715d730242bdccd414fdfdac34">   26</a></span>  <span class="keyword">virtual</span> <a class="code hl_function" href="classStmtVisitor.html#ae29129715d730242bdccd414fdfdac34">~StmtVisitor</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>};</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">class </span><a class="code hl_class" href="classIf.html">If</a>;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">class </span><a class="code hl_class" href="classWhile.html">While</a>;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="foldopen" id="foldopen00021" data-start="{" data-end="};">
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="classStmtVisitor.html">   21</a></span><span class="keyword">class </span><a class="code hl_class" href="classStmtVisitor.html">StmtVisitor</a> {</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classStmtVisitor.html#af1d8e7944c0ae05925f46874b6e20013">   23</a></span>  <span class="keyword">virtual</span> std::any <a class="code hl_function" href="classStmtVisitor.html#af1d8e7944c0ae05925f46874b6e20013">visitBlockStmt</a>(std::shared_ptr&lt;Block&gt; stmt) = 0;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="classStmtVisitor.html#a279d83c06a1a88a62bd175b8a883ce8c">   24</a></span>  <span class="keyword">virtual</span> std::any <a class="code hl_function" href="classStmtVisitor.html#a279d83c06a1a88a62bd175b8a883ce8c">visitExpressionStmt</a>(std::shared_ptr&lt;Expression&gt; expr) = 0;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="classStmtVisitor.html#a8bc287a0d1a084a7821902eae24bbfa9">   25</a></span>  <span class="keyword">virtual</span> std::any <a class="code hl_function" href="classStmtVisitor.html#a8bc287a0d1a084a7821902eae24bbfa9">visitPrintStmt</a>(std::shared_ptr&lt;Print&gt; stmt) = 0;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classStmtVisitor.html#a9d10e7949ac83818ffb9ad466fa33754">   26</a></span>  <span class="keyword">virtual</span> std::any <a class="code hl_function" href="classStmtVisitor.html#a9d10e7949ac83818ffb9ad466fa33754">visitVarStmt</a>(std::shared_ptr&lt;Var&gt; stmt) = 0;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classStmtVisitor.html#aa79c4ee6e7ea194a91f187a3aa6b1ea1">   27</a></span>  <span class="keyword">virtual</span> std::any <a class="code hl_function" href="classStmtVisitor.html#aa79c4ee6e7ea194a91f187a3aa6b1ea1">visitIfStmt</a>(std::shared_ptr&lt;If&gt; stmt) = 0;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classStmtVisitor.html#a48d1d3d4a038e30868343a48f2f2fc92">   28</a></span>  <span class="keyword">virtual</span> std::any <a class="code hl_function" href="classStmtVisitor.html#a48d1d3d4a038e30868343a48f2f2fc92">visitWhileStmt</a>(std::shared_ptr&lt;While&gt; stmt) = 0;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classStmtVisitor.html#ae29129715d730242bdccd414fdfdac34">   30</a></span>  <span class="keyword">virtual</span> <a class="code hl_function" href="classStmtVisitor.html#ae29129715d730242bdccd414fdfdac34">~StmtVisitor</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>};</div>
 </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="foldopen" id="foldopen00034" data-start="{" data-end="};">
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classStmt.html">   34</a></span><span class="keyword">class </span><a class="code hl_class" href="classStmt.html">Stmt</a> {</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="classStmt.html#a9294f5c7edf0e1cd384ffae00114b1a6">   36</a></span>  <span class="keyword">virtual</span> std::any <a class="code hl_function" href="classStmt.html#a9294f5c7edf0e1cd384ffae00114b1a6">accept</a>(<a class="code hl_class" href="classStmtVisitor.html">StmtVisitor</a> &amp;visitor) = 0;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>};</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="foldopen" id="foldopen00038" data-start="{" data-end="};">
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classStmt.html">   38</a></span><span class="keyword">class </span><a class="code hl_class" href="classStmt.html">Stmt</a> {</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classStmt.html#a9294f5c7edf0e1cd384ffae00114b1a6">   40</a></span>  <span class="keyword">virtual</span> std::any <a class="code hl_function" href="classStmt.html#a9294f5c7edf0e1cd384ffae00114b1a6">accept</a>(<a class="code hl_class" href="classStmtVisitor.html">StmtVisitor</a> &amp;visitor) = 0;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>};</div>
 </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="foldopen" id="foldopen00044" data-start="{" data-end="};">
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="classBlock.html">   44</a></span><span class="keyword">class </span><a class="code hl_class" href="classBlock.html">Block</a> : <span class="keyword">public</span> <a class="code hl_class" href="classStmt.html">Stmt</a>, <span class="keyword">public</span> std::enable_shared_from_this&lt;Block&gt; {</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  <span class="keyword">const</span> std::vector&lt;std::shared_ptr&lt;Stmt&gt;&gt; statements;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keyword">public</span>:</div>
-<div class="foldopen" id="foldopen00049" data-start="{" data-end="}">
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="classBlock.html#af8fa70336a1c76842601c3d6fdca4235">   49</a></span>  <a class="code hl_function" href="classBlock.html#af8fa70336a1c76842601c3d6fdca4235">Block</a>(std::vector&lt;std::shared_ptr&lt;Stmt&gt;&gt; statements)</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>      : statements(std::move(statements)) {}</div>
-</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="foldopen" id="foldopen00048" data-start="{" data-end="};">
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="classBlock.html">   48</a></span><span class="keyword">class </span><a class="code hl_class" href="classBlock.html">Block</a> : <span class="keyword">public</span> <a class="code hl_class" href="classStmt.html">Stmt</a>, <span class="keyword">public</span> std::enable_shared_from_this&lt;Block&gt; {</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>  <span class="keyword">const</span> std::vector&lt;std::shared_ptr&lt;Stmt&gt;&gt; statements;</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="foldopen" id="foldopen00052" data-start="{" data-end="}">
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="classBlock.html#a9bf662dc7cfd08a933cc24ef2273b6c2">   52</a></span>  std::any <a class="code hl_function" href="classBlock.html#a9bf662dc7cfd08a933cc24ef2273b6c2">accept</a>(<a class="code hl_class" href="classStmtVisitor.html">StmtVisitor</a> &amp;visitor)<span class="keyword"> override </span>{</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordflow">return</span> visitor.<a class="code hl_function" href="classStmtVisitor.html#af1d8e7944c0ae05925f46874b6e20013">visitBlockStmt</a>(shared_from_this());</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  }</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00053" data-start="{" data-end="}">
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="classBlock.html#af8fa70336a1c76842601c3d6fdca4235">   53</a></span>  <a class="code hl_function" href="classBlock.html#af8fa70336a1c76842601c3d6fdca4235">Block</a>(std::vector&lt;std::shared_ptr&lt;Stmt&gt;&gt; statements)</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>      : statements(std::move(statements)) {}</div>
 </div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
 <div class="foldopen" id="foldopen00056" data-start="{" data-end="}">
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classBlock.html#a6de458e1a8b86ab40797cb920485c354">   56</a></span>  std::vector&lt;std::shared_ptr&lt;Stmt&gt;&gt; <a class="code hl_function" href="classBlock.html#a6de458e1a8b86ab40797cb920485c354">getStatements</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordflow">return</span> statements;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classBlock.html#a9bf662dc7cfd08a933cc24ef2273b6c2">   56</a></span>  std::any <a class="code hl_function" href="classBlock.html#a9bf662dc7cfd08a933cc24ef2273b6c2">accept</a>(<a class="code hl_class" href="classStmtVisitor.html">StmtVisitor</a> &amp;visitor)<span class="keyword"> override </span>{</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordflow">return</span> visitor.<a class="code hl_function" href="classStmtVisitor.html#af1d8e7944c0ae05925f46874b6e20013">visitBlockStmt</a>(shared_from_this());</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  }</div>
 </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>};</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="foldopen" id="foldopen00060" data-start="{" data-end="}">
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="classBlock.html#a6de458e1a8b86ab40797cb920485c354">   60</a></span>  std::vector&lt;std::shared_ptr&lt;Stmt&gt;&gt; <a class="code hl_function" href="classBlock.html#a6de458e1a8b86ab40797cb920485c354">getStatements</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="keywordflow">return</span> statements;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  }</div>
 </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="foldopen" id="foldopen00066" data-start="{" data-end="};">
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="classExpression.html">   66</a></span><span class="keyword">class </span><a class="code hl_class" href="classExpression.html">Expression</a> : <span class="keyword">public</span> <a class="code hl_class" href="classStmt.html">Stmt</a>,</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                   <span class="keyword">public</span> std::enable_shared_from_this&lt;Expression&gt; {</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>  std::shared_ptr&lt;Expr&gt; expression;</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="keyword">public</span>:</div>
-<div class="foldopen" id="foldopen00072" data-start="{" data-end="}">
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="classExpression.html#a455578c659a37f6160ddaec05914f6aa">   72</a></span>  <a class="code hl_function" href="classExpression.html#a455578c659a37f6160ddaec05914f6aa">Expression</a>(<span class="keyword">const</span> std::shared_ptr&lt;Expr&gt; &amp;expression)</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>      : expression(std::move(expression)) {}</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>};</div>
 </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="foldopen" id="foldopen00070" data-start="{" data-end="};">
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="classExpression.html">   70</a></span><span class="keyword">class </span><a class="code hl_class" href="classExpression.html">Expression</a> : <span class="keyword">public</span> <a class="code hl_class" href="classStmt.html">Stmt</a>,</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                   <span class="keyword">public</span> std::enable_shared_from_this&lt;Expression&gt; {</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>  std::shared_ptr&lt;Expr&gt; expression;</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
-<div class="foldopen" id="foldopen00075" data-start="{" data-end="}">
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="classExpression.html#a620bbc00abf6a14712dd59bee8ac8702">   75</a></span>  std::any <a class="code hl_function" href="classExpression.html#a620bbc00abf6a14712dd59bee8ac8702">accept</a>(<a class="code hl_class" href="classStmtVisitor.html">StmtVisitor</a> &amp;visitor)<span class="keyword"> override </span>{</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordflow">return</span> visitor.<a class="code hl_function" href="classStmtVisitor.html#a279d83c06a1a88a62bd175b8a883ce8c">visitExpressionStmt</a>(shared_from_this());</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>  }</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00076" data-start="{" data-end="}">
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="classExpression.html#a455578c659a37f6160ddaec05914f6aa">   76</a></span>  <a class="code hl_function" href="classExpression.html#a455578c659a37f6160ddaec05914f6aa">Expression</a>(<span class="keyword">const</span> std::shared_ptr&lt;Expr&gt; &amp;expression)</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>      : expression(std::move(expression)) {}</div>
 </div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="classExpression.html#ad212d6fcbe105ae659b4458d23e65fa0">   79</a></span>  std::shared_ptr&lt;Expr&gt; <a class="code hl_function" href="classExpression.html#ad212d6fcbe105ae659b4458d23e65fa0">getExpression</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> expression; }</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>};</div>
+<div class="foldopen" id="foldopen00079" data-start="{" data-end="}">
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="classExpression.html#a620bbc00abf6a14712dd59bee8ac8702">   79</a></span>  std::any <a class="code hl_function" href="classExpression.html#a620bbc00abf6a14712dd59bee8ac8702">accept</a>(<a class="code hl_class" href="classStmtVisitor.html">StmtVisitor</a> &amp;visitor)<span class="keyword"> override </span>{</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="keywordflow">return</span> visitor.<a class="code hl_function" href="classStmtVisitor.html#a279d83c06a1a88a62bd175b8a883ce8c">visitExpressionStmt</a>(shared_from_this());</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>  }</div>
 </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="foldopen" id="foldopen00087" data-start="{" data-end="};">
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="classPrint.html">   87</a></span><span class="keyword">class </span><a class="code hl_class" href="classPrint.html">Print</a> : <span class="keyword">public</span> <a class="code hl_class" href="classStmt.html">Stmt</a>, <span class="keyword">public</span> std::enable_shared_from_this&lt;Print&gt; {</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>  std::shared_ptr&lt;Expr&gt; expression;</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="keyword">public</span>:</div>
-<div class="foldopen" id="foldopen00092" data-start="{" data-end="}">
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="classPrint.html#afcc0f29c05f726d55cb42208431e1972">   92</a></span>  <a class="code hl_function" href="classPrint.html#afcc0f29c05f726d55cb42208431e1972">Print</a>(<span class="keyword">const</span> std::shared_ptr&lt;Expr&gt; &amp;expression)</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>      : expression(std::move(expression)) {}</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="classExpression.html#ad212d6fcbe105ae659b4458d23e65fa0">   83</a></span>  std::shared_ptr&lt;Expr&gt; <a class="code hl_function" href="classExpression.html#ad212d6fcbe105ae659b4458d23e65fa0">getExpression</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> expression; }</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>};</div>
 </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="foldopen" id="foldopen00091" data-start="{" data-end="};">
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="classPrint.html">   91</a></span><span class="keyword">class </span><a class="code hl_class" href="classPrint.html">Print</a> : <span class="keyword">public</span> <a class="code hl_class" href="classStmt.html">Stmt</a>, <span class="keyword">public</span> std::enable_shared_from_this&lt;Print&gt; {</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>  std::shared_ptr&lt;Expr&gt; expression;</div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
-<div class="foldopen" id="foldopen00095" data-start="{" data-end="}">
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="classPrint.html#aaac575831639aef4dc52b1257ff1c3c4">   95</a></span>  std::any <a class="code hl_function" href="classPrint.html#aaac575831639aef4dc52b1257ff1c3c4">accept</a>(<a class="code hl_class" href="classStmtVisitor.html">StmtVisitor</a> &amp;visitor)<span class="keyword"> override </span>{</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keywordflow">return</span> visitor.<a class="code hl_function" href="classStmtVisitor.html#a8bc287a0d1a084a7821902eae24bbfa9">visitPrintStmt</a>(shared_from_this());</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>  }</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00096" data-start="{" data-end="}">
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="classPrint.html#afcc0f29c05f726d55cb42208431e1972">   96</a></span>  <a class="code hl_function" href="classPrint.html#afcc0f29c05f726d55cb42208431e1972">Print</a>(<span class="keyword">const</span> std::shared_ptr&lt;Expr&gt; &amp;expression)</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>      : expression(std::move(expression)) {}</div>
 </div>
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="classPrint.html#a4ffbe93ef487f651255500a0a1685937">   99</a></span>  std::shared_ptr&lt;Expr&gt; <a class="code hl_function" href="classPrint.html#a4ffbe93ef487f651255500a0a1685937">getExpression</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> expression; }</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>};</div>
+<div class="foldopen" id="foldopen00099" data-start="{" data-end="}">
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="classPrint.html#aaac575831639aef4dc52b1257ff1c3c4">   99</a></span>  std::any <a class="code hl_function" href="classPrint.html#aaac575831639aef4dc52b1257ff1c3c4">accept</a>(<a class="code hl_class" href="classStmtVisitor.html">StmtVisitor</a> &amp;visitor)<span class="keyword"> override </span>{</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keywordflow">return</span> visitor.<a class="code hl_function" href="classStmtVisitor.html#a8bc287a0d1a084a7821902eae24bbfa9">visitPrintStmt</a>(shared_from_this());</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>  }</div>
 </div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
-<div class="foldopen" id="foldopen00108" data-start="{" data-end="};">
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno"><a class="line" href="classVar.html">  108</a></span><span class="keyword">class </span><a class="code hl_class" href="classVar.html">Var</a> : <span class="keyword">public</span> <a class="code hl_class" href="classStmt.html">Stmt</a>, <span class="keyword">public</span> std::enable_shared_from_this&lt;Var&gt; {</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>  <span class="keyword">const</span> <a class="code hl_class" href="classToken.html">Token</a> name;</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>  std::shared_ptr&lt;Expr&gt; initializer;</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="keyword">public</span>:</div>
-<div class="foldopen" id="foldopen00114" data-start="{" data-end="}">
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno"><a class="line" href="classVar.html#a638323c92bde520b8757af585825e084">  114</a></span>  <a class="code hl_function" href="classVar.html#a638323c92bde520b8757af585825e084">Var</a>(<span class="keyword">const</span> <a class="code hl_class" href="classToken.html">Token</a> &amp;name, <span class="keyword">const</span> std::shared_ptr&lt;Expr&gt; &amp;initializer)</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>      : name(std::move(name)), initializer(std::move(initializer)) {}</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="classPrint.html#a4ffbe93ef487f651255500a0a1685937">  103</a></span>  std::shared_ptr&lt;Expr&gt; <a class="code hl_function" href="classPrint.html#a4ffbe93ef487f651255500a0a1685937">getExpression</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> expression; }</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>};</div>
 </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="foldopen" id="foldopen00112" data-start="{" data-end="};">
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno"><a class="line" href="classVar.html">  112</a></span><span class="keyword">class </span><a class="code hl_class" href="classVar.html">Var</a> : <span class="keyword">public</span> <a class="code hl_class" href="classStmt.html">Stmt</a>, <span class="keyword">public</span> std::enable_shared_from_this&lt;Var&gt; {</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>  <span class="keyword">const</span> <a class="code hl_class" href="classToken.html">Token</a> name;</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>  std::shared_ptr&lt;Expr&gt; initializer;</div>
 <div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
-<div class="foldopen" id="foldopen00117" data-start="{" data-end="}">
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="classVar.html#a2567a47329efd75ca05eaad04d737f7c">  117</a></span>  std::any <a class="code hl_function" href="classVar.html#a2567a47329efd75ca05eaad04d737f7c">accept</a>(<a class="code hl_class" href="classStmtVisitor.html">StmtVisitor</a> &amp;visitor)<span class="keyword"> override </span>{</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keywordflow">return</span> visitor.<a class="code hl_function" href="classStmtVisitor.html#a9d10e7949ac83818ffb9ad466fa33754">visitVarStmt</a>(shared_from_this());</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>  }</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00118" data-start="{" data-end="}">
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="classVar.html#a638323c92bde520b8757af585825e084">  118</a></span>  <a class="code hl_function" href="classVar.html#a638323c92bde520b8757af585825e084">Var</a>(<span class="keyword">const</span> <a class="code hl_class" href="classToken.html">Token</a> &amp;name, <span class="keyword">const</span> std::shared_ptr&lt;Expr&gt; &amp;initializer)</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>      : name(std::move(name)), initializer(std::move(initializer)) {}</div>
 </div>
 <div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno"><a class="line" href="classVar.html#a5bedbd78278e4b900a5382a65816a5de">  121</a></span>  <a class="code hl_class" href="classToken.html">Token</a> <a class="code hl_function" href="classVar.html#a5bedbd78278e4b900a5382a65816a5de">getName</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> name; }</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno"><a class="line" href="classVar.html#a078f0151a92108ac9332c7456e0fcc08">  123</a></span>  std::shared_ptr&lt;Expr&gt; <a class="code hl_function" href="classVar.html#a078f0151a92108ac9332c7456e0fcc08">getInitializer</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> initializer; }</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>};</div>
+<div class="foldopen" id="foldopen00121" data-start="{" data-end="}">
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno"><a class="line" href="classVar.html#a2567a47329efd75ca05eaad04d737f7c">  121</a></span>  std::any <a class="code hl_function" href="classVar.html#a2567a47329efd75ca05eaad04d737f7c">accept</a>(<a class="code hl_class" href="classStmtVisitor.html">StmtVisitor</a> &amp;visitor)<span class="keyword"> override </span>{</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <span class="keywordflow">return</span> visitor.<a class="code hl_function" href="classStmtVisitor.html#a9d10e7949ac83818ffb9ad466fa33754">visitVarStmt</a>(shared_from_this());</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>  }</div>
 </div>
-<div class="ttc" id="aclassBlock_html"><div class="ttname"><a href="classBlock.html">Block</a></div><div class="ttdoc">Represents a block of statements.</div><div class="ttdef"><b>Definition</b> stmt.hpp:44</div></div>
-<div class="ttc" id="aclassBlock_html_a6de458e1a8b86ab40797cb920485c354"><div class="ttname"><a href="classBlock.html#a6de458e1a8b86ab40797cb920485c354">Block::getStatements</a></div><div class="ttdeci">std::vector&lt; std::shared_ptr&lt; Stmt &gt; &gt; getStatements() const</div><div class="ttdef"><b>Definition</b> stmt.hpp:56</div></div>
-<div class="ttc" id="aclassBlock_html_a9bf662dc7cfd08a933cc24ef2273b6c2"><div class="ttname"><a href="classBlock.html#a9bf662dc7cfd08a933cc24ef2273b6c2">Block::accept</a></div><div class="ttdeci">std::any accept(StmtVisitor &amp;visitor) override</div><div class="ttdef"><b>Definition</b> stmt.hpp:52</div></div>
-<div class="ttc" id="aclassBlock_html_af8fa70336a1c76842601c3d6fdca4235"><div class="ttname"><a href="classBlock.html#af8fa70336a1c76842601c3d6fdca4235">Block::Block</a></div><div class="ttdeci">Block(std::vector&lt; std::shared_ptr&lt; Stmt &gt; &gt; statements)</div><div class="ttdef"><b>Definition</b> stmt.hpp:49</div></div>
-<div class="ttc" id="aclassExpression_html"><div class="ttname"><a href="classExpression.html">Expression</a></div><div class="ttdoc">Represents an expression statement.</div><div class="ttdef"><b>Definition</b> stmt.hpp:67</div></div>
-<div class="ttc" id="aclassExpression_html_a455578c659a37f6160ddaec05914f6aa"><div class="ttname"><a href="classExpression.html#a455578c659a37f6160ddaec05914f6aa">Expression::Expression</a></div><div class="ttdeci">Expression(const std::shared_ptr&lt; Expr &gt; &amp;expression)</div><div class="ttdef"><b>Definition</b> stmt.hpp:72</div></div>
-<div class="ttc" id="aclassExpression_html_a620bbc00abf6a14712dd59bee8ac8702"><div class="ttname"><a href="classExpression.html#a620bbc00abf6a14712dd59bee8ac8702">Expression::accept</a></div><div class="ttdeci">std::any accept(StmtVisitor &amp;visitor) override</div><div class="ttdef"><b>Definition</b> stmt.hpp:75</div></div>
-<div class="ttc" id="aclassExpression_html_ad212d6fcbe105ae659b4458d23e65fa0"><div class="ttname"><a href="classExpression.html#ad212d6fcbe105ae659b4458d23e65fa0">Expression::getExpression</a></div><div class="ttdeci">std::shared_ptr&lt; Expr &gt; getExpression() const</div><div class="ttdef"><b>Definition</b> stmt.hpp:79</div></div>
-<div class="ttc" id="aclassPrint_html"><div class="ttname"><a href="classPrint.html">Print</a></div><div class="ttdoc">Represents a print statement.</div><div class="ttdef"><b>Definition</b> stmt.hpp:87</div></div>
-<div class="ttc" id="aclassPrint_html_a4ffbe93ef487f651255500a0a1685937"><div class="ttname"><a href="classPrint.html#a4ffbe93ef487f651255500a0a1685937">Print::getExpression</a></div><div class="ttdeci">std::shared_ptr&lt; Expr &gt; getExpression() const</div><div class="ttdef"><b>Definition</b> stmt.hpp:99</div></div>
-<div class="ttc" id="aclassPrint_html_aaac575831639aef4dc52b1257ff1c3c4"><div class="ttname"><a href="classPrint.html#aaac575831639aef4dc52b1257ff1c3c4">Print::accept</a></div><div class="ttdeci">std::any accept(StmtVisitor &amp;visitor) override</div><div class="ttdef"><b>Definition</b> stmt.hpp:95</div></div>
-<div class="ttc" id="aclassPrint_html_afcc0f29c05f726d55cb42208431e1972"><div class="ttname"><a href="classPrint.html#afcc0f29c05f726d55cb42208431e1972">Print::Print</a></div><div class="ttdeci">Print(const std::shared_ptr&lt; Expr &gt; &amp;expression)</div><div class="ttdef"><b>Definition</b> stmt.hpp:92</div></div>
-<div class="ttc" id="aclassStmtVisitor_html"><div class="ttname"><a href="classStmtVisitor.html">StmtVisitor</a></div><div class="ttdoc">Abstract base class for statement visitors.</div><div class="ttdef"><b>Definition</b> stmt.hpp:19</div></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno"><a class="line" href="classVar.html#a5bedbd78278e4b900a5382a65816a5de">  125</a></span>  <a class="code hl_class" href="classToken.html">Token</a> <a class="code hl_function" href="classVar.html#a5bedbd78278e4b900a5382a65816a5de">getName</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> name; }</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno"><a class="line" href="classVar.html#a078f0151a92108ac9332c7456e0fcc08">  127</a></span>  std::shared_ptr&lt;Expr&gt; <a class="code hl_function" href="classVar.html#a078f0151a92108ac9332c7456e0fcc08">getInitializer</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> initializer; }</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>};</div>
+</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
+<div class="foldopen" id="foldopen00136" data-start="{" data-end="};">
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno"><a class="line" href="classIf.html">  136</a></span><span class="keyword">class </span><a class="code hl_class" href="classIf.html">If</a> : <span class="keyword">public</span> <a class="code hl_class" href="classStmt.html">Stmt</a>, <span class="keyword">public</span> std::enable_shared_from_this&lt;If&gt; {</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>  <span class="keyword">const</span> std::shared_ptr&lt;Expr&gt; condition;</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>  <span class="keyword">const</span> std::shared_ptr&lt;Stmt&gt; thenBranch;</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>  <span class="keyword">const</span> std::shared_ptr&lt;Stmt&gt; elseBranch;</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span><span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00143" data-start="{" data-end="}">
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno"><a class="line" href="classIf.html#aaba164b6cfb7931fa0bb99065eb4dfdf">  143</a></span>  <a class="code hl_function" href="classIf.html#aaba164b6cfb7931fa0bb99065eb4dfdf">If</a>(<span class="keyword">const</span> std::shared_ptr&lt;Expr&gt; &amp;condition,</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>     <span class="keyword">const</span> std::shared_ptr&lt;Stmt&gt; &amp;thenBranch,</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>     <span class="keyword">const</span> std::shared_ptr&lt;Stmt&gt; &amp;elseBranch)</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>      : condition(std::move(condition)), thenBranch(std::move(thenBranch)),</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>        elseBranch(std::move(elseBranch)) {}</div>
+</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span> </div>
+<div class="foldopen" id="foldopen00149" data-start="{" data-end="}">
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno"><a class="line" href="classIf.html#adb345c187520d4765ef4ca4a0114e8ab">  149</a></span>  std::any <a class="code hl_function" href="classIf.html#adb345c187520d4765ef4ca4a0114e8ab">accept</a>(<a class="code hl_class" href="classStmtVisitor.html">StmtVisitor</a> &amp;visitor)<span class="keyword"> override </span>{</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    <span class="keywordflow">return</span> visitor.<a class="code hl_function" href="classStmtVisitor.html#aa79c4ee6e7ea194a91f187a3aa6b1ea1">visitIfStmt</a>(shared_from_this());</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>  }</div>
+</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno"><a class="line" href="classIf.html#a7a81cd54bf73327a7518daa8ddb3ed68">  153</a></span>  std::shared_ptr&lt;Expr&gt; <a class="code hl_function" href="classIf.html#a7a81cd54bf73327a7518daa8ddb3ed68">getCondition</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> condition; }</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno"><a class="line" href="classIf.html#a236b61d4416c5263e44565efe982b68d">  155</a></span>  std::shared_ptr&lt;Stmt&gt; <a class="code hl_function" href="classIf.html#a236b61d4416c5263e44565efe982b68d">getThenBranch</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> thenBranch; }</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno"><a class="line" href="classIf.html#a29427990fb34806a034c680d5f409ea7">  157</a></span>  std::shared_ptr&lt;Stmt&gt; <a class="code hl_function" href="classIf.html#a29427990fb34806a034c680d5f409ea7">getElseBranch</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> elseBranch; }</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>};</div>
+</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
+<div class="foldopen" id="foldopen00160" data-start="{" data-end="};">
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno"><a class="line" href="classWhile.html">  160</a></span><span class="keyword">class </span><a class="code hl_class" href="classWhile.html">While</a> : <span class="keyword">public</span> <a class="code hl_class" href="classStmt.html">Stmt</a>, <span class="keyword">public</span> std::enable_shared_from_this&lt;While&gt; {</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>  <span class="keyword">const</span> std::shared_ptr&lt;Expr&gt; condition;</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>  <span class="keyword">const</span> std::shared_ptr&lt;Stmt&gt; body;</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span> </div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span><span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00166" data-start="{" data-end="}">
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno"><a class="line" href="classWhile.html#a1c9266289b8b4b31d469e7ecad4c5da1">  166</a></span>  <a class="code hl_function" href="classWhile.html#a1c9266289b8b4b31d469e7ecad4c5da1">While</a>(<span class="keyword">const</span> std::shared_ptr&lt;Expr&gt; &amp;condition,</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        <span class="keyword">const</span> std::shared_ptr&lt;Stmt&gt; &amp;body)</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>      : condition(std::move(condition)), body(std::move(body)) {}</div>
+</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
+<div class="foldopen" id="foldopen00170" data-start="{" data-end="}">
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno"><a class="line" href="classWhile.html#a1f73f14dd468263a3f50b0ba86a01d68">  170</a></span>  std::any <a class="code hl_function" href="classWhile.html#a1f73f14dd468263a3f50b0ba86a01d68">accept</a>(<a class="code hl_class" href="classStmtVisitor.html">StmtVisitor</a> &amp;visitor)<span class="keyword"> override </span>{</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    <span class="keywordflow">return</span> visitor.<a class="code hl_function" href="classStmtVisitor.html#a48d1d3d4a038e30868343a48f2f2fc92">visitWhileStmt</a>(shared_from_this());</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>  }</div>
+</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span> </div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno"><a class="line" href="classWhile.html#a57948205314699bf91b9773f4c2378e5">  174</a></span>  std::shared_ptr&lt;Expr&gt; <a class="code hl_function" href="classWhile.html#a57948205314699bf91b9773f4c2378e5">getCondition</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> condition; }</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span> </div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno"><a class="line" href="classWhile.html#aee02ff58a7af35c67af17fc769053aa2">  176</a></span>  std::shared_ptr&lt;Stmt&gt; <a class="code hl_function" href="classWhile.html#aee02ff58a7af35c67af17fc769053aa2">getBody</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> body; }</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>};</div>
+</div>
+<div class="ttc" id="aclassBlock_html"><div class="ttname"><a href="classBlock.html">Block</a></div><div class="ttdoc">Represents a block of statements.</div><div class="ttdef"><b>Definition</b> stmt.hpp:48</div></div>
+<div class="ttc" id="aclassBlock_html_a6de458e1a8b86ab40797cb920485c354"><div class="ttname"><a href="classBlock.html#a6de458e1a8b86ab40797cb920485c354">Block::getStatements</a></div><div class="ttdeci">std::vector&lt; std::shared_ptr&lt; Stmt &gt; &gt; getStatements() const</div><div class="ttdef"><b>Definition</b> stmt.hpp:60</div></div>
+<div class="ttc" id="aclassBlock_html_a9bf662dc7cfd08a933cc24ef2273b6c2"><div class="ttname"><a href="classBlock.html#a9bf662dc7cfd08a933cc24ef2273b6c2">Block::accept</a></div><div class="ttdeci">std::any accept(StmtVisitor &amp;visitor) override</div><div class="ttdef"><b>Definition</b> stmt.hpp:56</div></div>
+<div class="ttc" id="aclassBlock_html_af8fa70336a1c76842601c3d6fdca4235"><div class="ttname"><a href="classBlock.html#af8fa70336a1c76842601c3d6fdca4235">Block::Block</a></div><div class="ttdeci">Block(std::vector&lt; std::shared_ptr&lt; Stmt &gt; &gt; statements)</div><div class="ttdef"><b>Definition</b> stmt.hpp:53</div></div>
+<div class="ttc" id="aclassExpression_html"><div class="ttname"><a href="classExpression.html">Expression</a></div><div class="ttdoc">Represents an expression statement.</div><div class="ttdef"><b>Definition</b> stmt.hpp:71</div></div>
+<div class="ttc" id="aclassExpression_html_a455578c659a37f6160ddaec05914f6aa"><div class="ttname"><a href="classExpression.html#a455578c659a37f6160ddaec05914f6aa">Expression::Expression</a></div><div class="ttdeci">Expression(const std::shared_ptr&lt; Expr &gt; &amp;expression)</div><div class="ttdef"><b>Definition</b> stmt.hpp:76</div></div>
+<div class="ttc" id="aclassExpression_html_a620bbc00abf6a14712dd59bee8ac8702"><div class="ttname"><a href="classExpression.html#a620bbc00abf6a14712dd59bee8ac8702">Expression::accept</a></div><div class="ttdeci">std::any accept(StmtVisitor &amp;visitor) override</div><div class="ttdef"><b>Definition</b> stmt.hpp:79</div></div>
+<div class="ttc" id="aclassExpression_html_ad212d6fcbe105ae659b4458d23e65fa0"><div class="ttname"><a href="classExpression.html#ad212d6fcbe105ae659b4458d23e65fa0">Expression::getExpression</a></div><div class="ttdeci">std::shared_ptr&lt; Expr &gt; getExpression() const</div><div class="ttdef"><b>Definition</b> stmt.hpp:83</div></div>
+<div class="ttc" id="aclassIf_html"><div class="ttname"><a href="classIf.html">If</a></div><div class="ttdoc">Represents an if statement.</div><div class="ttdef"><b>Definition</b> stmt.hpp:136</div></div>
+<div class="ttc" id="aclassIf_html_a236b61d4416c5263e44565efe982b68d"><div class="ttname"><a href="classIf.html#a236b61d4416c5263e44565efe982b68d">If::getThenBranch</a></div><div class="ttdeci">std::shared_ptr&lt; Stmt &gt; getThenBranch() const</div><div class="ttdef"><b>Definition</b> stmt.hpp:155</div></div>
+<div class="ttc" id="aclassIf_html_a29427990fb34806a034c680d5f409ea7"><div class="ttname"><a href="classIf.html#a29427990fb34806a034c680d5f409ea7">If::getElseBranch</a></div><div class="ttdeci">std::shared_ptr&lt; Stmt &gt; getElseBranch() const</div><div class="ttdef"><b>Definition</b> stmt.hpp:157</div></div>
+<div class="ttc" id="aclassIf_html_a7a81cd54bf73327a7518daa8ddb3ed68"><div class="ttname"><a href="classIf.html#a7a81cd54bf73327a7518daa8ddb3ed68">If::getCondition</a></div><div class="ttdeci">std::shared_ptr&lt; Expr &gt; getCondition() const</div><div class="ttdef"><b>Definition</b> stmt.hpp:153</div></div>
+<div class="ttc" id="aclassIf_html_aaba164b6cfb7931fa0bb99065eb4dfdf"><div class="ttname"><a href="classIf.html#aaba164b6cfb7931fa0bb99065eb4dfdf">If::If</a></div><div class="ttdeci">If(const std::shared_ptr&lt; Expr &gt; &amp;condition, const std::shared_ptr&lt; Stmt &gt; &amp;thenBranch, const std::shared_ptr&lt; Stmt &gt; &amp;elseBranch)</div><div class="ttdef"><b>Definition</b> stmt.hpp:143</div></div>
+<div class="ttc" id="aclassIf_html_adb345c187520d4765ef4ca4a0114e8ab"><div class="ttname"><a href="classIf.html#adb345c187520d4765ef4ca4a0114e8ab">If::accept</a></div><div class="ttdeci">std::any accept(StmtVisitor &amp;visitor) override</div><div class="ttdef"><b>Definition</b> stmt.hpp:149</div></div>
+<div class="ttc" id="aclassPrint_html"><div class="ttname"><a href="classPrint.html">Print</a></div><div class="ttdoc">Represents a print statement.</div><div class="ttdef"><b>Definition</b> stmt.hpp:91</div></div>
+<div class="ttc" id="aclassPrint_html_a4ffbe93ef487f651255500a0a1685937"><div class="ttname"><a href="classPrint.html#a4ffbe93ef487f651255500a0a1685937">Print::getExpression</a></div><div class="ttdeci">std::shared_ptr&lt; Expr &gt; getExpression() const</div><div class="ttdef"><b>Definition</b> stmt.hpp:103</div></div>
+<div class="ttc" id="aclassPrint_html_aaac575831639aef4dc52b1257ff1c3c4"><div class="ttname"><a href="classPrint.html#aaac575831639aef4dc52b1257ff1c3c4">Print::accept</a></div><div class="ttdeci">std::any accept(StmtVisitor &amp;visitor) override</div><div class="ttdef"><b>Definition</b> stmt.hpp:99</div></div>
+<div class="ttc" id="aclassPrint_html_afcc0f29c05f726d55cb42208431e1972"><div class="ttname"><a href="classPrint.html#afcc0f29c05f726d55cb42208431e1972">Print::Print</a></div><div class="ttdeci">Print(const std::shared_ptr&lt; Expr &gt; &amp;expression)</div><div class="ttdef"><b>Definition</b> stmt.hpp:96</div></div>
+<div class="ttc" id="aclassStmtVisitor_html"><div class="ttname"><a href="classStmtVisitor.html">StmtVisitor</a></div><div class="ttdoc">Abstract base class for statement visitors.</div><div class="ttdef"><b>Definition</b> stmt.hpp:21</div></div>
 <div class="ttc" id="aclassStmtVisitor_html_a279d83c06a1a88a62bd175b8a883ce8c"><div class="ttname"><a href="classStmtVisitor.html#a279d83c06a1a88a62bd175b8a883ce8c">StmtVisitor::visitExpressionStmt</a></div><div class="ttdeci">virtual std::any visitExpressionStmt(std::shared_ptr&lt; Expression &gt; expr)=0</div></div>
+<div class="ttc" id="aclassStmtVisitor_html_a48d1d3d4a038e30868343a48f2f2fc92"><div class="ttname"><a href="classStmtVisitor.html#a48d1d3d4a038e30868343a48f2f2fc92">StmtVisitor::visitWhileStmt</a></div><div class="ttdeci">virtual std::any visitWhileStmt(std::shared_ptr&lt; While &gt; stmt)=0</div></div>
 <div class="ttc" id="aclassStmtVisitor_html_a8bc287a0d1a084a7821902eae24bbfa9"><div class="ttname"><a href="classStmtVisitor.html#a8bc287a0d1a084a7821902eae24bbfa9">StmtVisitor::visitPrintStmt</a></div><div class="ttdeci">virtual std::any visitPrintStmt(std::shared_ptr&lt; Print &gt; stmt)=0</div></div>
 <div class="ttc" id="aclassStmtVisitor_html_a9d10e7949ac83818ffb9ad466fa33754"><div class="ttname"><a href="classStmtVisitor.html#a9d10e7949ac83818ffb9ad466fa33754">StmtVisitor::visitVarStmt</a></div><div class="ttdeci">virtual std::any visitVarStmt(std::shared_ptr&lt; Var &gt; stmt)=0</div></div>
+<div class="ttc" id="aclassStmtVisitor_html_aa79c4ee6e7ea194a91f187a3aa6b1ea1"><div class="ttname"><a href="classStmtVisitor.html#aa79c4ee6e7ea194a91f187a3aa6b1ea1">StmtVisitor::visitIfStmt</a></div><div class="ttdeci">virtual std::any visitIfStmt(std::shared_ptr&lt; If &gt; stmt)=0</div></div>
 <div class="ttc" id="aclassStmtVisitor_html_ae29129715d730242bdccd414fdfdac34"><div class="ttname"><a href="classStmtVisitor.html#ae29129715d730242bdccd414fdfdac34">StmtVisitor::~StmtVisitor</a></div><div class="ttdeci">virtual ~StmtVisitor()=default</div></div>
 <div class="ttc" id="aclassStmtVisitor_html_af1d8e7944c0ae05925f46874b6e20013"><div class="ttname"><a href="classStmtVisitor.html#af1d8e7944c0ae05925f46874b6e20013">StmtVisitor::visitBlockStmt</a></div><div class="ttdeci">virtual std::any visitBlockStmt(std::shared_ptr&lt; Block &gt; stmt)=0</div></div>
-<div class="ttc" id="aclassStmt_html"><div class="ttname"><a href="classStmt.html">Stmt</a></div><div class="ttdoc">Abstract base class for statements.</div><div class="ttdef"><b>Definition</b> stmt.hpp:34</div></div>
+<div class="ttc" id="aclassStmt_html"><div class="ttname"><a href="classStmt.html">Stmt</a></div><div class="ttdoc">Abstract base class for statements.</div><div class="ttdef"><b>Definition</b> stmt.hpp:38</div></div>
 <div class="ttc" id="aclassStmt_html_a9294f5c7edf0e1cd384ffae00114b1a6"><div class="ttname"><a href="classStmt.html#a9294f5c7edf0e1cd384ffae00114b1a6">Stmt::accept</a></div><div class="ttdeci">virtual std::any accept(StmtVisitor &amp;visitor)=0</div></div>
 <div class="ttc" id="aclassToken_html"><div class="ttname"><a href="classToken.html">Token</a></div><div class="ttdoc">Represents a token in the source code.</div><div class="ttdef"><b>Definition</b> token.hpp:14</div></div>
-<div class="ttc" id="aclassVar_html"><div class="ttname"><a href="classVar.html">Var</a></div><div class="ttdoc">Represents a variable declaration statement.</div><div class="ttdef"><b>Definition</b> stmt.hpp:108</div></div>
-<div class="ttc" id="aclassVar_html_a078f0151a92108ac9332c7456e0fcc08"><div class="ttname"><a href="classVar.html#a078f0151a92108ac9332c7456e0fcc08">Var::getInitializer</a></div><div class="ttdeci">std::shared_ptr&lt; Expr &gt; getInitializer() const</div><div class="ttdef"><b>Definition</b> stmt.hpp:123</div></div>
-<div class="ttc" id="aclassVar_html_a2567a47329efd75ca05eaad04d737f7c"><div class="ttname"><a href="classVar.html#a2567a47329efd75ca05eaad04d737f7c">Var::accept</a></div><div class="ttdeci">std::any accept(StmtVisitor &amp;visitor) override</div><div class="ttdef"><b>Definition</b> stmt.hpp:117</div></div>
-<div class="ttc" id="aclassVar_html_a5bedbd78278e4b900a5382a65816a5de"><div class="ttname"><a href="classVar.html#a5bedbd78278e4b900a5382a65816a5de">Var::getName</a></div><div class="ttdeci">Token getName() const</div><div class="ttdef"><b>Definition</b> stmt.hpp:121</div></div>
-<div class="ttc" id="aclassVar_html_a638323c92bde520b8757af585825e084"><div class="ttname"><a href="classVar.html#a638323c92bde520b8757af585825e084">Var::Var</a></div><div class="ttdeci">Var(const Token &amp;name, const std::shared_ptr&lt; Expr &gt; &amp;initializer)</div><div class="ttdef"><b>Definition</b> stmt.hpp:114</div></div>
+<div class="ttc" id="aclassVar_html"><div class="ttname"><a href="classVar.html">Var</a></div><div class="ttdoc">Represents a variable declaration statement.</div><div class="ttdef"><b>Definition</b> stmt.hpp:112</div></div>
+<div class="ttc" id="aclassVar_html_a078f0151a92108ac9332c7456e0fcc08"><div class="ttname"><a href="classVar.html#a078f0151a92108ac9332c7456e0fcc08">Var::getInitializer</a></div><div class="ttdeci">std::shared_ptr&lt; Expr &gt; getInitializer() const</div><div class="ttdef"><b>Definition</b> stmt.hpp:127</div></div>
+<div class="ttc" id="aclassVar_html_a2567a47329efd75ca05eaad04d737f7c"><div class="ttname"><a href="classVar.html#a2567a47329efd75ca05eaad04d737f7c">Var::accept</a></div><div class="ttdeci">std::any accept(StmtVisitor &amp;visitor) override</div><div class="ttdef"><b>Definition</b> stmt.hpp:121</div></div>
+<div class="ttc" id="aclassVar_html_a5bedbd78278e4b900a5382a65816a5de"><div class="ttname"><a href="classVar.html#a5bedbd78278e4b900a5382a65816a5de">Var::getName</a></div><div class="ttdeci">Token getName() const</div><div class="ttdef"><b>Definition</b> stmt.hpp:125</div></div>
+<div class="ttc" id="aclassVar_html_a638323c92bde520b8757af585825e084"><div class="ttname"><a href="classVar.html#a638323c92bde520b8757af585825e084">Var::Var</a></div><div class="ttdeci">Var(const Token &amp;name, const std::shared_ptr&lt; Expr &gt; &amp;initializer)</div><div class="ttdef"><b>Definition</b> stmt.hpp:118</div></div>
+<div class="ttc" id="aclassWhile_html"><div class="ttname"><a href="classWhile.html">While</a></div><div class="ttdef"><b>Definition</b> stmt.hpp:160</div></div>
+<div class="ttc" id="aclassWhile_html_a1c9266289b8b4b31d469e7ecad4c5da1"><div class="ttname"><a href="classWhile.html#a1c9266289b8b4b31d469e7ecad4c5da1">While::While</a></div><div class="ttdeci">While(const std::shared_ptr&lt; Expr &gt; &amp;condition, const std::shared_ptr&lt; Stmt &gt; &amp;body)</div><div class="ttdef"><b>Definition</b> stmt.hpp:166</div></div>
+<div class="ttc" id="aclassWhile_html_a1f73f14dd468263a3f50b0ba86a01d68"><div class="ttname"><a href="classWhile.html#a1f73f14dd468263a3f50b0ba86a01d68">While::accept</a></div><div class="ttdeci">std::any accept(StmtVisitor &amp;visitor) override</div><div class="ttdef"><b>Definition</b> stmt.hpp:170</div></div>
+<div class="ttc" id="aclassWhile_html_a57948205314699bf91b9773f4c2378e5"><div class="ttname"><a href="classWhile.html#a57948205314699bf91b9773f4c2378e5">While::getCondition</a></div><div class="ttdeci">std::shared_ptr&lt; Expr &gt; getCondition() const</div><div class="ttdef"><b>Definition</b> stmt.hpp:174</div></div>
+<div class="ttc" id="aclassWhile_html_aee02ff58a7af35c67af17fc769053aa2"><div class="ttname"><a href="classWhile.html#aee02ff58a7af35c67af17fc769053aa2">While::getBody</a></div><div class="ttdeci">std::shared_ptr&lt; Stmt &gt; getBody() const</div><div class="ttdef"><b>Definition</b> stmt.hpp:176</div></div>
 <div class="ttc" id="aexpr_8hpp_html"><div class="ttname"><a href="expr_8hpp.html">expr.hpp</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

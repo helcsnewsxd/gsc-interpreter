@@ -4,15 +4,88 @@
 
 Parser::Parser(const std::vector<Token> &tokens) : tokens(tokens) {}
 
-std::shared_ptr<Expr> Parser::parse() {
+std::vector<std::shared_ptr<Stmt>> Parser::parse() {
+  std::vector<std::shared_ptr<Stmt>> statements;
+  while (!isAtEnd()) {
+    statements.push_back(declaration());
+  }
+
+  return statements;
+}
+
+std::shared_ptr<Stmt> Parser::declaration() {
   try {
-    return expression();
-  } catch (const ParseError &e) {
-    return nullptr;
+    if (match(TokenType::VAR))
+      return varDeclaration();
+    return statement();
+  } catch (ParseError &error) {
+    synchronize();
+    return nullptr; // Return null on error
   }
 }
 
-std::shared_ptr<Expr> Parser::expression() { return equality(); }
+std::shared_ptr<Stmt> Parser::statement() {
+  if (match(TokenType::PRINT))
+    return printStatement();
+  if (match(TokenType::LEFT_BRACE))
+    return std::make_shared<Block>(block());
+  return expressionStatement();
+}
+
+std::shared_ptr<Stmt> Parser::printStatement() {
+  std::shared_ptr<Expr> value = expression();
+  consume(TokenType::SEMICOLON, "Expect ';' after value.");
+  return std::make_shared<Print>(value);
+}
+
+std::shared_ptr<Stmt> Parser::varDeclaration() {
+  Token name = consume(TokenType::IDENTIFIER, "Expect variable name.");
+  std::shared_ptr<Expr> initializer = nullptr;
+
+  if (match(TokenType::EQUAL)) {
+    initializer = expression();
+  }
+
+  consume(TokenType::SEMICOLON, "Expect ';' after variable declaration.");
+  return std::make_shared<Var>(std::move(name), initializer);
+}
+
+std::shared_ptr<Stmt> Parser::expressionStatement() {
+  std::shared_ptr<Expr> expr = expression();
+  consume(TokenType::SEMICOLON, "Expect ';' after expression.");
+  return std::make_shared<Expression>(expr);
+}
+
+std::vector<std::shared_ptr<Stmt>> Parser::block() {
+  std::vector<std::shared_ptr<Stmt>> statements;
+
+  while (!isAtEnd() && !check(TokenType::RIGHT_BRACE)) {
+    statements.push_back(declaration());
+  }
+
+  consume(TokenType::RIGHT_BRACE, "Expect '}' after block.");
+  return statements;
+}
+
+std::shared_ptr<Expr> Parser::assignment() {
+  std::shared_ptr<Expr> expr = equality();
+
+  if (match(TokenType::EQUAL)) {
+    Token equals = previous();
+    std::shared_ptr<Expr> value = assignment();
+
+    if (std::shared_ptr<Variable> var =
+            std::dynamic_pointer_cast<Variable>(expr)) {
+      return std::make_shared<Assign>(var->getName(), value);
+    }
+
+    throw error(equals, "Invalid assignment target.");
+  }
+
+  return expr;
+}
+
+std::shared_ptr<Expr> Parser::expression() { return assignment(); }
 
 std::shared_ptr<Expr> Parser::equality() {
   std::shared_ptr<Expr> expr = comparison();
@@ -82,6 +155,8 @@ std::shared_ptr<Expr> Parser::primary() {
     return std::make_shared<Literal>(false);
   else if (match(TokenType::NUMBER, TokenType::STRING)) {
     return std::make_shared<Literal>(previous().getLiteral());
+  } else if (match(TokenType::IDENTIFIER)) {
+    return std::make_shared<Variable>(previous());
   } else if (match(TokenType::LEFT_PAREN)) {
     std::shared_ptr<Expr> expr = expression();
     consume(TokenType::RIGHT_PAREN, "Expect ')' after expression.");

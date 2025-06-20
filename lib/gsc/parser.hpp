@@ -1,6 +1,7 @@
 #pragma once
 
 #include "gsc/expr.hpp"
+#include "gsc/stmt.hpp"
 #include "gsc/token.hpp"
 #include <memory>
 #include <stdexcept>
@@ -30,6 +31,13 @@ private:
   const std::vector<Token> &tokens;
   int current = 0;
 
+  std::vector<std::shared_ptr<Stmt>> block();
+  std::shared_ptr<Stmt> declaration();
+  std::shared_ptr<Stmt> statement();
+  std::shared_ptr<Stmt> printStatement();
+  std::shared_ptr<Stmt> varDeclaration();
+  std::shared_ptr<Stmt> expressionStatement();
+  std::shared_ptr<Expr> assignment();
   std::shared_ptr<Expr> expression();
   std::shared_ptr<Expr> equality();
   std::shared_ptr<Expr> comparison();
@@ -71,12 +79,13 @@ public:
    */
   Parser(const std::vector<Token> &tokens);
 
-  /** @brief Parses the tokens and returns the root expression of the AST.
+  /** @brief Parses the tokens and returns a vector of statements.
    *
-   * @return std::shared_ptr<Expr> The root expression of the parsed AST.
+   * This function processes the tokens and constructs an abstract syntax tree
+   * (AST) represented as a vector of statements.
    *
-   * @note If an error occurs during parsing, a null pointer is returned.
-   * All throws are caught and handled into the Parser class.
+   * @return std::vector<std::shared_ptr<Stmt>> A vector of shared pointers to
+   * the parsed statements.
    */
-  std::shared_ptr<Expr> parse();
+  std::vector<std::shared_ptr<Stmt>> parse();
 };

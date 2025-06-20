@@ -76,3 +76,36 @@ TEST_CASE("Binary expression", "[expression][binary]") {
   std::any opLiteral = tokOp.getLiteral();
   CHECK(opLiteral.type() == typeid(std::nullptr_t));
 }
+
+TEST_CASE("Variable expression", "[expression][variable]") {
+  SECTION("Variable expression with name") {
+    Token varToken{TokenType::IDENTIFIER, "x", nullptr, 1};
+    std::shared_ptr<Variable> varExpr = std::make_shared<Variable>(varToken);
+
+    REQUIRE(typeid(varExpr->getName()) == typeid(Token));
+    REQUIRE(varExpr->getName().getType() == TokenType::IDENTIFIER);
+    CHECK(varExpr->getName().getLexeme() == "x");
+  }
+}
+
+TEST_CASE("Assign expression", "[expression][assign]") {
+  SECTION("Assign expression with variable name and value") {
+    Token varToken{TokenType::IDENTIFIER, "x", nullptr, 1};
+    Token initialValueToken{TokenType::NUMBER, "10", 10, 2};
+    std::shared_ptr<Literal> initialValue =
+        std::make_shared<Literal>(initialValueToken.getLiteral());
+    std::shared_ptr<Assign> assignExpr =
+        std::make_shared<Assign>(varToken, initialValue);
+
+    REQUIRE(typeid(assignExpr->getName()) == typeid(Token));
+    REQUIRE(assignExpr->getName().getType() == TokenType::IDENTIFIER);
+    CHECK(assignExpr->getName().getLexeme() == "x");
+
+    REQUIRE(std::dynamic_pointer_cast<Literal>(assignExpr->getValue()) !=
+            nullptr);
+    std::shared_ptr<Literal> valueLiteral =
+        std::dynamic_pointer_cast<Literal>(assignExpr->getValue());
+    REQUIRE(valueLiteral->getValue().type() == typeid(int));
+    CHECK(std::any_cast<int>(valueLiteral->getValue()) == 10);
+  }
+}

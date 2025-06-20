@@ -6,7 +6,7 @@ PROJECT := gsc
 APP := app/main.cpp
 APP_OBJ := $(APP:.cpp=.o)
 
-SRCS := $(wildcard src/*.cpp) $(wildcard src/dbg/*.cpp)
+SRCS := $(wildcard src/*.cpp) 
 OBJS := $(SRCS:.cpp=.o)
 
 TEST_SRCS := $(wildcard test/*.cpp) lib/catch2/catch_amalgamated.cpp

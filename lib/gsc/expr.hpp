@@ -8,6 +8,8 @@ class Binary;
 class Grouping;
 class Literal;
 class Unary;
+class Assign;
+class Variable;
 
 /** @class ExprVisitor
  * @brief Abstract base class for expression visitors.
@@ -21,6 +23,8 @@ public:
   virtual std::any visitGroupingExpr(std::shared_ptr<Grouping> expr) = 0;
   virtual std::any visitLiteralExpr(std::shared_ptr<Literal> expr) = 0;
   virtual std::any visitUnaryExpr(std::shared_ptr<Unary> expr) = 0;
+  virtual std::any visitAssignExpr(std::shared_ptr<Assign> expr) = 0;
+  virtual std::any visitVariableExpr(std::shared_ptr<Variable> expr) = 0;
 
   virtual ~ExprVisitor() = default;
 };
@@ -128,4 +132,49 @@ public:
 
   std::shared_ptr<Expr> getRight() const { return right; }
   Token getOp() const { return op; }
+};
+
+/** @brief Class representing an assignment expression.
+ *
+ * This class represents an assignment expression in the AST, which consists
+ * of a variable name and a value to assign to it. It inherits from the Expr
+ * class and implements the accept method for visitor pattern.
+ */
+class Assign : public Expr, public std::enable_shared_from_this<Assign> {
+private:
+  const Token name;
+  const std::shared_ptr<Expr> value;
+
+public:
+  Assign(Token name, std::shared_ptr<Expr> value)
+      : name(std::move(name)), value(std::move(value)) {}
+
+  std::any accept(ExprVisitor &visitor) override {
+    return visitor.visitAssignExpr(shared_from_this());
+  }
+
+  Token getName() const { return name; }
+
+  std::shared_ptr<Expr> getValue() const { return value; }
+};
+
+/** @class Variable
+ * @brief Class representing a variable expression.
+ *
+ * This class represents a variable expression in the AST, which consists of a
+ * variable name. It inherits from the Expr class and implements the accept
+ * method for visitor pattern.
+ */
+class Variable : public Expr, public std::enable_shared_from_this<Variable> {
+private:
+  const Token name;
+
+public:
+  Variable(Token name) : name(std::move(name)) {}
+
+  std::any accept(ExprVisitor &visitor) override {
+    return visitor.visitVariableExpr(shared_from_this());
+  }
+
+  Token getName() const { return name; }
 };

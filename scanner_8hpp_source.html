@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -23,6 +27,7 @@
   <td id="projectalign">
    <div id="projectname">Simplified C/C++ (GSC)
    </div>
+   <div id="projectbrief">A Turing-complete interpreter developed for a compiler course</div>
   </td>
  </tr>
  </tbody>
@@ -51,6 +56,23 @@ $(function() {
 $(document).ready(function() { init_codefold(0); });
 /* @license-end */
 </script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('scanner_8hpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -72,84 +94,25 @@ $(document).ready(function() { init_codefold(0); });
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="dir_362262c95a5ce3770b067ea131f3c094.html">gsc</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">scanner.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="scanner_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="token_8hpp.html">token.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;map&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;string_view&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">static</span> <span class="keyword">const</span> std::map&lt;std::string_view, TokenType&gt; keywords = {</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    {<span class="stringliteral">&quot;and&quot;</span>, <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a865555c9f2e0458a7078486aa1b3254f">TokenType::AND</a>},   {<span class="stringliteral">&quot;or&quot;</span>, <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a96727447c0ad447987df1c6415aef074">TokenType::OR</a>},</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    {<span class="stringliteral">&quot;if&quot;</span>, <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a252802eda493fb6b4a279c4452acb547">TokenType::IF</a>},     {<span class="stringliteral">&quot;else&quot;</span>, <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a90d649d830ea440c8b8a56c7ef23c426">TokenType::ELSE</a>},</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    {<span class="stringliteral">&quot;true&quot;</span>, <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa82764c3079aea4e60c80e45befbb839">TokenType::TRUE</a>}, {<span class="stringliteral">&quot;false&quot;</span>, <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa1e095cc966dbecf6a0d8aad75348d1a">TokenType::FALSE</a>},</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    {<span class="stringliteral">&quot;for&quot;</span>, <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa809654855caa62449850d9122fd77a8">TokenType::FOR</a>},   {<span class="stringliteral">&quot;while&quot;</span>, <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a3278fd035226215822c903790a1eee73">TokenType::WHILE</a>},</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    {<span class="stringliteral">&quot;nil&quot;</span>, <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a682466b7669a81b39a8d657274fd4b95">TokenType::NIL</a>},   {<span class="stringliteral">&quot;print&quot;</span>, <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921ab107229d44d042caa8ab8df4c8acaa1f">TokenType::PRINT</a>},</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    {<span class="stringliteral">&quot;var&quot;</span>, <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921af68346ce0bfce7ab2ca0a240f5132863">TokenType::VAR</a>}};</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="foldopen" id="foldopen00023" data-start="{" data-end="};">
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classScanner.html">   23</a></span><span class="keyword">class </span><a class="code hl_class" href="classScanner.html">Scanner</a> {</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  std::string_view program;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>  std::vector&lt;Token&gt; tokens;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>  <span class="keywordtype">int</span> start = 0;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>  <span class="keywordtype">int</span> current = 0;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>  <span class="keywordtype">int</span> line = 1;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>  <span class="keywordtype">void</span> addToken(<a class="code hl_enumeration" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> type);</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  <span class="keywordtype">void</span> addToken(<a class="code hl_enumeration" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> type, std::any literal);</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  <span class="keywordtype">void</span> scanToken();</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  <span class="keywordtype">void</span> identifier();</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  <span class="keywordtype">void</span> number();</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  <span class="keywordtype">void</span> string();</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  <span class="keywordtype">bool</span> match(<span class="keyword">const</span> <span class="keywordtype">char</span> &amp;expected);</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  <span class="keywordtype">char</span> peek() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  <span class="keywordtype">char</span> peekNext() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>  <span class="keywordtype">bool</span> isAtEnd() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>  <span class="keywordtype">char</span> advance();</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>  <a class="code hl_class" href="classScanner.html">Scanner</a>(std::string_view program);</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>  std::vector&lt;Token&gt; <a class="code hl_function" href="classScanner.html#a6eb4aff85fbd5e331831815ed9b3cbf4">getTokens</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>};</div>
-</div>
-<div class="ttc" id="aclassScanner_html"><div class="ttname"><a href="classScanner.html">Scanner</a></div><div class="ttdoc">Lexical analyzer for the GSC programming language.</div><div class="ttdef"><b>Definition</b> scanner.hpp:23</div></div>
-<div class="ttc" id="aclassScanner_html_a6eb4aff85fbd5e331831815ed9b3cbf4"><div class="ttname"><a href="classScanner.html#a6eb4aff85fbd5e331831815ed9b3cbf4">Scanner::getTokens</a></div><div class="ttdeci">std::vector&lt; Token &gt; getTokens() const</div><div class="ttdef"><b>Definition</b> scanner.cpp:180</div></div>
-<div class="ttc" id="aclassScanner_html_ac13eb6af23aada11ff2525f02577cd8e"><div class="ttname"><a href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">Scanner::scanTokens</a></div><div class="ttdeci">void scanTokens()</div><div class="ttdoc">Scans the entire source code and generates a list of tokens.</div><div class="ttdef"><b>Definition</b> scanner.cpp:171</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a></div><div class="ttdeci">TokenType</div><div class="ttdoc">Enum representing the different types of tokens in the GSC language.</div><div class="ttdef"><b>Definition</b> tokenType.hpp:10</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a252802eda493fb6b4a279c4452acb547"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a252802eda493fb6b4a279c4452acb547">IF</a></div><div class="ttdeci">@ IF</div><div class="ttdef"><b>Definition</b> tokenType.hpp:40</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a3278fd035226215822c903790a1eee73"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a3278fd035226215822c903790a1eee73">WHILE</a></div><div class="ttdeci">@ WHILE</div><div class="ttdef"><b>Definition</b> tokenType.hpp:45</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a682466b7669a81b39a8d657274fd4b95"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a682466b7669a81b39a8d657274fd4b95">NIL</a></div><div class="ttdeci">@ NIL</div><div class="ttdef"><b>Definition</b> tokenType.hpp:46</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a865555c9f2e0458a7078486aa1b3254f"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a865555c9f2e0458a7078486aa1b3254f">AND</a></div><div class="ttdeci">@ AND</div><div class="ttdef"><b>Definition</b> tokenType.hpp:38</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a90d649d830ea440c8b8a56c7ef23c426"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a90d649d830ea440c8b8a56c7ef23c426">ELSE</a></div><div class="ttdeci">@ ELSE</div><div class="ttdef"><b>Definition</b> tokenType.hpp:41</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a96727447c0ad447987df1c6415aef074"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a96727447c0ad447987df1c6415aef074">OR</a></div><div class="ttdeci">@ OR</div><div class="ttdef"><b>Definition</b> tokenType.hpp:39</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921aa1e095cc966dbecf6a0d8aad75348d1a"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa1e095cc966dbecf6a0d8aad75348d1a">FALSE</a></div><div class="ttdeci">@ FALSE</div><div class="ttdef"><b>Definition</b> tokenType.hpp:43</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921aa809654855caa62449850d9122fd77a8"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa809654855caa62449850d9122fd77a8">FOR</a></div><div class="ttdeci">@ FOR</div><div class="ttdef"><b>Definition</b> tokenType.hpp:44</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921aa82764c3079aea4e60c80e45befbb839"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa82764c3079aea4e60c80e45befbb839">TRUE</a></div><div class="ttdeci">@ TRUE</div><div class="ttdef"><b>Definition</b> tokenType.hpp:42</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921ab107229d44d042caa8ab8df4c8acaa1f"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921ab107229d44d042caa8ab8df4c8acaa1f">PRINT</a></div><div class="ttdeci">@ PRINT</div><div class="ttdef"><b>Definition</b> tokenType.hpp:47</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921af68346ce0bfce7ab2ca0a240f5132863"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921af68346ce0bfce7ab2ca0a240f5132863">VAR</a></div><div class="ttdeci">@ VAR</div><div class="ttdef"><b>Definition</b> tokenType.hpp:48</div></div>
-<div class="ttc" id="atoken_8hpp_html"><div class="ttname"><a href="token_8hpp.html">token.hpp</a></div></div>
+<a href="scanner_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="ttc" id="amain_8cpp_html_a0ddf1224851353fc92bfbff6f499fa97"><div class="ttname"><a href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main</a></div><div class="ttdeci">int main(int argc, char *argv[])</div><div class="ttdef"><b>Definition</b> <a href="main_8cpp_source.html#l00015">main.cpp:15</a></div></div>
+<div class="ttc" id="amain_8cpp_html_a2177fc6f8c300b3c24f38817ba64da30"><div class="ttname"><a href="main_8cpp.html#a2177fc6f8c300b3c24f38817ba64da30">runPrompt</a></div><div class="ttdeci">void runPrompt()</div><div class="ttdef"><b>Definition</b> <a href="main_8cpp_source.html#l00067">main.cpp:67</a></div></div>
+<div class="ttc" id="amain_8cpp_html_a7a2843aa356425e41907f7b3bc255b15"><div class="ttname"><a href="main_8cpp.html#a7a2843aa356425e41907f7b3bc255b15">run</a></div><div class="ttdeci">void run(std::string_view program)</div><div class="ttdef"><b>Definition</b> <a href="main_8cpp_source.html#l00039">main.cpp:39</a></div></div>
+<div class="ttc" id="amain_8cpp_html_abd88a82eb70f9e68f4ca9b5ebb923556"><div class="ttname"><a href="main_8cpp.html#abd88a82eb70f9e68f4ca9b5ebb923556">runFile</a></div><div class="ttdeci">void runFile(std::string_view filename)</div><div class="ttdef"><b>Definition</b> <a href="main_8cpp_source.html#l00053">main.cpp:53</a></div></div>
+<div class="ttc" id="amain_8cpp_html_ad1a550a8cd1bd8cad05c963707a9d482"><div class="ttname"><a href="main_8cpp.html#ad1a550a8cd1bd8cad05c963707a9d482">readFile</a></div><div class="ttdeci">std::string readFile(std::string_view filename)</div><div class="ttdef"><b>Definition</b> <a href="main_8cpp_source.html#l00026">main.cpp:26</a></div></div>
+<div class="ttc" id="amain_8cpp_html_ae269d82377699cd5ec070769b73c32c2"><div class="ttname"><a href="main_8cpp.html#ae269d82377699cd5ec070769b73c32c2">interpreter</a></div><div class="ttdeci">Interpreter interpreter</div><div class="ttdef"><b>Definition</b> <a href="main_8cpp_source.html#l00013">main.cpp:13</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="dir_362262c95a5ce3770b067ea131f3c094.html">gsc</a></li><li class="navelem"><a class="el" href="scanner_8hpp.html">scanner.hpp</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

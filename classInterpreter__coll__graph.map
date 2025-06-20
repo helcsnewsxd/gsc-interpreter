@@ -1,0 +1,22 @@
+<map id="Interpreter" name="Interpreter">
+<area shape="rect" id="Node000001" title="The Interpreter class evaluates statements and expressions in the GSC." alt="" coords="192,531,347,816"/>
+<area shape="rect" id="Node000002" href="$classExprVisitor.html" title="Abstract base class for expression visitors." alt="" coords="5,263,160,468"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="154,479,194,544,190,547,150,481"/>
+<area shape="rect" id="Node000003" href="$classStmtVisitor.html" title="Abstract base class for statement visitors." alt="" coords="185,273,354,458"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="272,472,272,530,267,530,267,472"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="379,333,603,398"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="470,400,359,553,354,550,466,397"/>
+<area shape="rect" id="Node000005" href="$classEnvironment.html" title="Represents an environment for variable storage in the GSC interpreter." alt="" coords="618,601,739,746"/>
+<area shape="poly" id="edge6_Node000005_Node000004" title=" " alt="" coords="492,398,496,450,503,479,513,505,532,537,555,566,607,617,604,620,551,570,528,540,508,508,498,480,491,451,487,399"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="644,602,617,548,586,493,527,413,531,410,590,491,622,545,649,599"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="627,325,823,405"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="720,419,692,601,687,600,715,418"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="848,325,1003,405"/>
+<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="896,407,749,589,745,586,892,404"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="843,135,922,200"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="892,199,916,309,911,310,887,201"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="817,5,948,85"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="885,99,885,134,880,134,880,99"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="946,135,985,200"/>
+<area shape="poly" id="edge10_Node000007_Node000010" title=" " alt="" coords="962,201,939,310,934,309,956,200"/>
+</map>

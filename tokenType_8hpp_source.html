@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -23,6 +27,7 @@
   <td id="projectalign">
    <div id="projectname">Simplified C/C++ (GSC)
    </div>
+   <div id="projectbrief">A Turing-complete interpreter developed for a compiler course</div>
   </td>
  </tr>
  </tbody>
@@ -51,6 +56,23 @@ $(function() {
 $(document).ready(function() { init_codefold(0); });
 /* @license-end */
 </script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('tokenType_8hpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -72,112 +94,25 @@ $(document).ready(function() { init_codefold(0); });
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="dir_362262c95a5ce3770b067ea131f3c094.html">gsc</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">tokenType.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="tokenType_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="foldopen" id="foldopen00010" data-start="{" data-end="};">
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921">   10</a></span><span class="keyword">enum</span> <a class="code hl_enumeration" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> {</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>  <span class="comment">// Single-character tokens.</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aaf335b8436483ffd007e0c1e0ba82374">   12</a></span>  <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aaf335b8436483ffd007e0c1e0ba82374">LEFT_PAREN</a>,</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aef839b132f4710b720af9322523f64e8">   13</a></span>  <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aef839b132f4710b720af9322523f64e8">RIGHT_PAREN</a>,</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aad080c3559b964f64a0bf3babee794ae">   14</a></span>  <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aad080c3559b964f64a0bf3babee794ae">LEFT_BRACE</a>,</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a720e33700869f857881e7f50bdfb6943">   15</a></span>  <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a720e33700869f857881e7f50bdfb6943">RIGHT_BRACE</a>,</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921af613d73b4e7b570ffd967df4a13c4225">   16</a></span>  <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921af613d73b4e7b570ffd967df4a13c4225">MINUS</a>,</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a87fe59ef12c3d13dc2a4d14c9b16c1f9">   17</a></span>  <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a87fe59ef12c3d13dc2a4d14c9b16c1f9">PLUS</a>,</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a55eebe3c7e08b49cd5969442f4f8c4ce">   18</a></span>  <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a55eebe3c7e08b49cd5969442f4f8c4ce">SEMICOLON</a>,</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aaabdfe7000ca535236502bb0c87ad944">   19</a></span>  <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aaabdfe7000ca535236502bb0c87ad944">SLASH</a>,</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a9d398750ed310ae69cd070016810e4dc">   20</a></span>  <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a9d398750ed310ae69cd070016810e4dc">STAR</a>,</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>  <span class="comment">// One or two character tokens.</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a220fa389cdbdc1e8cd33f70c1f793d3c">   23</a></span>  <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a220fa389cdbdc1e8cd33f70c1f793d3c">BANG</a>,</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a783d53dd60297984dc8336d5f80cb275">   24</a></span>  <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a783d53dd60297984dc8336d5f80cb275">BANG_EQUAL</a>,</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a59a84258a4cb9025b567ee5139455029">   25</a></span>  <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a59a84258a4cb9025b567ee5139455029">EQUAL</a>,</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a56bd89f44f205c00adcfe8cb62332f78">   26</a></span>  <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a56bd89f44f205c00adcfe8cb62332f78">EQUAL_EQUAL</a>,</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a25b5ca2f56d99ba6ffcb5316adac34c1">   27</a></span>  <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a25b5ca2f56d99ba6ffcb5316adac34c1">GREATER</a>,</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a4495f63771aa2060042a31363e16d4f9">   28</a></span>  <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a4495f63771aa2060042a31363e16d4f9">GREATER_EQUAL</a>,</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a95c736070f99b99eb80d1eac1f4ca60f">   29</a></span>  <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a95c736070f99b99eb80d1eac1f4ca60f">LESS</a>,</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921ac7fcbbb467ef6d40ec686d894e26accd">   30</a></span>  <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921ac7fcbbb467ef6d40ec686d894e26accd">LESS_EQUAL</a>,</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>  <span class="comment">// Literals.</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a84f8ae2490f9e4bd2321fd21f4b0e807">   33</a></span>  <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a84f8ae2490f9e4bd2321fd21f4b0e807">IDENTIFIER</a>,</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aee847e634a4297b274316de8a8ca9921">   34</a></span>  <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aee847e634a4297b274316de8a8ca9921">STRING</a>,</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a12a90dfe20486bbe3e075afcd19ef2d0">   35</a></span>  <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a12a90dfe20486bbe3e075afcd19ef2d0">NUMBER</a>,</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>  <span class="comment">// Keywords.</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a865555c9f2e0458a7078486aa1b3254f">   38</a></span>  <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a865555c9f2e0458a7078486aa1b3254f">AND</a>,</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a96727447c0ad447987df1c6415aef074">   39</a></span>  <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a96727447c0ad447987df1c6415aef074">OR</a>,</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a252802eda493fb6b4a279c4452acb547">   40</a></span>  <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a252802eda493fb6b4a279c4452acb547">IF</a>,</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a90d649d830ea440c8b8a56c7ef23c426">   41</a></span>  <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a90d649d830ea440c8b8a56c7ef23c426">ELSE</a>,</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa82764c3079aea4e60c80e45befbb839">   42</a></span>  <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa82764c3079aea4e60c80e45befbb839">TRUE</a>,</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa1e095cc966dbecf6a0d8aad75348d1a">   43</a></span>  <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa1e095cc966dbecf6a0d8aad75348d1a">FALSE</a>,</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa809654855caa62449850d9122fd77a8">   44</a></span>  <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa809654855caa62449850d9122fd77a8">FOR</a>,</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a3278fd035226215822c903790a1eee73">   45</a></span>  <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a3278fd035226215822c903790a1eee73">WHILE</a>,</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a682466b7669a81b39a8d657274fd4b95">   46</a></span>  <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a682466b7669a81b39a8d657274fd4b95">NIL</a>,</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921ab107229d44d042caa8ab8df4c8acaa1f">   47</a></span>  <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921ab107229d44d042caa8ab8df4c8acaa1f">PRINT</a>,</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921af68346ce0bfce7ab2ca0a240f5132863">   48</a></span>  <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921af68346ce0bfce7ab2ca0a240f5132863">VAR</a>,</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>  <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a7ea291c26de584b23fd7f9111784f860">END_OF_FILE</a></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a7ea291c26de584b23fd7f9111784f860">   51</a></span>};</div>
-</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keyword">static</span> <span class="keyword">const</span> std::string tokenStrings[] = {</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="stringliteral">&quot;LEFT_PAREN&quot;</span>, <span class="stringliteral">&quot;RIGHT_PAREN&quot;</span>, <span class="stringliteral">&quot;LEFT_BRACE&quot;</span>,  <span class="stringliteral">&quot;RIGHT_BRACE&quot;</span>, <span class="stringliteral">&quot;MINUS&quot;</span>,</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="stringliteral">&quot;PLUS&quot;</span>,       <span class="stringliteral">&quot;SEMICOLON&quot;</span>,   <span class="stringliteral">&quot;SLASH&quot;</span>,       <span class="stringliteral">&quot;STAR&quot;</span>,        <span class="stringliteral">&quot;BANG&quot;</span>,</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="stringliteral">&quot;BANG_EQUAL&quot;</span>, <span class="stringliteral">&quot;EQUAL&quot;</span>,       <span class="stringliteral">&quot;EQUAL_EQUAL&quot;</span>, <span class="stringliteral">&quot;GREATER&quot;</span>,     <span class="stringliteral">&quot;GREATER_EQUAL&quot;</span>,</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="stringliteral">&quot;LESS&quot;</span>,       <span class="stringliteral">&quot;LESS_EQUAL&quot;</span>,  <span class="stringliteral">&quot;IDENTIFIER&quot;</span>,  <span class="stringliteral">&quot;STRING&quot;</span>,      <span class="stringliteral">&quot;NUMBER&quot;</span>,</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="stringliteral">&quot;AND&quot;</span>,        <span class="stringliteral">&quot;OR&quot;</span>,          <span class="stringliteral">&quot;IF&quot;</span>,          <span class="stringliteral">&quot;ELSE&quot;</span>,        <span class="stringliteral">&quot;TRUE&quot;</span>,</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="stringliteral">&quot;FALSE&quot;</span>,      <span class="stringliteral">&quot;FOR&quot;</span>,         <span class="stringliteral">&quot;WHILE&quot;</span>,       <span class="stringliteral">&quot;NIL&quot;</span>,         <span class="stringliteral">&quot;PRINT&quot;</span>,</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="stringliteral">&quot;VAR&quot;</span>,        <span class="stringliteral">&quot;END_OF_FILE&quot;</span>};</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>std::string <a class="code hl_function" href="tokenType_8hpp.html#abe360e7443f729d7d8db70d9a59eebe1">toString</a>(<a class="code hl_enumeration" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> type);</div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a></div><div class="ttdeci">TokenType</div><div class="ttdoc">Enum representing the different types of tokens in the GSC language.</div><div class="ttdef"><b>Definition</b> tokenType.hpp:10</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a12a90dfe20486bbe3e075afcd19ef2d0"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a12a90dfe20486bbe3e075afcd19ef2d0">NUMBER</a></div><div class="ttdeci">@ NUMBER</div><div class="ttdef"><b>Definition</b> tokenType.hpp:35</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a220fa389cdbdc1e8cd33f70c1f793d3c"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a220fa389cdbdc1e8cd33f70c1f793d3c">BANG</a></div><div class="ttdeci">@ BANG</div><div class="ttdef"><b>Definition</b> tokenType.hpp:23</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a252802eda493fb6b4a279c4452acb547"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a252802eda493fb6b4a279c4452acb547">IF</a></div><div class="ttdeci">@ IF</div><div class="ttdef"><b>Definition</b> tokenType.hpp:40</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a25b5ca2f56d99ba6ffcb5316adac34c1"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a25b5ca2f56d99ba6ffcb5316adac34c1">GREATER</a></div><div class="ttdeci">@ GREATER</div><div class="ttdef"><b>Definition</b> tokenType.hpp:27</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a3278fd035226215822c903790a1eee73"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a3278fd035226215822c903790a1eee73">WHILE</a></div><div class="ttdeci">@ WHILE</div><div class="ttdef"><b>Definition</b> tokenType.hpp:45</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a4495f63771aa2060042a31363e16d4f9"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a4495f63771aa2060042a31363e16d4f9">GREATER_EQUAL</a></div><div class="ttdeci">@ GREATER_EQUAL</div><div class="ttdef"><b>Definition</b> tokenType.hpp:28</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a55eebe3c7e08b49cd5969442f4f8c4ce"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a55eebe3c7e08b49cd5969442f4f8c4ce">SEMICOLON</a></div><div class="ttdeci">@ SEMICOLON</div><div class="ttdef"><b>Definition</b> tokenType.hpp:18</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a56bd89f44f205c00adcfe8cb62332f78"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a56bd89f44f205c00adcfe8cb62332f78">EQUAL_EQUAL</a></div><div class="ttdeci">@ EQUAL_EQUAL</div><div class="ttdef"><b>Definition</b> tokenType.hpp:26</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a59a84258a4cb9025b567ee5139455029"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a59a84258a4cb9025b567ee5139455029">EQUAL</a></div><div class="ttdeci">@ EQUAL</div><div class="ttdef"><b>Definition</b> tokenType.hpp:25</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a682466b7669a81b39a8d657274fd4b95"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a682466b7669a81b39a8d657274fd4b95">NIL</a></div><div class="ttdeci">@ NIL</div><div class="ttdef"><b>Definition</b> tokenType.hpp:46</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a720e33700869f857881e7f50bdfb6943"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a720e33700869f857881e7f50bdfb6943">RIGHT_BRACE</a></div><div class="ttdeci">@ RIGHT_BRACE</div><div class="ttdef"><b>Definition</b> tokenType.hpp:15</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a783d53dd60297984dc8336d5f80cb275"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a783d53dd60297984dc8336d5f80cb275">BANG_EQUAL</a></div><div class="ttdeci">@ BANG_EQUAL</div><div class="ttdef"><b>Definition</b> tokenType.hpp:24</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a7ea291c26de584b23fd7f9111784f860"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a7ea291c26de584b23fd7f9111784f860">END_OF_FILE</a></div><div class="ttdeci">@ END_OF_FILE</div><div class="ttdef"><b>Definition</b> tokenType.hpp:50</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a84f8ae2490f9e4bd2321fd21f4b0e807"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a84f8ae2490f9e4bd2321fd21f4b0e807">IDENTIFIER</a></div><div class="ttdeci">@ IDENTIFIER</div><div class="ttdef"><b>Definition</b> tokenType.hpp:33</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a865555c9f2e0458a7078486aa1b3254f"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a865555c9f2e0458a7078486aa1b3254f">AND</a></div><div class="ttdeci">@ AND</div><div class="ttdef"><b>Definition</b> tokenType.hpp:38</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a87fe59ef12c3d13dc2a4d14c9b16c1f9"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a87fe59ef12c3d13dc2a4d14c9b16c1f9">PLUS</a></div><div class="ttdeci">@ PLUS</div><div class="ttdef"><b>Definition</b> tokenType.hpp:17</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a90d649d830ea440c8b8a56c7ef23c426"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a90d649d830ea440c8b8a56c7ef23c426">ELSE</a></div><div class="ttdeci">@ ELSE</div><div class="ttdef"><b>Definition</b> tokenType.hpp:41</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a95c736070f99b99eb80d1eac1f4ca60f"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a95c736070f99b99eb80d1eac1f4ca60f">LESS</a></div><div class="ttdeci">@ LESS</div><div class="ttdef"><b>Definition</b> tokenType.hpp:29</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a96727447c0ad447987df1c6415aef074"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a96727447c0ad447987df1c6415aef074">OR</a></div><div class="ttdeci">@ OR</div><div class="ttdef"><b>Definition</b> tokenType.hpp:39</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a9d398750ed310ae69cd070016810e4dc"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a9d398750ed310ae69cd070016810e4dc">STAR</a></div><div class="ttdeci">@ STAR</div><div class="ttdef"><b>Definition</b> tokenType.hpp:20</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921aa1e095cc966dbecf6a0d8aad75348d1a"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa1e095cc966dbecf6a0d8aad75348d1a">FALSE</a></div><div class="ttdeci">@ FALSE</div><div class="ttdef"><b>Definition</b> tokenType.hpp:43</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921aa809654855caa62449850d9122fd77a8"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa809654855caa62449850d9122fd77a8">FOR</a></div><div class="ttdeci">@ FOR</div><div class="ttdef"><b>Definition</b> tokenType.hpp:44</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921aa82764c3079aea4e60c80e45befbb839"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa82764c3079aea4e60c80e45befbb839">TRUE</a></div><div class="ttdeci">@ TRUE</div><div class="ttdef"><b>Definition</b> tokenType.hpp:42</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921aaabdfe7000ca535236502bb0c87ad944"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aaabdfe7000ca535236502bb0c87ad944">SLASH</a></div><div class="ttdeci">@ SLASH</div><div class="ttdef"><b>Definition</b> tokenType.hpp:19</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921aad080c3559b964f64a0bf3babee794ae"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aad080c3559b964f64a0bf3babee794ae">LEFT_BRACE</a></div><div class="ttdeci">@ LEFT_BRACE</div><div class="ttdef"><b>Definition</b> tokenType.hpp:14</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921aaf335b8436483ffd007e0c1e0ba82374"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aaf335b8436483ffd007e0c1e0ba82374">LEFT_PAREN</a></div><div class="ttdeci">@ LEFT_PAREN</div><div class="ttdef"><b>Definition</b> tokenType.hpp:12</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921ab107229d44d042caa8ab8df4c8acaa1f"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921ab107229d44d042caa8ab8df4c8acaa1f">PRINT</a></div><div class="ttdeci">@ PRINT</div><div class="ttdef"><b>Definition</b> tokenType.hpp:47</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921ac7fcbbb467ef6d40ec686d894e26accd"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921ac7fcbbb467ef6d40ec686d894e26accd">LESS_EQUAL</a></div><div class="ttdeci">@ LESS_EQUAL</div><div class="ttdef"><b>Definition</b> tokenType.hpp:30</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921aee847e634a4297b274316de8a8ca9921"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aee847e634a4297b274316de8a8ca9921">STRING</a></div><div class="ttdeci">@ STRING</div><div class="ttdef"><b>Definition</b> tokenType.hpp:34</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921aef839b132f4710b720af9322523f64e8"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aef839b132f4710b720af9322523f64e8">RIGHT_PAREN</a></div><div class="ttdeci">@ RIGHT_PAREN</div><div class="ttdef"><b>Definition</b> tokenType.hpp:13</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921af613d73b4e7b570ffd967df4a13c4225"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921af613d73b4e7b570ffd967df4a13c4225">MINUS</a></div><div class="ttdeci">@ MINUS</div><div class="ttdef"><b>Definition</b> tokenType.hpp:16</div></div>
-<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921af68346ce0bfce7ab2ca0a240f5132863"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921af68346ce0bfce7ab2ca0a240f5132863">VAR</a></div><div class="ttdeci">@ VAR</div><div class="ttdef"><b>Definition</b> tokenType.hpp:48</div></div>
-<div class="ttc" id="atokenType_8hpp_html_abe360e7443f729d7d8db70d9a59eebe1"><div class="ttname"><a href="tokenType_8hpp.html#abe360e7443f729d7d8db70d9a59eebe1">toString</a></div><div class="ttdeci">std::string toString(TokenType type)</div><div class="ttdef"><b>Definition</b> tokenType.cpp:3</div></div>
+<a href="tokenType_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="ttc" id="amain_8cpp_html_a0ddf1224851353fc92bfbff6f499fa97"><div class="ttname"><a href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main</a></div><div class="ttdeci">int main(int argc, char *argv[])</div><div class="ttdef"><b>Definition</b> <a href="main_8cpp_source.html#l00015">main.cpp:15</a></div></div>
+<div class="ttc" id="amain_8cpp_html_a2177fc6f8c300b3c24f38817ba64da30"><div class="ttname"><a href="main_8cpp.html#a2177fc6f8c300b3c24f38817ba64da30">runPrompt</a></div><div class="ttdeci">void runPrompt()</div><div class="ttdef"><b>Definition</b> <a href="main_8cpp_source.html#l00067">main.cpp:67</a></div></div>
+<div class="ttc" id="amain_8cpp_html_a7a2843aa356425e41907f7b3bc255b15"><div class="ttname"><a href="main_8cpp.html#a7a2843aa356425e41907f7b3bc255b15">run</a></div><div class="ttdeci">void run(std::string_view program)</div><div class="ttdef"><b>Definition</b> <a href="main_8cpp_source.html#l00039">main.cpp:39</a></div></div>
+<div class="ttc" id="amain_8cpp_html_abd88a82eb70f9e68f4ca9b5ebb923556"><div class="ttname"><a href="main_8cpp.html#abd88a82eb70f9e68f4ca9b5ebb923556">runFile</a></div><div class="ttdeci">void runFile(std::string_view filename)</div><div class="ttdef"><b>Definition</b> <a href="main_8cpp_source.html#l00053">main.cpp:53</a></div></div>
+<div class="ttc" id="amain_8cpp_html_ad1a550a8cd1bd8cad05c963707a9d482"><div class="ttname"><a href="main_8cpp.html#ad1a550a8cd1bd8cad05c963707a9d482">readFile</a></div><div class="ttdeci">std::string readFile(std::string_view filename)</div><div class="ttdef"><b>Definition</b> <a href="main_8cpp_source.html#l00026">main.cpp:26</a></div></div>
+<div class="ttc" id="amain_8cpp_html_ae269d82377699cd5ec070769b73c32c2"><div class="ttname"><a href="main_8cpp.html#ae269d82377699cd5ec070769b73c32c2">interpreter</a></div><div class="ttdeci">Interpreter interpreter</div><div class="ttdef"><b>Definition</b> <a href="main_8cpp_source.html#l00013">main.cpp:13</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="dir_362262c95a5ce3770b067ea131f3c094.html">gsc</a></li><li class="navelem"><a class="el" href="tokenType_8hpp.html">tokenType.hpp</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

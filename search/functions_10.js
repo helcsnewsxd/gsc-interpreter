@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['_7eexprvisitor_0',['~ExprVisitor',['../classExprVisitor.html#afd377bee178f018174231d7c10592826',1,'ExprVisitor']]],
-  ['_7estmtvisitor_1',['~StmtVisitor',['../classStmtVisitor.html#ae29129715d730242bdccd414fdfdac34',1,'StmtVisitor']]]
+  ['unary_0',['unary',['../classParser.html#a623319b2b1de04483f5518de671e5dca',1,'Parser::unary()'],['../classUnary.html#afa64ef959e88c2a2dcd4659d73573408',1,'Unary::Unary()']]]
 ];

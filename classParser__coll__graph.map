@@ -1,0 +1,18 @@
+<map id="Parser" name="Parser">
+<area shape="rect" id="Node000001" title="Parser module for the GSC programming language." alt="" coords="259,619,437,924"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="214,491,365,556"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="299,556,311,602,305,603,294,557"/>
+<area shape="rect" id="Node000003" href="$classToken.html" title="Represents a token in the source code." alt="" coords="219,263,330,428"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="284,428,288,474,283,474,279,428"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,135,125,200"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="104,198,208,285,205,289,101,202"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="150,135,229,200"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="200,199,214,238,219,247,214,249,210,240,195,201"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="124,5,255,85"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="192,99,192,134,187,134,187,99"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="255,135,294,200"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="277,200,277,246,272,246,272,200"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="365,135,395,200"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="386,200,388,224,388,239,387,398,379,556,374,602,369,602,373,556,381,397,383,239,383,224,381,200"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="367,196,334,250,330,247,362,193"/>
+</map>

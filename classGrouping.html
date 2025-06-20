@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -23,6 +27,7 @@
   <td id="projectalign">
    <div id="projectname">Simplified C/C++ (GSC)
    </div>
+   <div id="projectbrief">A Turing-complete interpreter developed for a compiler course</div>
   </td>
  </tr>
  </tbody>
@@ -46,6 +51,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classGrouping.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,10 +89,10 @@ $(function() {
 </div>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classGrouping-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Grouping Class Reference</div></div>
 </div><!--header-->
@@ -83,26 +105,33 @@ $(function() {
 <div class="dynheader">
 Inheritance diagram for Grouping:</div>
 <div class="dyncontent">
-<div class="center"><img src="classGrouping__inherit__graph.png" border="0" usemap="#aGrouping_inherit__map" alt="Inheritance graph"/></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classGrouping__inherit__graph.svg" width="288" height="244"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Collaboration diagram for Grouping:</div>
 <div class="dyncontent">
-<div class="center"><img src="classGrouping__coll__graph.png" border="0" usemap="#aGrouping_coll__map" alt="Collaboration graph"/></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classGrouping__coll__graph.svg" width="435" height="387"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a842b8c4c0ef44d0583a6f5cdfedb89ad" id="r_a842b8c4c0ef44d0583a6f5cdfedb89ad"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGrouping.html#a842b8c4c0ef44d0583a6f5cdfedb89ad">Grouping</a> (std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt; expression)</td></tr>
+<tr class="memitem:a842b8c4c0ef44d0583a6f5cdfedb89ad" id="r_a842b8c4c0ef44d0583a6f5cdfedb89ad"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGrouping.html#a842b8c4c0ef44d0583a6f5cdfedb89ad">Grouping</a> (std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt; <a class="el" href="classGrouping.html#a09e9ed6a0f1f4c4cff69334de7303339">expression</a>)</td></tr>
 <tr class="separator:a842b8c4c0ef44d0583a6f5cdfedb89ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8724010c9dbdc8428f4a0e99d991a658" id="r_a8724010c9dbdc8428f4a0e99d991a658"><td class="memItemLeft" align="right" valign="top">std::any&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGrouping.html#a8724010c9dbdc8428f4a0e99d991a658">accept</a> (<a class="el" href="classExprVisitor.html">ExprVisitor</a> &amp;visitor) override</td></tr>
 <tr class="separator:a8724010c9dbdc8428f4a0e99d991a658"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a745a12c46b5be75ecc63f781bfaf4105" id="r_a745a12c46b5be75ecc63f781bfaf4105"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGrouping.html#a745a12c46b5be75ecc63f781bfaf4105">getExpression</a> () const</td></tr>
 <tr class="separator:a745a12c46b5be75ecc63f781bfaf4105"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a09e9ed6a0f1f4c4cff69334de7303339" id="r_a09e9ed6a0f1f4c4cff69334de7303339"><td class="memItemLeft" align="right" valign="top">const std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGrouping.html#a09e9ed6a0f1f4c4cff69334de7303339">expression</a></td></tr>
+<tr class="separator:a09e9ed6a0f1f4c4cff69334de7303339"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class representing a grouping expression. </p>
 <p>This class represents a grouping expression in the AST, which is used to group sub-expressions. It inherits from the <a class="el" href="classExpr.html" title="Abstract base class for expressions.">Expr</a> class and implements the accept method for visitor pattern. </p>
+
+<p class="definition">Definition at line <a class="el" href="expr_8hpp_source.html#l00079">79</a> of file <a class="el" href="expr_8hpp_source.html">expr.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a842b8c4c0ef44d0583a6f5cdfedb89ad" name="a842b8c4c0ef44d0583a6f5cdfedb89ad"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a842b8c4c0ef44d0583a6f5cdfedb89ad">&#9670;&#160;</a></span>Grouping()</h2>
@@ -128,6 +157,10 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="expr_8hpp_source.html#l00084">84</a> of file <a class="el" href="expr_8hpp_source.html">expr.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   85</span>      : <a class="code hl_variable" href="classGrouping.html#a09e9ed6a0f1f4c4cff69334de7303339">expression</a>(std::move(<a class="code hl_variable" href="classGrouping.html#a09e9ed6a0f1f4c4cff69334de7303339">expression</a>)) {}</div>
+<div class="ttc" id="aclassGrouping_html_a09e9ed6a0f1f4c4cff69334de7303339"><div class="ttname"><a href="classGrouping.html#a09e9ed6a0f1f4c4cff69334de7303339">Grouping::expression</a></div><div class="ttdeci">const std::shared_ptr&lt; Expr &gt; expression</div><div class="ttdef"><b>Definition</b> <a href="expr_8hpp_source.html#l00081">expr.hpp:81</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -156,12 +189,13 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="classExpr.html#a748b81a9fcd2a1e226395aa9159d6dba">Expr</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classGrouping_a8724010c9dbdc8428f4a0e99d991a658_cgraph.png" border="0" usemap="#aclassGrouping_a8724010c9dbdc8428f4a0e99d991a658_cgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="expr_8hpp_source.html#l00087">87</a> of file <a class="el" href="expr_8hpp_source.html">expr.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   87</span>                                               {</div>
+<div class="line"><span class="lineno">   88</span>    <span class="keywordflow">return</span> visitor.<a class="code hl_function" href="classExprVisitor.html#a09b98dd33cbb696adebba7eaf4484699">visitGroupingExpr</a>(shared_from_this());</div>
+<div class="line"><span class="lineno">   89</span>  }</div>
+<div class="ttc" id="aclassExprVisitor_html_a09b98dd33cbb696adebba7eaf4484699"><div class="ttname"><a href="classExprVisitor.html#a09b98dd33cbb696adebba7eaf4484699">ExprVisitor::visitGroupingExpr</a></div><div class="ttdeci">virtual std::any visitGroupingExpr(std::shared_ptr&lt; Grouping &gt; expr)=0</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a745a12c46b5be75ecc63f781bfaf4105" name="a745a12c46b5be75ecc63f781bfaf4105"></a>
@@ -186,11 +220,34 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classGrouping_a745a12c46b5be75ecc63f781bfaf4105_icgraph.png" border="0" usemap="#aclassGrouping_a745a12c46b5be75ecc63f781bfaf4105_icgraph" alt=""/></div>
+
+<p class="definition">Definition at line <a class="el" href="expr_8hpp_source.html#l00091">91</a> of file <a class="el" href="expr_8hpp_source.html">expr.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   91</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classGrouping.html#a09e9ed6a0f1f4c4cff69334de7303339">expression</a>; }</div>
+</div><!-- fragment -->
 </div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a09e9ed6a0f1f4c4cff69334de7303339" name="a09e9ed6a0f1f4c4cff69334de7303339"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09e9ed6a0f1f4c4cff69334de7303339">&#9670;&#160;</a></span>expression</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::shared_ptr&lt;<a class="el" href="classExpr.html">Expr</a>&gt; Grouping::expression</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="expr_8hpp_source.html#l00081">81</a> of file <a class="el" href="expr_8hpp_source.html">expr.hpp</a>.</p>
 
 </div>
 </div>
@@ -198,9 +255,13 @@ Here is the caller graph for this function:</div>
 <li>lib/gsc/<a class="el" href="expr_8hpp_source.html">expr.hpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="classGrouping.html">Grouping</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

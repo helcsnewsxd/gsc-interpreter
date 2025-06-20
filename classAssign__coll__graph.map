@@ -1,0 +1,22 @@
+<map id="Assign" name="Assign">
+<area shape="rect" id="Node000001" title="Class representing an assignment expression." alt="" coords="229,491,327,616"/>
+<area shape="rect" id="Node000002" href="$classExpr.html" title="Abstract base class for expressions." alt="" coords="5,135,87,200"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="34,214,24,261,18,316,23,374,31,401,43,427,60,450,81,470,130,503,182,525,229,540,228,545,180,530,127,507,78,474,56,453,38,429,26,403,18,375,13,316,18,260,29,213"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="53,313,223,378"/>
+<area shape="poly" id="edge10_Node000010_Node000002" title=" " alt="" coords="65,199,116,297,111,299,60,201"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="248,305,404,385"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="316,399,295,491,290,490,311,398"/>
+<area shape="rect" id="Node000004" href="$classToken.html" title="Represents a token in the source code." alt="" coords="428,263,539,428"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="430,417,417,430,342,501,338,497,413,426,426,413"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="258,135,378,200"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="354,198,417,261,419,263,415,266,413,265,350,202"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="403,135,481,200"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="444,200,443,224,443,238,445,246,440,247,438,239,438,224,438,200"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="377,5,507,85"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="445,99,445,134,439,134,439,99"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="508,135,547,200"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="522,201,510,248,505,246,517,199"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="591,135,621,200"/>
+<area shape="poly" id="edge8_Node000004_Node000009" title=" " alt="" coords="593,201,570,240,551,266,547,263,565,237,588,198"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="162,377,229,476,225,479,157,380"/>
+</map>

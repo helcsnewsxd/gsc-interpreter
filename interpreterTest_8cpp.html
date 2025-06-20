@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -23,6 +27,7 @@
   <td id="projectalign">
    <div id="projectname">Simplified C/C++ (GSC)
    </div>
+   <div id="projectbrief">A Turing-complete interpreter developed for a compiler course</div>
   </td>
  </tr>
  </tbody>
@@ -46,6 +51,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('interpreterTest_8cpp.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,11 +89,6 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_13e138d54eb8818da29c3992edef070a.html">test</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
@@ -86,9 +103,11 @@ $(function() {
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for interpreterTest.cpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="interpreterTest_8cpp__incl.png" border="0" usemap="#atest_2interpreterTest_8cpp" alt=""/></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="interpreterTest_8cpp__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
-</div><table class="memberdecls">
+</div>
+<p><a href="interpreterTest_8cpp_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ab150f85e2a5e48f1c4f8992c29f0c06a" id="r_ab150f85e2a5e48f1c4f8992c29f0c06a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interpreterTest_8cpp.html#ab150f85e2a5e48f1c4f8992c29f0c06a">TEST_CASE</a> (&quot;Interpreting <a class="el" href="classPrint.html">Print</a> of <a class="el" href="classLiteral.html">Literal</a> Expressions&quot;, &quot;[interpreter][print][literal]&quot;)</td></tr>
@@ -136,12 +155,85 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="interpreterTest_8cpp_a6d59c7eaa8dc2d2c231dc8048e24e35c_cgraph.png" border="0" usemap="#ainterpreterTest_8cpp_a6d59c7eaa8dc2d2c231dc8048e24e35c_cgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="interpreterTest_8cpp_source.html#l00079">79</a> of file <a class="el" href="interpreterTest_8cpp_source.html">interpreterTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   79</span>                                                                          {</div>
+<div class="line"><span class="lineno">   80</span>  <span class="comment">// Redirect output to a string stream</span></div>
+<div class="line"><span class="lineno">   81</span>  std::ostringstream oss;</div>
+<div class="line"><span class="lineno">   82</span>  <span class="keyword">auto</span> oldCout = std::cout.rdbuf(oss.rdbuf());</div>
+<div class="line"><span class="lineno">   83</span> </div>
+<div class="line"><span class="lineno">   84</span>  SECTION(<span class="stringliteral">&quot;Integer grouping expressions&quot;</span>) {</div>
+<div class="line"><span class="lineno">   85</span>    <a class="code hl_class" href="classToken.html">Token</a> intToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a12a90dfe20486bbe3e075afcd19ef2d0">TokenType::NUMBER</a>, <span class="stringliteral">&quot;42&quot;</span>, 42, 1);</div>
+<div class="line"><span class="lineno">   86</span>    std::shared_ptr&lt;Literal&gt; literalExpr =</div>
+<div class="line"><span class="lineno">   87</span>        std::make_shared&lt;Literal&gt;(intToken.getLiteral());</div>
+<div class="line"><span class="lineno">   88</span>    std::shared_ptr&lt;Expr&gt; expr = std::make_shared&lt;Grouping&gt;(literalExpr);</div>
+<div class="line"><span class="lineno">   89</span>    std::shared_ptr&lt;Print&gt; printExpr = std::make_shared&lt;Print&gt;(expr);</div>
+<div class="line"><span class="lineno">   90</span>    std::shared_ptr&lt;Stmt&gt; stmt = printExpr;</div>
+<div class="line"><span class="lineno">   91</span> </div>
+<div class="line"><span class="lineno">   92</span>    <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>({stmt});</div>
+<div class="line"><span class="lineno">   93</span>    CHECK(oss.str() == <span class="stringliteral">&quot;42\n&quot;</span>);</div>
+<div class="line"><span class="lineno">   94</span>  }</div>
+<div class="line"><span class="lineno">   95</span> </div>
+<div class="line"><span class="lineno">   96</span>  SECTION(<span class="stringliteral">&quot;NIL grouping expressions&quot;</span>) {</div>
+<div class="line"><span class="lineno">   97</span>    <a class="code hl_class" href="classToken.html">Token</a> nilToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a682466b7669a81b39a8d657274fd4b95">TokenType::NIL</a>, <span class="stringliteral">&quot;nil&quot;</span>, <span class="keyword">nullptr</span>, 1);</div>
+<div class="line"><span class="lineno">   98</span>    std::shared_ptr&lt;Literal&gt; literalExpr =</div>
+<div class="line"><span class="lineno">   99</span>        std::make_shared&lt;Literal&gt;(nilToken.getLiteral());</div>
+<div class="line"><span class="lineno">  100</span>    std::shared_ptr&lt;Expr&gt; expr = std::make_shared&lt;Grouping&gt;(literalExpr);</div>
+<div class="line"><span class="lineno">  101</span>    std::shared_ptr&lt;Print&gt; printExpr = std::make_shared&lt;Print&gt;(expr);</div>
+<div class="line"><span class="lineno">  102</span>    std::shared_ptr&lt;Stmt&gt; stmt = printExpr;</div>
+<div class="line"><span class="lineno">  103</span> </div>
+<div class="line"><span class="lineno">  104</span>    <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>({stmt});</div>
+<div class="line"><span class="lineno">  105</span>    CHECK(oss.str() == <span class="stringliteral">&quot;nil\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  106</span>  }</div>
+<div class="line"><span class="lineno">  107</span> </div>
+<div class="line"><span class="lineno">  108</span>  SECTION(<span class="stringliteral">&quot;Boolean grouping expressions (true)&quot;</span>) {</div>
+<div class="line"><span class="lineno">  109</span>    <a class="code hl_class" href="classToken.html">Token</a> trueToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa82764c3079aea4e60c80e45befbb839">TokenType::TRUE</a>, <span class="stringliteral">&quot;true&quot;</span>, <span class="keyword">true</span>, 1);</div>
+<div class="line"><span class="lineno">  110</span>    std::shared_ptr&lt;Literal&gt; literalExpr =</div>
+<div class="line"><span class="lineno">  111</span>        std::make_shared&lt;Literal&gt;(trueToken.getLiteral());</div>
+<div class="line"><span class="lineno">  112</span>    std::shared_ptr&lt;Expr&gt; expr = std::make_shared&lt;Grouping&gt;(literalExpr);</div>
+<div class="line"><span class="lineno">  113</span>    std::shared_ptr&lt;Print&gt; printExpr = std::make_shared&lt;Print&gt;(expr);</div>
+<div class="line"><span class="lineno">  114</span>    std::shared_ptr&lt;Stmt&gt; stmt = printExpr;</div>
+<div class="line"><span class="lineno">  115</span> </div>
+<div class="line"><span class="lineno">  116</span>    <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>({stmt});</div>
+<div class="line"><span class="lineno">  117</span>    CHECK(oss.str() == <span class="stringliteral">&quot;true\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  118</span>  }</div>
+<div class="line"><span class="lineno">  119</span> </div>
+<div class="line"><span class="lineno">  120</span>  SECTION(<span class="stringliteral">&quot;Boolean grouping expressions (false)&quot;</span>) {</div>
+<div class="line"><span class="lineno">  121</span>    <a class="code hl_class" href="classToken.html">Token</a> falseToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa1e095cc966dbecf6a0d8aad75348d1a">TokenType::FALSE</a>, <span class="stringliteral">&quot;false&quot;</span>, <span class="keyword">false</span>, 1);</div>
+<div class="line"><span class="lineno">  122</span>    std::shared_ptr&lt;Literal&gt; literalExpr =</div>
+<div class="line"><span class="lineno">  123</span>        std::make_shared&lt;Literal&gt;(falseToken.getLiteral());</div>
+<div class="line"><span class="lineno">  124</span>    std::shared_ptr&lt;Expr&gt; expr = std::make_shared&lt;Grouping&gt;(literalExpr);</div>
+<div class="line"><span class="lineno">  125</span>    std::shared_ptr&lt;Print&gt; printExpr = std::make_shared&lt;Print&gt;(expr);</div>
+<div class="line"><span class="lineno">  126</span>    std::shared_ptr&lt;Stmt&gt; stmt = printExpr;</div>
+<div class="line"><span class="lineno">  127</span> </div>
+<div class="line"><span class="lineno">  128</span>    <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>({stmt});</div>
+<div class="line"><span class="lineno">  129</span>    CHECK(oss.str() == <span class="stringliteral">&quot;false\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  130</span>  }</div>
+<div class="line"><span class="lineno">  131</span> </div>
+<div class="line"><span class="lineno">  132</span>  SECTION(<span class="stringliteral">&quot;String grouping expressions&quot;</span>) {</div>
+<div class="line"><span class="lineno">  133</span>    <a class="code hl_class" href="classToken.html">Token</a> stringToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aee847e634a4297b274316de8a8ca9921">TokenType::STRING</a>, <span class="stringliteral">&quot;Hello, World!&quot;</span>, <span class="stringliteral">&quot;Hello, World!&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">  134</span>    std::shared_ptr&lt;Literal&gt; literalExpr =</div>
+<div class="line"><span class="lineno">  135</span>        std::make_shared&lt;Literal&gt;(stringToken.getLiteral());</div>
+<div class="line"><span class="lineno">  136</span>    std::shared_ptr&lt;Expr&gt; expr = std::make_shared&lt;Grouping&gt;(literalExpr);</div>
+<div class="line"><span class="lineno">  137</span>    std::shared_ptr&lt;Print&gt; printExpr = std::make_shared&lt;Print&gt;(expr);</div>
+<div class="line"><span class="lineno">  138</span>    std::shared_ptr&lt;Stmt&gt; stmt = printExpr;</div>
+<div class="line"><span class="lineno">  139</span> </div>
+<div class="line"><span class="lineno">  140</span>    <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>({stmt});</div>
+<div class="line"><span class="lineno">  141</span>    CHECK(oss.str() == <span class="stringliteral">&quot;Hello, World!\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  142</span>  }</div>
+<div class="line"><span class="lineno">  143</span> </div>
+<div class="line"><span class="lineno">  144</span>  <span class="comment">// Restore the original cout buffer</span></div>
+<div class="line"><span class="lineno">  145</span>  std::cout.rdbuf(oldCout);</div>
+<div class="line"><span class="lineno">  146</span>}</div>
+<div class="ttc" id="aclassInterpreter_html"><div class="ttname"><a href="classInterpreter.html">Interpreter</a></div><div class="ttdoc">The Interpreter class evaluates statements and expressions in the GSC.</div><div class="ttdef"><b>Definition</b> <a href="interpreter_8hpp_source.html#l00016">interpreter.hpp:16</a></div></div>
+<div class="ttc" id="aclassInterpreter_html_a3c1b7d9bdd87f579186d14fff68bc06b"><div class="ttname"><a href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">Interpreter::interpret</a></div><div class="ttdeci">void interpret(const std::vector&lt; std::shared_ptr&lt; Stmt &gt; &gt; &amp;statements)</div><div class="ttdoc">Interpret the given statement list and execute them.</div><div class="ttdef"><b>Definition</b> <a href="interpreter_8cpp_source.html#l00006">interpreter.cpp:6</a></div></div>
+<div class="ttc" id="aclassToken_html"><div class="ttname"><a href="classToken.html">Token</a></div><div class="ttdoc">Represents a token in the source code.</div><div class="ttdef"><b>Definition</b> <a href="token_8hpp_source.html#l00014">token.hpp:14</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a12a90dfe20486bbe3e075afcd19ef2d0"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a12a90dfe20486bbe3e075afcd19ef2d0">NUMBER</a></div><div class="ttdeci">@ NUMBER</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00035">tokenType.hpp:35</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a682466b7669a81b39a8d657274fd4b95"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a682466b7669a81b39a8d657274fd4b95">NIL</a></div><div class="ttdeci">@ NIL</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00046">tokenType.hpp:46</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921aa1e095cc966dbecf6a0d8aad75348d1a"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa1e095cc966dbecf6a0d8aad75348d1a">FALSE</a></div><div class="ttdeci">@ FALSE</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00043">tokenType.hpp:43</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921aa82764c3079aea4e60c80e45befbb839"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa82764c3079aea4e60c80e45befbb839">TRUE</a></div><div class="ttdeci">@ TRUE</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00042">tokenType.hpp:42</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921aee847e634a4297b274316de8a8ca9921"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aee847e634a4297b274316de8a8ca9921">STRING</a></div><div class="ttdeci">@ STRING</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00034">tokenType.hpp:34</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a7681cf646797c6651e5ce7c2c5972057" name="a7681cf646797c6651e5ce7c2c5972057"></a>
@@ -169,12 +261,100 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="interpreterTest_8cpp_a7681cf646797c6651e5ce7c2c5972057_cgraph.png" border="0" usemap="#ainterpreterTest_8cpp_a7681cf646797c6651e5ce7c2c5972057_cgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="interpreterTest_8cpp_source.html#l00610">610</a> of file <a class="el" href="interpreterTest_8cpp_source.html">interpreterTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  610</span>                                                                            {</div>
+<div class="line"><span class="lineno">  611</span>  <a class="code hl_class" href="classToken.html">Token</a> trueToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa82764c3079aea4e60c80e45befbb839">TokenType::TRUE</a>, <span class="stringliteral">&quot;true&quot;</span>, <span class="keyword">true</span>, 1);</div>
+<div class="line"><span class="lineno">  612</span>  <a class="code hl_class" href="classToken.html">Token</a> falseToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa1e095cc966dbecf6a0d8aad75348d1a">TokenType::FALSE</a>, <span class="stringliteral">&quot;false&quot;</span>, <span class="keyword">false</span>, 1);</div>
+<div class="line"><span class="lineno">  613</span>  <a class="code hl_class" href="classToken.html">Token</a> intToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a12a90dfe20486bbe3e075afcd19ef2d0">TokenType::NUMBER</a>, <span class="stringliteral">&quot;42&quot;</span>, 42, 1);</div>
+<div class="line"><span class="lineno">  614</span>  <a class="code hl_class" href="classToken.html">Token</a> stringToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aee847e634a4297b274316de8a8ca9921">TokenType::STRING</a>, <span class="stringliteral">&quot;Hello, World!&quot;</span>, <span class="stringliteral">&quot;Hello, World!&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">  615</span> </div>
+<div class="line"><span class="lineno">  616</span>  <span class="comment">// Redirect output to a string stream</span></div>
+<div class="line"><span class="lineno">  617</span>  std::ostringstream oss;</div>
+<div class="line"><span class="lineno">  618</span>  <span class="keyword">auto</span> oldCout = std::cout.rdbuf(oss.rdbuf());</div>
+<div class="line"><span class="lineno">  619</span> </div>
+<div class="line"><span class="lineno">  620</span>  SECTION(<span class="stringliteral">&quot;If (alone) case with true condition&quot;</span>) {</div>
+<div class="line"><span class="lineno">  621</span>    <span class="comment">// If(true) print 42;</span></div>
+<div class="line"><span class="lineno">  622</span>    std::shared_ptr&lt;Literal&gt; conditionExpr =</div>
+<div class="line"><span class="lineno">  623</span>        std::make_shared&lt;Literal&gt;(trueToken.getLiteral());</div>
+<div class="line"><span class="lineno">  624</span>    std::shared_ptr&lt;Expr&gt; condition = conditionExpr;</div>
+<div class="line"><span class="lineno">  625</span>    std::shared_ptr&lt;Literal&gt; thenExpr =</div>
+<div class="line"><span class="lineno">  626</span>        std::make_shared&lt;Literal&gt;(intToken.getLiteral());</div>
+<div class="line"><span class="lineno">  627</span>    std::shared_ptr&lt;Expr&gt; thenBranch = thenExpr;</div>
+<div class="line"><span class="lineno">  628</span>    std::shared_ptr&lt;Print&gt; printThen = std::make_shared&lt;Print&gt;(thenBranch);</div>
+<div class="line"><span class="lineno">  629</span>    std::shared_ptr&lt;Stmt&gt; thenStmt = printThen;</div>
+<div class="line"><span class="lineno">  630</span>    std::shared_ptr&lt;If&gt; ifStmt =</div>
+<div class="line"><span class="lineno">  631</span>        std::make_shared&lt;If&gt;(condition, thenStmt, <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">  632</span> </div>
+<div class="line"><span class="lineno">  633</span>    <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>({ifStmt});</div>
+<div class="line"><span class="lineno">  634</span>    CHECK(oss.str() == <span class="stringliteral">&quot;42\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  635</span>  }</div>
+<div class="line"><span class="lineno">  636</span> </div>
+<div class="line"><span class="lineno">  637</span>  SECTION(<span class="stringliteral">&quot;If (alone) case with false condition&quot;</span>) {</div>
+<div class="line"><span class="lineno">  638</span>    <span class="comment">// If(false) print 42;</span></div>
+<div class="line"><span class="lineno">  639</span>    std::shared_ptr&lt;Literal&gt; conditionExpr =</div>
+<div class="line"><span class="lineno">  640</span>        std::make_shared&lt;Literal&gt;(falseToken.getLiteral());</div>
+<div class="line"><span class="lineno">  641</span>    std::shared_ptr&lt;Expr&gt; condition = conditionExpr;</div>
+<div class="line"><span class="lineno">  642</span>    std::shared_ptr&lt;Literal&gt; thenExpr =</div>
+<div class="line"><span class="lineno">  643</span>        std::make_shared&lt;Literal&gt;(intToken.getLiteral());</div>
+<div class="line"><span class="lineno">  644</span>    std::shared_ptr&lt;Expr&gt; thenBranch = thenExpr;</div>
+<div class="line"><span class="lineno">  645</span>    std::shared_ptr&lt;Print&gt; printThen = std::make_shared&lt;Print&gt;(thenBranch);</div>
+<div class="line"><span class="lineno">  646</span>    std::shared_ptr&lt;Stmt&gt; thenStmt = printThen;</div>
+<div class="line"><span class="lineno">  647</span>    std::shared_ptr&lt;If&gt; ifStmt =</div>
+<div class="line"><span class="lineno">  648</span>        std::make_shared&lt;If&gt;(condition, thenStmt, <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">  649</span> </div>
+<div class="line"><span class="lineno">  650</span>    <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>({ifStmt});</div>
+<div class="line"><span class="lineno">  651</span>    CHECK(oss.str() == <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><span class="lineno">  652</span>  }</div>
+<div class="line"><span class="lineno">  653</span> </div>
+<div class="line"><span class="lineno">  654</span>  SECTION(<span class="stringliteral">&quot;If-else case with true condition&quot;</span>) {</div>
+<div class="line"><span class="lineno">  655</span>    <span class="comment">// If(true) print 42; else print &quot;Hello, World!&quot;;</span></div>
+<div class="line"><span class="lineno">  656</span>    std::shared_ptr&lt;Literal&gt; conditionExpr =</div>
+<div class="line"><span class="lineno">  657</span>        std::make_shared&lt;Literal&gt;(trueToken.getLiteral());</div>
+<div class="line"><span class="lineno">  658</span>    std::shared_ptr&lt;Expr&gt; condition = conditionExpr;</div>
+<div class="line"><span class="lineno">  659</span>    std::shared_ptr&lt;Literal&gt; thenExpr =</div>
+<div class="line"><span class="lineno">  660</span>        std::make_shared&lt;Literal&gt;(intToken.getLiteral());</div>
+<div class="line"><span class="lineno">  661</span>    std::shared_ptr&lt;Expr&gt; thenBranch = thenExpr;</div>
+<div class="line"><span class="lineno">  662</span>    std::shared_ptr&lt;Print&gt; printThen = std::make_shared&lt;Print&gt;(thenBranch);</div>
+<div class="line"><span class="lineno">  663</span>    std::shared_ptr&lt;Stmt&gt; thenStmt = printThen;</div>
+<div class="line"><span class="lineno">  664</span>    std::shared_ptr&lt;Literal&gt; elseExpr =</div>
+<div class="line"><span class="lineno">  665</span>        std::make_shared&lt;Literal&gt;(stringToken.getLiteral());</div>
+<div class="line"><span class="lineno">  666</span>    std::shared_ptr&lt;Expr&gt; elseBranch = elseExpr;</div>
+<div class="line"><span class="lineno">  667</span>    std::shared_ptr&lt;Print&gt; printElse = std::make_shared&lt;Print&gt;(elseBranch);</div>
+<div class="line"><span class="lineno">  668</span>    std::shared_ptr&lt;Stmt&gt; elseStmt = printElse;</div>
+<div class="line"><span class="lineno">  669</span>    std::shared_ptr&lt;If&gt; ifStmt =</div>
+<div class="line"><span class="lineno">  670</span>        std::make_shared&lt;If&gt;(condition, thenStmt, elseStmt);</div>
+<div class="line"><span class="lineno">  671</span> </div>
+<div class="line"><span class="lineno">  672</span>    <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>({ifStmt});</div>
+<div class="line"><span class="lineno">  673</span>    CHECK(oss.str() == <span class="stringliteral">&quot;42\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  674</span>  }</div>
+<div class="line"><span class="lineno">  675</span> </div>
+<div class="line"><span class="lineno">  676</span>  SECTION(<span class="stringliteral">&quot;If-else case with false condition&quot;</span>) {</div>
+<div class="line"><span class="lineno">  677</span>    <span class="comment">// If(false) print 42; else print &quot;Hello, World!&quot;;</span></div>
+<div class="line"><span class="lineno">  678</span>    std::shared_ptr&lt;Literal&gt; conditionExpr =</div>
+<div class="line"><span class="lineno">  679</span>        std::make_shared&lt;Literal&gt;(falseToken.getLiteral());</div>
+<div class="line"><span class="lineno">  680</span>    std::shared_ptr&lt;Expr&gt; condition = conditionExpr;</div>
+<div class="line"><span class="lineno">  681</span>    std::shared_ptr&lt;Literal&gt; thenExpr =</div>
+<div class="line"><span class="lineno">  682</span>        std::make_shared&lt;Literal&gt;(intToken.getLiteral());</div>
+<div class="line"><span class="lineno">  683</span>    std::shared_ptr&lt;Expr&gt; thenBranch = thenExpr;</div>
+<div class="line"><span class="lineno">  684</span>    std::shared_ptr&lt;Print&gt; printThen = std::make_shared&lt;Print&gt;(thenBranch);</div>
+<div class="line"><span class="lineno">  685</span>    std::shared_ptr&lt;Stmt&gt; thenStmt = printThen;</div>
+<div class="line"><span class="lineno">  686</span>    std::shared_ptr&lt;Literal&gt; elseExpr =</div>
+<div class="line"><span class="lineno">  687</span>        std::make_shared&lt;Literal&gt;(stringToken.getLiteral());</div>
+<div class="line"><span class="lineno">  688</span>    std::shared_ptr&lt;Expr&gt; elseBranch = elseExpr;</div>
+<div class="line"><span class="lineno">  689</span>    std::shared_ptr&lt;Print&gt; printElse = std::make_shared&lt;Print&gt;(elseBranch);</div>
+<div class="line"><span class="lineno">  690</span>    std::shared_ptr&lt;Stmt&gt; elseStmt = printElse;</div>
+<div class="line"><span class="lineno">  691</span>    std::shared_ptr&lt;If&gt; ifStmt =</div>
+<div class="line"><span class="lineno">  692</span>        std::make_shared&lt;If&gt;(condition, thenStmt, elseStmt);</div>
+<div class="line"><span class="lineno">  693</span> </div>
+<div class="line"><span class="lineno">  694</span>    <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>({ifStmt});</div>
+<div class="line"><span class="lineno">  695</span>    CHECK(oss.str() == <span class="stringliteral">&quot;Hello, World!\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  696</span>  }</div>
+<div class="line"><span class="lineno">  697</span> </div>
+<div class="line"><span class="lineno">  698</span>  <span class="comment">// Restore the original cout buffer</span></div>
+<div class="line"><span class="lineno">  699</span>  std::cout.rdbuf(oldCout);</div>
+<div class="line"><span class="lineno">  700</span>}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a6c6a1c7c7c4e7f448ae53d7aa8891248" name="a6c6a1c7c7c4e7f448ae53d7aa8891248"></a>
@@ -202,12 +382,116 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="interpreterTest_8cpp_a6c6a1c7c7c4e7f448ae53d7aa8891248_cgraph.png" border="0" usemap="#ainterpreterTest_8cpp_a6c6a1c7c7c4e7f448ae53d7aa8891248_cgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="interpreterTest_8cpp_source.html#l00503">503</a> of file <a class="el" href="interpreterTest_8cpp_source.html">interpreterTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  504</span>                                               {</div>
+<div class="line"><span class="lineno">  505</span>  <a class="code hl_class" href="classToken.html">Token</a> trueToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa82764c3079aea4e60c80e45befbb839">TokenType::TRUE</a>, <span class="stringliteral">&quot;true&quot;</span>, <span class="keyword">true</span>, 1);</div>
+<div class="line"><span class="lineno">  506</span>  <a class="code hl_class" href="classToken.html">Token</a> falseToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa1e095cc966dbecf6a0d8aad75348d1a">TokenType::FALSE</a>, <span class="stringliteral">&quot;false&quot;</span>, <span class="keyword">false</span>, 1);</div>
+<div class="line"><span class="lineno">  507</span>  <a class="code hl_class" href="classToken.html">Token</a> intToken{<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a12a90dfe20486bbe3e075afcd19ef2d0">TokenType::NUMBER</a>, <span class="stringliteral">&quot;42&quot;</span>, 42, 1};</div>
+<div class="line"><span class="lineno">  508</span>  <a class="code hl_class" href="classToken.html">Token</a> stringToken{<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aee847e634a4297b274316de8a8ca9921">TokenType::STRING</a>, <span class="stringliteral">&quot;Hello, World!&quot;</span>, <span class="stringliteral">&quot;Hello, World!&quot;</span>, 1};</div>
+<div class="line"><span class="lineno">  509</span>  <a class="code hl_class" href="classToken.html">Token</a> andToken{<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a865555c9f2e0458a7078486aa1b3254f">TokenType::AND</a>, <span class="stringliteral">&quot;and&quot;</span>, <span class="keyword">nullptr</span>, 1};</div>
+<div class="line"><span class="lineno">  510</span>  <a class="code hl_class" href="classToken.html">Token</a> orToken{<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a96727447c0ad447987df1c6415aef074">TokenType::OR</a>, <span class="stringliteral">&quot;or&quot;</span>, <span class="keyword">nullptr</span>, 1};</div>
+<div class="line"><span class="lineno">  511</span> </div>
+<div class="line"><span class="lineno">  512</span>  <span class="comment">// Redirect output to a string stream</span></div>
+<div class="line"><span class="lineno">  513</span>  std::ostringstream oss;</div>
+<div class="line"><span class="lineno">  514</span>  <span class="keyword">auto</span> oldCout = std::cout.rdbuf(oss.rdbuf());</div>
+<div class="line"><span class="lineno">  515</span> </div>
+<div class="line"><span class="lineno">  516</span>  SECTION(<span class="stringliteral">&quot;False short-circuit for AND&quot;</span>) {</div>
+<div class="line"><span class="lineno">  517</span>    std::shared_ptr&lt;Literal&gt; leftExpr =</div>
+<div class="line"><span class="lineno">  518</span>        std::make_shared&lt;Literal&gt;(falseToken.getLiteral());</div>
+<div class="line"><span class="lineno">  519</span>    std::shared_ptr&lt;Literal&gt; rightExpr =</div>
+<div class="line"><span class="lineno">  520</span>        std::make_shared&lt;Literal&gt;(trueToken.getLiteral());</div>
+<div class="line"><span class="lineno">  521</span>    std::shared_ptr&lt;Logical&gt; logicalExpr =</div>
+<div class="line"><span class="lineno">  522</span>        std::make_shared&lt;Logical&gt;(leftExpr, andToken, rightExpr);</div>
+<div class="line"><span class="lineno">  523</span>    std::shared_ptr&lt;Expr&gt; expr = logicalExpr;</div>
+<div class="line"><span class="lineno">  524</span>    std::shared_ptr&lt;Print&gt; printExpr = std::make_shared&lt;Print&gt;(expr);</div>
+<div class="line"><span class="lineno">  525</span>    std::shared_ptr&lt;Stmt&gt; stmt = printExpr;</div>
+<div class="line"><span class="lineno">  526</span> </div>
+<div class="line"><span class="lineno">  527</span>    <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>({stmt});</div>
+<div class="line"><span class="lineno">  528</span>    CHECK(oss.str() == <span class="stringliteral">&quot;false\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  529</span>  }</div>
+<div class="line"><span class="lineno">  530</span> </div>
+<div class="line"><span class="lineno">  531</span>  SECTION(<span class="stringliteral">&quot;True case for AND&quot;</span>) {</div>
+<div class="line"><span class="lineno">  532</span>    std::shared_ptr&lt;Literal&gt; leftExpr =</div>
+<div class="line"><span class="lineno">  533</span>        std::make_shared&lt;Literal&gt;(trueToken.getLiteral());</div>
+<div class="line"><span class="lineno">  534</span>    std::shared_ptr&lt;Literal&gt; rightExpr =</div>
+<div class="line"><span class="lineno">  535</span>        std::make_shared&lt;Literal&gt;(trueToken.getLiteral());</div>
+<div class="line"><span class="lineno">  536</span>    std::shared_ptr&lt;Logical&gt; logicalExpr =</div>
+<div class="line"><span class="lineno">  537</span>        std::make_shared&lt;Logical&gt;(leftExpr, andToken, rightExpr);</div>
+<div class="line"><span class="lineno">  538</span>    std::shared_ptr&lt;Expr&gt; expr = logicalExpr;</div>
+<div class="line"><span class="lineno">  539</span>    std::shared_ptr&lt;Print&gt; printExpr = std::make_shared&lt;Print&gt;(expr);</div>
+<div class="line"><span class="lineno">  540</span>    std::shared_ptr&lt;Stmt&gt; stmt = printExpr;</div>
+<div class="line"><span class="lineno">  541</span> </div>
+<div class="line"><span class="lineno">  542</span>    <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>({stmt});</div>
+<div class="line"><span class="lineno">  543</span>    CHECK(oss.str() == <span class="stringliteral">&quot;true\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  544</span>  }</div>
+<div class="line"><span class="lineno">  545</span> </div>
+<div class="line"><span class="lineno">  546</span>  SECTION(<span class="stringliteral">&quot;True short-circuit for OR&quot;</span>) {</div>
+<div class="line"><span class="lineno">  547</span>    std::shared_ptr&lt;Literal&gt; leftExpr =</div>
+<div class="line"><span class="lineno">  548</span>        std::make_shared&lt;Literal&gt;(trueToken.getLiteral());</div>
+<div class="line"><span class="lineno">  549</span>    std::shared_ptr&lt;Literal&gt; rightExpr =</div>
+<div class="line"><span class="lineno">  550</span>        std::make_shared&lt;Literal&gt;(falseToken.getLiteral());</div>
+<div class="line"><span class="lineno">  551</span>    std::shared_ptr&lt;Logical&gt; logicalExpr =</div>
+<div class="line"><span class="lineno">  552</span>        std::make_shared&lt;Logical&gt;(leftExpr, orToken, rightExpr);</div>
+<div class="line"><span class="lineno">  553</span>    std::shared_ptr&lt;Expr&gt; expr = logicalExpr;</div>
+<div class="line"><span class="lineno">  554</span>    std::shared_ptr&lt;Print&gt; printExpr = std::make_shared&lt;Print&gt;(expr);</div>
+<div class="line"><span class="lineno">  555</span>    std::shared_ptr&lt;Stmt&gt; stmt = printExpr;</div>
+<div class="line"><span class="lineno">  556</span> </div>
+<div class="line"><span class="lineno">  557</span>    <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>({stmt});</div>
+<div class="line"><span class="lineno">  558</span>    CHECK(oss.str() == <span class="stringliteral">&quot;true\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  559</span>  }</div>
+<div class="line"><span class="lineno">  560</span> </div>
+<div class="line"><span class="lineno">  561</span>  SECTION(<span class="stringliteral">&quot;False case for OR&quot;</span>) {</div>
+<div class="line"><span class="lineno">  562</span>    std::shared_ptr&lt;Literal&gt; leftExpr =</div>
+<div class="line"><span class="lineno">  563</span>        std::make_shared&lt;Literal&gt;(falseToken.getLiteral());</div>
+<div class="line"><span class="lineno">  564</span>    std::shared_ptr&lt;Literal&gt; rightExpr =</div>
+<div class="line"><span class="lineno">  565</span>        std::make_shared&lt;Literal&gt;(falseToken.getLiteral());</div>
+<div class="line"><span class="lineno">  566</span>    std::shared_ptr&lt;Logical&gt; logicalExpr =</div>
+<div class="line"><span class="lineno">  567</span>        std::make_shared&lt;Logical&gt;(leftExpr, orToken, rightExpr);</div>
+<div class="line"><span class="lineno">  568</span>    std::shared_ptr&lt;Expr&gt; expr = logicalExpr;</div>
+<div class="line"><span class="lineno">  569</span>    std::shared_ptr&lt;Print&gt; printExpr = std::make_shared&lt;Print&gt;(expr);</div>
+<div class="line"><span class="lineno">  570</span>    std::shared_ptr&lt;Stmt&gt; stmt = printExpr;</div>
+<div class="line"><span class="lineno">  571</span> </div>
+<div class="line"><span class="lineno">  572</span>    <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>({stmt});</div>
+<div class="line"><span class="lineno">  573</span>    CHECK(oss.str() == <span class="stringliteral">&quot;false\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  574</span>  }</div>
+<div class="line"><span class="lineno">  575</span> </div>
+<div class="line"><span class="lineno">  576</span>  SECTION(<span class="stringliteral">&quot;Truthy result for AND&quot;</span>) {</div>
+<div class="line"><span class="lineno">  577</span>    std::shared_ptr&lt;Literal&gt; leftExpr =</div>
+<div class="line"><span class="lineno">  578</span>        std::make_shared&lt;Literal&gt;(trueToken.getLiteral());</div>
+<div class="line"><span class="lineno">  579</span>    std::shared_ptr&lt;Literal&gt; rightExpr =</div>
+<div class="line"><span class="lineno">  580</span>        std::make_shared&lt;Literal&gt;(intToken.getLiteral());</div>
+<div class="line"><span class="lineno">  581</span>    std::shared_ptr&lt;Logical&gt; logicalExpr =</div>
+<div class="line"><span class="lineno">  582</span>        std::make_shared&lt;Logical&gt;(leftExpr, andToken, rightExpr);</div>
+<div class="line"><span class="lineno">  583</span>    std::shared_ptr&lt;Expr&gt; expr = logicalExpr;</div>
+<div class="line"><span class="lineno">  584</span>    std::shared_ptr&lt;Print&gt; printExpr = std::make_shared&lt;Print&gt;(expr);</div>
+<div class="line"><span class="lineno">  585</span>    std::shared_ptr&lt;Stmt&gt; stmt = printExpr;</div>
+<div class="line"><span class="lineno">  586</span> </div>
+<div class="line"><span class="lineno">  587</span>    <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>({stmt});</div>
+<div class="line"><span class="lineno">  588</span>    CHECK(oss.str() == <span class="stringliteral">&quot;42\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  589</span>  }</div>
+<div class="line"><span class="lineno">  590</span> </div>
+<div class="line"><span class="lineno">  591</span>  SECTION(<span class="stringliteral">&quot;Truthy result for OR&quot;</span>) {</div>
+<div class="line"><span class="lineno">  592</span>    std::shared_ptr&lt;Literal&gt; leftExpr =</div>
+<div class="line"><span class="lineno">  593</span>        std::make_shared&lt;Literal&gt;(stringToken.getLiteral());</div>
+<div class="line"><span class="lineno">  594</span>    std::shared_ptr&lt;Literal&gt; rightExpr =</div>
+<div class="line"><span class="lineno">  595</span>        std::make_shared&lt;Literal&gt;(falseToken.getLiteral());</div>
+<div class="line"><span class="lineno">  596</span>    std::shared_ptr&lt;Logical&gt; logicalExpr =</div>
+<div class="line"><span class="lineno">  597</span>        std::make_shared&lt;Logical&gt;(leftExpr, orToken, rightExpr);</div>
+<div class="line"><span class="lineno">  598</span>    std::shared_ptr&lt;Expr&gt; expr = logicalExpr;</div>
+<div class="line"><span class="lineno">  599</span>    std::shared_ptr&lt;Print&gt; printExpr = std::make_shared&lt;Print&gt;(expr);</div>
+<div class="line"><span class="lineno">  600</span>    std::shared_ptr&lt;Stmt&gt; stmt = printExpr;</div>
+<div class="line"><span class="lineno">  601</span> </div>
+<div class="line"><span class="lineno">  602</span>    <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>({stmt});</div>
+<div class="line"><span class="lineno">  603</span>    CHECK(oss.str() == <span class="stringliteral">&quot;Hello, World!\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  604</span>  }</div>
+<div class="line"><span class="lineno">  605</span> </div>
+<div class="line"><span class="lineno">  606</span>  <span class="comment">// Restore the original cout buffer</span></div>
+<div class="line"><span class="lineno">  607</span>  std::cout.rdbuf(oldCout);</div>
+<div class="line"><span class="lineno">  608</span>}</div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a865555c9f2e0458a7078486aa1b3254f"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a865555c9f2e0458a7078486aa1b3254f">AND</a></div><div class="ttdeci">@ AND</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00038">tokenType.hpp:38</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a96727447c0ad447987df1c6415aef074"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a96727447c0ad447987df1c6415aef074">OR</a></div><div class="ttdeci">@ OR</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00039">tokenType.hpp:39</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a7d78cde49e06d2e3075c06db32f64b88" name="a7d78cde49e06d2e3075c06db32f64b88"></a>
@@ -235,12 +519,36 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="interpreterTest_8cpp_a7d78cde49e06d2e3075c06db32f64b88_cgraph.png" border="0" usemap="#ainterpreterTest_8cpp_a7d78cde49e06d2e3075c06db32f64b88_cgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="interpreterTest_8cpp_source.html#l00432">432</a> of file <a class="el" href="interpreterTest_8cpp_source.html">interpreterTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  433</span>                                                {</div>
+<div class="line"><span class="lineno">  434</span>  <a class="code hl_class" href="classToken.html">Token</a> intToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a12a90dfe20486bbe3e075afcd19ef2d0">TokenType::NUMBER</a>, <span class="stringliteral">&quot;42&quot;</span>, 42, 1);</div>
+<div class="line"><span class="lineno">  435</span>  <a class="code hl_class" href="classToken.html">Token</a> stringToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aee847e634a4297b274316de8a8ca9921">TokenType::STRING</a>, <span class="stringliteral">&quot;Hello, World!&quot;</span>, <span class="stringliteral">&quot;Hello, World!&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">  436</span> </div>
+<div class="line"><span class="lineno">  437</span>  <span class="comment">// Redirect output to a string stream</span></div>
+<div class="line"><span class="lineno">  438</span>  std::ostringstream oss;</div>
+<div class="line"><span class="lineno">  439</span>  <span class="keyword">auto</span> oldCout = std::cout.rdbuf(oss.rdbuf());</div>
+<div class="line"><span class="lineno">  440</span> </div>
+<div class="line"><span class="lineno">  441</span>  std::shared_ptr&lt;Literal&gt; literalExpr =</div>
+<div class="line"><span class="lineno">  442</span>      std::make_shared&lt;Literal&gt;(intToken.getLiteral());</div>
+<div class="line"><span class="lineno">  443</span>  std::shared_ptr&lt;Expr&gt; expr1 = literalExpr;</div>
+<div class="line"><span class="lineno">  444</span>  std::shared_ptr&lt;Print&gt; printExpr1 = std::make_shared&lt;Print&gt;(expr1);</div>
+<div class="line"><span class="lineno">  445</span>  std::shared_ptr&lt;Stmt&gt; stmt1 = printExpr1;</div>
+<div class="line"><span class="lineno">  446</span> </div>
+<div class="line"><span class="lineno">  447</span>  std::shared_ptr&lt;Literal&gt; stringLiteralExpr =</div>
+<div class="line"><span class="lineno">  448</span>      std::make_shared&lt;Literal&gt;(stringToken.getLiteral());</div>
+<div class="line"><span class="lineno">  449</span>  std::shared_ptr&lt;Expr&gt; expr2 = stringLiteralExpr;</div>
+<div class="line"><span class="lineno">  450</span>  std::shared_ptr&lt;Print&gt; printExpr2 = std::make_shared&lt;Print&gt;(expr2);</div>
+<div class="line"><span class="lineno">  451</span>  std::shared_ptr&lt;Stmt&gt; stmt2 = printExpr2;</div>
+<div class="line"><span class="lineno">  452</span> </div>
+<div class="line"><span class="lineno">  453</span>  std::vector&lt;std::shared_ptr&lt;Stmt&gt;&gt; statements = {stmt1, stmt2};</div>
+<div class="line"><span class="lineno">  454</span>  <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>(statements);</div>
+<div class="line"><span class="lineno">  455</span>  CHECK(oss.str() == <span class="stringliteral">&quot;42\nHello, World!\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  456</span> </div>
+<div class="line"><span class="lineno">  457</span>  <span class="comment">// Restore the original cout buffer</span></div>
+<div class="line"><span class="lineno">  458</span>  std::cout.rdbuf(oldCout);</div>
+<div class="line"><span class="lineno">  459</span>}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ab150f85e2a5e48f1c4f8992c29f0c06a" name="ab150f85e2a5e48f1c4f8992c29f0c06a"></a>
@@ -268,12 +576,80 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="interpreterTest_8cpp_ab150f85e2a5e48f1c4f8992c29f0c06a_cgraph.png" border="0" usemap="#ainterpreterTest_8cpp_ab150f85e2a5e48f1c4f8992c29f0c06a_cgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="interpreterTest_8cpp_source.html#l00007">7</a> of file <a class="el" href="interpreterTest_8cpp_source.html">interpreterTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">    8</span>                                           {</div>
+<div class="line"><span class="lineno">    9</span>  <a class="code hl_class" href="classToken.html">Token</a> EOFToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a7ea291c26de584b23fd7f9111784f860">TokenType::END_OF_FILE</a>, <span class="stringliteral">&quot;&quot;</span>, 0, 3);</div>
+<div class="line"><span class="lineno">   10</span> </div>
+<div class="line"><span class="lineno">   11</span>  <span class="comment">// Redirect output to a string stream</span></div>
+<div class="line"><span class="lineno">   12</span>  std::ostringstream oss;</div>
+<div class="line"><span class="lineno">   13</span>  <span class="keyword">auto</span> oldCout = std::cout.rdbuf(oss.rdbuf());</div>
+<div class="line"><span class="lineno">   14</span> </div>
+<div class="line"><span class="lineno">   15</span>  SECTION(<span class="stringliteral">&quot;Integer literal&quot;</span>) {</div>
+<div class="line"><span class="lineno">   16</span>    <a class="code hl_class" href="classToken.html">Token</a> intToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a12a90dfe20486bbe3e075afcd19ef2d0">TokenType::NUMBER</a>, <span class="stringliteral">&quot;42&quot;</span>, 42, 1);</div>
+<div class="line"><span class="lineno">   17</span>    std::shared_ptr&lt;Literal&gt; literalExpr =</div>
+<div class="line"><span class="lineno">   18</span>        std::make_shared&lt;Literal&gt;(intToken.getLiteral());</div>
+<div class="line"><span class="lineno">   19</span>    std::shared_ptr&lt;Expr&gt; expr = literalExpr;</div>
+<div class="line"><span class="lineno">   20</span>    std::shared_ptr&lt;Print&gt; printExpr = std::make_shared&lt;Print&gt;(expr);</div>
+<div class="line"><span class="lineno">   21</span>    std::shared_ptr&lt;Stmt&gt; stmt = printExpr;</div>
+<div class="line"><span class="lineno">   22</span> </div>
+<div class="line"><span class="lineno">   23</span>    <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>({stmt});</div>
+<div class="line"><span class="lineno">   24</span>    CHECK(oss.str() == <span class="stringliteral">&quot;42\n&quot;</span>);</div>
+<div class="line"><span class="lineno">   25</span>  }</div>
+<div class="line"><span class="lineno">   26</span> </div>
+<div class="line"><span class="lineno">   27</span>  SECTION(<span class="stringliteral">&quot;NIL literal&quot;</span>) {</div>
+<div class="line"><span class="lineno">   28</span>    <a class="code hl_class" href="classToken.html">Token</a> nilToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a682466b7669a81b39a8d657274fd4b95">TokenType::NIL</a>, <span class="stringliteral">&quot;nil&quot;</span>, <span class="keyword">nullptr</span>, 1);</div>
+<div class="line"><span class="lineno">   29</span>    std::shared_ptr&lt;Literal&gt; literalExpr =</div>
+<div class="line"><span class="lineno">   30</span>        std::make_shared&lt;Literal&gt;(nilToken.getLiteral());</div>
+<div class="line"><span class="lineno">   31</span>    std::shared_ptr&lt;Expr&gt; expr = literalExpr;</div>
+<div class="line"><span class="lineno">   32</span>    std::shared_ptr&lt;Print&gt; printExpr = std::make_shared&lt;Print&gt;(expr);</div>
+<div class="line"><span class="lineno">   33</span>    std::shared_ptr&lt;Stmt&gt; stmt = printExpr;</div>
+<div class="line"><span class="lineno">   34</span> </div>
+<div class="line"><span class="lineno">   35</span>    <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>({stmt});</div>
+<div class="line"><span class="lineno">   36</span>    CHECK(oss.str() == <span class="stringliteral">&quot;nil\n&quot;</span>);</div>
+<div class="line"><span class="lineno">   37</span>  }</div>
+<div class="line"><span class="lineno">   38</span> </div>
+<div class="line"><span class="lineno">   39</span>  SECTION(<span class="stringliteral">&quot;Boolean literal (true)&quot;</span>) {</div>
+<div class="line"><span class="lineno">   40</span>    <a class="code hl_class" href="classToken.html">Token</a> trueToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa82764c3079aea4e60c80e45befbb839">TokenType::TRUE</a>, <span class="stringliteral">&quot;true&quot;</span>, <span class="keyword">true</span>, 1);</div>
+<div class="line"><span class="lineno">   41</span>    std::shared_ptr&lt;Literal&gt; literalExpr =</div>
+<div class="line"><span class="lineno">   42</span>        std::make_shared&lt;Literal&gt;(trueToken.getLiteral());</div>
+<div class="line"><span class="lineno">   43</span>    std::shared_ptr&lt;Expr&gt; expr = literalExpr;</div>
+<div class="line"><span class="lineno">   44</span>    std::shared_ptr&lt;Print&gt; printExpr = std::make_shared&lt;Print&gt;(expr);</div>
+<div class="line"><span class="lineno">   45</span>    std::shared_ptr&lt;Stmt&gt; stmt = printExpr;</div>
+<div class="line"><span class="lineno">   46</span> </div>
+<div class="line"><span class="lineno">   47</span>    <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>({stmt});</div>
+<div class="line"><span class="lineno">   48</span>    CHECK(oss.str() == <span class="stringliteral">&quot;true\n&quot;</span>);</div>
+<div class="line"><span class="lineno">   49</span>  }</div>
+<div class="line"><span class="lineno">   50</span> </div>
+<div class="line"><span class="lineno">   51</span>  SECTION(<span class="stringliteral">&quot;Boolean literal (false)&quot;</span>) {</div>
+<div class="line"><span class="lineno">   52</span>    <a class="code hl_class" href="classToken.html">Token</a> falseToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa1e095cc966dbecf6a0d8aad75348d1a">TokenType::FALSE</a>, <span class="stringliteral">&quot;false&quot;</span>, <span class="keyword">false</span>, 1);</div>
+<div class="line"><span class="lineno">   53</span>    std::shared_ptr&lt;Literal&gt; literalExpr =</div>
+<div class="line"><span class="lineno">   54</span>        std::make_shared&lt;Literal&gt;(falseToken.getLiteral());</div>
+<div class="line"><span class="lineno">   55</span>    std::shared_ptr&lt;Expr&gt; expr = literalExpr;</div>
+<div class="line"><span class="lineno">   56</span>    std::shared_ptr&lt;Print&gt; printExpr = std::make_shared&lt;Print&gt;(expr);</div>
+<div class="line"><span class="lineno">   57</span>    std::shared_ptr&lt;Stmt&gt; stmt = printExpr;</div>
+<div class="line"><span class="lineno">   58</span> </div>
+<div class="line"><span class="lineno">   59</span>    <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>({stmt});</div>
+<div class="line"><span class="lineno">   60</span>    CHECK(oss.str() == <span class="stringliteral">&quot;false\n&quot;</span>);</div>
+<div class="line"><span class="lineno">   61</span>  }</div>
+<div class="line"><span class="lineno">   62</span> </div>
+<div class="line"><span class="lineno">   63</span>  SECTION(<span class="stringliteral">&quot;String literal&quot;</span>) {</div>
+<div class="line"><span class="lineno">   64</span>    <a class="code hl_class" href="classToken.html">Token</a> stringToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aee847e634a4297b274316de8a8ca9921">TokenType::STRING</a>, <span class="stringliteral">&quot;Hello, World!&quot;</span>, <span class="stringliteral">&quot;Hello, World!&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">   65</span>    std::shared_ptr&lt;Literal&gt; literalExpr =</div>
+<div class="line"><span class="lineno">   66</span>        std::make_shared&lt;Literal&gt;(stringToken.getLiteral());</div>
+<div class="line"><span class="lineno">   67</span>    std::shared_ptr&lt;Expr&gt; expr = literalExpr;</div>
+<div class="line"><span class="lineno">   68</span>    std::shared_ptr&lt;Print&gt; printExpr = std::make_shared&lt;Print&gt;(expr);</div>
+<div class="line"><span class="lineno">   69</span>    std::shared_ptr&lt;Stmt&gt; stmt = printExpr;</div>
+<div class="line"><span class="lineno">   70</span> </div>
+<div class="line"><span class="lineno">   71</span>    <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>({stmt});</div>
+<div class="line"><span class="lineno">   72</span>    CHECK(oss.str() == <span class="stringliteral">&quot;Hello, World!\n&quot;</span>);</div>
+<div class="line"><span class="lineno">   73</span>  }</div>
+<div class="line"><span class="lineno">   74</span> </div>
+<div class="line"><span class="lineno">   75</span>  <span class="comment">// Restore the original cout buffer</span></div>
+<div class="line"><span class="lineno">   76</span>  std::cout.rdbuf(oldCout);</div>
+<div class="line"><span class="lineno">   77</span>}</div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a7ea291c26de584b23fd7f9111784f860"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a7ea291c26de584b23fd7f9111784f860">END_OF_FILE</a></div><div class="ttdeci">@ END_OF_FILE</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00051">tokenType.hpp:50</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a20d502dcebb9fdb1ee5a77b6e461a05f" name="a20d502dcebb9fdb1ee5a77b6e461a05f"></a>
@@ -301,12 +677,80 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="interpreterTest_8cpp_a20d502dcebb9fdb1ee5a77b6e461a05f_cgraph.png" border="0" usemap="#ainterpreterTest_8cpp_a20d502dcebb9fdb1ee5a77b6e461a05f_cgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="interpreterTest_8cpp_source.html#l00148">148</a> of file <a class="el" href="interpreterTest_8cpp_source.html">interpreterTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  148</span>                                                                    {</div>
+<div class="line"><span class="lineno">  149</span>  <a class="code hl_class" href="classToken.html">Token</a> integerToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a12a90dfe20486bbe3e075afcd19ef2d0">TokenType::NUMBER</a>, <span class="stringliteral">&quot;42&quot;</span>, 42, 1);</div>
+<div class="line"><span class="lineno">  150</span>  <a class="code hl_class" href="classToken.html">Token</a> booleanToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa82764c3079aea4e60c80e45befbb839">TokenType::TRUE</a>, <span class="stringliteral">&quot;true&quot;</span>, <span class="keyword">true</span>, 1);</div>
+<div class="line"><span class="lineno">  151</span>  <a class="code hl_class" href="classToken.html">Token</a> minusToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921af613d73b4e7b570ffd967df4a13c4225">TokenType::MINUS</a>, <span class="stringliteral">&quot;-&quot;</span>, <span class="keyword">nullptr</span>, 1);</div>
+<div class="line"><span class="lineno">  152</span>  <a class="code hl_class" href="classToken.html">Token</a> bangToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a220fa389cdbdc1e8cd33f70c1f793d3c">TokenType::BANG</a>, <span class="stringliteral">&quot;!&quot;</span>, <span class="keyword">nullptr</span>, 1);</div>
+<div class="line"><span class="lineno">  153</span> </div>
+<div class="line"><span class="lineno">  154</span>  <span class="comment">// Redirect output to a string stream</span></div>
+<div class="line"><span class="lineno">  155</span>  std::ostringstream oss;</div>
+<div class="line"><span class="lineno">  156</span>  <span class="keyword">auto</span> oldCout = std::cout.rdbuf(oss.rdbuf());</div>
+<div class="line"><span class="lineno">  157</span> </div>
+<div class="line"><span class="lineno">  158</span>  SECTION(<span class="stringliteral">&quot;MINUS unary expression&quot;</span>) {</div>
+<div class="line"><span class="lineno">  159</span>    std::shared_ptr&lt;Literal&gt; literalExpr =</div>
+<div class="line"><span class="lineno">  160</span>        std::make_shared&lt;Literal&gt;(integerToken.getLiteral());</div>
+<div class="line"><span class="lineno">  161</span>    std::shared_ptr&lt;Unary&gt; unaryExpr =</div>
+<div class="line"><span class="lineno">  162</span>        std::make_shared&lt;Unary&gt;(minusToken, literalExpr);</div>
+<div class="line"><span class="lineno">  163</span>    std::shared_ptr&lt;Expr&gt; expr = unaryExpr;</div>
+<div class="line"><span class="lineno">  164</span>    std::shared_ptr&lt;Print&gt; printExpr = std::make_shared&lt;Print&gt;(expr);</div>
+<div class="line"><span class="lineno">  165</span>    std::shared_ptr&lt;Stmt&gt; stmt = printExpr;</div>
+<div class="line"><span class="lineno">  166</span> </div>
+<div class="line"><span class="lineno">  167</span>    <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>({stmt});</div>
+<div class="line"><span class="lineno">  168</span>    CHECK(oss.str() == <span class="stringliteral">&quot;-42\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  169</span>  }</div>
+<div class="line"><span class="lineno">  170</span> </div>
+<div class="line"><span class="lineno">  171</span>  SECTION(<span class="stringliteral">&quot;MINUS (x2) unary expression&quot;</span>) {</div>
+<div class="line"><span class="lineno">  172</span>    std::shared_ptr&lt;Literal&gt; literalExpr =</div>
+<div class="line"><span class="lineno">  173</span>        std::make_shared&lt;Literal&gt;(integerToken.getLiteral());</div>
+<div class="line"><span class="lineno">  174</span>    std::shared_ptr&lt;Unary&gt; unaryExpr1 =</div>
+<div class="line"><span class="lineno">  175</span>        std::make_shared&lt;Unary&gt;(minusToken, literalExpr);</div>
+<div class="line"><span class="lineno">  176</span>    std::shared_ptr&lt;Unary&gt; unaryExpr2 =</div>
+<div class="line"><span class="lineno">  177</span>        std::make_shared&lt;Unary&gt;(minusToken, unaryExpr1);</div>
+<div class="line"><span class="lineno">  178</span>    std::shared_ptr&lt;Expr&gt; expr = unaryExpr2;</div>
+<div class="line"><span class="lineno">  179</span>    std::shared_ptr&lt;Print&gt; printExpr = std::make_shared&lt;Print&gt;(expr);</div>
+<div class="line"><span class="lineno">  180</span>    std::shared_ptr&lt;Stmt&gt; stmt = printExpr;</div>
+<div class="line"><span class="lineno">  181</span> </div>
+<div class="line"><span class="lineno">  182</span>    <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>({stmt});</div>
+<div class="line"><span class="lineno">  183</span>    CHECK(oss.str() == <span class="stringliteral">&quot;42\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  184</span>  }</div>
+<div class="line"><span class="lineno">  185</span> </div>
+<div class="line"><span class="lineno">  186</span>  SECTION(<span class="stringliteral">&quot;BANG unary expression (true)&quot;</span>) {</div>
+<div class="line"><span class="lineno">  187</span>    std::shared_ptr&lt;Literal&gt; literalExpr =</div>
+<div class="line"><span class="lineno">  188</span>        std::make_shared&lt;Literal&gt;(booleanToken.getLiteral());</div>
+<div class="line"><span class="lineno">  189</span>    std::shared_ptr&lt;Unary&gt; unaryExpr =</div>
+<div class="line"><span class="lineno">  190</span>        std::make_shared&lt;Unary&gt;(bangToken, literalExpr);</div>
+<div class="line"><span class="lineno">  191</span>    std::shared_ptr&lt;Expr&gt; expr = unaryExpr;</div>
+<div class="line"><span class="lineno">  192</span>    std::shared_ptr&lt;Print&gt; printExpr = std::make_shared&lt;Print&gt;(expr);</div>
+<div class="line"><span class="lineno">  193</span>    std::shared_ptr&lt;Stmt&gt; stmt = printExpr;</div>
+<div class="line"><span class="lineno">  194</span> </div>
+<div class="line"><span class="lineno">  195</span>    <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>({stmt});</div>
+<div class="line"><span class="lineno">  196</span>    CHECK(oss.str() == <span class="stringliteral">&quot;false\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  197</span>  }</div>
+<div class="line"><span class="lineno">  198</span> </div>
+<div class="line"><span class="lineno">  199</span>  SECTION(<span class="stringliteral">&quot;BANG (x2) unary expression (true)&quot;</span>) {</div>
+<div class="line"><span class="lineno">  200</span>    std::shared_ptr&lt;Literal&gt; literalExpr =</div>
+<div class="line"><span class="lineno">  201</span>        std::make_shared&lt;Literal&gt;(booleanToken.getLiteral());</div>
+<div class="line"><span class="lineno">  202</span>    std::shared_ptr&lt;Unary&gt; unaryExpr1 =</div>
+<div class="line"><span class="lineno">  203</span>        std::make_shared&lt;Unary&gt;(bangToken, literalExpr);</div>
+<div class="line"><span class="lineno">  204</span>    std::shared_ptr&lt;Unary&gt; unaryExpr2 =</div>
+<div class="line"><span class="lineno">  205</span>        std::make_shared&lt;Unary&gt;(bangToken, unaryExpr1);</div>
+<div class="line"><span class="lineno">  206</span>    std::shared_ptr&lt;Expr&gt; expr = unaryExpr2;</div>
+<div class="line"><span class="lineno">  207</span>    std::shared_ptr&lt;Print&gt; printExpr = std::make_shared&lt;Print&gt;(expr);</div>
+<div class="line"><span class="lineno">  208</span>    std::shared_ptr&lt;Stmt&gt; stmt = printExpr;</div>
+<div class="line"><span class="lineno">  209</span> </div>
+<div class="line"><span class="lineno">  210</span>    <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>({stmt});</div>
+<div class="line"><span class="lineno">  211</span>    CHECK(oss.str() == <span class="stringliteral">&quot;true\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  212</span>  }</div>
+<div class="line"><span class="lineno">  213</span> </div>
+<div class="line"><span class="lineno">  214</span>  <span class="comment">// Restore the original cout buffer</span></div>
+<div class="line"><span class="lineno">  215</span>  std::cout.rdbuf(oldCout);</div>
+<div class="line"><span class="lineno">  216</span>}</div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a220fa389cdbdc1e8cd33f70c1f793d3c"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a220fa389cdbdc1e8cd33f70c1f793d3c">BANG</a></div><div class="ttdeci">@ BANG</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00023">tokenType.hpp:23</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921af613d73b4e7b570ffd967df4a13c4225"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921af613d73b4e7b570ffd967df4a13c4225">MINUS</a></div><div class="ttdeci">@ MINUS</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00016">tokenType.hpp:16</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a6d69d806ec4f8c26e812e8faeba66df8" name="a6d69d806ec4f8c26e812e8faeba66df8"></a>
@@ -334,12 +778,50 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="interpreterTest_8cpp_a6d69d806ec4f8c26e812e8faeba66df8_cgraph.png" border="0" usemap="#ainterpreterTest_8cpp_a6d69d806ec4f8c26e812e8faeba66df8_cgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="interpreterTest_8cpp_source.html#l00461">461</a> of file <a class="el" href="interpreterTest_8cpp_source.html">interpreterTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  462</span>                                                {</div>
+<div class="line"><span class="lineno">  463</span>  <a class="code hl_class" href="classToken.html">Token</a> nameToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a84f8ae2490f9e4bd2321fd21f4b0e807">TokenType::IDENTIFIER</a>, <span class="stringliteral">&quot;x&quot;</span>, <span class="stringliteral">&quot;x&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">  464</span>  <a class="code hl_class" href="classToken.html">Token</a> intToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a12a90dfe20486bbe3e075afcd19ef2d0">TokenType::NUMBER</a>, <span class="stringliteral">&quot;42&quot;</span>, 42, 1);</div>
+<div class="line"><span class="lineno">  465</span>  <a class="code hl_class" href="classToken.html">Token</a> stringToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aee847e634a4297b274316de8a8ca9921">TokenType::STRING</a>, <span class="stringliteral">&quot;Hello, World!&quot;</span>, <span class="stringliteral">&quot;Hello, World!&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">  466</span> </div>
+<div class="line"><span class="lineno">  467</span>  <span class="comment">// Redirect output to a string stream</span></div>
+<div class="line"><span class="lineno">  468</span>  std::ostringstream oss;</div>
+<div class="line"><span class="lineno">  469</span>  <span class="keyword">auto</span> oldCout = std::cout.rdbuf(oss.rdbuf());</div>
+<div class="line"><span class="lineno">  470</span> </div>
+<div class="line"><span class="lineno">  471</span>  <span class="comment">// var x = 42; {var x = &quot;Hello, World!&quot;; print x;}; print x;</span></div>
+<div class="line"><span class="lineno">  472</span>  <span class="comment">// stdout: Hello, World!\n42\n</span></div>
+<div class="line"><span class="lineno">  473</span>  std::shared_ptr&lt;Literal&gt; literalExpr =</div>
+<div class="line"><span class="lineno">  474</span>      std::make_shared&lt;Literal&gt;(intToken.getLiteral());</div>
+<div class="line"><span class="lineno">  475</span>  std::shared_ptr&lt;Expr&gt; expr = literalExpr;</div>
+<div class="line"><span class="lineno">  476</span>  std::shared_ptr&lt;Var&gt; varStmt = std::make_shared&lt;Var&gt;(nameToken, expr);</div>
+<div class="line"><span class="lineno">  477</span>  std::shared_ptr&lt;Stmt&gt; stmt = varStmt;</div>
+<div class="line"><span class="lineno">  478</span> </div>
+<div class="line"><span class="lineno">  479</span>  std::shared_ptr&lt;Literal&gt; stringLiteralExpr =</div>
+<div class="line"><span class="lineno">  480</span>      std::make_shared&lt;Literal&gt;(stringToken.getLiteral());</div>
+<div class="line"><span class="lineno">  481</span>  std::shared_ptr&lt;Expr&gt; stringExpr = stringLiteralExpr;</div>
+<div class="line"><span class="lineno">  482</span>  std::shared_ptr&lt;Var&gt; varStringStmt =</div>
+<div class="line"><span class="lineno">  483</span>      std::make_shared&lt;Var&gt;(nameToken, stringExpr);</div>
+<div class="line"><span class="lineno">  484</span>  std::shared_ptr&lt;Stmt&gt; stringStmt = varStringStmt;</div>
+<div class="line"><span class="lineno">  485</span> </div>
+<div class="line"><span class="lineno">  486</span>  std::shared_ptr&lt;Print&gt; printStmt =</div>
+<div class="line"><span class="lineno">  487</span>      std::make_shared&lt;Print&gt;(std::make_shared&lt;Variable&gt;(nameToken));</div>
+<div class="line"><span class="lineno">  488</span>  std::shared_ptr&lt;Stmt&gt; printStatement = printStmt;</div>
+<div class="line"><span class="lineno">  489</span> </div>
+<div class="line"><span class="lineno">  490</span>  std::vector&lt;std::shared_ptr&lt;Stmt&gt;&gt; statements = {stringStmt, printStatement};</div>
+<div class="line"><span class="lineno">  491</span>  std::shared_ptr&lt;Block&gt; blockStmt = std::make_shared&lt;Block&gt;(statements);</div>
+<div class="line"><span class="lineno">  492</span>  std::shared_ptr&lt;Stmt&gt; block = blockStmt;</div>
+<div class="line"><span class="lineno">  493</span> </div>
+<div class="line"><span class="lineno">  494</span>  std::vector&lt;std::shared_ptr&lt;Stmt&gt;&gt; allStatements = {stmt, block,</div>
+<div class="line"><span class="lineno">  495</span>                                                      printStatement};</div>
+<div class="line"><span class="lineno">  496</span>  <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>(allStatements);</div>
+<div class="line"><span class="lineno">  497</span>  CHECK(oss.str() == <span class="stringliteral">&quot;Hello, World!\n42\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  498</span> </div>
+<div class="line"><span class="lineno">  499</span>  <span class="comment">// Restore the original cout buffer</span></div>
+<div class="line"><span class="lineno">  500</span>  std::cout.rdbuf(oldCout);</div>
+<div class="line"><span class="lineno">  501</span>}</div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a84f8ae2490f9e4bd2321fd21f4b0e807"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a84f8ae2490f9e4bd2321fd21f4b0e807">IDENTIFIER</a></div><div class="ttdeci">@ IDENTIFIER</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00033">tokenType.hpp:33</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ae30abe8dbd86c4cdc9bea70322460f21" name="ae30abe8dbd86c4cdc9bea70322460f21"></a>
@@ -367,12 +849,72 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="interpreterTest_8cpp_ae30abe8dbd86c4cdc9bea70322460f21_cgraph.png" border="0" usemap="#ainterpreterTest_8cpp_ae30abe8dbd86c4cdc9bea70322460f21_cgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="interpreterTest_8cpp_source.html#l00702">702</a> of file <a class="el" href="interpreterTest_8cpp_source.html">interpreterTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  702</span>                                                                             {</div>
+<div class="line"><span class="lineno">  703</span>  <a class="code hl_class" href="classToken.html">Token</a> falseToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa1e095cc966dbecf6a0d8aad75348d1a">TokenType::FALSE</a>, <span class="stringliteral">&quot;false&quot;</span>, <span class="keyword">false</span>, 1);</div>
+<div class="line"><span class="lineno">  704</span>  <a class="code hl_class" href="classToken.html">Token</a> intToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a12a90dfe20486bbe3e075afcd19ef2d0">TokenType::NUMBER</a>, <span class="stringliteral">&quot;42&quot;</span>, 42, 1);</div>
+<div class="line"><span class="lineno">  705</span>  <a class="code hl_class" href="classToken.html">Token</a> intToken2(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a12a90dfe20486bbe3e075afcd19ef2d0">TokenType::NUMBER</a>, <span class="stringliteral">&quot;41&quot;</span>, 41, 1);</div>
+<div class="line"><span class="lineno">  706</span>  <a class="code hl_class" href="classToken.html">Token</a> oneToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a12a90dfe20486bbe3e075afcd19ef2d0">TokenType::NUMBER</a>, <span class="stringliteral">&quot;1&quot;</span>, 1, 1);</div>
+<div class="line"><span class="lineno">  707</span>  <a class="code hl_class" href="classToken.html">Token</a> xToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a84f8ae2490f9e4bd2321fd21f4b0e807">TokenType::IDENTIFIER</a>, <span class="stringliteral">&quot;x&quot;</span>, <span class="stringliteral">&quot;x&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">  708</span> </div>
+<div class="line"><span class="lineno">  709</span>  <span class="comment">// Redirect output to a string stream</span></div>
+<div class="line"><span class="lineno">  710</span>  std::ostringstream oss;</div>
+<div class="line"><span class="lineno">  711</span>  <span class="keyword">auto</span> oldCout = std::cout.rdbuf(oss.rdbuf());</div>
+<div class="line"><span class="lineno">  712</span> </div>
+<div class="line"><span class="lineno">  713</span>  SECTION(<span class="stringliteral">&quot;While with false condition&quot;</span>) {</div>
+<div class="line"><span class="lineno">  714</span>    <span class="comment">// while(false) print 42;</span></div>
+<div class="line"><span class="lineno">  715</span>    std::shared_ptr&lt;Literal&gt; conditionExpr =</div>
+<div class="line"><span class="lineno">  716</span>        std::make_shared&lt;Literal&gt;(falseToken.getLiteral());</div>
+<div class="line"><span class="lineno">  717</span>    std::shared_ptr&lt;Expr&gt; condition = conditionExpr;</div>
+<div class="line"><span class="lineno">  718</span>    std::shared_ptr&lt;Literal&gt; thenExpr =</div>
+<div class="line"><span class="lineno">  719</span>        std::make_shared&lt;Literal&gt;(intToken.getLiteral());</div>
+<div class="line"><span class="lineno">  720</span>    std::shared_ptr&lt;Expr&gt; thenBranch = thenExpr;</div>
+<div class="line"><span class="lineno">  721</span>    std::shared_ptr&lt;Print&gt; printThen = std::make_shared&lt;Print&gt;(thenBranch);</div>
+<div class="line"><span class="lineno">  722</span>    std::shared_ptr&lt;Stmt&gt; thenStmt = printThen;</div>
+<div class="line"><span class="lineno">  723</span>    std::shared_ptr&lt;While&gt; whileStmt =</div>
+<div class="line"><span class="lineno">  724</span>        std::make_shared&lt;While&gt;(condition, thenStmt);</div>
+<div class="line"><span class="lineno">  725</span>    std::vector&lt;std::shared_ptr&lt;Stmt&gt;&gt; statements = {whileStmt};</div>
+<div class="line"><span class="lineno">  726</span> </div>
+<div class="line"><span class="lineno">  727</span>    <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>(statements);</div>
+<div class="line"><span class="lineno">  728</span>    CHECK(oss.str() == <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><span class="lineno">  729</span>  }</div>
+<div class="line"><span class="lineno">  730</span> </div>
+<div class="line"><span class="lineno">  731</span>  SECTION(<span class="stringliteral">&quot;While 2 times condition&quot;</span>) {</div>
+<div class="line"><span class="lineno">  732</span>    <span class="comment">// var x = 42; while(x &gt;= 41) { print x; x = x - 1; }</span></div>
+<div class="line"><span class="lineno">  733</span>    std::shared_ptr&lt;Literal&gt; initExpr =</div>
+<div class="line"><span class="lineno">  734</span>        std::make_shared&lt;Literal&gt;(intToken.getLiteral());</div>
+<div class="line"><span class="lineno">  735</span>    std::shared_ptr&lt;Expr&gt; initBranch = initExpr;</div>
+<div class="line"><span class="lineno">  736</span>    std::shared_ptr&lt;Var&gt; varStmt = std::make_shared&lt;Var&gt;(xToken, initBranch);</div>
+<div class="line"><span class="lineno">  737</span>    std::shared_ptr&lt;Stmt&gt; stmt = varStmt;</div>
+<div class="line"><span class="lineno">  738</span>    std::shared_ptr&lt;Variable&gt; varExpr = std::make_shared&lt;Variable&gt;(xToken);</div>
+<div class="line"><span class="lineno">  739</span>    std::shared_ptr&lt;Binary&gt; conditionExpr = std::make_shared&lt;Binary&gt;(</div>
+<div class="line"><span class="lineno">  740</span>        varExpr, <a class="code hl_class" href="classToken.html">Token</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a4495f63771aa2060042a31363e16d4f9">TokenType::GREATER_EQUAL</a>, <span class="stringliteral">&quot;&gt;=&quot;</span>, <span class="keyword">nullptr</span>, 1),</div>
+<div class="line"><span class="lineno">  741</span>        std::make_shared&lt;Literal&gt;(intToken2.getLiteral()));</div>
+<div class="line"><span class="lineno">  742</span>    std::shared_ptr&lt;Expr&gt; condition = conditionExpr;</div>
+<div class="line"><span class="lineno">  743</span>    std::shared_ptr&lt;Print&gt; printThen = std::make_shared&lt;Print&gt;(varExpr);</div>
+<div class="line"><span class="lineno">  744</span>    std::shared_ptr&lt;Binary&gt; decrementExpr = std::make_shared&lt;Binary&gt;(</div>
+<div class="line"><span class="lineno">  745</span>        varExpr, <a class="code hl_class" href="classToken.html">Token</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921af613d73b4e7b570ffd967df4a13c4225">TokenType::MINUS</a>, <span class="stringliteral">&quot;-&quot;</span>, <span class="keyword">nullptr</span>, 1),</div>
+<div class="line"><span class="lineno">  746</span>        std::make_shared&lt;Literal&gt;(oneToken.getLiteral()));</div>
+<div class="line"><span class="lineno">  747</span>    std::shared_ptr&lt;Assign&gt; assignExpression =</div>
+<div class="line"><span class="lineno">  748</span>        std::make_shared&lt;Assign&gt;(xToken, decrementExpr);</div>
+<div class="line"><span class="lineno">  749</span>    std::shared_ptr&lt;Expr&gt; assignExpr = assignExpression;</div>
+<div class="line"><span class="lineno">  750</span>    std::shared_ptr&lt;Stmt&gt; assignStmt = std::make_shared&lt;Expression&gt;(assignExpr);</div>
+<div class="line"><span class="lineno">  751</span>    std::shared_ptr&lt;Block&gt; blockStmt = std::make_shared&lt;Block&gt;(</div>
+<div class="line"><span class="lineno">  752</span>        std::vector&lt;std::shared_ptr&lt;Stmt&gt;&gt;{printThen, assignStmt});</div>
+<div class="line"><span class="lineno">  753</span>    std::shared_ptr&lt;While&gt; whileStmt =</div>
+<div class="line"><span class="lineno">  754</span>        std::make_shared&lt;While&gt;(condition, blockStmt);</div>
+<div class="line"><span class="lineno">  755</span>    std::vector&lt;std::shared_ptr&lt;Stmt&gt;&gt; statements = {stmt, whileStmt};</div>
+<div class="line"><span class="lineno">  756</span> </div>
+<div class="line"><span class="lineno">  757</span>    <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>(statements);</div>
+<div class="line"><span class="lineno">  758</span>    CHECK(oss.str() == <span class="stringliteral">&quot;42\n41\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  759</span>  }</div>
+<div class="line"><span class="lineno">  760</span> </div>
+<div class="line"><span class="lineno">  761</span>  <span class="comment">// Restore the original cout buffer</span></div>
+<div class="line"><span class="lineno">  762</span>  std::cout.rdbuf(oldCout);</div>
+<div class="line"><span class="lineno">  763</span>}</div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a4495f63771aa2060042a31363e16d4f9"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a4495f63771aa2060042a31363e16d4f9">GREATER_EQUAL</a></div><div class="ttdeci">@ GREATER_EQUAL</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00028">tokenType.hpp:28</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a91cdf5df35d38b3a8934de548a6ca231" name="a91cdf5df35d38b3a8934de548a6ca231"></a>
@@ -400,18 +942,241 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="interpreterTest_8cpp_a91cdf5df35d38b3a8934de548a6ca231_cgraph.png" border="0" usemap="#ainterpreterTest_8cpp_a91cdf5df35d38b3a8934de548a6ca231_cgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="interpreterTest_8cpp_source.html#l00218">218</a> of file <a class="el" href="interpreterTest_8cpp_source.html">interpreterTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  218</span>                                                                     {</div>
+<div class="line"><span class="lineno">  219</span>  <a class="code hl_class" href="classToken.html">Token</a> zeroToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a12a90dfe20486bbe3e075afcd19ef2d0">TokenType::NUMBER</a>, <span class="stringliteral">&quot;0&quot;</span>, 0, 1);</div>
+<div class="line"><span class="lineno">  220</span>  <a class="code hl_class" href="classToken.html">Token</a> oneToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a12a90dfe20486bbe3e075afcd19ef2d0">TokenType::NUMBER</a>, <span class="stringliteral">&quot;1&quot;</span>, 1, 1);</div>
+<div class="line"><span class="lineno">  221</span>  <a class="code hl_class" href="classToken.html">Token</a> twoToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a12a90dfe20486bbe3e075afcd19ef2d0">TokenType::NUMBER</a>, <span class="stringliteral">&quot;2&quot;</span>, 2, 1);</div>
+<div class="line"><span class="lineno">  222</span>  <a class="code hl_class" href="classToken.html">Token</a> threeToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a12a90dfe20486bbe3e075afcd19ef2d0">TokenType::NUMBER</a>, <span class="stringliteral">&quot;3&quot;</span>, 3, 1);</div>
+<div class="line"><span class="lineno">  223</span>  <a class="code hl_class" href="classToken.html">Token</a> plusToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a87fe59ef12c3d13dc2a4d14c9b16c1f9">TokenType::PLUS</a>, <span class="stringliteral">&quot;+&quot;</span>, <span class="keyword">nullptr</span>, 1);</div>
+<div class="line"><span class="lineno">  224</span>  <a class="code hl_class" href="classToken.html">Token</a> minusToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921af613d73b4e7b570ffd967df4a13c4225">TokenType::MINUS</a>, <span class="stringliteral">&quot;-&quot;</span>, <span class="keyword">nullptr</span>, 1);</div>
+<div class="line"><span class="lineno">  225</span>  <a class="code hl_class" href="classToken.html">Token</a> starToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a9d398750ed310ae69cd070016810e4dc">TokenType::STAR</a>, <span class="stringliteral">&quot;*&quot;</span>, <span class="keyword">nullptr</span>, 1);</div>
+<div class="line"><span class="lineno">  226</span>  <a class="code hl_class" href="classToken.html">Token</a> slashToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aaabdfe7000ca535236502bb0c87ad944">TokenType::SLASH</a>, <span class="stringliteral">&quot;/&quot;</span>, <span class="keyword">nullptr</span>, 1);</div>
+<div class="line"><span class="lineno">  227</span>  <a class="code hl_class" href="classToken.html">Token</a> bangEqualToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a783d53dd60297984dc8336d5f80cb275">TokenType::BANG_EQUAL</a>, <span class="stringliteral">&quot;!=&quot;</span>, <span class="keyword">nullptr</span>, 1);</div>
+<div class="line"><span class="lineno">  228</span>  <a class="code hl_class" href="classToken.html">Token</a> equalEqualToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a56bd89f44f205c00adcfe8cb62332f78">TokenType::EQUAL_EQUAL</a>, <span class="stringliteral">&quot;==&quot;</span>, <span class="keyword">nullptr</span>, 1);</div>
+<div class="line"><span class="lineno">  229</span>  <a class="code hl_class" href="classToken.html">Token</a> greaterToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a25b5ca2f56d99ba6ffcb5316adac34c1">TokenType::GREATER</a>, <span class="stringliteral">&quot;&gt;&quot;</span>, <span class="keyword">nullptr</span>, 1);</div>
+<div class="line"><span class="lineno">  230</span>  <a class="code hl_class" href="classToken.html">Token</a> greaterEqualToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a4495f63771aa2060042a31363e16d4f9">TokenType::GREATER_EQUAL</a>, <span class="stringliteral">&quot;&gt;=&quot;</span>, <span class="keyword">nullptr</span>, 1);</div>
+<div class="line"><span class="lineno">  231</span>  <a class="code hl_class" href="classToken.html">Token</a> lessToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a95c736070f99b99eb80d1eac1f4ca60f">TokenType::LESS</a>, <span class="stringliteral">&quot;&lt;&quot;</span>, <span class="keyword">nullptr</span>, 1);</div>
+<div class="line"><span class="lineno">  232</span>  <a class="code hl_class" href="classToken.html">Token</a> lessEqualToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921ac7fcbbb467ef6d40ec686d894e26accd">TokenType::LESS_EQUAL</a>, <span class="stringliteral">&quot;&lt;=&quot;</span>, <span class="keyword">nullptr</span>, 1);</div>
+<div class="line"><span class="lineno">  233</span>  <a class="code hl_class" href="classToken.html">Token</a> stringToken(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aee847e634a4297b274316de8a8ca9921">TokenType::STRING</a>, <span class="stringliteral">&quot;Hello, World!&quot;</span>,</div>
+<div class="line"><span class="lineno">  234</span>                    std::string(<span class="stringliteral">&quot;Hello, World!&quot;</span>), 1);</div>
+<div class="line"><span class="lineno">  235</span> </div>
+<div class="line"><span class="lineno">  236</span>  <span class="comment">// Hide the error output</span></div>
+<div class="line"><span class="lineno">  237</span>  std::ostringstream oss;</div>
+<div class="line"><span class="lineno">  238</span>  <span class="keyword">auto</span> oldCerr = std::cerr.rdbuf(oss.rdbuf());</div>
+<div class="line"><span class="lineno">  239</span> </div>
+<div class="line"><span class="lineno">  240</span>  <span class="comment">// Redirect output to a string stream</span></div>
+<div class="line"><span class="lineno">  241</span>  std::ostringstream outputStream;</div>
+<div class="line"><span class="lineno">  242</span>  <span class="keyword">auto</span> oldCout = std::cout.rdbuf(outputStream.rdbuf());</div>
+<div class="line"><span class="lineno">  243</span> </div>
+<div class="line"><span class="lineno">  244</span>  SECTION(<span class="stringliteral">&quot;Sumation (1+2)&quot;</span>) {</div>
+<div class="line"><span class="lineno">  245</span>    std::shared_ptr&lt;Literal&gt; leftExpr =</div>
+<div class="line"><span class="lineno">  246</span>        std::make_shared&lt;Literal&gt;(oneToken.getLiteral());</div>
+<div class="line"><span class="lineno">  247</span>    std::shared_ptr&lt;Literal&gt; rightExpr =</div>
+<div class="line"><span class="lineno">  248</span>        std::make_shared&lt;Literal&gt;(twoToken.getLiteral());</div>
+<div class="line"><span class="lineno">  249</span>    std::shared_ptr&lt;Binary&gt; binaryExpr =</div>
+<div class="line"><span class="lineno">  250</span>        std::make_shared&lt;Binary&gt;(leftExpr, plusToken, rightExpr);</div>
+<div class="line"><span class="lineno">  251</span>    std::shared_ptr&lt;Expr&gt; expr = binaryExpr;</div>
+<div class="line"><span class="lineno">  252</span>    std::shared_ptr&lt;Print&gt; printExpr = std::make_shared&lt;Print&gt;(expr);</div>
+<div class="line"><span class="lineno">  253</span>    std::shared_ptr&lt;Stmt&gt; stmt = printExpr;</div>
+<div class="line"><span class="lineno">  254</span> </div>
+<div class="line"><span class="lineno">  255</span>    <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>({stmt});</div>
+<div class="line"><span class="lineno">  256</span>    CHECK(outputStream.str() == <span class="stringliteral">&quot;3\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  257</span>  }</div>
+<div class="line"><span class="lineno">  258</span> </div>
+<div class="line"><span class="lineno">  259</span>  SECTION(<span class="stringliteral">&quot;Concatenation of strings&quot;</span>) {</div>
+<div class="line"><span class="lineno">  260</span>    std::shared_ptr&lt;Literal&gt; leftExpr =</div>
+<div class="line"><span class="lineno">  261</span>        std::make_shared&lt;Literal&gt;(stringToken.getLiteral());</div>
+<div class="line"><span class="lineno">  262</span>    std::shared_ptr&lt;Literal&gt; rightExpr =</div>
+<div class="line"><span class="lineno">  263</span>        std::make_shared&lt;Literal&gt;(stringToken.getLiteral());</div>
+<div class="line"><span class="lineno">  264</span>    std::shared_ptr&lt;Binary&gt; binaryExpr =</div>
+<div class="line"><span class="lineno">  265</span>        std::make_shared&lt;Binary&gt;(leftExpr, plusToken, rightExpr);</div>
+<div class="line"><span class="lineno">  266</span>    std::shared_ptr&lt;Expr&gt; expr = binaryExpr;</div>
+<div class="line"><span class="lineno">  267</span>    std::shared_ptr&lt;Print&gt; printExpr = std::make_shared&lt;Print&gt;(expr);</div>
+<div class="line"><span class="lineno">  268</span>    std::shared_ptr&lt;Stmt&gt; stmt = printExpr;</div>
+<div class="line"><span class="lineno">  269</span> </div>
+<div class="line"><span class="lineno">  270</span>    <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>({stmt});</div>
+<div class="line"><span class="lineno">  271</span>    CHECK(outputStream.str() == <span class="stringliteral">&quot;Hello, World!Hello, World!\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  272</span>  }</div>
+<div class="line"><span class="lineno">  273</span> </div>
+<div class="line"><span class="lineno">  274</span>  SECTION(<span class="stringliteral">&quot;Subtraction (3-2)&quot;</span>) {</div>
+<div class="line"><span class="lineno">  275</span>    std::shared_ptr&lt;Literal&gt; leftExpr =</div>
+<div class="line"><span class="lineno">  276</span>        std::make_shared&lt;Literal&gt;(threeToken.getLiteral());</div>
+<div class="line"><span class="lineno">  277</span>    std::shared_ptr&lt;Literal&gt; rightExpr =</div>
+<div class="line"><span class="lineno">  278</span>        std::make_shared&lt;Literal&gt;(twoToken.getLiteral());</div>
+<div class="line"><span class="lineno">  279</span>    std::shared_ptr&lt;Binary&gt; binaryExpr =</div>
+<div class="line"><span class="lineno">  280</span>        std::make_shared&lt;Binary&gt;(leftExpr, minusToken, rightExpr);</div>
+<div class="line"><span class="lineno">  281</span>    std::shared_ptr&lt;Expr&gt; expr = binaryExpr;</div>
+<div class="line"><span class="lineno">  282</span>    std::shared_ptr&lt;Print&gt; printExpr = std::make_shared&lt;Print&gt;(expr);</div>
+<div class="line"><span class="lineno">  283</span>    std::shared_ptr&lt;Stmt&gt; stmt = printExpr;</div>
+<div class="line"><span class="lineno">  284</span> </div>
+<div class="line"><span class="lineno">  285</span>    <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>({stmt});</div>
+<div class="line"><span class="lineno">  286</span>    CHECK(outputStream.str() == <span class="stringliteral">&quot;1\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  287</span>  }</div>
+<div class="line"><span class="lineno">  288</span> </div>
+<div class="line"><span class="lineno">  289</span>  SECTION(<span class="stringliteral">&quot;Multiplication (2*3)&quot;</span>) {</div>
+<div class="line"><span class="lineno">  290</span>    std::shared_ptr&lt;Literal&gt; leftExpr =</div>
+<div class="line"><span class="lineno">  291</span>        std::make_shared&lt;Literal&gt;(twoToken.getLiteral());</div>
+<div class="line"><span class="lineno">  292</span>    std::shared_ptr&lt;Literal&gt; rightExpr =</div>
+<div class="line"><span class="lineno">  293</span>        std::make_shared&lt;Literal&gt;(threeToken.getLiteral());</div>
+<div class="line"><span class="lineno">  294</span>    std::shared_ptr&lt;Binary&gt; binaryExpr =</div>
+<div class="line"><span class="lineno">  295</span>        std::make_shared&lt;Binary&gt;(leftExpr, starToken, rightExpr);</div>
+<div class="line"><span class="lineno">  296</span>    std::shared_ptr&lt;Expr&gt; expr = binaryExpr;</div>
+<div class="line"><span class="lineno">  297</span>    std::shared_ptr&lt;Print&gt; printExpr = std::make_shared&lt;Print&gt;(expr);</div>
+<div class="line"><span class="lineno">  298</span>    std::shared_ptr&lt;Stmt&gt; stmt = printExpr;</div>
+<div class="line"><span class="lineno">  299</span> </div>
+<div class="line"><span class="lineno">  300</span>    <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>({stmt});</div>
+<div class="line"><span class="lineno">  301</span>    CHECK(outputStream.str() == <span class="stringliteral">&quot;6\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  302</span>  }</div>
+<div class="line"><span class="lineno">  303</span> </div>
+<div class="line"><span class="lineno">  304</span>  SECTION(<span class="stringliteral">&quot;Division (3/2)&quot;</span>) {</div>
+<div class="line"><span class="lineno">  305</span>    std::shared_ptr&lt;Literal&gt; leftExpr =</div>
+<div class="line"><span class="lineno">  306</span>        std::make_shared&lt;Literal&gt;(threeToken.getLiteral());</div>
+<div class="line"><span class="lineno">  307</span>    std::shared_ptr&lt;Literal&gt; rightExpr =</div>
+<div class="line"><span class="lineno">  308</span>        std::make_shared&lt;Literal&gt;(twoToken.getLiteral());</div>
+<div class="line"><span class="lineno">  309</span>    std::shared_ptr&lt;Binary&gt; binaryExpr =</div>
+<div class="line"><span class="lineno">  310</span>        std::make_shared&lt;Binary&gt;(leftExpr, slashToken, rightExpr);</div>
+<div class="line"><span class="lineno">  311</span>    std::shared_ptr&lt;Expr&gt; expr = binaryExpr;</div>
+<div class="line"><span class="lineno">  312</span>    std::shared_ptr&lt;Print&gt; printExpr = std::make_shared&lt;Print&gt;(expr);</div>
+<div class="line"><span class="lineno">  313</span>    std::shared_ptr&lt;Stmt&gt; stmt = printExpr;</div>
+<div class="line"><span class="lineno">  314</span> </div>
+<div class="line"><span class="lineno">  315</span>    <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>({stmt});</div>
+<div class="line"><span class="lineno">  316</span>    CHECK(outputStream.str() == <span class="stringliteral">&quot;1\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  317</span>  }</div>
+<div class="line"><span class="lineno">  318</span> </div>
+<div class="line"><span class="lineno">  319</span>  SECTION(<span class="stringliteral">&quot;Division by Zero&quot;</span>) {</div>
+<div class="line"><span class="lineno">  320</span>    std::shared_ptr&lt;Literal&gt; leftExpr =</div>
+<div class="line"><span class="lineno">  321</span>        std::make_shared&lt;Literal&gt;(threeToken.getLiteral());</div>
+<div class="line"><span class="lineno">  322</span>    std::shared_ptr&lt;Literal&gt; rightExpr =</div>
+<div class="line"><span class="lineno">  323</span>        std::make_shared&lt;Literal&gt;(zeroToken.getLiteral());</div>
+<div class="line"><span class="lineno">  324</span>    std::shared_ptr&lt;Binary&gt; binaryExpr =</div>
+<div class="line"><span class="lineno">  325</span>        std::make_shared&lt;Binary&gt;(leftExpr, slashToken, rightExpr);</div>
+<div class="line"><span class="lineno">  326</span>    std::shared_ptr&lt;Expr&gt; expr = binaryExpr;</div>
+<div class="line"><span class="lineno">  327</span>    std::shared_ptr&lt;Print&gt; printExpr = std::make_shared&lt;Print&gt;(expr);</div>
+<div class="line"><span class="lineno">  328</span>    std::shared_ptr&lt;Stmt&gt; stmt = printExpr;</div>
+<div class="line"><span class="lineno">  329</span> </div>
+<div class="line"><span class="lineno">  330</span>    <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>({stmt});</div>
+<div class="line"><span class="lineno">  331</span>    CHECK(outputStream.str() == <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><span class="lineno">  332</span>    CHECK(<a class="code hl_variable" href="error_8hpp.html#a51dd2e05059c20ac148bfbca33e832e3">hadRuntimeError</a> == <span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">  333</span>  }</div>
+<div class="line"><span class="lineno">  334</span> </div>
+<div class="line"><span class="lineno">  335</span>  SECTION(<span class="stringliteral">&quot;Equality (1==1)&quot;</span>) {</div>
+<div class="line"><span class="lineno">  336</span>    std::shared_ptr&lt;Literal&gt; leftExpr =</div>
+<div class="line"><span class="lineno">  337</span>        std::make_shared&lt;Literal&gt;(oneToken.getLiteral());</div>
+<div class="line"><span class="lineno">  338</span>    std::shared_ptr&lt;Literal&gt; rightExpr =</div>
+<div class="line"><span class="lineno">  339</span>        std::make_shared&lt;Literal&gt;(oneToken.getLiteral());</div>
+<div class="line"><span class="lineno">  340</span>    std::shared_ptr&lt;Binary&gt; binaryExpr =</div>
+<div class="line"><span class="lineno">  341</span>        std::make_shared&lt;Binary&gt;(leftExpr, equalEqualToken, rightExpr);</div>
+<div class="line"><span class="lineno">  342</span>    std::shared_ptr&lt;Expr&gt; expr = binaryExpr;</div>
+<div class="line"><span class="lineno">  343</span>    std::shared_ptr&lt;Print&gt; printExpr = std::make_shared&lt;Print&gt;(expr);</div>
+<div class="line"><span class="lineno">  344</span>    std::shared_ptr&lt;Stmt&gt; stmt = printExpr;</div>
+<div class="line"><span class="lineno">  345</span> </div>
+<div class="line"><span class="lineno">  346</span>    <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>({stmt});</div>
+<div class="line"><span class="lineno">  347</span>    CHECK(outputStream.str() == <span class="stringliteral">&quot;true\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  348</span>  }</div>
+<div class="line"><span class="lineno">  349</span> </div>
+<div class="line"><span class="lineno">  350</span>  SECTION(<span class="stringliteral">&quot;Inequality (1!=2)&quot;</span>) {</div>
+<div class="line"><span class="lineno">  351</span>    std::shared_ptr&lt;Literal&gt; leftExpr =</div>
+<div class="line"><span class="lineno">  352</span>        std::make_shared&lt;Literal&gt;(oneToken.getLiteral());</div>
+<div class="line"><span class="lineno">  353</span>    std::shared_ptr&lt;Literal&gt; rightExpr =</div>
+<div class="line"><span class="lineno">  354</span>        std::make_shared&lt;Literal&gt;(twoToken.getLiteral());</div>
+<div class="line"><span class="lineno">  355</span>    std::shared_ptr&lt;Binary&gt; binaryExpr =</div>
+<div class="line"><span class="lineno">  356</span>        std::make_shared&lt;Binary&gt;(leftExpr, bangEqualToken, rightExpr);</div>
+<div class="line"><span class="lineno">  357</span>    std::shared_ptr&lt;Expr&gt; expr = binaryExpr;</div>
+<div class="line"><span class="lineno">  358</span>    std::shared_ptr&lt;Print&gt; printExpr = std::make_shared&lt;Print&gt;(expr);</div>
+<div class="line"><span class="lineno">  359</span>    std::shared_ptr&lt;Stmt&gt; stmt = printExpr;</div>
+<div class="line"><span class="lineno">  360</span> </div>
+<div class="line"><span class="lineno">  361</span>    <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>({stmt});</div>
+<div class="line"><span class="lineno">  362</span>    CHECK(outputStream.str() == <span class="stringliteral">&quot;true\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  363</span>  }</div>
+<div class="line"><span class="lineno">  364</span> </div>
+<div class="line"><span class="lineno">  365</span>  SECTION(<span class="stringliteral">&quot;Greater than (2&gt;1)&quot;</span>) {</div>
+<div class="line"><span class="lineno">  366</span>    std::shared_ptr&lt;Literal&gt; leftExpr =</div>
+<div class="line"><span class="lineno">  367</span>        std::make_shared&lt;Literal&gt;(twoToken.getLiteral());</div>
+<div class="line"><span class="lineno">  368</span>    std::shared_ptr&lt;Literal&gt; rightExpr =</div>
+<div class="line"><span class="lineno">  369</span>        std::make_shared&lt;Literal&gt;(oneToken.getLiteral());</div>
+<div class="line"><span class="lineno">  370</span>    std::shared_ptr&lt;Binary&gt; binaryExpr =</div>
+<div class="line"><span class="lineno">  371</span>        std::make_shared&lt;Binary&gt;(leftExpr, greaterToken, rightExpr);</div>
+<div class="line"><span class="lineno">  372</span>    std::shared_ptr&lt;Expr&gt; expr = binaryExpr;</div>
+<div class="line"><span class="lineno">  373</span>    std::shared_ptr&lt;Print&gt; printExpr = std::make_shared&lt;Print&gt;(expr);</div>
+<div class="line"><span class="lineno">  374</span>    std::shared_ptr&lt;Stmt&gt; stmt = printExpr;</div>
+<div class="line"><span class="lineno">  375</span> </div>
+<div class="line"><span class="lineno">  376</span>    <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>({stmt});</div>
+<div class="line"><span class="lineno">  377</span>    CHECK(outputStream.str() == <span class="stringliteral">&quot;true\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  378</span>  }</div>
+<div class="line"><span class="lineno">  379</span> </div>
+<div class="line"><span class="lineno">  380</span>  SECTION(<span class="stringliteral">&quot;Greater or equal than (1&gt;=1)&quot;</span>) {</div>
+<div class="line"><span class="lineno">  381</span>    std::shared_ptr&lt;Literal&gt; leftExpr =</div>
+<div class="line"><span class="lineno">  382</span>        std::make_shared&lt;Literal&gt;(oneToken.getLiteral());</div>
+<div class="line"><span class="lineno">  383</span>    std::shared_ptr&lt;Literal&gt; rightExpr =</div>
+<div class="line"><span class="lineno">  384</span>        std::make_shared&lt;Literal&gt;(oneToken.getLiteral());</div>
+<div class="line"><span class="lineno">  385</span>    std::shared_ptr&lt;Binary&gt; binaryExpr =</div>
+<div class="line"><span class="lineno">  386</span>        std::make_shared&lt;Binary&gt;(leftExpr, greaterEqualToken, rightExpr);</div>
+<div class="line"><span class="lineno">  387</span>    std::shared_ptr&lt;Expr&gt; expr = binaryExpr;</div>
+<div class="line"><span class="lineno">  388</span>    std::shared_ptr&lt;Print&gt; printExpr = std::make_shared&lt;Print&gt;(expr);</div>
+<div class="line"><span class="lineno">  389</span>    std::shared_ptr&lt;Stmt&gt; stmt = printExpr;</div>
+<div class="line"><span class="lineno">  390</span> </div>
+<div class="line"><span class="lineno">  391</span>    <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>({stmt});</div>
+<div class="line"><span class="lineno">  392</span>    CHECK(outputStream.str() == <span class="stringliteral">&quot;true\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  393</span>  }</div>
+<div class="line"><span class="lineno">  394</span> </div>
+<div class="line"><span class="lineno">  395</span>  SECTION(<span class="stringliteral">&quot;Less than (1&lt;2)&quot;</span>) {</div>
+<div class="line"><span class="lineno">  396</span>    std::shared_ptr&lt;Literal&gt; leftExpr =</div>
+<div class="line"><span class="lineno">  397</span>        std::make_shared&lt;Literal&gt;(oneToken.getLiteral());</div>
+<div class="line"><span class="lineno">  398</span>    std::shared_ptr&lt;Literal&gt; rightExpr =</div>
+<div class="line"><span class="lineno">  399</span>        std::make_shared&lt;Literal&gt;(twoToken.getLiteral());</div>
+<div class="line"><span class="lineno">  400</span>    std::shared_ptr&lt;Binary&gt; binaryExpr =</div>
+<div class="line"><span class="lineno">  401</span>        std::make_shared&lt;Binary&gt;(leftExpr, lessToken, rightExpr);</div>
+<div class="line"><span class="lineno">  402</span>    std::shared_ptr&lt;Expr&gt; expr = binaryExpr;</div>
+<div class="line"><span class="lineno">  403</span>    std::shared_ptr&lt;Print&gt; printExpr = std::make_shared&lt;Print&gt;(expr);</div>
+<div class="line"><span class="lineno">  404</span>    std::shared_ptr&lt;Stmt&gt; stmt = printExpr;</div>
+<div class="line"><span class="lineno">  405</span> </div>
+<div class="line"><span class="lineno">  406</span>    <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>({stmt});</div>
+<div class="line"><span class="lineno">  407</span>    CHECK(outputStream.str() == <span class="stringliteral">&quot;true\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  408</span>  }</div>
+<div class="line"><span class="lineno">  409</span> </div>
+<div class="line"><span class="lineno">  410</span>  SECTION(<span class="stringliteral">&quot;Less or equal than (1&lt;=1)&quot;</span>) {</div>
+<div class="line"><span class="lineno">  411</span>    std::shared_ptr&lt;Literal&gt; leftExpr =</div>
+<div class="line"><span class="lineno">  412</span>        std::make_shared&lt;Literal&gt;(oneToken.getLiteral());</div>
+<div class="line"><span class="lineno">  413</span>    std::shared_ptr&lt;Literal&gt; rightExpr =</div>
+<div class="line"><span class="lineno">  414</span>        std::make_shared&lt;Literal&gt;(oneToken.getLiteral());</div>
+<div class="line"><span class="lineno">  415</span>    std::shared_ptr&lt;Binary&gt; binaryExpr =</div>
+<div class="line"><span class="lineno">  416</span>        std::make_shared&lt;Binary&gt;(leftExpr, lessEqualToken, rightExpr);</div>
+<div class="line"><span class="lineno">  417</span>    std::shared_ptr&lt;Expr&gt; expr = binaryExpr;</div>
+<div class="line"><span class="lineno">  418</span>    std::shared_ptr&lt;Print&gt; printExpr = std::make_shared&lt;Print&gt;(expr);</div>
+<div class="line"><span class="lineno">  419</span>    std::shared_ptr&lt;Stmt&gt; stmt = printExpr;</div>
+<div class="line"><span class="lineno">  420</span> </div>
+<div class="line"><span class="lineno">  421</span>    <a class="code hl_class" href="classInterpreter.html">Interpreter</a>().<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>({stmt});</div>
+<div class="line"><span class="lineno">  422</span>    CHECK(outputStream.str() == <span class="stringliteral">&quot;true\n&quot;</span>);</div>
+<div class="line"><span class="lineno">  423</span>  }</div>
+<div class="line"><span class="lineno">  424</span> </div>
+<div class="line"><span class="lineno">  425</span>  <span class="comment">// Restore the original cerr buffer</span></div>
+<div class="line"><span class="lineno">  426</span>  std::cerr.rdbuf(oldCerr);</div>
+<div class="line"><span class="lineno">  427</span> </div>
+<div class="line"><span class="lineno">  428</span>  <span class="comment">// Restore the original cout buffer</span></div>
+<div class="line"><span class="lineno">  429</span>  std::cout.rdbuf(oldCout);</div>
+<div class="line"><span class="lineno">  430</span>}</div>
+<div class="ttc" id="aerror_8hpp_html_a51dd2e05059c20ac148bfbca33e832e3"><div class="ttname"><a href="error_8hpp.html#a51dd2e05059c20ac148bfbca33e832e3">hadRuntimeError</a></div><div class="ttdeci">bool hadRuntimeError</div><div class="ttdef"><b>Definition</b> <a href="error_8hpp_source.html#l00007">error.hpp:7</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a25b5ca2f56d99ba6ffcb5316adac34c1"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a25b5ca2f56d99ba6ffcb5316adac34c1">GREATER</a></div><div class="ttdeci">@ GREATER</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00027">tokenType.hpp:27</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a56bd89f44f205c00adcfe8cb62332f78"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a56bd89f44f205c00adcfe8cb62332f78">EQUAL_EQUAL</a></div><div class="ttdeci">@ EQUAL_EQUAL</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00026">tokenType.hpp:26</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a783d53dd60297984dc8336d5f80cb275"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a783d53dd60297984dc8336d5f80cb275">BANG_EQUAL</a></div><div class="ttdeci">@ BANG_EQUAL</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00024">tokenType.hpp:24</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a87fe59ef12c3d13dc2a4d14c9b16c1f9"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a87fe59ef12c3d13dc2a4d14c9b16c1f9">PLUS</a></div><div class="ttdeci">@ PLUS</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00017">tokenType.hpp:17</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a95c736070f99b99eb80d1eac1f4ca60f"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a95c736070f99b99eb80d1eac1f4ca60f">LESS</a></div><div class="ttdeci">@ LESS</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00029">tokenType.hpp:29</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a9d398750ed310ae69cd070016810e4dc"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a9d398750ed310ae69cd070016810e4dc">STAR</a></div><div class="ttdeci">@ STAR</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00020">tokenType.hpp:20</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921aaabdfe7000ca535236502bb0c87ad944"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aaabdfe7000ca535236502bb0c87ad944">SLASH</a></div><div class="ttdeci">@ SLASH</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00019">tokenType.hpp:19</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921ac7fcbbb467ef6d40ec686d894e26accd"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921ac7fcbbb467ef6d40ec686d894e26accd">LESS_EQUAL</a></div><div class="ttdeci">@ LESS_EQUAL</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00030">tokenType.hpp:30</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_13e138d54eb8818da29c3992edef070a.html">test</a></li><li class="navelem"><a class="el" href="interpreterTest_8cpp.html">interpreterTest.cpp</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

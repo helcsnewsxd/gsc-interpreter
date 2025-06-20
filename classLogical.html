@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -23,6 +27,7 @@
   <td id="projectalign">
    <div id="projectname">Simplified C/C++ (GSC)
    </div>
+   <div id="projectbrief">A Turing-complete interpreter developed for a compiler course</div>
   </td>
  </tr>
  </tbody>
@@ -46,6 +51,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classLogical.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,10 +89,10 @@ $(function() {
 </div>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classLogical-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Logical Class Reference</div></div>
 </div><!--header-->
@@ -83,17 +105,17 @@ $(function() {
 <div class="dynheader">
 Inheritance diagram for Logical:</div>
 <div class="dyncontent">
-<div class="center"><img src="classLogical__inherit__graph.png" border="0" usemap="#aLogical_inherit__map" alt="Inheritance graph"/></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classLogical__inherit__graph.svg" width="275" height="324"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Collaboration diagram for Logical:</div>
 <div class="dyncontent">
-<div class="center"><img src="classLogical__coll__graph.png" border="0" usemap="#aLogical_coll__map" alt="Collaboration graph"/></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classLogical__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae79576e0698cbf6ce841312f03c702e4" id="r_ae79576e0698cbf6ce841312f03c702e4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogical.html#ae79576e0698cbf6ce841312f03c702e4">Logical</a> (std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt; left, <a class="el" href="classToken.html">Token</a> op, std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt; right)</td></tr>
+<tr class="memitem:ae79576e0698cbf6ce841312f03c702e4" id="r_ae79576e0698cbf6ce841312f03c702e4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogical.html#ae79576e0698cbf6ce841312f03c702e4">Logical</a> (std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt; <a class="el" href="classLogical.html#a3e405338bce9caa473aeca842872ff83">left</a>, <a class="el" href="classToken.html">Token</a> <a class="el" href="classLogical.html#a73c3b5b8e9e3a7efcfc1cde656aaf76c">op</a>, std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt; <a class="el" href="classLogical.html#a25adcb925934ece34423c432233d798e">right</a>)</td></tr>
 <tr class="separator:ae79576e0698cbf6ce841312f03c702e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc6671a15e4f04212daaac8a235dbba9" id="r_afc6671a15e4f04212daaac8a235dbba9"><td class="memItemLeft" align="right" valign="top">std::any&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogical.html#afc6671a15e4f04212daaac8a235dbba9">accept</a> (<a class="el" href="classExprVisitor.html">ExprVisitor</a> &amp;visitor) override</td></tr>
 <tr class="separator:afc6671a15e4f04212daaac8a235dbba9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -103,10 +125,21 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a7022b8467301d817eade62d87fcdde10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a247ea42238a862c585276813ca6fed31" id="r_a247ea42238a862c585276813ca6fed31"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classToken.html">Token</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogical.html#a247ea42238a862c585276813ca6fed31">getOp</a> () const</td></tr>
 <tr class="separator:a247ea42238a862c585276813ca6fed31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a3e405338bce9caa473aeca842872ff83" id="r_a3e405338bce9caa473aeca842872ff83"><td class="memItemLeft" align="right" valign="top">const std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogical.html#a3e405338bce9caa473aeca842872ff83">left</a></td></tr>
+<tr class="separator:a3e405338bce9caa473aeca842872ff83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73c3b5b8e9e3a7efcfc1cde656aaf76c" id="r_a73c3b5b8e9e3a7efcfc1cde656aaf76c"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classToken.html">Token</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogical.html#a73c3b5b8e9e3a7efcfc1cde656aaf76c">op</a></td></tr>
+<tr class="separator:a73c3b5b8e9e3a7efcfc1cde656aaf76c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25adcb925934ece34423c432233d798e" id="r_a25adcb925934ece34423c432233d798e"><td class="memItemLeft" align="right" valign="top">const std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogical.html#a25adcb925934ece34423c432233d798e">right</a></td></tr>
+<tr class="separator:a25adcb925934ece34423c432233d798e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class representing a logical expression. </p>
 <p>This class represents a logical expression in the AST, which consists of a left operand, an operator, and a right operand. It inherits from the <a class="el" href="classExpr.html" title="Abstract base class for expressions.">Expr</a> class and implements the accept method for visitor pattern. </p>
+
+<p class="definition">Definition at line <a class="el" href="expr_8hpp_source.html#l00191">191</a> of file <a class="el" href="expr_8hpp_source.html">expr.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae79576e0698cbf6ce841312f03c702e4" name="ae79576e0698cbf6ce841312f03c702e4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae79576e0698cbf6ce841312f03c702e4">&#9670;&#160;</a></span>Logical()</h2>
@@ -148,6 +181,12 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="expr_8hpp_source.html#l00198">198</a> of file <a class="el" href="expr_8hpp_source.html">expr.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  199</span>      : <a class="code hl_variable" href="classLogical.html#a3e405338bce9caa473aeca842872ff83">left</a>(std::move(<a class="code hl_variable" href="classLogical.html#a3e405338bce9caa473aeca842872ff83">left</a>)), <a class="code hl_variable" href="classLogical.html#a73c3b5b8e9e3a7efcfc1cde656aaf76c">op</a>(std::move(<a class="code hl_variable" href="classLogical.html#a73c3b5b8e9e3a7efcfc1cde656aaf76c">op</a>)), <a class="code hl_variable" href="classLogical.html#a25adcb925934ece34423c432233d798e">right</a>(std::move(<a class="code hl_variable" href="classLogical.html#a25adcb925934ece34423c432233d798e">right</a>)) {}</div>
+<div class="ttc" id="aclassLogical_html_a25adcb925934ece34423c432233d798e"><div class="ttname"><a href="classLogical.html#a25adcb925934ece34423c432233d798e">Logical::right</a></div><div class="ttdeci">const std::shared_ptr&lt; Expr &gt; right</div><div class="ttdef"><b>Definition</b> <a href="expr_8hpp_source.html#l00195">expr.hpp:195</a></div></div>
+<div class="ttc" id="aclassLogical_html_a3e405338bce9caa473aeca842872ff83"><div class="ttname"><a href="classLogical.html#a3e405338bce9caa473aeca842872ff83">Logical::left</a></div><div class="ttdeci">const std::shared_ptr&lt; Expr &gt; left</div><div class="ttdef"><b>Definition</b> <a href="expr_8hpp_source.html#l00193">expr.hpp:193</a></div></div>
+<div class="ttc" id="aclassLogical_html_a73c3b5b8e9e3a7efcfc1cde656aaf76c"><div class="ttname"><a href="classLogical.html#a73c3b5b8e9e3a7efcfc1cde656aaf76c">Logical::op</a></div><div class="ttdeci">const Token op</div><div class="ttdef"><b>Definition</b> <a href="expr_8hpp_source.html#l00194">expr.hpp:194</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -176,12 +215,13 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="classExpr.html#a748b81a9fcd2a1e226395aa9159d6dba">Expr</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classLogical_afc6671a15e4f04212daaac8a235dbba9_cgraph.png" border="0" usemap="#aclassLogical_afc6671a15e4f04212daaac8a235dbba9_cgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="expr_8hpp_source.html#l00201">201</a> of file <a class="el" href="expr_8hpp_source.html">expr.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  201</span>                                               {</div>
+<div class="line"><span class="lineno">  202</span>    <span class="keywordflow">return</span> visitor.<a class="code hl_function" href="classExprVisitor.html#a05e60d13a4d3531a5659b6f1dff466c0">visitLogicalExpr</a>(shared_from_this());</div>
+<div class="line"><span class="lineno">  203</span>  }</div>
+<div class="ttc" id="aclassExprVisitor_html_a05e60d13a4d3531a5659b6f1dff466c0"><div class="ttname"><a href="classExprVisitor.html#a05e60d13a4d3531a5659b6f1dff466c0">ExprVisitor::visitLogicalExpr</a></div><div class="ttdeci">virtual std::any visitLogicalExpr(std::shared_ptr&lt; Logical &gt; expr)=0</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="abe8e44c8e0a6a68a1ebd8d597c485b61" name="abe8e44c8e0a6a68a1ebd8d597c485b61"></a>
@@ -207,6 +247,9 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="expr_8hpp_source.html#l00205">205</a> of file <a class="el" href="expr_8hpp_source.html">expr.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  205</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classLogical.html#a3e405338bce9caa473aeca842872ff83">left</a>; }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a247ea42238a862c585276813ca6fed31" name="a247ea42238a862c585276813ca6fed31"></a>
@@ -232,6 +275,9 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="expr_8hpp_source.html#l00209">209</a> of file <a class="el" href="expr_8hpp_source.html">expr.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  209</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classLogical.html#a73c3b5b8e9e3a7efcfc1cde656aaf76c">op</a>; }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a7022b8467301d817eade62d87fcdde10" name="a7022b8467301d817eade62d87fcdde10"></a>
@@ -257,15 +303,95 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="expr_8hpp_source.html#l00207">207</a> of file <a class="el" href="expr_8hpp_source.html">expr.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  207</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classLogical.html#a25adcb925934ece34423c432233d798e">right</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a3e405338bce9caa473aeca842872ff83" name="a3e405338bce9caa473aeca842872ff83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e405338bce9caa473aeca842872ff83">&#9670;&#160;</a></span>left</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::shared_ptr&lt;<a class="el" href="classExpr.html">Expr</a>&gt; Logical::left</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="expr_8hpp_source.html#l00193">193</a> of file <a class="el" href="expr_8hpp_source.html">expr.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a73c3b5b8e9e3a7efcfc1cde656aaf76c" name="a73c3b5b8e9e3a7efcfc1cde656aaf76c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73c3b5b8e9e3a7efcfc1cde656aaf76c">&#9670;&#160;</a></span>op</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classToken.html">Token</a> Logical::op</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="expr_8hpp_source.html#l00194">194</a> of file <a class="el" href="expr_8hpp_source.html">expr.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a25adcb925934ece34423c432233d798e" name="a25adcb925934ece34423c432233d798e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25adcb925934ece34423c432233d798e">&#9670;&#160;</a></span>right</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::shared_ptr&lt;<a class="el" href="classExpr.html">Expr</a>&gt; Logical::right</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="expr_8hpp_source.html#l00195">195</a> of file <a class="el" href="expr_8hpp_source.html">expr.hpp</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>lib/gsc/<a class="el" href="expr_8hpp_source.html">expr.hpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="classLogical.html">Logical</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

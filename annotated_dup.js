@@ -1,0 +1,26 @@
+var annotated_dup =
+[
+    [ "Assign", "classAssign.html", "classAssign" ],
+    [ "Binary", "classBinary.html", "classBinary" ],
+    [ "Block", "classBlock.html", "classBlock" ],
+    [ "Environment", "classEnvironment.html", "classEnvironment" ],
+    [ "Expr", "classExpr.html", "classExpr" ],
+    [ "Expression", "classExpression.html", "classExpression" ],
+    [ "ExprVisitor", "classExprVisitor.html", "classExprVisitor" ],
+    [ "Grouping", "classGrouping.html", "classGrouping" ],
+    [ "If", "classIf.html", "classIf" ],
+    [ "Interpreter", "classInterpreter.html", "classInterpreter" ],
+    [ "Literal", "classLiteral.html", "classLiteral" ],
+    [ "Logical", "classLogical.html", "classLogical" ],
+    [ "Parser", "classParser.html", "classParser" ],
+    [ "Print", "classPrint.html", "classPrint" ],
+    [ "RuntimeError", "classRuntimeError.html", "classRuntimeError" ],
+    [ "Scanner", "classScanner.html", "classScanner" ],
+    [ "Stmt", "classStmt.html", "classStmt" ],
+    [ "StmtVisitor", "classStmtVisitor.html", "classStmtVisitor" ],
+    [ "Token", "classToken.html", "classToken" ],
+    [ "Unary", "classUnary.html", "classUnary" ],
+    [ "Var", "classVar.html", "classVar" ],
+    [ "Variable", "classVariable.html", "classVariable" ],
+    [ "While", "classWhile.html", "classWhile" ]
+];

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['main_0',['main',['../main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main.cpp']]]
+  ['literal_0',['Literal',['../classLiteral.html#af75ae67564461a08089e6773fe03dcf9',1,'Literal']]],
+  ['logical_1',['Logical',['../classLogical.html#ae79576e0698cbf6ce841312f03c702e4',1,'Logical']]]
 ];

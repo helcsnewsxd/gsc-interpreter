@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -23,6 +27,7 @@
   <td id="projectalign">
    <div id="projectname">Simplified C/C++ (GSC)
    </div>
+   <div id="projectbrief">A Turing-complete interpreter developed for a compiler course</div>
   </td>
  </tr>
  </tbody>
@@ -46,6 +51,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classParser.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,11 +89,12 @@ $(function() {
 </div>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classParser-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Parser Class Reference</div></div>
 </div><!--header-->
@@ -84,21 +107,95 @@ $(function() {
 <div class="dynheader">
 Collaboration diagram for Parser:</div>
 <div class="dyncontent">
-<div class="center"><img src="classParser__coll__graph.png" border="0" usemap="#aParser_coll__map" alt="Collaboration graph"/></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classParser__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structParser_1_1ParseError.html">ParseError</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:afbc83a1187461f5feadbb2ca0d007574" id="r_afbc83a1187461f5feadbb2ca0d007574"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#afbc83a1187461f5feadbb2ca0d007574">Parser</a> (const std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; &amp;tokens)</td></tr>
+<tr class="memitem:afbc83a1187461f5feadbb2ca0d007574" id="r_afbc83a1187461f5feadbb2ca0d007574"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#afbc83a1187461f5feadbb2ca0d007574">Parser</a> (const std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; &amp;<a class="el" href="classParser.html#a2e53d62e5912172c7f2a36c38e2b3ff4">tokens</a>)</td></tr>
 <tr class="memdesc:afbc83a1187461f5feadbb2ca0d007574"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classParser.html" title="Parser module for the GSC programming language.">Parser</a> object.  <br /></td></tr>
 <tr class="separator:afbc83a1187461f5feadbb2ca0d007574"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad339c9b8c635db45f4881560b22436b" id="r_aad339c9b8c635db45f4881560b22436b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; <a class="el" href="classStmt.html">Stmt</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#aad339c9b8c635db45f4881560b22436b">parse</a> ()</td></tr>
 <tr class="memdesc:aad339c9b8c635db45f4881560b22436b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the tokens and returns a vector of statements.  <br /></td></tr>
 <tr class="separator:aad339c9b8c635db45f4881560b22436b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:ab3ef3d42ef1e035e09da51d680fd98d6" id="r_ab3ef3d42ef1e035e09da51d680fd98d6"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; <a class="el" href="classStmt.html">Stmt</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#ab3ef3d42ef1e035e09da51d680fd98d6">block</a> ()</td></tr>
+<tr class="separator:ab3ef3d42ef1e035e09da51d680fd98d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a76d0f7b89d00200efb3ac6b3481c72" id="r_a8a76d0f7b89d00200efb3ac6b3481c72"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classStmt.html">Stmt</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#a8a76d0f7b89d00200efb3ac6b3481c72">declaration</a> ()</td></tr>
+<tr class="separator:a8a76d0f7b89d00200efb3ac6b3481c72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf9a5322d8f232ac719631de8cdbc763" id="r_abf9a5322d8f232ac719631de8cdbc763"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classStmt.html">Stmt</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#abf9a5322d8f232ac719631de8cdbc763">statement</a> ()</td></tr>
+<tr class="separator:abf9a5322d8f232ac719631de8cdbc763"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ce8c6959ce94ed0fc543ff15cc0e64a" id="r_a9ce8c6959ce94ed0fc543ff15cc0e64a"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classStmt.html">Stmt</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#a9ce8c6959ce94ed0fc543ff15cc0e64a">printStatement</a> ()</td></tr>
+<tr class="separator:a9ce8c6959ce94ed0fc543ff15cc0e64a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67012843f19372fd42c458e00b89187e" id="r_a67012843f19372fd42c458e00b89187e"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classStmt.html">Stmt</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#a67012843f19372fd42c458e00b89187e">ifStatement</a> ()</td></tr>
+<tr class="separator:a67012843f19372fd42c458e00b89187e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad272e80c86ddd7ffd12136744d095c76" id="r_ad272e80c86ddd7ffd12136744d095c76"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classStmt.html">Stmt</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#ad272e80c86ddd7ffd12136744d095c76">whileStatement</a> ()</td></tr>
+<tr class="separator:ad272e80c86ddd7ffd12136744d095c76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae00b1de33c3dd5765bc454107829f1ef" id="r_ae00b1de33c3dd5765bc454107829f1ef"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classStmt.html">Stmt</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#ae00b1de33c3dd5765bc454107829f1ef">forStatement</a> ()</td></tr>
+<tr class="separator:ae00b1de33c3dd5765bc454107829f1ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d1daefca809aa79fe5adf525f1e2690" id="r_a2d1daefca809aa79fe5adf525f1e2690"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classStmt.html">Stmt</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#a2d1daefca809aa79fe5adf525f1e2690">varDeclaration</a> ()</td></tr>
+<tr class="separator:a2d1daefca809aa79fe5adf525f1e2690"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b6375cf58329480985f2529ae038e97" id="r_a9b6375cf58329480985f2529ae038e97"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classStmt.html">Stmt</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#a9b6375cf58329480985f2529ae038e97">expressionStatement</a> ()</td></tr>
+<tr class="separator:a9b6375cf58329480985f2529ae038e97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa574c14f701afa5d544f7d74bcb4f45" id="r_afa574c14f701afa5d544f7d74bcb4f45"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#afa574c14f701afa5d544f7d74bcb4f45">assignment</a> ()</td></tr>
+<tr class="separator:afa574c14f701afa5d544f7d74bcb4f45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a594dadb959e04f534d49d060d3b9547f" id="r_a594dadb959e04f534d49d060d3b9547f"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#a594dadb959e04f534d49d060d3b9547f">orLogical</a> ()</td></tr>
+<tr class="separator:a594dadb959e04f534d49d060d3b9547f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4b938e79b2de1850ddae265fdfa44b5" id="r_ad4b938e79b2de1850ddae265fdfa44b5"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#ad4b938e79b2de1850ddae265fdfa44b5">andLogical</a> ()</td></tr>
+<tr class="separator:ad4b938e79b2de1850ddae265fdfa44b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a884beef0ea98739c4135134b4d023cde" id="r_a884beef0ea98739c4135134b4d023cde"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#a884beef0ea98739c4135134b4d023cde">expression</a> ()</td></tr>
+<tr class="separator:a884beef0ea98739c4135134b4d023cde"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13677372c545767c9f29c975a6f83d31" id="r_a13677372c545767c9f29c975a6f83d31"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#a13677372c545767c9f29c975a6f83d31">equality</a> ()</td></tr>
+<tr class="separator:a13677372c545767c9f29c975a6f83d31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a120d23bbf17ad914d798ef701375eddc" id="r_a120d23bbf17ad914d798ef701375eddc"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#a120d23bbf17ad914d798ef701375eddc">comparison</a> ()</td></tr>
+<tr class="separator:a120d23bbf17ad914d798ef701375eddc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6dac16b11660cf177cd8b7bdf884847" id="r_aa6dac16b11660cf177cd8b7bdf884847"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#aa6dac16b11660cf177cd8b7bdf884847">term</a> ()</td></tr>
+<tr class="separator:aa6dac16b11660cf177cd8b7bdf884847"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c8daf85d7430dafbdd034d98129ad90" id="r_a6c8daf85d7430dafbdd034d98129ad90"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#a6c8daf85d7430dafbdd034d98129ad90">factor</a> ()</td></tr>
+<tr class="separator:a6c8daf85d7430dafbdd034d98129ad90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a623319b2b1de04483f5518de671e5dca" id="r_a623319b2b1de04483f5518de671e5dca"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#a623319b2b1de04483f5518de671e5dca">unary</a> ()</td></tr>
+<tr class="separator:a623319b2b1de04483f5518de671e5dca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2803892a2bf621f021322b5ce4b4fa3" id="r_ad2803892a2bf621f021322b5ce4b4fa3"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#ad2803892a2bf621f021322b5ce4b4fa3">primary</a> ()</td></tr>
+<tr class="separator:ad2803892a2bf621f021322b5ce4b4fa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4d4e26fca5493b8c28df006b904b789" id="r_ae4d4e26fca5493b8c28df006b904b789"><td class="memTemplParams" colspan="2">template&lt;class... T&gt; </td></tr>
+<tr class="memitem:ae4d4e26fca5493b8c28df006b904b789"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classParser.html#ae4d4e26fca5493b8c28df006b904b789">match</a> (T... types)</td></tr>
+<tr class="separator:ae4d4e26fca5493b8c28df006b904b789"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4abd386776b53defbfa7b88a4912c684" id="r_a4abd386776b53defbfa7b88a4912c684"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#a4abd386776b53defbfa7b88a4912c684">check</a> (<a class="el" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> type) const</td></tr>
+<tr class="separator:a4abd386776b53defbfa7b88a4912c684"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf9048fe87ddcc0dc9cfee60311cfae7" id="r_acf9048fe87ddcc0dc9cfee60311cfae7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#acf9048fe87ddcc0dc9cfee60311cfae7">isAtEnd</a> () const</td></tr>
+<tr class="separator:acf9048fe87ddcc0dc9cfee60311cfae7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a3f75bb1c83a3e6bbaface13a8e03b6" id="r_a4a3f75bb1c83a3e6bbaface13a8e03b6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classToken.html">Token</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#a4a3f75bb1c83a3e6bbaface13a8e03b6">consume</a> (<a class="el" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> type, std::string_view message)</td></tr>
+<tr class="separator:a4a3f75bb1c83a3e6bbaface13a8e03b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a312afa6fba1a5391c58dccbe557784" id="r_a0a312afa6fba1a5391c58dccbe557784"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classToken.html">Token</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#a0a312afa6fba1a5391c58dccbe557784">advance</a> ()</td></tr>
+<tr class="separator:a0a312afa6fba1a5391c58dccbe557784"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9cfa423732f15c2202d60a1cb7249db" id="r_ac9cfa423732f15c2202d60a1cb7249db"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classToken.html">Token</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#ac9cfa423732f15c2202d60a1cb7249db">peek</a> () const</td></tr>
+<tr class="separator:ac9cfa423732f15c2202d60a1cb7249db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11ec4f1f235a27b8f7f374dd3a71c994" id="r_a11ec4f1f235a27b8f7f374dd3a71c994"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classToken.html">Token</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#a11ec4f1f235a27b8f7f374dd3a71c994">previous</a> () const</td></tr>
+<tr class="separator:a11ec4f1f235a27b8f7f374dd3a71c994"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4d1609bd9645d5e8bb6e93bce1f74d3" id="r_ae4d1609bd9645d5e8bb6e93bce1f74d3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structParser_1_1ParseError.html">ParseError</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#ae4d1609bd9645d5e8bb6e93bce1f74d3">error</a> (const <a class="el" href="classToken.html">Token</a> &amp;token, std::string_view message)</td></tr>
+<tr class="separator:ae4d1609bd9645d5e8bb6e93bce1f74d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b291d69599c11db2077222ca385f298" id="r_a0b291d69599c11db2077222ca385f298"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#a0b291d69599c11db2077222ca385f298">synchronize</a> ()</td></tr>
+<tr class="separator:a0b291d69599c11db2077222ca385f298"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a2e53d62e5912172c7f2a36c38e2b3ff4" id="r_a2e53d62e5912172c7f2a36c38e2b3ff4"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#a2e53d62e5912172c7f2a36c38e2b3ff4">tokens</a></td></tr>
+<tr class="separator:a2e53d62e5912172c7f2a36c38e2b3ff4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc6dc8f2c0da9b13c61e7560fa7d0692" id="r_afc6dc8f2c0da9b13c61e7560fa7d0692"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classParser.html#afc6dc8f2c0da9b13c61e7560fa7d0692">current</a> = 0</td></tr>
+<tr class="separator:afc6dc8f2c0da9b13c61e7560fa7d0692"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classParser.html" title="Parser module for the GSC programming language.">Parser</a> module for the GSC programming language. </p>
 <p><a class="el" href="classParser.html" title="Parser module for the GSC programming language.">Parser</a> is responsible for parsing the tokens generated by the <a class="el" href="classScanner.html" title="Lexical analyzer for the GSC programming language.">Scanner</a> and constructing an abstract syntax tree (AST) from them. </p>
+
+<p class="definition">Definition at line <a class="el" href="parser_8hpp_source.html#l00016">16</a> of file <a class="el" href="parser_8hpp_source.html">parser.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="afbc83a1187461f5feadbb2ca0d007574" name="afbc83a1187461f5feadbb2ca0d007574"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afbc83a1187461f5feadbb2ca0d007574">&#9670;&#160;</a></span>Parser()</h2>
@@ -124,9 +221,746 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="parser_8cpp_source.html#l00005">5</a> of file <a class="el" href="parser_8cpp_source.html">parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">    5</span>: <a class="code hl_variable" href="classParser.html#a2e53d62e5912172c7f2a36c38e2b3ff4">tokens</a>(<a class="code hl_variable" href="classParser.html#a2e53d62e5912172c7f2a36c38e2b3ff4">tokens</a>) {}</div>
+<div class="ttc" id="aclassParser_html_a2e53d62e5912172c7f2a36c38e2b3ff4"><div class="ttname"><a href="classParser.html#a2e53d62e5912172c7f2a36c38e2b3ff4">Parser::tokens</a></div><div class="ttdeci">const std::vector&lt; Token &gt; &amp; tokens</div><div class="ttdef"><b>Definition</b> <a href="parser_8hpp_source.html#l00031">parser.hpp:31</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a0a312afa6fba1a5391c58dccbe557784" name="a0a312afa6fba1a5391c58dccbe557784"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a312afa6fba1a5391c58dccbe557784">&#9670;&#160;</a></span>advance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classToken.html">Token</a> Parser::advance </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="parser_8cpp_source.html#l00286">286</a> of file <a class="el" href="parser_8cpp_source.html">parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  286</span>                      {</div>
+<div class="line"><span class="lineno">  287</span>  <span class="keywordflow">if</span> (!<a class="code hl_function" href="classParser.html#acf9048fe87ddcc0dc9cfee60311cfae7">isAtEnd</a>())</div>
+<div class="line"><span class="lineno">  288</span>    <a class="code hl_variable" href="classParser.html#afc6dc8f2c0da9b13c61e7560fa7d0692">current</a>++;</div>
+<div class="line"><span class="lineno">  289</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="classParser.html#a11ec4f1f235a27b8f7f374dd3a71c994">previous</a>();</div>
+<div class="line"><span class="lineno">  290</span>}</div>
+<div class="ttc" id="aclassParser_html_a11ec4f1f235a27b8f7f374dd3a71c994"><div class="ttname"><a href="classParser.html#a11ec4f1f235a27b8f7f374dd3a71c994">Parser::previous</a></div><div class="ttdeci">Token previous() const</div><div class="ttdef"><b>Definition</b> <a href="parser_8cpp_source.html#l00294">parser.cpp:294</a></div></div>
+<div class="ttc" id="aclassParser_html_acf9048fe87ddcc0dc9cfee60311cfae7"><div class="ttname"><a href="classParser.html#acf9048fe87ddcc0dc9cfee60311cfae7">Parser::isAtEnd</a></div><div class="ttdeci">bool isAtEnd() const</div><div class="ttdef"><b>Definition</b> <a href="parser_8cpp_source.html#l00275">parser.cpp:275</a></div></div>
+<div class="ttc" id="aclassParser_html_afc6dc8f2c0da9b13c61e7560fa7d0692"><div class="ttname"><a href="classParser.html#afc6dc8f2c0da9b13c61e7560fa7d0692">Parser::current</a></div><div class="ttdeci">int current</div><div class="ttdef"><b>Definition</b> <a href="parser_8hpp_source.html#l00032">parser.hpp:32</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad4b938e79b2de1850ddae265fdfa44b5" name="ad4b938e79b2de1850ddae265fdfa44b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4b938e79b2de1850ddae265fdfa44b5">&#9670;&#160;</a></span>andLogical()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt; Parser::andLogical </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="parser_8cpp_source.html#l00163">163</a> of file <a class="el" href="parser_8cpp_source.html">parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  163</span>                                       {</div>
+<div class="line"><span class="lineno">  164</span>  std::shared_ptr&lt;Expr&gt; expr = <a class="code hl_function" href="classParser.html#a13677372c545767c9f29c975a6f83d31">equality</a>();</div>
+<div class="line"><span class="lineno">  165</span> </div>
+<div class="line"><span class="lineno">  166</span>  <span class="keywordflow">while</span> (<a class="code hl_function" href="classParser.html#ae4d4e26fca5493b8c28df006b904b789">match</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a865555c9f2e0458a7078486aa1b3254f">TokenType::AND</a>)) {</div>
+<div class="line"><span class="lineno">  167</span>    <a class="code hl_class" href="classToken.html">Token</a> operatorToken = <a class="code hl_function" href="classParser.html#a11ec4f1f235a27b8f7f374dd3a71c994">previous</a>();</div>
+<div class="line"><span class="lineno">  168</span>    std::shared_ptr&lt;Expr&gt; right = <a class="code hl_function" href="classParser.html#a13677372c545767c9f29c975a6f83d31">equality</a>();</div>
+<div class="line"><span class="lineno">  169</span>    expr = std::make_shared&lt;Logical&gt;(expr, std::move(operatorToken), right);</div>
+<div class="line"><span class="lineno">  170</span>  }</div>
+<div class="line"><span class="lineno">  171</span> </div>
+<div class="line"><span class="lineno">  172</span>  <span class="keywordflow">return</span> expr;</div>
+<div class="line"><span class="lineno">  173</span>}</div>
+<div class="ttc" id="aclassParser_html_a13677372c545767c9f29c975a6f83d31"><div class="ttname"><a href="classParser.html#a13677372c545767c9f29c975a6f83d31">Parser::equality</a></div><div class="ttdeci">std::shared_ptr&lt; Expr &gt; equality()</div><div class="ttdef"><b>Definition</b> <a href="parser_8cpp_source.html#l00177">parser.cpp:177</a></div></div>
+<div class="ttc" id="aclassParser_html_ae4d4e26fca5493b8c28df006b904b789"><div class="ttname"><a href="classParser.html#ae4d4e26fca5493b8c28df006b904b789">Parser::match</a></div><div class="ttdeci">bool match(T... types)</div><div class="ttdef"><b>Definition</b> <a href="parser_8cpp_source.html#l00257">parser.cpp:257</a></div></div>
+<div class="ttc" id="aclassToken_html"><div class="ttname"><a href="classToken.html">Token</a></div><div class="ttdoc">Represents a token in the source code.</div><div class="ttdef"><b>Definition</b> <a href="token_8hpp_source.html#l00014">token.hpp:14</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a865555c9f2e0458a7078486aa1b3254f"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a865555c9f2e0458a7078486aa1b3254f">AND</a></div><div class="ttdeci">@ AND</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00038">tokenType.hpp:38</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="afa574c14f701afa5d544f7d74bcb4f45" name="afa574c14f701afa5d544f7d74bcb4f45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa574c14f701afa5d544f7d74bcb4f45">&#9670;&#160;</a></span>assignment()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt; Parser::assignment </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="parser_8cpp_source.html#l00133">133</a> of file <a class="el" href="parser_8cpp_source.html">parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  133</span>                                       {</div>
+<div class="line"><span class="lineno">  134</span>  std::shared_ptr&lt;Expr&gt; expr = <a class="code hl_function" href="classParser.html#a594dadb959e04f534d49d060d3b9547f">orLogical</a>();</div>
+<div class="line"><span class="lineno">  135</span> </div>
+<div class="line"><span class="lineno">  136</span>  <span class="keywordflow">if</span> (<a class="code hl_function" href="classParser.html#ae4d4e26fca5493b8c28df006b904b789">match</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a59a84258a4cb9025b567ee5139455029">TokenType::EQUAL</a>)) {</div>
+<div class="line"><span class="lineno">  137</span>    <a class="code hl_class" href="classToken.html">Token</a> equals = <a class="code hl_function" href="classParser.html#a11ec4f1f235a27b8f7f374dd3a71c994">previous</a>();</div>
+<div class="line"><span class="lineno">  138</span>    std::shared_ptr&lt;Expr&gt; value = <a class="code hl_function" href="classParser.html#afa574c14f701afa5d544f7d74bcb4f45">assignment</a>();</div>
+<div class="line"><span class="lineno">  139</span> </div>
+<div class="line"><span class="lineno">  140</span>    <span class="keywordflow">if</span> (std::shared_ptr&lt;Variable&gt; var =</div>
+<div class="line"><span class="lineno">  141</span>            std::dynamic_pointer_cast&lt;Variable&gt;(expr)) {</div>
+<div class="line"><span class="lineno">  142</span>      <span class="keywordflow">return</span> std::make_shared&lt;Assign&gt;(var-&gt;getName(), value);</div>
+<div class="line"><span class="lineno">  143</span>    }</div>
+<div class="line"><span class="lineno">  144</span> </div>
+<div class="line"><span class="lineno">  145</span>    <span class="keywordflow">throw</span> <a class="code hl_function" href="classParser.html#ae4d1609bd9645d5e8bb6e93bce1f74d3">error</a>(equals, <span class="stringliteral">&quot;Invalid assignment target.&quot;</span>);</div>
+<div class="line"><span class="lineno">  146</span>  }</div>
+<div class="line"><span class="lineno">  147</span> </div>
+<div class="line"><span class="lineno">  148</span>  <span class="keywordflow">return</span> expr;</div>
+<div class="line"><span class="lineno">  149</span>}</div>
+<div class="ttc" id="aclassParser_html_a594dadb959e04f534d49d060d3b9547f"><div class="ttname"><a href="classParser.html#a594dadb959e04f534d49d060d3b9547f">Parser::orLogical</a></div><div class="ttdeci">std::shared_ptr&lt; Expr &gt; orLogical()</div><div class="ttdef"><b>Definition</b> <a href="parser_8cpp_source.html#l00151">parser.cpp:151</a></div></div>
+<div class="ttc" id="aclassParser_html_ae4d1609bd9645d5e8bb6e93bce1f74d3"><div class="ttname"><a href="classParser.html#ae4d1609bd9645d5e8bb6e93bce1f74d3">Parser::error</a></div><div class="ttdeci">ParseError error(const Token &amp;token, std::string_view message)</div><div class="ttdef"><b>Definition</b> <a href="parser_8cpp_source.html#l00299">parser.cpp:299</a></div></div>
+<div class="ttc" id="aclassParser_html_afa574c14f701afa5d544f7d74bcb4f45"><div class="ttname"><a href="classParser.html#afa574c14f701afa5d544f7d74bcb4f45">Parser::assignment</a></div><div class="ttdeci">std::shared_ptr&lt; Expr &gt; assignment()</div><div class="ttdef"><b>Definition</b> <a href="parser_8cpp_source.html#l00133">parser.cpp:133</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a59a84258a4cb9025b567ee5139455029"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a59a84258a4cb9025b567ee5139455029">EQUAL</a></div><div class="ttdeci">@ EQUAL</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00025">tokenType.hpp:25</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab3ef3d42ef1e035e09da51d680fd98d6" name="ab3ef3d42ef1e035e09da51d680fd98d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3ef3d42ef1e035e09da51d680fd98d6">&#9670;&#160;</a></span>block()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::shared_ptr&lt; <a class="el" href="classStmt.html">Stmt</a> &gt; &gt; Parser::block </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="parser_8cpp_source.html#l00122">122</a> of file <a class="el" href="parser_8cpp_source.html">parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  122</span>                                             {</div>
+<div class="line"><span class="lineno">  123</span>  std::vector&lt;std::shared_ptr&lt;Stmt&gt;&gt; statements;</div>
+<div class="line"><span class="lineno">  124</span> </div>
+<div class="line"><span class="lineno">  125</span>  <span class="keywordflow">while</span> (!<a class="code hl_function" href="classParser.html#acf9048fe87ddcc0dc9cfee60311cfae7">isAtEnd</a>() &amp;&amp; !<a class="code hl_function" href="classParser.html#a4abd386776b53defbfa7b88a4912c684">check</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a720e33700869f857881e7f50bdfb6943">TokenType::RIGHT_BRACE</a>)) {</div>
+<div class="line"><span class="lineno">  126</span>    statements.push_back(<a class="code hl_function" href="classParser.html#a8a76d0f7b89d00200efb3ac6b3481c72">declaration</a>());</div>
+<div class="line"><span class="lineno">  127</span>  }</div>
+<div class="line"><span class="lineno">  128</span> </div>
+<div class="line"><span class="lineno">  129</span>  <a class="code hl_function" href="classParser.html#a4a3f75bb1c83a3e6bbaface13a8e03b6">consume</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a720e33700869f857881e7f50bdfb6943">TokenType::RIGHT_BRACE</a>, <span class="stringliteral">&quot;Expect &#39;}&#39; after block.&quot;</span>);</div>
+<div class="line"><span class="lineno">  130</span>  <span class="keywordflow">return</span> statements;</div>
+<div class="line"><span class="lineno">  131</span>}</div>
+<div class="ttc" id="aclassParser_html_a4a3f75bb1c83a3e6bbaface13a8e03b6"><div class="ttname"><a href="classParser.html#a4a3f75bb1c83a3e6bbaface13a8e03b6">Parser::consume</a></div><div class="ttdeci">Token consume(TokenType type, std::string_view message)</div><div class="ttdef"><b>Definition</b> <a href="parser_8cpp_source.html#l00279">parser.cpp:279</a></div></div>
+<div class="ttc" id="aclassParser_html_a4abd386776b53defbfa7b88a4912c684"><div class="ttname"><a href="classParser.html#a4abd386776b53defbfa7b88a4912c684">Parser::check</a></div><div class="ttdeci">bool check(TokenType type) const</div><div class="ttdef"><b>Definition</b> <a href="parser_8cpp_source.html#l00269">parser.cpp:269</a></div></div>
+<div class="ttc" id="aclassParser_html_a8a76d0f7b89d00200efb3ac6b3481c72"><div class="ttname"><a href="classParser.html#a8a76d0f7b89d00200efb3ac6b3481c72">Parser::declaration</a></div><div class="ttdeci">std::shared_ptr&lt; Stmt &gt; declaration()</div><div class="ttdef"><b>Definition</b> <a href="parser_8cpp_source.html#l00016">parser.cpp:16</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a720e33700869f857881e7f50bdfb6943"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a720e33700869f857881e7f50bdfb6943">RIGHT_BRACE</a></div><div class="ttdeci">@ RIGHT_BRACE</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00015">tokenType.hpp:15</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a4abd386776b53defbfa7b88a4912c684" name="a4abd386776b53defbfa7b88a4912c684"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4abd386776b53defbfa7b88a4912c684">&#9670;&#160;</a></span>check()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Parser::check </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a>&#160;</td>
+          <td class="paramname"><em>type</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="parser_8cpp_source.html#l00269">269</a> of file <a class="el" href="parser_8cpp_source.html">parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  269</span>                                       {</div>
+<div class="line"><span class="lineno">  270</span>  <span class="keywordflow">if</span> (<a class="code hl_function" href="classParser.html#acf9048fe87ddcc0dc9cfee60311cfae7">isAtEnd</a>())</div>
+<div class="line"><span class="lineno">  271</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  272</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="classParser.html#ac9cfa423732f15c2202d60a1cb7249db">peek</a>().<a class="code hl_function" href="classToken.html#a31eae18f897e22a446c82e864dfbf5d4">getType</a>() == type;</div>
+<div class="line"><span class="lineno">  273</span>}</div>
+<div class="ttc" id="aclassParser_html_ac9cfa423732f15c2202d60a1cb7249db"><div class="ttname"><a href="classParser.html#ac9cfa423732f15c2202d60a1cb7249db">Parser::peek</a></div><div class="ttdeci">Token peek() const</div><div class="ttdef"><b>Definition</b> <a href="parser_8cpp_source.html#l00292">parser.cpp:292</a></div></div>
+<div class="ttc" id="aclassToken_html_a31eae18f897e22a446c82e864dfbf5d4"><div class="ttname"><a href="classToken.html#a31eae18f897e22a446c82e864dfbf5d4">Token::getType</a></div><div class="ttdeci">TokenType getType() const</div><div class="ttdef"><b>Definition</b> <a href="token_8cpp_source.html#l00008">token.cpp:8</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a120d23bbf17ad914d798ef701375eddc" name="a120d23bbf17ad914d798ef701375eddc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a120d23bbf17ad914d798ef701375eddc">&#9670;&#160;</a></span>comparison()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt; Parser::comparison </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="parser_8cpp_source.html#l00189">189</a> of file <a class="el" href="parser_8cpp_source.html">parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  189</span>                                       {</div>
+<div class="line"><span class="lineno">  190</span>  std::shared_ptr&lt;Expr&gt; expr = <a class="code hl_function" href="classParser.html#aa6dac16b11660cf177cd8b7bdf884847">term</a>();</div>
+<div class="line"><span class="lineno">  191</span> </div>
+<div class="line"><span class="lineno">  192</span>  <span class="keywordflow">while</span> (<a class="code hl_function" href="classParser.html#ae4d4e26fca5493b8c28df006b904b789">match</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a25b5ca2f56d99ba6ffcb5316adac34c1">TokenType::GREATER</a>, <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a4495f63771aa2060042a31363e16d4f9">TokenType::GREATER_EQUAL</a>, <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a95c736070f99b99eb80d1eac1f4ca60f">TokenType::LESS</a>,</div>
+<div class="line"><span class="lineno">  193</span>               <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921ac7fcbbb467ef6d40ec686d894e26accd">TokenType::LESS_EQUAL</a>)) {</div>
+<div class="line"><span class="lineno">  194</span>    <a class="code hl_class" href="classToken.html">Token</a> operatorToken = <a class="code hl_function" href="classParser.html#a11ec4f1f235a27b8f7f374dd3a71c994">previous</a>();</div>
+<div class="line"><span class="lineno">  195</span>    std::shared_ptr&lt;Expr&gt; right = <a class="code hl_function" href="classParser.html#aa6dac16b11660cf177cd8b7bdf884847">term</a>();</div>
+<div class="line"><span class="lineno">  196</span>    expr = std::make_shared&lt;Binary&gt;(expr, std::move(operatorToken), right);</div>
+<div class="line"><span class="lineno">  197</span>  }</div>
+<div class="line"><span class="lineno">  198</span> </div>
+<div class="line"><span class="lineno">  199</span>  <span class="keywordflow">return</span> expr;</div>
+<div class="line"><span class="lineno">  200</span>}</div>
+<div class="ttc" id="aclassParser_html_aa6dac16b11660cf177cd8b7bdf884847"><div class="ttname"><a href="classParser.html#aa6dac16b11660cf177cd8b7bdf884847">Parser::term</a></div><div class="ttdeci">std::shared_ptr&lt; Expr &gt; term()</div><div class="ttdef"><b>Definition</b> <a href="parser_8cpp_source.html#l00202">parser.cpp:202</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a25b5ca2f56d99ba6ffcb5316adac34c1"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a25b5ca2f56d99ba6ffcb5316adac34c1">GREATER</a></div><div class="ttdeci">@ GREATER</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00027">tokenType.hpp:27</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a4495f63771aa2060042a31363e16d4f9"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a4495f63771aa2060042a31363e16d4f9">GREATER_EQUAL</a></div><div class="ttdeci">@ GREATER_EQUAL</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00028">tokenType.hpp:28</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a95c736070f99b99eb80d1eac1f4ca60f"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a95c736070f99b99eb80d1eac1f4ca60f">LESS</a></div><div class="ttdeci">@ LESS</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00029">tokenType.hpp:29</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921ac7fcbbb467ef6d40ec686d894e26accd"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921ac7fcbbb467ef6d40ec686d894e26accd">LESS_EQUAL</a></div><div class="ttdeci">@ LESS_EQUAL</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00030">tokenType.hpp:30</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a4a3f75bb1c83a3e6bbaface13a8e03b6" name="a4a3f75bb1c83a3e6bbaface13a8e03b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a3f75bb1c83a3e6bbaface13a8e03b6">&#9670;&#160;</a></span>consume()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classToken.html">Token</a> Parser::consume </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a>&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>message</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="parser_8cpp_source.html#l00279">279</a> of file <a class="el" href="parser_8cpp_source.html">parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  279</span>                                                            {</div>
+<div class="line"><span class="lineno">  280</span>  <span class="keywordflow">if</span> (<a class="code hl_function" href="classParser.html#a4abd386776b53defbfa7b88a4912c684">check</a>(type))</div>
+<div class="line"><span class="lineno">  281</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classParser.html#a0a312afa6fba1a5391c58dccbe557784">advance</a>();</div>
+<div class="line"><span class="lineno">  282</span> </div>
+<div class="line"><span class="lineno">  283</span>  <span class="keywordflow">throw</span> <a class="code hl_function" href="classParser.html#ae4d1609bd9645d5e8bb6e93bce1f74d3">error</a>(<a class="code hl_function" href="classParser.html#ac9cfa423732f15c2202d60a1cb7249db">peek</a>(), message);</div>
+<div class="line"><span class="lineno">  284</span>}</div>
+<div class="ttc" id="aclassParser_html_a0a312afa6fba1a5391c58dccbe557784"><div class="ttname"><a href="classParser.html#a0a312afa6fba1a5391c58dccbe557784">Parser::advance</a></div><div class="ttdeci">Token advance()</div><div class="ttdef"><b>Definition</b> <a href="parser_8cpp_source.html#l00286">parser.cpp:286</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a8a76d0f7b89d00200efb3ac6b3481c72" name="a8a76d0f7b89d00200efb3ac6b3481c72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a76d0f7b89d00200efb3ac6b3481c72">&#9670;&#160;</a></span>declaration()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="classStmt.html">Stmt</a> &gt; Parser::declaration </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="parser_8cpp_source.html#l00016">16</a> of file <a class="el" href="parser_8cpp_source.html">parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   16</span>                                        {</div>
+<div class="line"><span class="lineno">   17</span>  <span class="keywordflow">try</span> {</div>
+<div class="line"><span class="lineno">   18</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classParser.html#ae4d4e26fca5493b8c28df006b904b789">match</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921af68346ce0bfce7ab2ca0a240f5132863">TokenType::VAR</a>))</div>
+<div class="line"><span class="lineno">   19</span>      <span class="keywordflow">return</span> <a class="code hl_function" href="classParser.html#a2d1daefca809aa79fe5adf525f1e2690">varDeclaration</a>();</div>
+<div class="line"><span class="lineno">   20</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classParser.html#abf9a5322d8f232ac719631de8cdbc763">statement</a>();</div>
+<div class="line"><span class="lineno">   21</span>  } <span class="keywordflow">catch</span> (ParseError &amp;<a class="code hl_function" href="classParser.html#ae4d1609bd9645d5e8bb6e93bce1f74d3">error</a>) {</div>
+<div class="line"><span class="lineno">   22</span>    <a class="code hl_function" href="classParser.html#a0b291d69599c11db2077222ca385f298">synchronize</a>();</div>
+<div class="line"><span class="lineno">   23</span>    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>; <span class="comment">// Return null on error</span></div>
+<div class="line"><span class="lineno">   24</span>  }</div>
+<div class="line"><span class="lineno">   25</span>}</div>
+<div class="ttc" id="aclassParser_html_a0b291d69599c11db2077222ca385f298"><div class="ttname"><a href="classParser.html#a0b291d69599c11db2077222ca385f298">Parser::synchronize</a></div><div class="ttdeci">void synchronize()</div><div class="ttdef"><b>Definition</b> <a href="parser_8cpp_source.html#l00304">parser.cpp:304</a></div></div>
+<div class="ttc" id="aclassParser_html_a2d1daefca809aa79fe5adf525f1e2690"><div class="ttname"><a href="classParser.html#a2d1daefca809aa79fe5adf525f1e2690">Parser::varDeclaration</a></div><div class="ttdeci">std::shared_ptr&lt; Stmt &gt; varDeclaration()</div><div class="ttdef"><b>Definition</b> <a href="parser_8cpp_source.html#l00104">parser.cpp:104</a></div></div>
+<div class="ttc" id="aclassParser_html_abf9a5322d8f232ac719631de8cdbc763"><div class="ttname"><a href="classParser.html#abf9a5322d8f232ac719631de8cdbc763">Parser::statement</a></div><div class="ttdeci">std::shared_ptr&lt; Stmt &gt; statement()</div><div class="ttdef"><b>Definition</b> <a href="parser_8cpp_source.html#l00027">parser.cpp:27</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921af68346ce0bfce7ab2ca0a240f5132863"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921af68346ce0bfce7ab2ca0a240f5132863">VAR</a></div><div class="ttdeci">@ VAR</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00048">tokenType.hpp:48</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a13677372c545767c9f29c975a6f83d31" name="a13677372c545767c9f29c975a6f83d31"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13677372c545767c9f29c975a6f83d31">&#9670;&#160;</a></span>equality()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt; Parser::equality </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="parser_8cpp_source.html#l00177">177</a> of file <a class="el" href="parser_8cpp_source.html">parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  177</span>                                     {</div>
+<div class="line"><span class="lineno">  178</span>  std::shared_ptr&lt;Expr&gt; expr = <a class="code hl_function" href="classParser.html#a120d23bbf17ad914d798ef701375eddc">comparison</a>();</div>
+<div class="line"><span class="lineno">  179</span> </div>
+<div class="line"><span class="lineno">  180</span>  <span class="keywordflow">while</span> (<a class="code hl_function" href="classParser.html#ae4d4e26fca5493b8c28df006b904b789">match</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a783d53dd60297984dc8336d5f80cb275">TokenType::BANG_EQUAL</a>, <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a56bd89f44f205c00adcfe8cb62332f78">TokenType::EQUAL_EQUAL</a>)) {</div>
+<div class="line"><span class="lineno">  181</span>    <a class="code hl_class" href="classToken.html">Token</a> operatorToken = <a class="code hl_function" href="classParser.html#a11ec4f1f235a27b8f7f374dd3a71c994">previous</a>();</div>
+<div class="line"><span class="lineno">  182</span>    std::shared_ptr&lt;Expr&gt; right = <a class="code hl_function" href="classParser.html#a120d23bbf17ad914d798ef701375eddc">comparison</a>();</div>
+<div class="line"><span class="lineno">  183</span>    expr = std::make_shared&lt;Binary&gt;(expr, std::move(operatorToken), right);</div>
+<div class="line"><span class="lineno">  184</span>  }</div>
+<div class="line"><span class="lineno">  185</span> </div>
+<div class="line"><span class="lineno">  186</span>  <span class="keywordflow">return</span> expr;</div>
+<div class="line"><span class="lineno">  187</span>}</div>
+<div class="ttc" id="aclassParser_html_a120d23bbf17ad914d798ef701375eddc"><div class="ttname"><a href="classParser.html#a120d23bbf17ad914d798ef701375eddc">Parser::comparison</a></div><div class="ttdeci">std::shared_ptr&lt; Expr &gt; comparison()</div><div class="ttdef"><b>Definition</b> <a href="parser_8cpp_source.html#l00189">parser.cpp:189</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a56bd89f44f205c00adcfe8cb62332f78"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a56bd89f44f205c00adcfe8cb62332f78">EQUAL_EQUAL</a></div><div class="ttdeci">@ EQUAL_EQUAL</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00026">tokenType.hpp:26</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a783d53dd60297984dc8336d5f80cb275"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a783d53dd60297984dc8336d5f80cb275">BANG_EQUAL</a></div><div class="ttdeci">@ BANG_EQUAL</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00024">tokenType.hpp:24</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ae4d1609bd9645d5e8bb6e93bce1f74d3" name="ae4d1609bd9645d5e8bb6e93bce1f74d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4d1609bd9645d5e8bb6e93bce1f74d3">&#9670;&#160;</a></span>error()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structParser_1_1ParseError.html">Parser::ParseError</a> Parser::error </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classToken.html">Token</a> &amp;&#160;</td>
+          <td class="paramname"><em>token</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>message</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="parser_8cpp_source.html#l00299">299</a> of file <a class="el" href="parser_8cpp_source.html">parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  299</span>                                                                         {</div>
+<div class="line"><span class="lineno">  300</span>  <a class="code hl_function" href="classParser.html#ae4d1609bd9645d5e8bb6e93bce1f74d3">::error</a>(token, std::string(message));</div>
+<div class="line"><span class="lineno">  301</span>  <span class="keywordflow">return</span> ParseError(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><span class="lineno">  302</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a884beef0ea98739c4135134b4d023cde" name="a884beef0ea98739c4135134b4d023cde"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a884beef0ea98739c4135134b4d023cde">&#9670;&#160;</a></span>expression()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt; Parser::expression </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="parser_8cpp_source.html#l00175">175</a> of file <a class="el" href="parser_8cpp_source.html">parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  175</span>{ <span class="keywordflow">return</span> <a class="code hl_function" href="classParser.html#afa574c14f701afa5d544f7d74bcb4f45">assignment</a>(); }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a9b6375cf58329480985f2529ae038e97" name="a9b6375cf58329480985f2529ae038e97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b6375cf58329480985f2529ae038e97">&#9670;&#160;</a></span>expressionStatement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="classStmt.html">Stmt</a> &gt; Parser::expressionStatement </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="parser_8cpp_source.html#l00116">116</a> of file <a class="el" href="parser_8cpp_source.html">parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  116</span>                                                {</div>
+<div class="line"><span class="lineno">  117</span>  std::shared_ptr&lt;Expr&gt; expr = <a class="code hl_function" href="classParser.html#a884beef0ea98739c4135134b4d023cde">expression</a>();</div>
+<div class="line"><span class="lineno">  118</span>  <a class="code hl_function" href="classParser.html#a4a3f75bb1c83a3e6bbaface13a8e03b6">consume</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a55eebe3c7e08b49cd5969442f4f8c4ce">TokenType::SEMICOLON</a>, <span class="stringliteral">&quot;Expect &#39;;&#39; after expression.&quot;</span>);</div>
+<div class="line"><span class="lineno">  119</span>  <span class="keywordflow">return</span> std::make_shared&lt;Expression&gt;(expr);</div>
+<div class="line"><span class="lineno">  120</span>}</div>
+<div class="ttc" id="aclassParser_html_a884beef0ea98739c4135134b4d023cde"><div class="ttname"><a href="classParser.html#a884beef0ea98739c4135134b4d023cde">Parser::expression</a></div><div class="ttdeci">std::shared_ptr&lt; Expr &gt; expression()</div><div class="ttdef"><b>Definition</b> <a href="parser_8cpp_source.html#l00175">parser.cpp:175</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a55eebe3c7e08b49cd5969442f4f8c4ce"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a55eebe3c7e08b49cd5969442f4f8c4ce">SEMICOLON</a></div><div class="ttdeci">@ SEMICOLON</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00018">tokenType.hpp:18</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a6c8daf85d7430dafbdd034d98129ad90" name="a6c8daf85d7430dafbdd034d98129ad90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c8daf85d7430dafbdd034d98129ad90">&#9670;&#160;</a></span>factor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt; Parser::factor </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="parser_8cpp_source.html#l00214">214</a> of file <a class="el" href="parser_8cpp_source.html">parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  214</span>                                   {</div>
+<div class="line"><span class="lineno">  215</span>  std::shared_ptr&lt;Expr&gt; expr = <a class="code hl_function" href="classParser.html#a623319b2b1de04483f5518de671e5dca">unary</a>();</div>
+<div class="line"><span class="lineno">  216</span> </div>
+<div class="line"><span class="lineno">  217</span>  <span class="keywordflow">while</span> (<a class="code hl_function" href="classParser.html#ae4d4e26fca5493b8c28df006b904b789">match</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aaabdfe7000ca535236502bb0c87ad944">TokenType::SLASH</a>, <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a9d398750ed310ae69cd070016810e4dc">TokenType::STAR</a>)) {</div>
+<div class="line"><span class="lineno">  218</span>    <a class="code hl_class" href="classToken.html">Token</a> operatorToken = <a class="code hl_function" href="classParser.html#a11ec4f1f235a27b8f7f374dd3a71c994">previous</a>();</div>
+<div class="line"><span class="lineno">  219</span>    std::shared_ptr&lt;Expr&gt; right = <a class="code hl_function" href="classParser.html#a623319b2b1de04483f5518de671e5dca">unary</a>();</div>
+<div class="line"><span class="lineno">  220</span>    expr = std::make_shared&lt;Binary&gt;(expr, std::move(operatorToken), right);</div>
+<div class="line"><span class="lineno">  221</span>  }</div>
+<div class="line"><span class="lineno">  222</span> </div>
+<div class="line"><span class="lineno">  223</span>  <span class="keywordflow">return</span> expr;</div>
+<div class="line"><span class="lineno">  224</span>}</div>
+<div class="ttc" id="aclassParser_html_a623319b2b1de04483f5518de671e5dca"><div class="ttname"><a href="classParser.html#a623319b2b1de04483f5518de671e5dca">Parser::unary</a></div><div class="ttdeci">std::shared_ptr&lt; Expr &gt; unary()</div><div class="ttdef"><b>Definition</b> <a href="parser_8cpp_source.html#l00226">parser.cpp:226</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a9d398750ed310ae69cd070016810e4dc"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a9d398750ed310ae69cd070016810e4dc">STAR</a></div><div class="ttdeci">@ STAR</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00020">tokenType.hpp:20</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921aaabdfe7000ca535236502bb0c87ad944"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aaabdfe7000ca535236502bb0c87ad944">SLASH</a></div><div class="ttdeci">@ SLASH</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00019">tokenType.hpp:19</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ae00b1de33c3dd5765bc454107829f1ef" name="ae00b1de33c3dd5765bc454107829f1ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae00b1de33c3dd5765bc454107829f1ef">&#9670;&#160;</a></span>forStatement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="classStmt.html">Stmt</a> &gt; Parser::forStatement </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="parser_8cpp_source.html#l00069">69</a> of file <a class="el" href="parser_8cpp_source.html">parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   69</span>                                         {</div>
+<div class="line"><span class="lineno">   70</span>  <a class="code hl_function" href="classParser.html#a4a3f75bb1c83a3e6bbaface13a8e03b6">consume</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aaf335b8436483ffd007e0c1e0ba82374">TokenType::LEFT_PAREN</a>, <span class="stringliteral">&quot;Expect &#39;(&#39; after &#39;for&#39;.&quot;</span>);</div>
+<div class="line"><span class="lineno">   71</span> </div>
+<div class="line"><span class="lineno">   72</span>  std::shared_ptr&lt;Stmt&gt; initializer =</div>
+<div class="line"><span class="lineno">   73</span>      <a class="code hl_function" href="classParser.html#ae4d4e26fca5493b8c28df006b904b789">match</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a55eebe3c7e08b49cd5969442f4f8c4ce">TokenType::SEMICOLON</a>)</div>
+<div class="line"><span class="lineno">   74</span>          ? nullptr</div>
+<div class="line"><span class="lineno">   75</span>          : (<a class="code hl_function" href="classParser.html#ae4d4e26fca5493b8c28df006b904b789">match</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921af68346ce0bfce7ab2ca0a240f5132863">VAR</a>) ? <a class="code hl_function" href="classParser.html#a2d1daefca809aa79fe5adf525f1e2690">varDeclaration</a>() : <a class="code hl_function" href="classParser.html#a9b6375cf58329480985f2529ae038e97">expressionStatement</a>());</div>
+<div class="line"><span class="lineno">   76</span> </div>
+<div class="line"><span class="lineno">   77</span>  std::shared_ptr&lt;Expr&gt; condition =</div>
+<div class="line"><span class="lineno">   78</span>      <a class="code hl_function" href="classParser.html#a4abd386776b53defbfa7b88a4912c684">check</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a55eebe3c7e08b49cd5969442f4f8c4ce">TokenType::SEMICOLON</a>) ? nullptr : <a class="code hl_function" href="classParser.html#a884beef0ea98739c4135134b4d023cde">expression</a>();</div>
+<div class="line"><span class="lineno">   79</span>  <a class="code hl_function" href="classParser.html#a4a3f75bb1c83a3e6bbaface13a8e03b6">consume</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a55eebe3c7e08b49cd5969442f4f8c4ce">SEMICOLON</a>, <span class="stringliteral">&quot;Expect &#39;;&#39; after loop condition.&quot;</span>);</div>
+<div class="line"><span class="lineno">   80</span> </div>
+<div class="line"><span class="lineno">   81</span>  std::shared_ptr&lt;Expr&gt; increment =</div>
+<div class="line"><span class="lineno">   82</span>      <a class="code hl_function" href="classParser.html#a4abd386776b53defbfa7b88a4912c684">check</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aef839b132f4710b720af9322523f64e8">TokenType::RIGHT_PAREN</a>) ? nullptr : <a class="code hl_function" href="classParser.html#a884beef0ea98739c4135134b4d023cde">expression</a>();</div>
+<div class="line"><span class="lineno">   83</span>  <a class="code hl_function" href="classParser.html#a4a3f75bb1c83a3e6bbaface13a8e03b6">consume</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aef839b132f4710b720af9322523f64e8">TokenType::RIGHT_PAREN</a>, <span class="stringliteral">&quot;Expect &#39;)&#39; after for parameters.&quot;</span>);</div>
+<div class="line"><span class="lineno">   84</span> </div>
+<div class="line"><span class="lineno">   85</span>  std::shared_ptr&lt;Stmt&gt; body = <a class="code hl_function" href="classParser.html#abf9a5322d8f232ac719631de8cdbc763">statement</a>();</div>
+<div class="line"><span class="lineno">   86</span> </div>
+<div class="line"><span class="lineno">   87</span>  <span class="comment">// Desugaring for statement</span></div>
+<div class="line"><span class="lineno">   88</span>  <span class="keywordflow">if</span> (increment)</div>
+<div class="line"><span class="lineno">   89</span>    body = std::make_shared&lt;Block&gt;(std::vector&lt;std::shared_ptr&lt;Stmt&gt;&gt;{</div>
+<div class="line"><span class="lineno">   90</span>        body, std::make_shared&lt;Expression&gt;(increment)});</div>
+<div class="line"><span class="lineno">   91</span> </div>
+<div class="line"><span class="lineno">   92</span>  <span class="keywordflow">if</span> (condition == <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">   93</span>    condition = std::make_shared&lt;Literal&gt;(<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">   94</span> </div>
+<div class="line"><span class="lineno">   95</span>  body = std::make_shared&lt;While&gt;(condition, body);</div>
+<div class="line"><span class="lineno">   96</span> </div>
+<div class="line"><span class="lineno">   97</span>  <span class="keywordflow">if</span> (initializer)</div>
+<div class="line"><span class="lineno">   98</span>    body = std::make_shared&lt;Block&gt;(</div>
+<div class="line"><span class="lineno">   99</span>        std::vector&lt;std::shared_ptr&lt;Stmt&gt;&gt;{initializer, body});</div>
+<div class="line"><span class="lineno">  100</span> </div>
+<div class="line"><span class="lineno">  101</span>  <span class="keywordflow">return</span> body;</div>
+<div class="line"><span class="lineno">  102</span>}</div>
+<div class="ttc" id="aclassParser_html_a9b6375cf58329480985f2529ae038e97"><div class="ttname"><a href="classParser.html#a9b6375cf58329480985f2529ae038e97">Parser::expressionStatement</a></div><div class="ttdeci">std::shared_ptr&lt; Stmt &gt; expressionStatement()</div><div class="ttdef"><b>Definition</b> <a href="parser_8cpp_source.html#l00116">parser.cpp:116</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921aaf335b8436483ffd007e0c1e0ba82374"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aaf335b8436483ffd007e0c1e0ba82374">LEFT_PAREN</a></div><div class="ttdeci">@ LEFT_PAREN</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00012">tokenType.hpp:12</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921aef839b132f4710b720af9322523f64e8"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aef839b132f4710b720af9322523f64e8">RIGHT_PAREN</a></div><div class="ttdeci">@ RIGHT_PAREN</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00013">tokenType.hpp:13</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a67012843f19372fd42c458e00b89187e" name="a67012843f19372fd42c458e00b89187e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67012843f19372fd42c458e00b89187e">&#9670;&#160;</a></span>ifStatement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="classStmt.html">Stmt</a> &gt; Parser::ifStatement </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="parser_8cpp_source.html#l00048">48</a> of file <a class="el" href="parser_8cpp_source.html">parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   48</span>                                        {</div>
+<div class="line"><span class="lineno">   49</span>  <a class="code hl_function" href="classParser.html#a4a3f75bb1c83a3e6bbaface13a8e03b6">consume</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aaf335b8436483ffd007e0c1e0ba82374">TokenType::LEFT_PAREN</a>, <span class="stringliteral">&quot;Expect &#39;(&#39; after &#39;if&#39;.&quot;</span>);</div>
+<div class="line"><span class="lineno">   50</span>  std::shared_ptr&lt;Expr&gt; condition = <a class="code hl_function" href="classParser.html#a884beef0ea98739c4135134b4d023cde">expression</a>();</div>
+<div class="line"><span class="lineno">   51</span>  <a class="code hl_function" href="classParser.html#a4a3f75bb1c83a3e6bbaface13a8e03b6">consume</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aef839b132f4710b720af9322523f64e8">TokenType::RIGHT_PAREN</a>, <span class="stringliteral">&quot;Expect &#39;)&#39; after if condition.&quot;</span>);</div>
+<div class="line"><span class="lineno">   52</span> </div>
+<div class="line"><span class="lineno">   53</span>  std::shared_ptr&lt;Stmt&gt; thenBranch = <a class="code hl_function" href="classParser.html#abf9a5322d8f232ac719631de8cdbc763">statement</a>();</div>
+<div class="line"><span class="lineno">   54</span>  std::shared_ptr&lt;Stmt&gt; elseBranch =</div>
+<div class="line"><span class="lineno">   55</span>      <a class="code hl_function" href="classParser.html#ae4d4e26fca5493b8c28df006b904b789">match</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a90d649d830ea440c8b8a56c7ef23c426">TokenType::ELSE</a>) ? <a class="code hl_function" href="classParser.html#abf9a5322d8f232ac719631de8cdbc763">statement</a>() : nullptr;</div>
+<div class="line"><span class="lineno">   56</span> </div>
+<div class="line"><span class="lineno">   57</span>  <span class="keywordflow">return</span> std::make_shared&lt;If&gt;(condition, thenBranch, elseBranch);</div>
+<div class="line"><span class="lineno">   58</span>}</div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a90d649d830ea440c8b8a56c7ef23c426"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a90d649d830ea440c8b8a56c7ef23c426">ELSE</a></div><div class="ttdeci">@ ELSE</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00041">tokenType.hpp:41</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="acf9048fe87ddcc0dc9cfee60311cfae7" name="acf9048fe87ddcc0dc9cfee60311cfae7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf9048fe87ddcc0dc9cfee60311cfae7">&#9670;&#160;</a></span>isAtEnd()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Parser::isAtEnd </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="parser_8cpp_source.html#l00275">275</a> of file <a class="el" href="parser_8cpp_source.html">parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  275</span>                           {</div>
+<div class="line"><span class="lineno">  276</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="classParser.html#ac9cfa423732f15c2202d60a1cb7249db">peek</a>().<a class="code hl_function" href="classToken.html#a31eae18f897e22a446c82e864dfbf5d4">getType</a>() == <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a7ea291c26de584b23fd7f9111784f860">TokenType::END_OF_FILE</a>;</div>
+<div class="line"><span class="lineno">  277</span>}</div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a7ea291c26de584b23fd7f9111784f860"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a7ea291c26de584b23fd7f9111784f860">END_OF_FILE</a></div><div class="ttdeci">@ END_OF_FILE</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00051">tokenType.hpp:50</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ae4d4e26fca5493b8c28df006b904b789" name="ae4d4e26fca5493b8c28df006b904b789"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4d4e26fca5493b8c28df006b904b789">&#9670;&#160;</a></span>match()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class... T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Parser::match </td>
+          <td>(</td>
+          <td class="paramtype">T...&#160;</td>
+          <td class="paramname"><em>types</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="parser_8cpp_source.html#l00257">257</a> of file <a class="el" href="parser_8cpp_source.html">parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  257</span>                                                   {</div>
+<div class="line"><span class="lineno">  258</span>  assert((std::is_same_v&lt;T, TokenType&gt; &amp;&amp; ...));</div>
+<div class="line"><span class="lineno">  259</span> </div>
+<div class="line"><span class="lineno">  260</span>  <span class="keywordflow">for</span> (<a class="code hl_enumeration" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> type : {types...}) {</div>
+<div class="line"><span class="lineno">  261</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classParser.html#a4abd386776b53defbfa7b88a4912c684">check</a>(type)) {</div>
+<div class="line"><span class="lineno">  262</span>      <a class="code hl_function" href="classParser.html#a0a312afa6fba1a5391c58dccbe557784">advance</a>();</div>
+<div class="line"><span class="lineno">  263</span>      <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  264</span>    }</div>
+<div class="line"><span class="lineno">  265</span>  }</div>
+<div class="line"><span class="lineno">  266</span>  <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  267</span>}</div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a></div><div class="ttdeci">TokenType</div><div class="ttdoc">Enum representing the different types of tokens in the GSC language.</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00010">tokenType.hpp:10</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a594dadb959e04f534d49d060d3b9547f" name="a594dadb959e04f534d49d060d3b9547f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a594dadb959e04f534d49d060d3b9547f">&#9670;&#160;</a></span>orLogical()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt; Parser::orLogical </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="parser_8cpp_source.html#l00151">151</a> of file <a class="el" href="parser_8cpp_source.html">parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  151</span>                                      {</div>
+<div class="line"><span class="lineno">  152</span>  std::shared_ptr&lt;Expr&gt; expr = <a class="code hl_function" href="classParser.html#ad4b938e79b2de1850ddae265fdfa44b5">andLogical</a>();</div>
+<div class="line"><span class="lineno">  153</span> </div>
+<div class="line"><span class="lineno">  154</span>  <span class="keywordflow">while</span> (<a class="code hl_function" href="classParser.html#ae4d4e26fca5493b8c28df006b904b789">match</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a96727447c0ad447987df1c6415aef074">TokenType::OR</a>)) {</div>
+<div class="line"><span class="lineno">  155</span>    <a class="code hl_class" href="classToken.html">Token</a> operatorToken = <a class="code hl_function" href="classParser.html#a11ec4f1f235a27b8f7f374dd3a71c994">previous</a>();</div>
+<div class="line"><span class="lineno">  156</span>    std::shared_ptr&lt;Expr&gt; right = <a class="code hl_function" href="classParser.html#ad4b938e79b2de1850ddae265fdfa44b5">andLogical</a>();</div>
+<div class="line"><span class="lineno">  157</span>    expr = std::make_shared&lt;Logical&gt;(expr, std::move(operatorToken), right);</div>
+<div class="line"><span class="lineno">  158</span>  }</div>
+<div class="line"><span class="lineno">  159</span> </div>
+<div class="line"><span class="lineno">  160</span>  <span class="keywordflow">return</span> expr;</div>
+<div class="line"><span class="lineno">  161</span>}</div>
+<div class="ttc" id="aclassParser_html_ad4b938e79b2de1850ddae265fdfa44b5"><div class="ttname"><a href="classParser.html#ad4b938e79b2de1850ddae265fdfa44b5">Parser::andLogical</a></div><div class="ttdeci">std::shared_ptr&lt; Expr &gt; andLogical()</div><div class="ttdef"><b>Definition</b> <a href="parser_8cpp_source.html#l00163">parser.cpp:163</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a96727447c0ad447987df1c6415aef074"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a96727447c0ad447987df1c6415aef074">OR</a></div><div class="ttdeci">@ OR</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00039">tokenType.hpp:39</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="aad339c9b8c635db45f4881560b22436b" name="aad339c9b8c635db45f4881560b22436b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aad339c9b8c635db45f4881560b22436b">&#9670;&#160;</a></span>parse()</h2>
 
@@ -145,22 +979,475 @@ Public Member Functions</h2></td></tr>
 <p>Parses the tokens and returns a vector of statements. </p>
 <p>This function processes the tokens and constructs an abstract syntax tree (AST) represented as a vector of statements.</p>
 <dl class="section return"><dt>Returns</dt><dd>std::vector&lt;std::shared_ptr&lt;Stmt&gt;&gt; A vector of shared pointers to the parsed statements. </dd></dl>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classParser_aad339c9b8c635db45f4881560b22436b_icgraph.png" border="0" usemap="#aclassParser_aad339c9b8c635db45f4881560b22436b_icgraph" alt=""/></div>
+
+<p class="definition">Definition at line <a class="el" href="parser_8cpp_source.html#l00007">7</a> of file <a class="el" href="parser_8cpp_source.html">parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">    7</span>                                             {</div>
+<div class="line"><span class="lineno">    8</span>  std::vector&lt;std::shared_ptr&lt;Stmt&gt;&gt; statements;</div>
+<div class="line"><span class="lineno">    9</span>  <span class="keywordflow">while</span> (!<a class="code hl_function" href="classParser.html#acf9048fe87ddcc0dc9cfee60311cfae7">isAtEnd</a>()) {</div>
+<div class="line"><span class="lineno">   10</span>    statements.push_back(<a class="code hl_function" href="classParser.html#a8a76d0f7b89d00200efb3ac6b3481c72">declaration</a>());</div>
+<div class="line"><span class="lineno">   11</span>  }</div>
+<div class="line"><span class="lineno">   12</span> </div>
+<div class="line"><span class="lineno">   13</span>  <span class="keywordflow">return</span> statements;</div>
+<div class="line"><span class="lineno">   14</span>}</div>
+</div><!-- fragment -->
 </div>
+</div>
+<a id="ac9cfa423732f15c2202d60a1cb7249db" name="ac9cfa423732f15c2202d60a1cb7249db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9cfa423732f15c2202d60a1cb7249db">&#9670;&#160;</a></span>peek()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classToken.html">Token</a> Parser::peek </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="parser_8cpp_source.html#l00292">292</a> of file <a class="el" href="parser_8cpp_source.html">parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  292</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classParser.html#a2e53d62e5912172c7f2a36c38e2b3ff4">tokens</a>[<a class="code hl_variable" href="classParser.html#afc6dc8f2c0da9b13c61e7560fa7d0692">current</a>]; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a11ec4f1f235a27b8f7f374dd3a71c994" name="a11ec4f1f235a27b8f7f374dd3a71c994"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11ec4f1f235a27b8f7f374dd3a71c994">&#9670;&#160;</a></span>previous()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classToken.html">Token</a> Parser::previous </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="parser_8cpp_source.html#l00294">294</a> of file <a class="el" href="parser_8cpp_source.html">parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  294</span>                             {</div>
+<div class="line"><span class="lineno">  295</span>  assert(<a class="code hl_variable" href="classParser.html#afc6dc8f2c0da9b13c61e7560fa7d0692">current</a> &gt; 0);</div>
+<div class="line"><span class="lineno">  296</span>  <span class="keywordflow">return</span> <a class="code hl_variable" href="classParser.html#a2e53d62e5912172c7f2a36c38e2b3ff4">tokens</a>[<a class="code hl_variable" href="classParser.html#afc6dc8f2c0da9b13c61e7560fa7d0692">current</a> - 1];</div>
+<div class="line"><span class="lineno">  297</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad2803892a2bf621f021322b5ce4b4fa3" name="ad2803892a2bf621f021322b5ce4b4fa3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2803892a2bf621f021322b5ce4b4fa3">&#9670;&#160;</a></span>primary()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt; Parser::primary </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="parser_8cpp_source.html#l00236">236</a> of file <a class="el" href="parser_8cpp_source.html">parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  236</span>                                    {</div>
+<div class="line"><span class="lineno">  237</span>  <span class="keywordflow">if</span> (<a class="code hl_function" href="classParser.html#ae4d4e26fca5493b8c28df006b904b789">match</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a682466b7669a81b39a8d657274fd4b95">TokenType::NIL</a>))</div>
+<div class="line"><span class="lineno">  238</span>    <span class="keywordflow">return</span> std::make_shared&lt;Literal&gt;(<span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">  239</span>  <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="classParser.html#ae4d4e26fca5493b8c28df006b904b789">match</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa82764c3079aea4e60c80e45befbb839">TokenType::TRUE</a>))</div>
+<div class="line"><span class="lineno">  240</span>    <span class="keywordflow">return</span> std::make_shared&lt;Literal&gt;(<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">  241</span>  <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="classParser.html#ae4d4e26fca5493b8c28df006b904b789">match</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa1e095cc966dbecf6a0d8aad75348d1a">TokenType::FALSE</a>))</div>
+<div class="line"><span class="lineno">  242</span>    <span class="keywordflow">return</span> std::make_shared&lt;Literal&gt;(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  243</span>  <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="classParser.html#ae4d4e26fca5493b8c28df006b904b789">match</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a12a90dfe20486bbe3e075afcd19ef2d0">TokenType::NUMBER</a>, <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aee847e634a4297b274316de8a8ca9921">TokenType::STRING</a>)) {</div>
+<div class="line"><span class="lineno">  244</span>    <span class="keywordflow">return</span> std::make_shared&lt;Literal&gt;(<a class="code hl_function" href="classParser.html#a11ec4f1f235a27b8f7f374dd3a71c994">previous</a>().getLiteral());</div>
+<div class="line"><span class="lineno">  245</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="classParser.html#ae4d4e26fca5493b8c28df006b904b789">match</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a84f8ae2490f9e4bd2321fd21f4b0e807">TokenType::IDENTIFIER</a>)) {</div>
+<div class="line"><span class="lineno">  246</span>    <span class="keywordflow">return</span> std::make_shared&lt;Variable&gt;(<a class="code hl_function" href="classParser.html#a11ec4f1f235a27b8f7f374dd3a71c994">previous</a>());</div>
+<div class="line"><span class="lineno">  247</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="classParser.html#ae4d4e26fca5493b8c28df006b904b789">match</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aaf335b8436483ffd007e0c1e0ba82374">TokenType::LEFT_PAREN</a>)) {</div>
+<div class="line"><span class="lineno">  248</span>    std::shared_ptr&lt;Expr&gt; expr = <a class="code hl_function" href="classParser.html#a884beef0ea98739c4135134b4d023cde">expression</a>();</div>
+<div class="line"><span class="lineno">  249</span>    <a class="code hl_function" href="classParser.html#a4a3f75bb1c83a3e6bbaface13a8e03b6">consume</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aef839b132f4710b720af9322523f64e8">TokenType::RIGHT_PAREN</a>, <span class="stringliteral">&quot;Expect &#39;)&#39; after expression.&quot;</span>);</div>
+<div class="line"><span class="lineno">  250</span>    <span class="keywordflow">return</span> std::make_shared&lt;Grouping&gt;(std::move(expr));</div>
+<div class="line"><span class="lineno">  251</span>  } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  252</span>    std::string_view message = <span class="stringliteral">&quot;Expect expression.&quot;</span>;</div>
+<div class="line"><span class="lineno">  253</span>    <span class="keywordflow">throw</span> <a class="code hl_function" href="classParser.html#ae4d1609bd9645d5e8bb6e93bce1f74d3">error</a>(<a class="code hl_function" href="classParser.html#ac9cfa423732f15c2202d60a1cb7249db">peek</a>(), message);</div>
+<div class="line"><span class="lineno">  254</span>  }</div>
+<div class="line"><span class="lineno">  255</span>}</div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a12a90dfe20486bbe3e075afcd19ef2d0"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a12a90dfe20486bbe3e075afcd19ef2d0">NUMBER</a></div><div class="ttdeci">@ NUMBER</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00035">tokenType.hpp:35</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a682466b7669a81b39a8d657274fd4b95"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a682466b7669a81b39a8d657274fd4b95">NIL</a></div><div class="ttdeci">@ NIL</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00046">tokenType.hpp:46</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a84f8ae2490f9e4bd2321fd21f4b0e807"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a84f8ae2490f9e4bd2321fd21f4b0e807">IDENTIFIER</a></div><div class="ttdeci">@ IDENTIFIER</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00033">tokenType.hpp:33</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921aa1e095cc966dbecf6a0d8aad75348d1a"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa1e095cc966dbecf6a0d8aad75348d1a">FALSE</a></div><div class="ttdeci">@ FALSE</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00043">tokenType.hpp:43</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921aa82764c3079aea4e60c80e45befbb839"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa82764c3079aea4e60c80e45befbb839">TRUE</a></div><div class="ttdeci">@ TRUE</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00042">tokenType.hpp:42</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921aee847e634a4297b274316de8a8ca9921"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aee847e634a4297b274316de8a8ca9921">STRING</a></div><div class="ttdeci">@ STRING</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00034">tokenType.hpp:34</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a9ce8c6959ce94ed0fc543ff15cc0e64a" name="a9ce8c6959ce94ed0fc543ff15cc0e64a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ce8c6959ce94ed0fc543ff15cc0e64a">&#9670;&#160;</a></span>printStatement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="classStmt.html">Stmt</a> &gt; Parser::printStatement </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="parser_8cpp_source.html#l00042">42</a> of file <a class="el" href="parser_8cpp_source.html">parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   42</span>                                           {</div>
+<div class="line"><span class="lineno">   43</span>  std::shared_ptr&lt;Expr&gt; value = <a class="code hl_function" href="classParser.html#a884beef0ea98739c4135134b4d023cde">expression</a>();</div>
+<div class="line"><span class="lineno">   44</span>  <a class="code hl_function" href="classParser.html#a4a3f75bb1c83a3e6bbaface13a8e03b6">consume</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a55eebe3c7e08b49cd5969442f4f8c4ce">TokenType::SEMICOLON</a>, <span class="stringliteral">&quot;Expect &#39;;&#39; after value.&quot;</span>);</div>
+<div class="line"><span class="lineno">   45</span>  <span class="keywordflow">return</span> std::make_shared&lt;Print&gt;(value);</div>
+<div class="line"><span class="lineno">   46</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="abf9a5322d8f232ac719631de8cdbc763" name="abf9a5322d8f232ac719631de8cdbc763"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf9a5322d8f232ac719631de8cdbc763">&#9670;&#160;</a></span>statement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="classStmt.html">Stmt</a> &gt; Parser::statement </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="parser_8cpp_source.html#l00027">27</a> of file <a class="el" href="parser_8cpp_source.html">parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   27</span>                                      {</div>
+<div class="line"><span class="lineno">   28</span>  <span class="keywordflow">if</span> (<a class="code hl_function" href="classParser.html#ae4d4e26fca5493b8c28df006b904b789">match</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921ab107229d44d042caa8ab8df4c8acaa1f">TokenType::PRINT</a>))</div>
+<div class="line"><span class="lineno">   29</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classParser.html#a9ce8c6959ce94ed0fc543ff15cc0e64a">printStatement</a>();</div>
+<div class="line"><span class="lineno">   30</span>  <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="classParser.html#ae4d4e26fca5493b8c28df006b904b789">match</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a252802eda493fb6b4a279c4452acb547">TokenType::IF</a>))</div>
+<div class="line"><span class="lineno">   31</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classParser.html#a67012843f19372fd42c458e00b89187e">ifStatement</a>();</div>
+<div class="line"><span class="lineno">   32</span>  <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="classParser.html#ae4d4e26fca5493b8c28df006b904b789">match</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a3278fd035226215822c903790a1eee73">TokenType::WHILE</a>))</div>
+<div class="line"><span class="lineno">   33</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classParser.html#ad272e80c86ddd7ffd12136744d095c76">whileStatement</a>();</div>
+<div class="line"><span class="lineno">   34</span>  <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="classParser.html#ae4d4e26fca5493b8c28df006b904b789">match</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa809654855caa62449850d9122fd77a8">TokenType::FOR</a>))</div>
+<div class="line"><span class="lineno">   35</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classParser.html#ae00b1de33c3dd5765bc454107829f1ef">forStatement</a>();</div>
+<div class="line"><span class="lineno">   36</span>  <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_function" href="classParser.html#ae4d4e26fca5493b8c28df006b904b789">match</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aad080c3559b964f64a0bf3babee794ae">TokenType::LEFT_BRACE</a>))</div>
+<div class="line"><span class="lineno">   37</span>    <span class="keywordflow">return</span> std::make_shared&lt;Block&gt;(<a class="code hl_function" href="classParser.html#ab3ef3d42ef1e035e09da51d680fd98d6">block</a>());</div>
+<div class="line"><span class="lineno">   38</span>  <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   39</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="classParser.html#a9b6375cf58329480985f2529ae038e97">expressionStatement</a>();</div>
+<div class="line"><span class="lineno">   40</span>}</div>
+<div class="ttc" id="aclassParser_html_a67012843f19372fd42c458e00b89187e"><div class="ttname"><a href="classParser.html#a67012843f19372fd42c458e00b89187e">Parser::ifStatement</a></div><div class="ttdeci">std::shared_ptr&lt; Stmt &gt; ifStatement()</div><div class="ttdef"><b>Definition</b> <a href="parser_8cpp_source.html#l00048">parser.cpp:48</a></div></div>
+<div class="ttc" id="aclassParser_html_a9ce8c6959ce94ed0fc543ff15cc0e64a"><div class="ttname"><a href="classParser.html#a9ce8c6959ce94ed0fc543ff15cc0e64a">Parser::printStatement</a></div><div class="ttdeci">std::shared_ptr&lt; Stmt &gt; printStatement()</div><div class="ttdef"><b>Definition</b> <a href="parser_8cpp_source.html#l00042">parser.cpp:42</a></div></div>
+<div class="ttc" id="aclassParser_html_ab3ef3d42ef1e035e09da51d680fd98d6"><div class="ttname"><a href="classParser.html#ab3ef3d42ef1e035e09da51d680fd98d6">Parser::block</a></div><div class="ttdeci">std::vector&lt; std::shared_ptr&lt; Stmt &gt; &gt; block()</div><div class="ttdef"><b>Definition</b> <a href="parser_8cpp_source.html#l00122">parser.cpp:122</a></div></div>
+<div class="ttc" id="aclassParser_html_ad272e80c86ddd7ffd12136744d095c76"><div class="ttname"><a href="classParser.html#ad272e80c86ddd7ffd12136744d095c76">Parser::whileStatement</a></div><div class="ttdeci">std::shared_ptr&lt; Stmt &gt; whileStatement()</div><div class="ttdef"><b>Definition</b> <a href="parser_8cpp_source.html#l00060">parser.cpp:60</a></div></div>
+<div class="ttc" id="aclassParser_html_ae00b1de33c3dd5765bc454107829f1ef"><div class="ttname"><a href="classParser.html#ae00b1de33c3dd5765bc454107829f1ef">Parser::forStatement</a></div><div class="ttdeci">std::shared_ptr&lt; Stmt &gt; forStatement()</div><div class="ttdef"><b>Definition</b> <a href="parser_8cpp_source.html#l00069">parser.cpp:69</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a252802eda493fb6b4a279c4452acb547"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a252802eda493fb6b4a279c4452acb547">IF</a></div><div class="ttdeci">@ IF</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00040">tokenType.hpp:40</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a3278fd035226215822c903790a1eee73"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a3278fd035226215822c903790a1eee73">WHILE</a></div><div class="ttdeci">@ WHILE</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00045">tokenType.hpp:45</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921aa809654855caa62449850d9122fd77a8"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa809654855caa62449850d9122fd77a8">FOR</a></div><div class="ttdeci">@ FOR</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00044">tokenType.hpp:44</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921aad080c3559b964f64a0bf3babee794ae"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aad080c3559b964f64a0bf3babee794ae">LEFT_BRACE</a></div><div class="ttdeci">@ LEFT_BRACE</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00014">tokenType.hpp:14</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921ab107229d44d042caa8ab8df4c8acaa1f"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921ab107229d44d042caa8ab8df4c8acaa1f">PRINT</a></div><div class="ttdeci">@ PRINT</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00047">tokenType.hpp:47</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a0b291d69599c11db2077222ca385f298" name="a0b291d69599c11db2077222ca385f298"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b291d69599c11db2077222ca385f298">&#9670;&#160;</a></span>synchronize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Parser::synchronize </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="parser_8cpp_source.html#l00304">304</a> of file <a class="el" href="parser_8cpp_source.html">parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  304</span>                         {</div>
+<div class="line"><span class="lineno">  305</span>  <a class="code hl_function" href="classParser.html#a0a312afa6fba1a5391c58dccbe557784">advance</a>();</div>
+<div class="line"><span class="lineno">  306</span> </div>
+<div class="line"><span class="lineno">  307</span>  <span class="keywordflow">while</span> (!<a class="code hl_function" href="classParser.html#acf9048fe87ddcc0dc9cfee60311cfae7">isAtEnd</a>()) {</div>
+<div class="line"><span class="lineno">  308</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="classParser.html#a11ec4f1f235a27b8f7f374dd3a71c994">previous</a>().getType() == <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a55eebe3c7e08b49cd5969442f4f8c4ce">TokenType::SEMICOLON</a>)</div>
+<div class="line"><span class="lineno">  309</span>      <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  310</span> </div>
+<div class="line"><span class="lineno">  311</span>    <span class="keywordflow">switch</span> (<a class="code hl_function" href="classParser.html#ac9cfa423732f15c2202d60a1cb7249db">peek</a>().getType()) {</div>
+<div class="line"><span class="lineno">  312</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921af68346ce0bfce7ab2ca0a240f5132863">TokenType::VAR</a>:</div>
+<div class="line"><span class="lineno">  313</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa809654855caa62449850d9122fd77a8">TokenType::FOR</a>:</div>
+<div class="line"><span class="lineno">  314</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a252802eda493fb6b4a279c4452acb547">TokenType::IF</a>:</div>
+<div class="line"><span class="lineno">  315</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a3278fd035226215822c903790a1eee73">TokenType::WHILE</a>:</div>
+<div class="line"><span class="lineno">  316</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921ab107229d44d042caa8ab8df4c8acaa1f">TokenType::PRINT</a>:</div>
+<div class="line"><span class="lineno">  317</span>      <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  318</span>    <span class="keywordflow">default</span>:</div>
+<div class="line"><span class="lineno">  319</span>      <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  320</span>    }</div>
+<div class="line"><span class="lineno">  321</span> </div>
+<div class="line"><span class="lineno">  322</span>    <a class="code hl_function" href="classParser.html#a0a312afa6fba1a5391c58dccbe557784">advance</a>();</div>
+<div class="line"><span class="lineno">  323</span>  }</div>
+<div class="line"><span class="lineno">  324</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa6dac16b11660cf177cd8b7bdf884847" name="aa6dac16b11660cf177cd8b7bdf884847"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6dac16b11660cf177cd8b7bdf884847">&#9670;&#160;</a></span>term()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt; Parser::term </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="parser_8cpp_source.html#l00202">202</a> of file <a class="el" href="parser_8cpp_source.html">parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  202</span>                                 {</div>
+<div class="line"><span class="lineno">  203</span>  std::shared_ptr&lt;Expr&gt; expr = <a class="code hl_function" href="classParser.html#a6c8daf85d7430dafbdd034d98129ad90">factor</a>();</div>
+<div class="line"><span class="lineno">  204</span> </div>
+<div class="line"><span class="lineno">  205</span>  <span class="keywordflow">while</span> (<a class="code hl_function" href="classParser.html#ae4d4e26fca5493b8c28df006b904b789">match</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921af613d73b4e7b570ffd967df4a13c4225">TokenType::MINUS</a>, <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a87fe59ef12c3d13dc2a4d14c9b16c1f9">TokenType::PLUS</a>)) {</div>
+<div class="line"><span class="lineno">  206</span>    <a class="code hl_class" href="classToken.html">Token</a> operatorToken = <a class="code hl_function" href="classParser.html#a11ec4f1f235a27b8f7f374dd3a71c994">previous</a>();</div>
+<div class="line"><span class="lineno">  207</span>    std::shared_ptr&lt;Expr&gt; right = <a class="code hl_function" href="classParser.html#a6c8daf85d7430dafbdd034d98129ad90">factor</a>();</div>
+<div class="line"><span class="lineno">  208</span>    expr = std::make_shared&lt;Binary&gt;(expr, std::move(operatorToken), right);</div>
+<div class="line"><span class="lineno">  209</span>  }</div>
+<div class="line"><span class="lineno">  210</span> </div>
+<div class="line"><span class="lineno">  211</span>  <span class="keywordflow">return</span> expr;</div>
+<div class="line"><span class="lineno">  212</span>}</div>
+<div class="ttc" id="aclassParser_html_a6c8daf85d7430dafbdd034d98129ad90"><div class="ttname"><a href="classParser.html#a6c8daf85d7430dafbdd034d98129ad90">Parser::factor</a></div><div class="ttdeci">std::shared_ptr&lt; Expr &gt; factor()</div><div class="ttdef"><b>Definition</b> <a href="parser_8cpp_source.html#l00214">parser.cpp:214</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a87fe59ef12c3d13dc2a4d14c9b16c1f9"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a87fe59ef12c3d13dc2a4d14c9b16c1f9">PLUS</a></div><div class="ttdeci">@ PLUS</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00017">tokenType.hpp:17</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921af613d73b4e7b570ffd967df4a13c4225"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921af613d73b4e7b570ffd967df4a13c4225">MINUS</a></div><div class="ttdeci">@ MINUS</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00016">tokenType.hpp:16</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a623319b2b1de04483f5518de671e5dca" name="a623319b2b1de04483f5518de671e5dca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a623319b2b1de04483f5518de671e5dca">&#9670;&#160;</a></span>unary()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt; Parser::unary </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="parser_8cpp_source.html#l00226">226</a> of file <a class="el" href="parser_8cpp_source.html">parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  226</span>                                  {</div>
+<div class="line"><span class="lineno">  227</span>  <span class="keywordflow">if</span> (<a class="code hl_function" href="classParser.html#ae4d4e26fca5493b8c28df006b904b789">match</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a220fa389cdbdc1e8cd33f70c1f793d3c">TokenType::BANG</a>, <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921af613d73b4e7b570ffd967df4a13c4225">TokenType::MINUS</a>)) {</div>
+<div class="line"><span class="lineno">  228</span>    <a class="code hl_class" href="classToken.html">Token</a> operatorToken = <a class="code hl_function" href="classParser.html#a11ec4f1f235a27b8f7f374dd3a71c994">previous</a>();</div>
+<div class="line"><span class="lineno">  229</span>    std::shared_ptr&lt;Expr&gt; right = <a class="code hl_function" href="classParser.html#a623319b2b1de04483f5518de671e5dca">unary</a>();</div>
+<div class="line"><span class="lineno">  230</span>    <span class="keywordflow">return</span> std::make_shared&lt;Unary&gt;(std::move(operatorToken), right);</div>
+<div class="line"><span class="lineno">  231</span>  }</div>
+<div class="line"><span class="lineno">  232</span> </div>
+<div class="line"><span class="lineno">  233</span>  <span class="keywordflow">return</span> <a class="code hl_function" href="classParser.html#ad2803892a2bf621f021322b5ce4b4fa3">primary</a>();</div>
+<div class="line"><span class="lineno">  234</span>}</div>
+<div class="ttc" id="aclassParser_html_ad2803892a2bf621f021322b5ce4b4fa3"><div class="ttname"><a href="classParser.html#ad2803892a2bf621f021322b5ce4b4fa3">Parser::primary</a></div><div class="ttdeci">std::shared_ptr&lt; Expr &gt; primary()</div><div class="ttdef"><b>Definition</b> <a href="parser_8cpp_source.html#l00236">parser.cpp:236</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a220fa389cdbdc1e8cd33f70c1f793d3c"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a220fa389cdbdc1e8cd33f70c1f793d3c">BANG</a></div><div class="ttdeci">@ BANG</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00023">tokenType.hpp:23</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a2d1daefca809aa79fe5adf525f1e2690" name="a2d1daefca809aa79fe5adf525f1e2690"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d1daefca809aa79fe5adf525f1e2690">&#9670;&#160;</a></span>varDeclaration()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="classStmt.html">Stmt</a> &gt; Parser::varDeclaration </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="parser_8cpp_source.html#l00104">104</a> of file <a class="el" href="parser_8cpp_source.html">parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  104</span>                                           {</div>
+<div class="line"><span class="lineno">  105</span>  <a class="code hl_class" href="classToken.html">Token</a> name = <a class="code hl_function" href="classParser.html#a4a3f75bb1c83a3e6bbaface13a8e03b6">consume</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a84f8ae2490f9e4bd2321fd21f4b0e807">TokenType::IDENTIFIER</a>, <span class="stringliteral">&quot;Expect variable name.&quot;</span>);</div>
+<div class="line"><span class="lineno">  106</span>  std::shared_ptr&lt;Expr&gt; initializer = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">  107</span> </div>
+<div class="line"><span class="lineno">  108</span>  <span class="keywordflow">if</span> (<a class="code hl_function" href="classParser.html#ae4d4e26fca5493b8c28df006b904b789">match</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a59a84258a4cb9025b567ee5139455029">TokenType::EQUAL</a>)) {</div>
+<div class="line"><span class="lineno">  109</span>    initializer = <a class="code hl_function" href="classParser.html#a884beef0ea98739c4135134b4d023cde">expression</a>();</div>
+<div class="line"><span class="lineno">  110</span>  }</div>
+<div class="line"><span class="lineno">  111</span> </div>
+<div class="line"><span class="lineno">  112</span>  <a class="code hl_function" href="classParser.html#a4a3f75bb1c83a3e6bbaface13a8e03b6">consume</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a55eebe3c7e08b49cd5969442f4f8c4ce">TokenType::SEMICOLON</a>, <span class="stringliteral">&quot;Expect &#39;;&#39; after variable declaration.&quot;</span>);</div>
+<div class="line"><span class="lineno">  113</span>  <span class="keywordflow">return</span> std::make_shared&lt;Var&gt;(std::move(name), initializer);</div>
+<div class="line"><span class="lineno">  114</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad272e80c86ddd7ffd12136744d095c76" name="ad272e80c86ddd7ffd12136744d095c76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad272e80c86ddd7ffd12136744d095c76">&#9670;&#160;</a></span>whileStatement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="classStmt.html">Stmt</a> &gt; Parser::whileStatement </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="parser_8cpp_source.html#l00060">60</a> of file <a class="el" href="parser_8cpp_source.html">parser.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   60</span>                                           {</div>
+<div class="line"><span class="lineno">   61</span>  <a class="code hl_function" href="classParser.html#a4a3f75bb1c83a3e6bbaface13a8e03b6">consume</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aaf335b8436483ffd007e0c1e0ba82374">TokenType::LEFT_PAREN</a>, <span class="stringliteral">&quot;Expect &#39;(&#39; after &#39;while&#39;.&quot;</span>);</div>
+<div class="line"><span class="lineno">   62</span>  std::shared_ptr&lt;Expr&gt; condition = <a class="code hl_function" href="classParser.html#a884beef0ea98739c4135134b4d023cde">expression</a>();</div>
+<div class="line"><span class="lineno">   63</span>  <a class="code hl_function" href="classParser.html#a4a3f75bb1c83a3e6bbaface13a8e03b6">consume</a>(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aef839b132f4710b720af9322523f64e8">TokenType::RIGHT_PAREN</a>, <span class="stringliteral">&quot;Expect &#39;)&#39; after while condition.&quot;</span>);</div>
+<div class="line"><span class="lineno">   64</span> </div>
+<div class="line"><span class="lineno">   65</span>  std::shared_ptr&lt;Stmt&gt; body = <a class="code hl_function" href="classParser.html#abf9a5322d8f232ac719631de8cdbc763">statement</a>();</div>
+<div class="line"><span class="lineno">   66</span>  <span class="keywordflow">return</span> std::make_shared&lt;While&gt;(condition, body);</div>
+<div class="line"><span class="lineno">   67</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="afc6dc8f2c0da9b13c61e7560fa7d0692" name="afc6dc8f2c0da9b13c61e7560fa7d0692"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc6dc8f2c0da9b13c61e7560fa7d0692">&#9670;&#160;</a></span>current</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Parser::current = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="parser_8hpp_source.html#l00032">32</a> of file <a class="el" href="parser_8hpp_source.html">parser.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a2e53d62e5912172c7f2a36c38e2b3ff4" name="a2e53d62e5912172c7f2a36c38e2b3ff4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e53d62e5912172c7f2a36c38e2b3ff4">&#9670;&#160;</a></span>tokens</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt;<a class="el" href="classToken.html">Token</a>&gt;&amp; Parser::tokens</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="parser_8hpp_source.html#l00031">31</a> of file <a class="el" href="parser_8hpp_source.html">parser.hpp</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>lib/gsc/<a class="el" href="parser_8hpp_source.html">parser.hpp</a></li>
-<li>src/<a class="el" href="parser_8cpp.html">parser.cpp</a></li>
+<li>src/<a class="el" href="parser_8cpp_source.html">parser.cpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="classParser.html">Parser</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

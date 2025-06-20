@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -23,6 +27,7 @@
   <td id="projectalign">
    <div id="projectname">Simplified C/C++ (GSC)
    </div>
+   <div id="projectbrief">A Turing-complete interpreter developed for a compiler course</div>
   </td>
  </tr>
  </tbody>
@@ -46,6 +51,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('environmentTest_8cpp.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,11 +89,6 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_13e138d54eb8818da29c3992edef070a.html">test</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
@@ -84,9 +101,11 @@ $(function() {
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for environmentTest.cpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="environmentTest_8cpp__incl.png" border="0" usemap="#atest_2environmentTest_8cpp" alt=""/></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="environmentTest_8cpp__incl.svg" width="100%" height="547"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
-</div><table class="memberdecls">
+</div>
+<p><a href="environmentTest_8cpp_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:abce412c1f557dadc11c76f0e6671be22" id="r_abce412c1f557dadc11c76f0e6671be22"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="environmentTest_8cpp.html#abce412c1f557dadc11c76f0e6671be22">TEST_CASE</a> (&quot;Environment without enclosing&quot;, &quot;[environment]&quot;)</td></tr>
@@ -120,12 +139,50 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="environmentTest_8cpp_a01074950e21f756a61be6fe46c80e0e9_cgraph.png" border="0" usemap="#aenvironmentTest_8cpp_a01074950e21f756a61be6fe46c80e0e9_cgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="environmentTest_8cpp_source.html#l00034">34</a> of file <a class="el" href="environmentTest_8cpp_source.html">environmentTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   34</span>                                                                    {</div>
+<div class="line"><span class="lineno">   35</span>  <a class="code hl_class" href="classEnvironment.html">Environment</a> auxEnv{};</div>
+<div class="line"><span class="lineno">   36</span>  auxEnv.<a class="code hl_function" href="classEnvironment.html#a49108e1ecc987978b3e56d1f38569ec4">define</a>(<span class="stringliteral">&quot;auxVar&quot;</span>, 10);</div>
+<div class="line"><span class="lineno">   37</span>  auxEnv.define(<span class="stringliteral">&quot;auxVar2&quot;</span>, 20);</div>
+<div class="line"><span class="lineno">   38</span>  <a class="code hl_class" href="classEnvironment.html">Environment</a> env{std::make_shared&lt;Environment&gt;(auxEnv)};</div>
+<div class="line"><span class="lineno">   39</span> </div>
+<div class="line"><span class="lineno">   40</span>  SECTION(<span class="stringliteral">&quot;Get variable from enclosing environment&quot;</span>) {</div>
+<div class="line"><span class="lineno">   41</span>    <a class="code hl_class" href="classToken.html">Token</a> name(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a84f8ae2490f9e4bd2321fd21f4b0e807">TokenType::IDENTIFIER</a>, <span class="stringliteral">&quot;auxVar&quot;</span>, <span class="stringliteral">&quot;auxVar&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">   42</span>    REQUIRE(env.get(name).type() == <span class="keyword">typeid</span>(<span class="keywordtype">int</span>));</div>
+<div class="line"><span class="lineno">   43</span>    CHECK(std::any_cast&lt;int&gt;(env.get(name)) == 10);</div>
+<div class="line"><span class="lineno">   44</span>  }</div>
+<div class="line"><span class="lineno">   45</span> </div>
+<div class="line"><span class="lineno">   46</span>  SECTION(<span class="stringliteral">&quot;Define variable in environment&quot;</span>) {</div>
+<div class="line"><span class="lineno">   47</span>    <a class="code hl_class" href="classToken.html">Token</a> name(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a84f8ae2490f9e4bd2321fd21f4b0e807">TokenType::IDENTIFIER</a>, <span class="stringliteral">&quot;newVar&quot;</span>, <span class="stringliteral">&quot;newVar&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">   48</span>    env.define(name.getLexeme(), 20);</div>
+<div class="line"><span class="lineno">   49</span>    REQUIRE(env.get(name).type() == <span class="keyword">typeid</span>(<span class="keywordtype">int</span>));</div>
+<div class="line"><span class="lineno">   50</span>    CHECK(std::any_cast&lt;int&gt;(env.get(name)) == 20);</div>
+<div class="line"><span class="lineno">   51</span>  }</div>
+<div class="line"><span class="lineno">   52</span> </div>
+<div class="line"><span class="lineno">   53</span>  SECTION(<span class="stringliteral">&quot;Assign to variable in enclosing environment&quot;</span>) {</div>
+<div class="line"><span class="lineno">   54</span>    <a class="code hl_class" href="classToken.html">Token</a> name(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a84f8ae2490f9e4bd2321fd21f4b0e807">TokenType::IDENTIFIER</a>, <span class="stringliteral">&quot;auxVar2&quot;</span>, <span class="stringliteral">&quot;auxVar2&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">   55</span>    env.assign(name, 30);</div>
+<div class="line"><span class="lineno">   56</span>    REQUIRE(env.get(name).type() == <span class="keyword">typeid</span>(<span class="keywordtype">int</span>));</div>
+<div class="line"><span class="lineno">   57</span>    CHECK(std::any_cast&lt;int&gt;(env.get(name)) == 30);</div>
+<div class="line"><span class="lineno">   58</span>  }</div>
+<div class="line"><span class="lineno">   59</span> </div>
+<div class="line"><span class="lineno">   60</span>  SECTION(<span class="stringliteral">&quot;Get undefined variable in enclosing environment&quot;</span>) {</div>
+<div class="line"><span class="lineno">   61</span>    <a class="code hl_class" href="classToken.html">Token</a> name(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a84f8ae2490f9e4bd2321fd21f4b0e807">TokenType::IDENTIFIER</a>, <span class="stringliteral">&quot;undefinedVar&quot;</span>, <span class="stringliteral">&quot;undefinedVar&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">   62</span>    REQUIRE_THROWS_AS(env.get(name), <a class="code hl_class" href="classRuntimeError.html">RuntimeError</a>);</div>
+<div class="line"><span class="lineno">   63</span>  }</div>
+<div class="line"><span class="lineno">   64</span> </div>
+<div class="line"><span class="lineno">   65</span>  SECTION(<span class="stringliteral">&quot;Assign to undefined variable in enclosing environment&quot;</span>) {</div>
+<div class="line"><span class="lineno">   66</span>    <a class="code hl_class" href="classToken.html">Token</a> name(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a84f8ae2490f9e4bd2321fd21f4b0e807">TokenType::IDENTIFIER</a>, <span class="stringliteral">&quot;undefinedVar&quot;</span>, <span class="stringliteral">&quot;undefinedVar&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">   67</span>    REQUIRE_THROWS_AS(env.assign(name, 42), <a class="code hl_class" href="classRuntimeError.html">RuntimeError</a>);</div>
+<div class="line"><span class="lineno">   68</span>  }</div>
+<div class="line"><span class="lineno">   69</span>}</div>
+<div class="ttc" id="aclassEnvironment_html"><div class="ttname"><a href="classEnvironment.html">Environment</a></div><div class="ttdoc">Represents an environment for variable storage in the GSC interpreter.</div><div class="ttdef"><b>Definition</b> <a href="environment_8hpp_source.html#l00015">environment.hpp:15</a></div></div>
+<div class="ttc" id="aclassEnvironment_html_a49108e1ecc987978b3e56d1f38569ec4"><div class="ttname"><a href="classEnvironment.html#a49108e1ecc987978b3e56d1f38569ec4">Environment::define</a></div><div class="ttdeci">void define(const std::string &amp;name, std::any value)</div><div class="ttdoc">Defines a new variable in the current environment.</div><div class="ttdef"><b>Definition</b> <a href="environment_8cpp_source.html#l00035">environment.cpp:35</a></div></div>
+<div class="ttc" id="aclassRuntimeError_html"><div class="ttname"><a href="classRuntimeError.html">RuntimeError</a></div><div class="ttdoc">Represents a runtime error in the GSC interpreter.</div><div class="ttdef"><b>Definition</b> <a href="runtimeError_8hpp_source.html#l00014">runtimeError.hpp:14</a></div></div>
+<div class="ttc" id="aclassToken_html"><div class="ttname"><a href="classToken.html">Token</a></div><div class="ttdoc">Represents a token in the source code.</div><div class="ttdef"><b>Definition</b> <a href="token_8hpp_source.html#l00014">token.hpp:14</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a84f8ae2490f9e4bd2321fd21f4b0e807"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a84f8ae2490f9e4bd2321fd21f4b0e807">IDENTIFIER</a></div><div class="ttdeci">@ IDENTIFIER</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00033">tokenType.hpp:33</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="abce412c1f557dadc11c76f0e6671be22" name="abce412c1f557dadc11c76f0e6671be22"></a>
@@ -153,18 +210,47 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="environmentTest_8cpp_abce412c1f557dadc11c76f0e6671be22_cgraph.png" border="0" usemap="#aenvironmentTest_8cpp_abce412c1f557dadc11c76f0e6671be22_cgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="environmentTest_8cpp_source.html#l00005">5</a> of file <a class="el" href="environmentTest_8cpp_source.html">environmentTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">    5</span>                                                            {</div>
+<div class="line"><span class="lineno">    6</span>  <a class="code hl_class" href="classEnvironment.html">Environment</a> env{};</div>
+<div class="line"><span class="lineno">    7</span> </div>
+<div class="line"><span class="lineno">    8</span>  SECTION(<span class="stringliteral">&quot;Get undefined variable&quot;</span>) {</div>
+<div class="line"><span class="lineno">    9</span>    <a class="code hl_class" href="classToken.html">Token</a> name(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a84f8ae2490f9e4bd2321fd21f4b0e807">TokenType::IDENTIFIER</a>, <span class="stringliteral">&quot;x&quot;</span>, <span class="stringliteral">&quot;x&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">   10</span>    REQUIRE_THROWS_AS(env.get(name), <a class="code hl_class" href="classRuntimeError.html">RuntimeError</a>);</div>
+<div class="line"><span class="lineno">   11</span>  }</div>
+<div class="line"><span class="lineno">   12</span> </div>
+<div class="line"><span class="lineno">   13</span>  SECTION(<span class="stringliteral">&quot;Define and get variable&quot;</span>) {</div>
+<div class="line"><span class="lineno">   14</span>    <a class="code hl_class" href="classToken.html">Token</a> name(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a84f8ae2490f9e4bd2321fd21f4b0e807">TokenType::IDENTIFIER</a>, <span class="stringliteral">&quot;x&quot;</span>, <span class="stringliteral">&quot;x&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">   15</span>    env.define(name.getLexeme(), 42);</div>
+<div class="line"><span class="lineno">   16</span>    REQUIRE(env.get(name).type() == <span class="keyword">typeid</span>(<span class="keywordtype">int</span>));</div>
+<div class="line"><span class="lineno">   17</span>    CHECK(std::any_cast&lt;int&gt;(env.get(name)) == 42);</div>
+<div class="line"><span class="lineno">   18</span>  }</div>
+<div class="line"><span class="lineno">   19</span> </div>
+<div class="line"><span class="lineno">   20</span>  SECTION(<span class="stringliteral">&quot;Assign to undefined variable&quot;</span>) {</div>
+<div class="line"><span class="lineno">   21</span>    <a class="code hl_class" href="classToken.html">Token</a> name(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a84f8ae2490f9e4bd2321fd21f4b0e807">TokenType::IDENTIFIER</a>, <span class="stringliteral">&quot;x&quot;</span>, <span class="stringliteral">&quot;x&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">   22</span>    REQUIRE_THROWS_AS(env.assign(name, 42), <a class="code hl_class" href="classRuntimeError.html">RuntimeError</a>);</div>
+<div class="line"><span class="lineno">   23</span>  }</div>
+<div class="line"><span class="lineno">   24</span> </div>
+<div class="line"><span class="lineno">   25</span>  SECTION(<span class="stringliteral">&quot;Assign to defined variable&quot;</span>) {</div>
+<div class="line"><span class="lineno">   26</span>    <a class="code hl_class" href="classToken.html">Token</a> name(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a84f8ae2490f9e4bd2321fd21f4b0e807">TokenType::IDENTIFIER</a>, <span class="stringliteral">&quot;x&quot;</span>, <span class="stringliteral">&quot;x&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">   27</span>    env.define(name.getLexeme(), 42);</div>
+<div class="line"><span class="lineno">   28</span>    env.assign(name, 100);</div>
+<div class="line"><span class="lineno">   29</span>    REQUIRE(env.get(name).type() == <span class="keyword">typeid</span>(<span class="keywordtype">int</span>));</div>
+<div class="line"><span class="lineno">   30</span>    CHECK(std::any_cast&lt;int&gt;(env.get(name)) == 100);</div>
+<div class="line"><span class="lineno">   31</span>  }</div>
+<div class="line"><span class="lineno">   32</span>}</div>
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_13e138d54eb8818da29c3992edef070a.html">test</a></li><li class="navelem"><a class="el" href="environmentTest_8cpp.html">environmentTest.cpp</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

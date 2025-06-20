@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -23,6 +27,7 @@
   <td id="projectalign">
    <div id="projectname">Simplified C/C++ (GSC)
    </div>
+   <div id="projectbrief">A Turing-complete interpreter developed for a compiler course</div>
   </td>
  </tr>
  </tbody>
@@ -46,6 +51,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classEnvironment.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,10 +89,10 @@ $(function() {
 </div>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classEnvironment-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Environment Class Reference</div></div>
 </div><!--header-->
@@ -83,12 +105,12 @@ $(function() {
 <div class="dynheader">
 Inheritance diagram for Environment:</div>
 <div class="dyncontent">
-<div class="center"><img src="classEnvironment__inherit__graph.png" border="0" usemap="#aEnvironment_inherit__map" alt="Inheritance graph"/></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classEnvironment__inherit__graph.svg" width="207" height="304"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Collaboration diagram for Environment:</div>
 <div class="dyncontent">
-<div class="center"><img src="classEnvironment__coll__graph.png" border="0" usemap="#aEnvironment_coll__map" alt="Collaboration graph"/></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classEnvironment__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -96,7 +118,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a8b427c4448d8b7536666837521b9e83d" id="r_a8b427c4448d8b7536666837521b9e83d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#a8b427c4448d8b7536666837521b9e83d">Environment</a> ()</td></tr>
 <tr class="memdesc:a8b427c4448d8b7536666837521b9e83d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new <a class="el" href="classEnvironment.html" title="Represents an environment for variable storage in the GSC interpreter.">Environment</a>.  <br /></td></tr>
 <tr class="separator:a8b427c4448d8b7536666837521b9e83d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82663dfd4a2ffc990a0c1d2f770a9380" id="r_a82663dfd4a2ffc990a0c1d2f770a9380"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#a82663dfd4a2ffc990a0c1d2f770a9380">Environment</a> (std::shared_ptr&lt; <a class="el" href="classEnvironment.html">Environment</a> &gt; enclosing)</td></tr>
+<tr class="memitem:a82663dfd4a2ffc990a0c1d2f770a9380" id="r_a82663dfd4a2ffc990a0c1d2f770a9380"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#a82663dfd4a2ffc990a0c1d2f770a9380">Environment</a> (std::shared_ptr&lt; <a class="el" href="classEnvironment.html">Environment</a> &gt; <a class="el" href="classEnvironment.html#a8efb79e7705a1f029635106a94eaf98f">enclosing</a>)</td></tr>
 <tr class="memdesc:a82663dfd4a2ffc990a0c1d2f770a9380"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new <a class="el" href="classEnvironment.html" title="Represents an environment for variable storage in the GSC interpreter.">Environment</a> with an enclosing environment.  <br /></td></tr>
 <tr class="separator:a82663dfd4a2ffc990a0c1d2f770a9380"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b68320ce29254413fe597cc65de6ed6" id="r_a9b68320ce29254413fe597cc65de6ed6"><td class="memItemLeft" align="right" valign="top">std::any&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#a9b68320ce29254413fe597cc65de6ed6">get</a> (const <a class="el" href="classToken.html">Token</a> &amp;name) const</td></tr>
@@ -108,10 +130,19 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a49108e1ecc987978b3e56d1f38569ec4" id="r_a49108e1ecc987978b3e56d1f38569ec4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#a49108e1ecc987978b3e56d1f38569ec4">define</a> (const std::string &amp;name, std::any value)</td></tr>
 <tr class="memdesc:a49108e1ecc987978b3e56d1f38569ec4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines a new variable in the current environment.  <br /></td></tr>
 <tr class="separator:a49108e1ecc987978b3e56d1f38569ec4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a8efb79e7705a1f029635106a94eaf98f" id="r_a8efb79e7705a1f029635106a94eaf98f"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classEnvironment.html">Environment</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#a8efb79e7705a1f029635106a94eaf98f">enclosing</a></td></tr>
+<tr class="separator:a8efb79e7705a1f029635106a94eaf98f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77edbbdf28b3bb3f141a49bfe61bf91f" id="r_a77edbbdf28b3bb3f141a49bfe61bf91f"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, std::any &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnvironment.html#a77edbbdf28b3bb3f141a49bfe61bf91f">values</a></td></tr>
+<tr class="separator:a77edbbdf28b3bb3f141a49bfe61bf91f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents an environment for variable storage in the GSC interpreter. </p>
 <dl class="section note"><dt>Note</dt><dd>This class manages variable scopes, allowing for nested environments to handle variable declarations and lookups. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="environment_8hpp_source.html#l00015">15</a> of file <a class="el" href="environment_8hpp_source.html">environment.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a8b427c4448d8b7536666837521b9e83d" name="a8b427c4448d8b7536666837521b9e83d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8b427c4448d8b7536666837521b9e83d">&#9670;&#160;</a></span>Environment() <span class="overload">[1/2]</span></h2>
@@ -131,6 +162,10 @@ Public Member Functions</h2></td></tr>
 <p>Constructs a new <a class="el" href="classEnvironment.html" title="Represents an environment for variable storage in the GSC interpreter.">Environment</a>. </p>
 <dl class="section note"><dt>Note</dt><dd>This constructor creates a new environment without an enclosing environment. </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="environment_8cpp_source.html#l00004">4</a> of file <a class="el" href="environment_8cpp_source.html">environment.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">    4</span>: <a class="code hl_variable" href="classEnvironment.html#a8efb79e7705a1f029635106a94eaf98f">enclosing</a>(<span class="keyword">nullptr</span>) {}</div>
+<div class="ttc" id="aclassEnvironment_html_a8efb79e7705a1f029635106a94eaf98f"><div class="ttname"><a href="classEnvironment.html#a8efb79e7705a1f029635106a94eaf98f">Environment::enclosing</a></div><div class="ttdeci">std::shared_ptr&lt; Environment &gt; enclosing</div><div class="ttdef"><b>Definition</b> <a href="environment_8hpp_source.html#l00017">environment.hpp:17</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a82663dfd4a2ffc990a0c1d2f770a9380" name="a82663dfd4a2ffc990a0c1d2f770a9380"></a>
@@ -158,6 +193,9 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>This constructor allows for nested environments, enabling variable shadowing and scope management. </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="environment_8cpp_source.html#l00006">6</a> of file <a class="el" href="environment_8cpp_source.html">environment.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">    7</span>    : <a class="code hl_variable" href="classEnvironment.html#a8efb79e7705a1f029635106a94eaf98f">enclosing</a>(std::move(<a class="code hl_variable" href="classEnvironment.html#a8efb79e7705a1f029635106a94eaf98f">enclosing</a>)) {}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -201,12 +239,25 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classEnvironment_ae1d4b66d0594f386a93429cb13b4fc68_cgraph.png" border="0" usemap="#aclassEnvironment_ae1d4b66d0594f386a93429cb13b4fc68_cgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="environment_8cpp_source.html#l00021">21</a> of file <a class="el" href="environment_8cpp_source.html">environment.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   21</span>                                                        {</div>
+<div class="line"><span class="lineno">   22</span>  <span class="keyword">auto</span> it = <a class="code hl_variable" href="classEnvironment.html#a77edbbdf28b3bb3f141a49bfe61bf91f">values</a>.find(name.<a class="code hl_function" href="classToken.html#a143dd2918c6d43f95010e101012a6d2e">getLexeme</a>());</div>
+<div class="line"><span class="lineno">   23</span>  <span class="keywordflow">if</span> (it != <a class="code hl_variable" href="classEnvironment.html#a77edbbdf28b3bb3f141a49bfe61bf91f">values</a>.end()) {</div>
+<div class="line"><span class="lineno">   24</span>    it-&gt;second = std::move(value);</div>
+<div class="line"><span class="lineno">   25</span>    <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   26</span>  }</div>
+<div class="line"><span class="lineno">   27</span>  <span class="keywordflow">if</span> (<a class="code hl_variable" href="classEnvironment.html#a8efb79e7705a1f029635106a94eaf98f">enclosing</a>) {</div>
+<div class="line"><span class="lineno">   28</span>    <a class="code hl_variable" href="classEnvironment.html#a8efb79e7705a1f029635106a94eaf98f">enclosing</a>-&gt;assign(name, std::move(value));</div>
+<div class="line"><span class="lineno">   29</span>    <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   30</span>  }</div>
+<div class="line"><span class="lineno">   31</span>  <span class="keywordflow">throw</span> <a class="code hl_class" href="classRuntimeError.html">RuntimeError</a>(std::make_shared&lt;Token&gt;(name),</div>
+<div class="line"><span class="lineno">   32</span>                     <span class="stringliteral">&quot;Undefined variable &#39;&quot;</span> + name.<a class="code hl_function" href="classToken.html#a143dd2918c6d43f95010e101012a6d2e">getLexeme</a>() + <span class="stringliteral">&quot;&#39;.&quot;</span>);</div>
+<div class="line"><span class="lineno">   33</span>}</div>
+<div class="ttc" id="aclassEnvironment_html_a77edbbdf28b3bb3f141a49bfe61bf91f"><div class="ttname"><a href="classEnvironment.html#a77edbbdf28b3bb3f141a49bfe61bf91f">Environment::values</a></div><div class="ttdeci">std::map&lt; std::string, std::any &gt; values</div><div class="ttdef"><b>Definition</b> <a href="environment_8hpp_source.html#l00018">environment.hpp:18</a></div></div>
+<div class="ttc" id="aclassRuntimeError_html"><div class="ttname"><a href="classRuntimeError.html">RuntimeError</a></div><div class="ttdoc">Represents a runtime error in the GSC interpreter.</div><div class="ttdef"><b>Definition</b> <a href="runtimeError_8hpp_source.html#l00014">runtimeError.hpp:14</a></div></div>
+<div class="ttc" id="aclassToken_html_a143dd2918c6d43f95010e101012a6d2e"><div class="ttname"><a href="classToken.html#a143dd2918c6d43f95010e101012a6d2e">Token::getLexeme</a></div><div class="ttdeci">std::string getLexeme() const</div><div class="ttdef"><b>Definition</b> <a href="token_8cpp_source.html#l00010">token.cpp:10</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a49108e1ecc987978b3e56d1f38569ec4" name="a49108e1ecc987978b3e56d1f38569ec4"></a>
@@ -244,12 +295,12 @@ Here is the call graph for this function:</div>
   </dd>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>This method does not check for existing variables with the same name, allowing for redefinition within the same environment. </dd></dl>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classEnvironment_a49108e1ecc987978b3e56d1f38569ec4_icgraph.png" border="0" usemap="#aclassEnvironment_a49108e1ecc987978b3e56d1f38569ec4_icgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="environment_8cpp_source.html#l00035">35</a> of file <a class="el" href="environment_8cpp_source.html">environment.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   35</span>                                                            {</div>
+<div class="line"><span class="lineno">   36</span>  <a class="code hl_variable" href="classEnvironment.html#a77edbbdf28b3bb3f141a49bfe61bf91f">values</a>[name] = std::move(value);</div>
+<div class="line"><span class="lineno">   37</span>}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a9b68320ce29254413fe597cc65de6ed6" name="a9b68320ce29254413fe597cc65de6ed6"></a>
@@ -282,22 +333,83 @@ Here is the caller graph for this function:</div>
   </table>
   </dd>
 </dl>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classEnvironment_a9b68320ce29254413fe597cc65de6ed6_cgraph.png" border="0" usemap="#aclassEnvironment_a9b68320ce29254413fe597cc65de6ed6_cgraph" alt=""/></div>
+
+<p class="definition">Definition at line <a class="el" href="environment_8cpp_source.html#l00009">9</a> of file <a class="el" href="environment_8cpp_source.html">environment.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">    9</span>                                               {</div>
+<div class="line"><span class="lineno">   10</span>  <span class="keyword">auto</span> it = <a class="code hl_variable" href="classEnvironment.html#a77edbbdf28b3bb3f141a49bfe61bf91f">values</a>.find(name.<a class="code hl_function" href="classToken.html#a143dd2918c6d43f95010e101012a6d2e">getLexeme</a>());</div>
+<div class="line"><span class="lineno">   11</span>  <span class="keywordflow">if</span> (it != <a class="code hl_variable" href="classEnvironment.html#a77edbbdf28b3bb3f141a49bfe61bf91f">values</a>.end()) {</div>
+<div class="line"><span class="lineno">   12</span>    <span class="keywordflow">return</span> it-&gt;second;</div>
+<div class="line"><span class="lineno">   13</span>  }</div>
+<div class="line"><span class="lineno">   14</span>  <span class="keywordflow">if</span> (<a class="code hl_variable" href="classEnvironment.html#a8efb79e7705a1f029635106a94eaf98f">enclosing</a>) {</div>
+<div class="line"><span class="lineno">   15</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="classEnvironment.html#a8efb79e7705a1f029635106a94eaf98f">enclosing</a>-&gt;get(name);</div>
+<div class="line"><span class="lineno">   16</span>  }</div>
+<div class="line"><span class="lineno">   17</span>  <span class="keywordflow">throw</span> <a class="code hl_class" href="classRuntimeError.html">RuntimeError</a>(std::make_shared&lt;Token&gt;(name),</div>
+<div class="line"><span class="lineno">   18</span>                     <span class="stringliteral">&quot;Undefined variable &#39;&quot;</span> + name.<a class="code hl_function" href="classToken.html#a143dd2918c6d43f95010e101012a6d2e">getLexeme</a>() + <span class="stringliteral">&quot;&#39;.&quot;</span>);</div>
+<div class="line"><span class="lineno">   19</span>}</div>
+</div><!-- fragment -->
 </div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a8efb79e7705a1f029635106a94eaf98f" name="a8efb79e7705a1f029635106a94eaf98f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8efb79e7705a1f029635106a94eaf98f">&#9670;&#160;</a></span>enclosing</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="classEnvironment.html">Environment</a>&gt; Environment::enclosing</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="environment_8hpp_source.html#l00017">17</a> of file <a class="el" href="environment_8hpp_source.html">environment.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a77edbbdf28b3bb3f141a49bfe61bf91f" name="a77edbbdf28b3bb3f141a49bfe61bf91f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77edbbdf28b3bb3f141a49bfe61bf91f">&#9670;&#160;</a></span>values</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;std::string, std::any&gt; Environment::values</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="environment_8hpp_source.html#l00018">18</a> of file <a class="el" href="environment_8hpp_source.html">environment.hpp</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>lib/gsc/<a class="el" href="environment_8hpp_source.html">environment.hpp</a></li>
-<li>src/<a class="el" href="environment_8cpp.html">environment.cpp</a></li>
+<li>src/<a class="el" href="environment_8cpp_source.html">environment.cpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="classEnvironment.html">Environment</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

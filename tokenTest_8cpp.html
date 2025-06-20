@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -23,6 +27,7 @@
   <td id="projectalign">
    <div id="projectname">Simplified C/C++ (GSC)
    </div>
+   <div id="projectbrief">A Turing-complete interpreter developed for a compiler course</div>
   </td>
  </tr>
  </tbody>
@@ -46,6 +51,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('tokenTest_8cpp.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,11 +89,6 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_13e138d54eb8818da29c3992edef070a.html">test</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
@@ -83,9 +100,11 @@ $(function() {
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for tokenTest.cpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="tokenTest_8cpp__incl.png" border="0" usemap="#atest_2tokenTest_8cpp" alt=""/></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="tokenTest_8cpp__incl.svg" width="476" height="256"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
-</div><table class="memberdecls">
+</div>
+<p><a href="tokenTest_8cpp_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:abe5a2cbcef035c08831819ab87efc4ca" id="r_abe5a2cbcef035c08831819ab87efc4ca"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tokenTest_8cpp.html#abe5a2cbcef035c08831819ab87efc4ca">TEST_CASE</a> (&quot;Token construction and access&quot;, &quot;[token][constructor][access]&quot;)</td></tr>
@@ -119,12 +138,46 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="tokenTest_8cpp_abe5a2cbcef035c08831819ab87efc4ca_cgraph.png" border="0" usemap="#atokenTest_8cpp_abe5a2cbcef035c08831819ab87efc4ca_cgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="tokenTest_8cpp_source.html#l00004">4</a> of file <a class="el" href="tokenTest_8cpp_source.html">tokenTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">    4</span>                                                                           {</div>
+<div class="line"><span class="lineno">    5</span>  SECTION(<span class="stringliteral">&quot;NUMBER type&quot;</span>) {</div>
+<div class="line"><span class="lineno">    6</span>    <a class="code hl_class" href="classToken.html">Token</a> token(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a12a90dfe20486bbe3e075afcd19ef2d0">TokenType::NUMBER</a>, <span class="stringliteral">&quot;42&quot;</span>, 42, 1);</div>
+<div class="line"><span class="lineno">    7</span>    CHECK(token.getType() == <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a12a90dfe20486bbe3e075afcd19ef2d0">TokenType::NUMBER</a>);</div>
+<div class="line"><span class="lineno">    8</span>    CHECK(token.getLexeme() == <span class="stringliteral">&quot;42&quot;</span>);</div>
+<div class="line"><span class="lineno">    9</span>    CHECK(std::any_cast&lt;int&gt;(token.getLiteral()) == 42);</div>
+<div class="line"><span class="lineno">   10</span>    CHECK(token.getLine() == 1);</div>
+<div class="line"><span class="lineno">   11</span>  }</div>
+<div class="line"><span class="lineno">   12</span> </div>
+<div class="line"><span class="lineno">   13</span>  SECTION(<span class="stringliteral">&quot;STRING type&quot;</span>) {</div>
+<div class="line"><span class="lineno">   14</span>    <a class="code hl_class" href="classToken.html">Token</a> token(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aee847e634a4297b274316de8a8ca9921">TokenType::STRING</a>, <span class="stringliteral">&quot;hello&quot;</span>, <span class="keyword">nullptr</span>, 2);</div>
+<div class="line"><span class="lineno">   15</span>    CHECK(token.getType() == <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aee847e634a4297b274316de8a8ca9921">TokenType::STRING</a>);</div>
+<div class="line"><span class="lineno">   16</span>    CHECK(token.getLexeme() == <span class="stringliteral">&quot;hello&quot;</span>);</div>
+<div class="line"><span class="lineno">   17</span>    CHECK(token.getLiteral().type() == <span class="keyword">typeid</span>(std::nullptr_t));</div>
+<div class="line"><span class="lineno">   18</span>    CHECK(token.getLine() == 2);</div>
+<div class="line"><span class="lineno">   19</span>  }</div>
+<div class="line"><span class="lineno">   20</span> </div>
+<div class="line"><span class="lineno">   21</span>  SECTION(<span class="stringliteral">&quot;PRINT type with char* literal construction&quot;</span>) {</div>
+<div class="line"><span class="lineno">   22</span>    <a class="code hl_class" href="classToken.html">Token</a> token(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921ab107229d44d042caa8ab8df4c8acaa1f">TokenType::PRINT</a>, <span class="stringliteral">&quot;print&quot;</span>, <span class="stringliteral">&quot;hi&quot;</span>, 2);</div>
+<div class="line"><span class="lineno">   23</span>    CHECK(token.getType() == <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921ab107229d44d042caa8ab8df4c8acaa1f">TokenType::PRINT</a>);</div>
+<div class="line"><span class="lineno">   24</span>    CHECK(token.getLexeme() == <span class="stringliteral">&quot;print&quot;</span>);</div>
+<div class="line"><span class="lineno">   25</span>    CHECK(std::string(std::any_cast&lt;const char *&gt;(token.getLiteral())) == <span class="stringliteral">&quot;hi&quot;</span>);</div>
+<div class="line"><span class="lineno">   26</span>    CHECK(token.getLine() == 2);</div>
+<div class="line"><span class="lineno">   27</span>  }</div>
+<div class="line"><span class="lineno">   28</span> </div>
+<div class="line"><span class="lineno">   29</span>  SECTION(<span class="stringliteral">&quot;PRINT type with string literal construction&quot;</span>) {</div>
+<div class="line"><span class="lineno">   30</span>    <a class="code hl_class" href="classToken.html">Token</a> token(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921ab107229d44d042caa8ab8df4c8acaa1f">TokenType::PRINT</a>, <span class="stringliteral">&quot;print&quot;</span>, std::string(<span class="stringliteral">&quot;hi&quot;</span>), 2);</div>
+<div class="line"><span class="lineno">   31</span>    CHECK(token.getType() == <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921ab107229d44d042caa8ab8df4c8acaa1f">TokenType::PRINT</a>);</div>
+<div class="line"><span class="lineno">   32</span>    CHECK(token.getLexeme() == <span class="stringliteral">&quot;print&quot;</span>);</div>
+<div class="line"><span class="lineno">   33</span>    CHECK(std::any_cast&lt;std::string&gt;(token.getLiteral()) == <span class="stringliteral">&quot;hi&quot;</span>);</div>
+<div class="line"><span class="lineno">   34</span>    CHECK(token.getLine() == 2);</div>
+<div class="line"><span class="lineno">   35</span>  }</div>
+<div class="line"><span class="lineno">   36</span>}</div>
+<div class="ttc" id="aclassToken_html"><div class="ttname"><a href="classToken.html">Token</a></div><div class="ttdoc">Represents a token in the source code.</div><div class="ttdef"><b>Definition</b> <a href="token_8hpp_source.html#l00014">token.hpp:14</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a12a90dfe20486bbe3e075afcd19ef2d0"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a12a90dfe20486bbe3e075afcd19ef2d0">NUMBER</a></div><div class="ttdeci">@ NUMBER</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00035">tokenType.hpp:35</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921ab107229d44d042caa8ab8df4c8acaa1f"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921ab107229d44d042caa8ab8df4c8acaa1f">PRINT</a></div><div class="ttdeci">@ PRINT</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00047">tokenType.hpp:47</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921aee847e634a4297b274316de8a8ca9921"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aee847e634a4297b274316de8a8ca9921">STRING</a></div><div class="ttdeci">@ STRING</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00034">tokenType.hpp:34</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a8931d1058417a8e5061f1ea679242c70" name="a8931d1058417a8e5061f1ea679242c70"></a>
@@ -152,18 +205,59 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="tokenTest_8cpp_a8931d1058417a8e5061f1ea679242c70_cgraph.png" border="0" usemap="#atokenTest_8cpp_a8931d1058417a8e5061f1ea679242c70_cgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="tokenTest_8cpp_source.html#l00038">38</a> of file <a class="el" href="tokenTest_8cpp_source.html">tokenTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   38</span>                                                        {</div>
+<div class="line"><span class="lineno">   39</span>  SECTION(<span class="stringliteral">&quot;TRUE type&quot;</span>) {</div>
+<div class="line"><span class="lineno">   40</span>    <a class="code hl_class" href="classToken.html">Token</a> token(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa82764c3079aea4e60c80e45befbb839">TokenType::TRUE</a>, <span class="stringliteral">&quot;true&quot;</span>, <span class="keyword">nullptr</span>, 3);</div>
+<div class="line"><span class="lineno">   41</span>    CHECK(token.toString() == <span class="stringliteral">&quot;TRUE true true&quot;</span>);</div>
+<div class="line"><span class="lineno">   42</span>  }</div>
+<div class="line"><span class="lineno">   43</span> </div>
+<div class="line"><span class="lineno">   44</span>  SECTION(<span class="stringliteral">&quot;FALSE type&quot;</span>) {</div>
+<div class="line"><span class="lineno">   45</span>    <a class="code hl_class" href="classToken.html">Token</a> token(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa1e095cc966dbecf6a0d8aad75348d1a">TokenType::FALSE</a>, <span class="stringliteral">&quot;false&quot;</span>, <span class="keyword">nullptr</span>, 4);</div>
+<div class="line"><span class="lineno">   46</span>    CHECK(token.toString() == <span class="stringliteral">&quot;FALSE false false&quot;</span>);</div>
+<div class="line"><span class="lineno">   47</span>  }</div>
+<div class="line"><span class="lineno">   48</span> </div>
+<div class="line"><span class="lineno">   49</span>  SECTION(<span class="stringliteral">&quot;NUMBER type&quot;</span>) {</div>
+<div class="line"><span class="lineno">   50</span>    <a class="code hl_class" href="classToken.html">Token</a> token(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a12a90dfe20486bbe3e075afcd19ef2d0">TokenType::NUMBER</a>, <span class="stringliteral">&quot;42&quot;</span>, 42, 5);</div>
+<div class="line"><span class="lineno">   51</span>    CHECK(token.toString() == <span class="stringliteral">&quot;NUMBER 42 42&quot;</span>);</div>
+<div class="line"><span class="lineno">   52</span>  }</div>
+<div class="line"><span class="lineno">   53</span> </div>
+<div class="line"><span class="lineno">   54</span>  SECTION(<span class="stringliteral">&quot;STRING type with char* literal&quot;</span>) {</div>
+<div class="line"><span class="lineno">   55</span>    <a class="code hl_class" href="classToken.html">Token</a> token(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aee847e634a4297b274316de8a8ca9921">TokenType::STRING</a>, <span class="stringliteral">&quot;hello&quot;</span>, <span class="stringliteral">&quot;world&quot;</span>, 6);</div>
+<div class="line"><span class="lineno">   56</span>    CHECK(token.toString() == <span class="stringliteral">&quot;STRING hello world&quot;</span>);</div>
+<div class="line"><span class="lineno">   57</span>  }</div>
+<div class="line"><span class="lineno">   58</span> </div>
+<div class="line"><span class="lineno">   59</span>  SECTION(<span class="stringliteral">&quot;STRING type with string literal&quot;</span>) {</div>
+<div class="line"><span class="lineno">   60</span>    <a class="code hl_class" href="classToken.html">Token</a> token(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aee847e634a4297b274316de8a8ca9921">TokenType::STRING</a>, <span class="stringliteral">&quot;hello&quot;</span>, std::string(<span class="stringliteral">&quot;world&quot;</span>), 6);</div>
+<div class="line"><span class="lineno">   61</span>    CHECK(token.toString() == <span class="stringliteral">&quot;STRING hello world&quot;</span>);</div>
+<div class="line"><span class="lineno">   62</span>  }</div>
+<div class="line"><span class="lineno">   63</span> </div>
+<div class="line"><span class="lineno">   64</span>  SECTION(<span class="stringliteral">&quot;IDENTIFIER type&quot;</span>) {</div>
+<div class="line"><span class="lineno">   65</span>    <a class="code hl_class" href="classToken.html">Token</a> token(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a84f8ae2490f9e4bd2321fd21f4b0e807">TokenType::IDENTIFIER</a>, <span class="stringliteral">&quot;var&quot;</span>, <span class="stringliteral">&quot;x&quot;</span>, 7);</div>
+<div class="line"><span class="lineno">   66</span>    CHECK(token.toString() == <span class="stringliteral">&quot;IDENTIFIER var var&quot;</span>);</div>
+<div class="line"><span class="lineno">   67</span>  }</div>
+<div class="line"><span class="lineno">   68</span> </div>
+<div class="line"><span class="lineno">   69</span>  SECTION(<span class="stringliteral">&quot;ANOTHER type&quot;</span>) {</div>
+<div class="line"><span class="lineno">   70</span>    <a class="code hl_class" href="classToken.html">Token</a> token(<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a865555c9f2e0458a7078486aa1b3254f">TokenType::AND</a>, <span class="stringliteral">&quot;&amp;&amp;&quot;</span>, <span class="keyword">nullptr</span>, 8);</div>
+<div class="line"><span class="lineno">   71</span>    CHECK(token.toString() == <span class="stringliteral">&quot;AND &amp;&amp; nil&quot;</span>);</div>
+<div class="line"><span class="lineno">   72</span>  }</div>
+<div class="line"><span class="lineno">   73</span>}</div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a84f8ae2490f9e4bd2321fd21f4b0e807"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a84f8ae2490f9e4bd2321fd21f4b0e807">IDENTIFIER</a></div><div class="ttdeci">@ IDENTIFIER</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00033">tokenType.hpp:33</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a865555c9f2e0458a7078486aa1b3254f"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a865555c9f2e0458a7078486aa1b3254f">AND</a></div><div class="ttdeci">@ AND</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00038">tokenType.hpp:38</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921aa1e095cc966dbecf6a0d8aad75348d1a"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa1e095cc966dbecf6a0d8aad75348d1a">FALSE</a></div><div class="ttdeci">@ FALSE</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00043">tokenType.hpp:43</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921aa82764c3079aea4e60c80e45befbb839"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa82764c3079aea4e60c80e45befbb839">TRUE</a></div><div class="ttdeci">@ TRUE</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00042">tokenType.hpp:42</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_13e138d54eb8818da29c3992edef070a.html">test</a></li><li class="navelem"><a class="el" href="tokenTest_8cpp.html">tokenTest.cpp</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -23,6 +27,7 @@
   <td id="projectalign">
    <div id="projectname">Simplified C/C++ (GSC)
    </div>
+   <div id="projectbrief">A Turing-complete interpreter developed for a compiler course</div>
   </td>
  </tr>
  </tbody>
@@ -46,6 +51,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classBinary.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,10 +89,10 @@ $(function() {
 </div>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classBinary-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Binary Class Reference</div></div>
 </div><!--header-->
@@ -83,17 +105,17 @@ $(function() {
 <div class="dynheader">
 Inheritance diagram for Binary:</div>
 <div class="dyncontent">
-<div class="center"><img src="classBinary__inherit__graph.png" border="0" usemap="#aBinary_inherit__map" alt="Inheritance graph"/></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classBinary__inherit__graph.svg" width="272" height="324"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Collaboration diagram for Binary:</div>
 <div class="dyncontent">
-<div class="center"><img src="classBinary__coll__graph.png" border="0" usemap="#aBinary_coll__map" alt="Collaboration graph"/></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classBinary__coll__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4a248bd0bf56ad5ca4dcf5e1034c30bc" id="r_a4a248bd0bf56ad5ca4dcf5e1034c30bc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBinary.html#a4a248bd0bf56ad5ca4dcf5e1034c30bc">Binary</a> (std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt; left, <a class="el" href="classToken.html">Token</a> op, std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt; right)</td></tr>
+<tr class="memitem:a4a248bd0bf56ad5ca4dcf5e1034c30bc" id="r_a4a248bd0bf56ad5ca4dcf5e1034c30bc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBinary.html#a4a248bd0bf56ad5ca4dcf5e1034c30bc">Binary</a> (std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt; <a class="el" href="classBinary.html#a0247b235699ea97248b4eae807f54b28">left</a>, <a class="el" href="classToken.html">Token</a> <a class="el" href="classBinary.html#a9963b386fa50b1eb3ed54dd143397d2e">op</a>, std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt; <a class="el" href="classBinary.html#a4e170f18de5d0d22a8c5936135d3e185">right</a>)</td></tr>
 <tr class="separator:a4a248bd0bf56ad5ca4dcf5e1034c30bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0cb26a97cc624a2e3357cbe4a1a168b" id="r_ab0cb26a97cc624a2e3357cbe4a1a168b"><td class="memItemLeft" align="right" valign="top">std::any&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBinary.html#ab0cb26a97cc624a2e3357cbe4a1a168b">accept</a> (<a class="el" href="classExprVisitor.html">ExprVisitor</a> &amp;visitor) override</td></tr>
 <tr class="separator:ab0cb26a97cc624a2e3357cbe4a1a168b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -103,10 +125,21 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aa35d6b5f77662251002550daa6790768"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac2fdc822263a14c2f1415363019fe1f9" id="r_ac2fdc822263a14c2f1415363019fe1f9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classToken.html">Token</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBinary.html#ac2fdc822263a14c2f1415363019fe1f9">getOp</a> () const</td></tr>
 <tr class="separator:ac2fdc822263a14c2f1415363019fe1f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a0247b235699ea97248b4eae807f54b28" id="r_a0247b235699ea97248b4eae807f54b28"><td class="memItemLeft" align="right" valign="top">const std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBinary.html#a0247b235699ea97248b4eae807f54b28">left</a></td></tr>
+<tr class="separator:a0247b235699ea97248b4eae807f54b28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9963b386fa50b1eb3ed54dd143397d2e" id="r_a9963b386fa50b1eb3ed54dd143397d2e"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classToken.html">Token</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBinary.html#a9963b386fa50b1eb3ed54dd143397d2e">op</a></td></tr>
+<tr class="separator:a9963b386fa50b1eb3ed54dd143397d2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e170f18de5d0d22a8c5936135d3e185" id="r_a4e170f18de5d0d22a8c5936135d3e185"><td class="memItemLeft" align="right" valign="top">const std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBinary.html#a4e170f18de5d0d22a8c5936135d3e185">right</a></td></tr>
+<tr class="separator:a4e170f18de5d0d22a8c5936135d3e185"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class representing a binary expression. </p>
 <p>This class represents a binary expression in the AST, which consists of a left operand, an operator, and a right operand. It inherits from the <a class="el" href="classExpr.html" title="Abstract base class for expressions.">Expr</a> class and implements the accept method for visitor pattern. </p>
+
+<p class="definition">Definition at line <a class="el" href="expr_8hpp_source.html#l00053">53</a> of file <a class="el" href="expr_8hpp_source.html">expr.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a4a248bd0bf56ad5ca4dcf5e1034c30bc" name="a4a248bd0bf56ad5ca4dcf5e1034c30bc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4a248bd0bf56ad5ca4dcf5e1034c30bc">&#9670;&#160;</a></span>Binary()</h2>
@@ -148,6 +181,12 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="expr_8hpp_source.html#l00060">60</a> of file <a class="el" href="expr_8hpp_source.html">expr.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   61</span>      : <a class="code hl_variable" href="classBinary.html#a0247b235699ea97248b4eae807f54b28">left</a>(std::move(<a class="code hl_variable" href="classBinary.html#a0247b235699ea97248b4eae807f54b28">left</a>)), <a class="code hl_variable" href="classBinary.html#a9963b386fa50b1eb3ed54dd143397d2e">op</a>(std::move(<a class="code hl_variable" href="classBinary.html#a9963b386fa50b1eb3ed54dd143397d2e">op</a>)), <a class="code hl_variable" href="classBinary.html#a4e170f18de5d0d22a8c5936135d3e185">right</a>(std::move(<a class="code hl_variable" href="classBinary.html#a4e170f18de5d0d22a8c5936135d3e185">right</a>)) {}</div>
+<div class="ttc" id="aclassBinary_html_a0247b235699ea97248b4eae807f54b28"><div class="ttname"><a href="classBinary.html#a0247b235699ea97248b4eae807f54b28">Binary::left</a></div><div class="ttdeci">const std::shared_ptr&lt; Expr &gt; left</div><div class="ttdef"><b>Definition</b> <a href="expr_8hpp_source.html#l00055">expr.hpp:55</a></div></div>
+<div class="ttc" id="aclassBinary_html_a4e170f18de5d0d22a8c5936135d3e185"><div class="ttname"><a href="classBinary.html#a4e170f18de5d0d22a8c5936135d3e185">Binary::right</a></div><div class="ttdeci">const std::shared_ptr&lt; Expr &gt; right</div><div class="ttdef"><b>Definition</b> <a href="expr_8hpp_source.html#l00057">expr.hpp:57</a></div></div>
+<div class="ttc" id="aclassBinary_html_a9963b386fa50b1eb3ed54dd143397d2e"><div class="ttname"><a href="classBinary.html#a9963b386fa50b1eb3ed54dd143397d2e">Binary::op</a></div><div class="ttdeci">const Token op</div><div class="ttdef"><b>Definition</b> <a href="expr_8hpp_source.html#l00056">expr.hpp:56</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -176,12 +215,13 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="classExpr.html#a748b81a9fcd2a1e226395aa9159d6dba">Expr</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classBinary_ab0cb26a97cc624a2e3357cbe4a1a168b_cgraph.png" border="0" usemap="#aclassBinary_ab0cb26a97cc624a2e3357cbe4a1a168b_cgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="expr_8hpp_source.html#l00063">63</a> of file <a class="el" href="expr_8hpp_source.html">expr.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   63</span>                                               {</div>
+<div class="line"><span class="lineno">   64</span>    <span class="keywordflow">return</span> visitor.<a class="code hl_function" href="classExprVisitor.html#a8eb5031d4ba91b4b3952f99f0169fc12">visitBinaryExpr</a>(shared_from_this());</div>
+<div class="line"><span class="lineno">   65</span>  }</div>
+<div class="ttc" id="aclassExprVisitor_html_a8eb5031d4ba91b4b3952f99f0169fc12"><div class="ttname"><a href="classExprVisitor.html#a8eb5031d4ba91b4b3952f99f0169fc12">ExprVisitor::visitBinaryExpr</a></div><div class="ttdeci">virtual std::any visitBinaryExpr(std::shared_ptr&lt; Binary &gt; expr)=0</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a79708c3bd5a2d29c6f5a80a6804c44e9" name="a79708c3bd5a2d29c6f5a80a6804c44e9"></a>
@@ -206,12 +246,10 @@ Here is the call graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classBinary_a79708c3bd5a2d29c6f5a80a6804c44e9_icgraph.png" border="0" usemap="#aclassBinary_a79708c3bd5a2d29c6f5a80a6804c44e9_icgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="expr_8hpp_source.html#l00067">67</a> of file <a class="el" href="expr_8hpp_source.html">expr.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   67</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classBinary.html#a0247b235699ea97248b4eae807f54b28">left</a>; }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ac2fdc822263a14c2f1415363019fe1f9" name="ac2fdc822263a14c2f1415363019fe1f9"></a>
@@ -236,12 +274,10 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classBinary_ac2fdc822263a14c2f1415363019fe1f9_icgraph.png" border="0" usemap="#aclassBinary_ac2fdc822263a14c2f1415363019fe1f9_icgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="expr_8hpp_source.html#l00069">69</a> of file <a class="el" href="expr_8hpp_source.html">expr.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   69</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classBinary.html#a9963b386fa50b1eb3ed54dd143397d2e">op</a>; }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="aa35d6b5f77662251002550daa6790768" name="aa35d6b5f77662251002550daa6790768"></a>
@@ -266,11 +302,82 @@ Here is the caller graph for this function:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classBinary_aa35d6b5f77662251002550daa6790768_icgraph.png" border="0" usemap="#aclassBinary_aa35d6b5f77662251002550daa6790768_icgraph" alt=""/></div>
+
+<p class="definition">Definition at line <a class="el" href="expr_8hpp_source.html#l00068">68</a> of file <a class="el" href="expr_8hpp_source.html">expr.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   68</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classBinary.html#a4e170f18de5d0d22a8c5936135d3e185">right</a>; }</div>
+</div><!-- fragment -->
 </div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a0247b235699ea97248b4eae807f54b28" name="a0247b235699ea97248b4eae807f54b28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0247b235699ea97248b4eae807f54b28">&#9670;&#160;</a></span>left</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::shared_ptr&lt;<a class="el" href="classExpr.html">Expr</a>&gt; Binary::left</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="expr_8hpp_source.html#l00055">55</a> of file <a class="el" href="expr_8hpp_source.html">expr.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a9963b386fa50b1eb3ed54dd143397d2e" name="a9963b386fa50b1eb3ed54dd143397d2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9963b386fa50b1eb3ed54dd143397d2e">&#9670;&#160;</a></span>op</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classToken.html">Token</a> Binary::op</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="expr_8hpp_source.html#l00056">56</a> of file <a class="el" href="expr_8hpp_source.html">expr.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a4e170f18de5d0d22a8c5936135d3e185" name="a4e170f18de5d0d22a8c5936135d3e185"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e170f18de5d0d22a8c5936135d3e185">&#9670;&#160;</a></span>right</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::shared_ptr&lt;<a class="el" href="classExpr.html">Expr</a>&gt; Binary::right</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="expr_8hpp_source.html#l00057">57</a> of file <a class="el" href="expr_8hpp_source.html">expr.hpp</a>.</p>
 
 </div>
 </div>
@@ -278,9 +385,13 @@ Here is the caller graph for this function:</div>
 <li>lib/gsc/<a class="el" href="expr_8hpp_source.html">expr.hpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="classBinary.html">Binary</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

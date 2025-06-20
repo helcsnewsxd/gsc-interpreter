@@ -1,0 +1,7 @@
+<map id="Binary" name="Binary">
+<area shape="rect" id="Node000001" title="Class representing a binary expression." alt="" coords="70,133,163,319"/>
+<area shape="rect" id="Node000002" href="$classExpr.html" title="Abstract base class for expressions." alt="" coords="5,13,87,78"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="66,90,83,132,78,134,61,92"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="111,5,266,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="170,99,156,134,151,132,165,97"/>
+</map>

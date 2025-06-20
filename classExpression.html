@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -23,6 +27,7 @@
   <td id="projectalign">
    <div id="projectname">Simplified C/C++ (GSC)
    </div>
+   <div id="projectbrief">A Turing-complete interpreter developed for a compiler course</div>
   </td>
  </tr>
  </tbody>
@@ -46,6 +51,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classExpression.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,10 +89,10 @@ $(function() {
 </div>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classExpression-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Expression Class Reference</div></div>
 </div><!--header-->
@@ -83,26 +105,33 @@ $(function() {
 <div class="dynheader">
 Inheritance diagram for Expression:</div>
 <div class="dyncontent">
-<div class="center"><img src="classExpression__inherit__graph.png" border="0" usemap="#aExpression_inherit__map" alt="Inheritance graph"/></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classExpression__inherit__graph.svg" width="302" height="244"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Collaboration diagram for Expression:</div>
 <div class="dyncontent">
-<div class="center"><img src="classExpression__coll__graph.png" border="0" usemap="#aExpression_coll__map" alt="Collaboration graph"/></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classExpression__coll__graph.svg" width="496" height="387"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a455578c659a37f6160ddaec05914f6aa" id="r_a455578c659a37f6160ddaec05914f6aa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classExpression.html#a455578c659a37f6160ddaec05914f6aa">Expression</a> (const std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt; &amp;expression)</td></tr>
+<tr class="memitem:a455578c659a37f6160ddaec05914f6aa" id="r_a455578c659a37f6160ddaec05914f6aa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classExpression.html#a455578c659a37f6160ddaec05914f6aa">Expression</a> (const std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt; &amp;<a class="el" href="classExpression.html#a6b3ea8fc1cfabd2586f024aa56a15a75">expression</a>)</td></tr>
 <tr class="separator:a455578c659a37f6160ddaec05914f6aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a620bbc00abf6a14712dd59bee8ac8702" id="r_a620bbc00abf6a14712dd59bee8ac8702"><td class="memItemLeft" align="right" valign="top">std::any&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classExpression.html#a620bbc00abf6a14712dd59bee8ac8702">accept</a> (<a class="el" href="classStmtVisitor.html">StmtVisitor</a> &amp;visitor) override</td></tr>
 <tr class="separator:a620bbc00abf6a14712dd59bee8ac8702"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad212d6fcbe105ae659b4458d23e65fa0" id="r_ad212d6fcbe105ae659b4458d23e65fa0"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classExpression.html#ad212d6fcbe105ae659b4458d23e65fa0">getExpression</a> () const</td></tr>
 <tr class="separator:ad212d6fcbe105ae659b4458d23e65fa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a6b3ea8fc1cfabd2586f024aa56a15a75" id="r_a6b3ea8fc1cfabd2586f024aa56a15a75"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classExpression.html#a6b3ea8fc1cfabd2586f024aa56a15a75">expression</a></td></tr>
+<tr class="separator:a6b3ea8fc1cfabd2586f024aa56a15a75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents an expression statement. </p>
 <dl class="section note"><dt>Note</dt><dd>This class holds a single expression and allows visiting it. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="stmt_8hpp_source.html#l00070">70</a> of file <a class="el" href="stmt_8hpp_source.html">stmt.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a455578c659a37f6160ddaec05914f6aa" name="a455578c659a37f6160ddaec05914f6aa"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a455578c659a37f6160ddaec05914f6aa">&#9670;&#160;</a></span>Expression()</h2>
@@ -128,6 +157,10 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="stmt_8hpp_source.html#l00076">76</a> of file <a class="el" href="stmt_8hpp_source.html">stmt.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   77</span>      : <a class="code hl_variable" href="classExpression.html#a6b3ea8fc1cfabd2586f024aa56a15a75">expression</a>(std::move(<a class="code hl_variable" href="classExpression.html#a6b3ea8fc1cfabd2586f024aa56a15a75">expression</a>)) {}</div>
+<div class="ttc" id="aclassExpression_html_a6b3ea8fc1cfabd2586f024aa56a15a75"><div class="ttname"><a href="classExpression.html#a6b3ea8fc1cfabd2586f024aa56a15a75">Expression::expression</a></div><div class="ttdeci">std::shared_ptr&lt; Expr &gt; expression</div><div class="ttdef"><b>Definition</b> <a href="stmt_8hpp_source.html#l00073">stmt.hpp:73</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -156,12 +189,13 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="classStmt.html#a9294f5c7edf0e1cd384ffae00114b1a6">Stmt</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classExpression_a620bbc00abf6a14712dd59bee8ac8702_cgraph.png" border="0" usemap="#aclassExpression_a620bbc00abf6a14712dd59bee8ac8702_cgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="stmt_8hpp_source.html#l00079">79</a> of file <a class="el" href="stmt_8hpp_source.html">stmt.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   79</span>                                               {</div>
+<div class="line"><span class="lineno">   80</span>    <span class="keywordflow">return</span> visitor.<a class="code hl_function" href="classStmtVisitor.html#a279d83c06a1a88a62bd175b8a883ce8c">visitExpressionStmt</a>(shared_from_this());</div>
+<div class="line"><span class="lineno">   81</span>  }</div>
+<div class="ttc" id="aclassStmtVisitor_html_a279d83c06a1a88a62bd175b8a883ce8c"><div class="ttname"><a href="classStmtVisitor.html#a279d83c06a1a88a62bd175b8a883ce8c">StmtVisitor::visitExpressionStmt</a></div><div class="ttdeci">virtual std::any visitExpressionStmt(std::shared_ptr&lt; Expression &gt; expr)=0</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ad212d6fcbe105ae659b4458d23e65fa0" name="ad212d6fcbe105ae659b4458d23e65fa0"></a>
@@ -187,15 +221,47 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="stmt_8hpp_source.html#l00083">83</a> of file <a class="el" href="stmt_8hpp_source.html">stmt.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   83</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classExpression.html#a6b3ea8fc1cfabd2586f024aa56a15a75">expression</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a6b3ea8fc1cfabd2586f024aa56a15a75" name="a6b3ea8fc1cfabd2586f024aa56a15a75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b3ea8fc1cfabd2586f024aa56a15a75">&#9670;&#160;</a></span>expression</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="classExpr.html">Expr</a>&gt; Expression::expression</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="stmt_8hpp_source.html#l00073">73</a> of file <a class="el" href="stmt_8hpp_source.html">stmt.hpp</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>lib/gsc/<a class="el" href="stmt_8hpp_source.html">stmt.hpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="classExpression.html">Expression</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

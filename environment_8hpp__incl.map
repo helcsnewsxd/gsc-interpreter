@@ -1,0 +1,18 @@
+<map id="lib/gsc/environment.hpp" name="lib/gsc/environment.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="193,5,371,31"/>
+<area shape="rect" id="Node000002" href="$token_8hpp.html" title=" " alt="" coords="82,79,194,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="260,33,175,75,173,70,258,28"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="130,225,189,251"/>
+<area shape="poly" id="edge9_Node000001_Node000004" title=" " alt="" coords="286,31,287,59,285,97,277,139,259,179,233,205,203,223,200,219,230,201,254,176,272,138,280,97,282,59,281,31"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="197,152,244,177"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="279,32,233,140,229,138,275,30"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="319,79,370,104"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="294,29,327,66,323,70,290,33"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="394,79,471,104"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="307,28,397,70,394,75,305,33"/>
+<area shape="rect" id="Node000003" href="$tokenType_8hpp.html" title=" " alt="" coords="5,152,121,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="128,106,87,144,84,141,124,102"/>
+<area shape="poly" id="edge5_Node000002_Node000004" title=" " alt="" coords="142,104,158,211,153,212,137,105"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="153,102,198,141,195,145,150,106"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="80,175,134,215,131,219,77,180"/>
+</map>

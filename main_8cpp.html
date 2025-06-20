@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -23,6 +27,7 @@
   <td id="projectalign">
    <div id="projectname">Simplified C/C++ (GSC)
    </div>
+   <div id="projectbrief">A Turing-complete interpreter developed for a compiler course</div>
   </td>
  </tr>
  </tbody>
@@ -46,6 +51,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('main_8cpp.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,11 +89,6 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_d422163b96683743ed3963d4aac17747.html">app</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#func-members">Functions</a> &#124;
@@ -90,9 +107,11 @@ $(function() {
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for main.cpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="main_8cpp__incl.png" border="0" usemap="#aapp_2main_8cpp" alt=""/></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="main_8cpp__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
-</div><table class="memberdecls">
+</div>
+<p><a href="main_8cpp_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:abd88a82eb70f9e68f4ca9b5ebb923556" id="r_abd88a82eb70f9e68f4ca9b5ebb923556"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#abd88a82eb70f9e68f4ca9b5ebb923556">runFile</a> (std::string_view filename)</td></tr>
@@ -137,10 +156,24 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
+
+<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00015">15</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   15</span>                                 {</div>
+<div class="line"><span class="lineno">   16</span>  <span class="keywordflow">if</span> (argc &gt; 2) {</div>
+<div class="line"><span class="lineno">   17</span>    std::cerr &lt;&lt; <span class="stringliteral">&quot;Usage: &quot;</span> &lt;&lt; argv[0] &lt;&lt; <span class="stringliteral">&quot; [file.gsc]&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   18</span>    std::exit(EXIT_FAILURE);</div>
+<div class="line"><span class="lineno">   19</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (argc == 2) {</div>
+<div class="line"><span class="lineno">   20</span>    <a class="code hl_function" href="main_8cpp.html#abd88a82eb70f9e68f4ca9b5ebb923556">runFile</a>(argv[1]);</div>
+<div class="line"><span class="lineno">   21</span>  } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   22</span>    <a class="code hl_function" href="main_8cpp.html#a2177fc6f8c300b3c24f38817ba64da30">runPrompt</a>();</div>
+<div class="line"><span class="lineno">   23</span>  }</div>
+<div class="line"><span class="lineno">   24</span>}</div>
+<div class="ttc" id="amain_8cpp_html_a2177fc6f8c300b3c24f38817ba64da30"><div class="ttname"><a href="main_8cpp.html#a2177fc6f8c300b3c24f38817ba64da30">runPrompt</a></div><div class="ttdeci">void runPrompt()</div><div class="ttdef"><b>Definition</b> <a href="main_8cpp_source.html#l00067">main.cpp:67</a></div></div>
+<div class="ttc" id="amain_8cpp_html_abd88a82eb70f9e68f4ca9b5ebb923556"><div class="ttname"><a href="main_8cpp.html#abd88a82eb70f9e68f4ca9b5ebb923556">runFile</a></div><div class="ttdeci">void runFile(std::string_view filename)</div><div class="ttdef"><b>Definition</b> <a href="main_8cpp_source.html#l00053">main.cpp:53</a></div></div>
+</div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="main_8cpp_a0ddf1224851353fc92bfbff6f499fa97_cgraph.png" border="0" usemap="#amain_8cpp_a0ddf1224851353fc92bfbff6f499fa97_cgraph" alt=""/></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="main_8cpp_a0ddf1224851353fc92bfbff6f499fa97_cgraph.svg" width="295" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -160,12 +193,21 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="main_8cpp_ad1a550a8cd1bd8cad05c963707a9d482_icgraph.png" border="0" usemap="#amain_8cpp_ad1a550a8cd1bd8cad05c963707a9d482_icgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00026">26</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   26</span>                                            {</div>
+<div class="line"><span class="lineno">   27</span>  std::ifstream file(filename.data());</div>
+<div class="line"><span class="lineno">   28</span> </div>
+<div class="line"><span class="lineno">   29</span>  <span class="keywordflow">if</span> (!file) {</div>
+<div class="line"><span class="lineno">   30</span>    std::cerr &lt;&lt; <span class="stringliteral">&quot;Could not open file: &quot;</span> &lt;&lt; filename &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   31</span>    std::exit(EXIT_FAILURE);</div>
+<div class="line"><span class="lineno">   32</span>  } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   33</span>    std::string content{std::istreambuf_iterator&lt;char&gt;(file),</div>
+<div class="line"><span class="lineno">   34</span>                        std::istreambuf_iterator&lt;char&gt;()};</div>
+<div class="line"><span class="lineno">   35</span>    <span class="keywordflow">return</span> content;</div>
+<div class="line"><span class="lineno">   36</span>  }</div>
+<div class="line"><span class="lineno">   37</span>}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a7a2843aa356425e41907f7b3bc255b15" name="a7a2843aa356425e41907f7b3bc255b15"></a>
@@ -183,15 +225,32 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="main_8cpp_a7a2843aa356425e41907f7b3bc255b15_cgraph.png" border="0" usemap="#amain_8cpp_a7a2843aa356425e41907f7b3bc255b15_cgraph" alt=""/></div>
-</div>
-<div class="dynheader">
+
+<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00039">39</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   39</span>                                 {</div>
+<div class="line"><span class="lineno">   40</span>  <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{program};</div>
+<div class="line"><span class="lineno">   41</span>  scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
+<div class="line"><span class="lineno">   42</span>  std::vector&lt;Token&gt; tokens = scanner.getTokens();</div>
+<div class="line"><span class="lineno">   43</span>  <a class="code hl_class" href="classParser.html">Parser</a> parser{tokens};</div>
+<div class="line"><span class="lineno">   44</span>  std::vector&lt;std::shared_ptr&lt;Stmt&gt;&gt; statements = parser.<a class="code hl_function" href="classParser.html#aad339c9b8c635db45f4881560b22436b">parse</a>();</div>
+<div class="line"><span class="lineno">   45</span> </div>
+<div class="line"><span class="lineno">   46</span>  <span class="keywordflow">if</span> (<a class="code hl_variable" href="error_8hpp.html#a5acd1c773774df929c1a561128c90189">hadError</a>) {</div>
+<div class="line"><span class="lineno">   47</span>    std::cerr &lt;&lt; <span class="stringliteral">&quot;Error while parsing the program.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   48</span>  } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   49</span>    <a class="code hl_variable" href="main_8cpp.html#ae269d82377699cd5ec070769b73c32c2">interpreter</a>.<a class="code hl_function" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a>(statements);</div>
+<div class="line"><span class="lineno">   50</span>  }</div>
+<div class="line"><span class="lineno">   51</span>}</div>
+<div class="ttc" id="aclassInterpreter_html_a3c1b7d9bdd87f579186d14fff68bc06b"><div class="ttname"><a href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">Interpreter::interpret</a></div><div class="ttdeci">void interpret(const std::vector&lt; std::shared_ptr&lt; Stmt &gt; &gt; &amp;statements)</div><div class="ttdoc">Interpret the given statement list and execute them.</div><div class="ttdef"><b>Definition</b> <a href="interpreter_8cpp_source.html#l00006">interpreter.cpp:6</a></div></div>
+<div class="ttc" id="aclassParser_html"><div class="ttname"><a href="classParser.html">Parser</a></div><div class="ttdoc">Parser module for the GSC programming language.</div><div class="ttdef"><b>Definition</b> <a href="parser_8hpp_source.html#l00016">parser.hpp:16</a></div></div>
+<div class="ttc" id="aclassParser_html_aad339c9b8c635db45f4881560b22436b"><div class="ttname"><a href="classParser.html#aad339c9b8c635db45f4881560b22436b">Parser::parse</a></div><div class="ttdeci">std::vector&lt; std::shared_ptr&lt; Stmt &gt; &gt; parse()</div><div class="ttdoc">Parses the tokens and returns a vector of statements.</div><div class="ttdef"><b>Definition</b> <a href="parser_8cpp_source.html#l00007">parser.cpp:7</a></div></div>
+<div class="ttc" id="aclassScanner_html"><div class="ttname"><a href="classScanner.html">Scanner</a></div><div class="ttdoc">Lexical analyzer for the GSC programming language.</div><div class="ttdef"><b>Definition</b> <a href="scanner_8hpp_source.html#l00023">scanner.hpp:23</a></div></div>
+<div class="ttc" id="aclassScanner_html_ac13eb6af23aada11ff2525f02577cd8e"><div class="ttname"><a href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">Scanner::scanTokens</a></div><div class="ttdeci">void scanTokens()</div><div class="ttdoc">Scans the entire source code and generates a list of tokens.</div><div class="ttdef"><b>Definition</b> <a href="scanner_8cpp_source.html#l00171">scanner.cpp:171</a></div></div>
+<div class="ttc" id="aerror_8hpp_html_a5acd1c773774df929c1a561128c90189"><div class="ttname"><a href="error_8hpp.html#a5acd1c773774df929c1a561128c90189">hadError</a></div><div class="ttdeci">bool hadError</div><div class="ttdef"><b>Definition</b> <a href="error_8hpp_source.html#l00006">error.hpp:6</a></div></div>
+<div class="ttc" id="amain_8cpp_html_ae269d82377699cd5ec070769b73c32c2"><div class="ttname"><a href="main_8cpp.html#ae269d82377699cd5ec070769b73c32c2">interpreter</a></div><div class="ttdeci">Interpreter interpreter</div><div class="ttdef"><b>Definition</b> <a href="main_8cpp_source.html#l00013">main.cpp:13</a></div></div>
+</div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="main_8cpp_a7a2843aa356425e41907f7b3bc255b15_icgraph.png" border="0" usemap="#amain_8cpp_a7a2843aa356425e41907f7b3bc255b15_icgraph" alt=""/></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="main_8cpp_a7a2843aa356425e41907f7b3bc255b15_icgraph.svg" width="295" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -211,15 +270,28 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
+
+<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00053">53</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   53</span>                                      {</div>
+<div class="line"><span class="lineno">   54</span>  std::string program = <a class="code hl_function" href="main_8cpp.html#ad1a550a8cd1bd8cad05c963707a9d482">readFile</a>(filename);</div>
+<div class="line"><span class="lineno">   55</span>  <a class="code hl_function" href="main_8cpp.html#a7a2843aa356425e41907f7b3bc255b15">run</a>(program);</div>
+<div class="line"><span class="lineno">   56</span> </div>
+<div class="line"><span class="lineno">   57</span>  <span class="keywordflow">if</span> (<a class="code hl_variable" href="error_8hpp.html#a5acd1c773774df929c1a561128c90189">hadError</a>) {</div>
+<div class="line"><span class="lineno">   58</span>    std::cerr &lt;&lt; <span class="stringliteral">&quot;Error while running file: &quot;</span> &lt;&lt; filename &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   59</span>    std::exit(EXIT_FAILURE);</div>
+<div class="line"><span class="lineno">   60</span>  } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code hl_variable" href="error_8hpp.html#a51dd2e05059c20ac148bfbca33e832e3">hadRuntimeError</a>) {</div>
+<div class="line"><span class="lineno">   61</span>    std::cerr &lt;&lt; <span class="stringliteral">&quot;Runtime error occurred while running file: &quot;</span> &lt;&lt; filename</div>
+<div class="line"><span class="lineno">   62</span>              &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   63</span>    std::exit(EXIT_FAILURE);</div>
+<div class="line"><span class="lineno">   64</span>  }</div>
+<div class="line"><span class="lineno">   65</span>}</div>
+<div class="ttc" id="aerror_8hpp_html_a51dd2e05059c20ac148bfbca33e832e3"><div class="ttname"><a href="error_8hpp.html#a51dd2e05059c20ac148bfbca33e832e3">hadRuntimeError</a></div><div class="ttdeci">bool hadRuntimeError</div><div class="ttdef"><b>Definition</b> <a href="error_8hpp_source.html#l00007">error.hpp:7</a></div></div>
+<div class="ttc" id="amain_8cpp_html_a7a2843aa356425e41907f7b3bc255b15"><div class="ttname"><a href="main_8cpp.html#a7a2843aa356425e41907f7b3bc255b15">run</a></div><div class="ttdeci">void run(std::string_view program)</div><div class="ttdef"><b>Definition</b> <a href="main_8cpp_source.html#l00039">main.cpp:39</a></div></div>
+<div class="ttc" id="amain_8cpp_html_ad1a550a8cd1bd8cad05c963707a9d482"><div class="ttname"><a href="main_8cpp.html#ad1a550a8cd1bd8cad05c963707a9d482">readFile</a></div><div class="ttdeci">std::string readFile(std::string_view filename)</div><div class="ttdef"><b>Definition</b> <a href="main_8cpp_source.html#l00026">main.cpp:26</a></div></div>
+</div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="main_8cpp_abd88a82eb70f9e68f4ca9b5ebb923556_cgraph.png" border="0" usemap="#amain_8cpp_abd88a82eb70f9e68f4ca9b5ebb923556_cgraph" alt=""/></div>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="main_8cpp_abd88a82eb70f9e68f4ca9b5ebb923556_icgraph.png" border="0" usemap="#amain_8cpp_abd88a82eb70f9e68f4ca9b5ebb923556_icgraph" alt=""/></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="main_8cpp_abd88a82eb70f9e68f4ca9b5ebb923556_cgraph.svg" width="168" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -238,15 +310,30 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
+
+<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00067">67</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   67</span>                 {</div>
+<div class="line"><span class="lineno">   68</span>  <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
+<div class="line"><span class="lineno">   69</span>    std::cout &lt;&lt; <span class="stringliteral">&quot;&gt;&gt; &quot;</span>;</div>
+<div class="line"><span class="lineno">   70</span>    std::string line;</div>
+<div class="line"><span class="lineno">   71</span>    <span class="keywordflow">if</span> (!std::getline(std::cin, line)) {</div>
+<div class="line"><span class="lineno">   72</span>      std::cout &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">   73</span>      <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   74</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">   75</span>      <a class="code hl_function" href="main_8cpp.html#a7a2843aa356425e41907f7b3bc255b15">run</a>(line);</div>
+<div class="line"><span class="lineno">   76</span>      <a class="code hl_variable" href="error_8hpp.html#a5acd1c773774df929c1a561128c90189">hadError</a> = <span class="keyword">false</span>; <span class="comment">// Reset error state for the next line</span></div>
+<div class="line"><span class="lineno">   77</span>    }</div>
+<div class="line"><span class="lineno">   78</span>  }</div>
+<div class="line"><span class="lineno">   79</span>}</div>
+</div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="main_8cpp_a2177fc6f8c300b3c24f38817ba64da30_cgraph.png" border="0" usemap="#amain_8cpp_a2177fc6f8c300b3c24f38817ba64da30_cgraph" alt=""/></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="main_8cpp_a2177fc6f8c300b3c24f38817ba64da30_cgraph.svg" width="192" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="main_8cpp_a2177fc6f8c300b3c24f38817ba64da30_icgraph.png" border="0" usemap="#amain_8cpp_a2177fc6f8c300b3c24f38817ba64da30_icgraph" alt=""/></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="main_8cpp_a2177fc6f8c300b3c24f38817ba64da30_icgraph.svg" width="204" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -264,12 +351,19 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00013">13</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   13</span>{};</div>
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d422163b96683743ed3963d4aac17747.html">app</a></li><li class="navelem"><a class="el" href="main_8cpp.html">main.cpp</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

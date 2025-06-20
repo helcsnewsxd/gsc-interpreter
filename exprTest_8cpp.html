@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -23,6 +27,7 @@
   <td id="projectalign">
    <div id="projectname">Simplified C/C++ (GSC)
    </div>
+   <div id="projectbrief">A Turing-complete interpreter developed for a compiler course</div>
   </td>
  </tr>
  </tbody>
@@ -46,6 +51,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('exprTest_8cpp.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,11 +89,6 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_13e138d54eb8818da29c3992edef070a.html">test</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
@@ -83,9 +100,11 @@ $(function() {
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for exprTest.cpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="exprTest_8cpp__incl.png" border="0" usemap="#atest_2exprTest_8cpp" alt=""/></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="exprTest_8cpp__incl.svg" width="548" height="330"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
-</div><table class="memberdecls">
+</div>
+<p><a href="exprTest_8cpp_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ad2d7c266dbfb58fb80c44c8a3dd2f5ba" id="r_ad2d7c266dbfb58fb80c44c8a3dd2f5ba"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exprTest_8cpp.html#ad2d7c266dbfb58fb80c44c8a3dd2f5ba">TEST_CASE</a> (&quot;Literal expression&quot;, &quot;[expression][literal]&quot;)</td></tr>
@@ -130,6 +149,32 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="exprTest_8cpp_source.html#l00091">91</a> of file <a class="el" href="exprTest_8cpp_source.html">exprTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   91</span>                                                       {</div>
+<div class="line"><span class="lineno">   92</span>  SECTION(<span class="stringliteral">&quot;Assign expression with variable name and value&quot;</span>) {</div>
+<div class="line"><span class="lineno">   93</span>    <a class="code hl_class" href="classToken.html">Token</a> varToken{<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a84f8ae2490f9e4bd2321fd21f4b0e807">TokenType::IDENTIFIER</a>, <span class="stringliteral">&quot;x&quot;</span>, <span class="keyword">nullptr</span>, 1};</div>
+<div class="line"><span class="lineno">   94</span>    <a class="code hl_class" href="classToken.html">Token</a> initialValueToken{<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a12a90dfe20486bbe3e075afcd19ef2d0">TokenType::NUMBER</a>, <span class="stringliteral">&quot;10&quot;</span>, 10, 2};</div>
+<div class="line"><span class="lineno">   95</span>    std::shared_ptr&lt;Literal&gt; initialValue =</div>
+<div class="line"><span class="lineno">   96</span>        std::make_shared&lt;Literal&gt;(initialValueToken.getLiteral());</div>
+<div class="line"><span class="lineno">   97</span>    std::shared_ptr&lt;Assign&gt; assignExpr =</div>
+<div class="line"><span class="lineno">   98</span>        std::make_shared&lt;Assign&gt;(varToken, initialValue);</div>
+<div class="line"><span class="lineno">   99</span> </div>
+<div class="line"><span class="lineno">  100</span>    REQUIRE(<span class="keyword">typeid</span>(assignExpr-&gt;getName()) == <span class="keyword">typeid</span>(<a class="code hl_class" href="classToken.html">Token</a>));</div>
+<div class="line"><span class="lineno">  101</span>    REQUIRE(assignExpr-&gt;getName().getType() == <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a84f8ae2490f9e4bd2321fd21f4b0e807">TokenType::IDENTIFIER</a>);</div>
+<div class="line"><span class="lineno">  102</span>    CHECK(assignExpr-&gt;getName().getLexeme() == <span class="stringliteral">&quot;x&quot;</span>);</div>
+<div class="line"><span class="lineno">  103</span> </div>
+<div class="line"><span class="lineno">  104</span>    REQUIRE(std::dynamic_pointer_cast&lt;Literal&gt;(assignExpr-&gt;getValue()) !=</div>
+<div class="line"><span class="lineno">  105</span>            <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">  106</span>    std::shared_ptr&lt;Literal&gt; valueLiteral =</div>
+<div class="line"><span class="lineno">  107</span>        std::dynamic_pointer_cast&lt;Literal&gt;(assignExpr-&gt;getValue());</div>
+<div class="line"><span class="lineno">  108</span>    REQUIRE(valueLiteral-&gt;getValue().type() == <span class="keyword">typeid</span>(<span class="keywordtype">int</span>));</div>
+<div class="line"><span class="lineno">  109</span>    CHECK(std::any_cast&lt;int&gt;(valueLiteral-&gt;getValue()) == 10);</div>
+<div class="line"><span class="lineno">  110</span>  }</div>
+<div class="line"><span class="lineno">  111</span>}</div>
+<div class="ttc" id="aclassToken_html"><div class="ttname"><a href="classToken.html">Token</a></div><div class="ttdoc">Represents a token in the source code.</div><div class="ttdef"><b>Definition</b> <a href="token_8hpp_source.html#l00014">token.hpp:14</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a12a90dfe20486bbe3e075afcd19ef2d0"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a12a90dfe20486bbe3e075afcd19ef2d0">NUMBER</a></div><div class="ttdeci">@ NUMBER</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00035">tokenType.hpp:35</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a84f8ae2490f9e4bd2321fd21f4b0e807"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a84f8ae2490f9e4bd2321fd21f4b0e807">IDENTIFIER</a></div><div class="ttdeci">@ IDENTIFIER</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00033">tokenType.hpp:33</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a37072de29663c0546907647d63284a5b" name="a37072de29663c0546907647d63284a5b"></a>
@@ -157,12 +202,45 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="exprTest_8cpp_a37072de29663c0546907647d63284a5b_cgraph.png" border="0" usemap="#aexprTest_8cpp_a37072de29663c0546907647d63284a5b_cgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="exprTest_8cpp_source.html#l00049">49</a> of file <a class="el" href="exprTest_8cpp_source.html">exprTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   49</span>                                                       {</div>
+<div class="line"><span class="lineno">   50</span>  <a class="code hl_class" href="classToken.html">Token</a> op{<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921af613d73b4e7b570ffd967df4a13c4225">TokenType::MINUS</a>, <span class="stringliteral">&quot;-&quot;</span>, <span class="keyword">nullptr</span>, 1};</div>
+<div class="line"><span class="lineno">   51</span>  <a class="code hl_class" href="classLiteral.html">Literal</a> leftLiteral(1);</div>
+<div class="line"><span class="lineno">   52</span>  <a class="code hl_class" href="classLiteral.html">Literal</a> rightLiteral(2);</div>
+<div class="line"><span class="lineno">   53</span>  <a class="code hl_class" href="classBinary.html">Binary</a> binaryExpr(std::make_shared&lt;Literal&gt;(leftLiteral), op,</div>
+<div class="line"><span class="lineno">   54</span>                    std::make_shared&lt;Literal&gt;(rightLiteral));</div>
+<div class="line"><span class="lineno">   55</span> </div>
+<div class="line"><span class="lineno">   56</span>  <span class="comment">// Check left side of the expression</span></div>
+<div class="line"><span class="lineno">   57</span>  std::shared_ptr&lt;Literal&gt; leftPtr =</div>
+<div class="line"><span class="lineno">   58</span>      std::dynamic_pointer_cast&lt;Literal&gt;(binaryExpr.getLeft());</div>
+<div class="line"><span class="lineno">   59</span>  REQUIRE(leftPtr != <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">   60</span>  CHECK(leftPtr-&gt;getValue().type() == <span class="keyword">typeid</span>(<span class="keywordtype">int</span>));</div>
+<div class="line"><span class="lineno">   61</span>  CHECK(std::any_cast&lt;int&gt;(leftPtr-&gt;getValue()) == 1);</div>
+<div class="line"><span class="lineno">   62</span> </div>
+<div class="line"><span class="lineno">   63</span>  <span class="comment">// Check right side of the expression</span></div>
+<div class="line"><span class="lineno">   64</span>  std::shared_ptr&lt;Literal&gt; rightPtr =</div>
+<div class="line"><span class="lineno">   65</span>      std::dynamic_pointer_cast&lt;Literal&gt;(binaryExpr.getRight());</div>
+<div class="line"><span class="lineno">   66</span>  REQUIRE(rightPtr != <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">   67</span>  CHECK(rightPtr-&gt;getValue().type() == <span class="keyword">typeid</span>(<span class="keywordtype">int</span>));</div>
+<div class="line"><span class="lineno">   68</span>  CHECK(std::any_cast&lt;int&gt;(rightPtr-&gt;getValue()) == 2);</div>
+<div class="line"><span class="lineno">   69</span> </div>
+<div class="line"><span class="lineno">   70</span>  <span class="comment">// Check if the operator is correct</span></div>
+<div class="line"><span class="lineno">   71</span>  <a class="code hl_class" href="classToken.html">Token</a> tokOp = std::any_cast&lt;Token&gt;(binaryExpr.getOp());</div>
+<div class="line"><span class="lineno">   72</span>  REQUIRE(<span class="keyword">typeid</span>(tokOp) == <span class="keyword">typeid</span>(<a class="code hl_class" href="classToken.html">Token</a>));</div>
+<div class="line"><span class="lineno">   73</span>  CHECK(tokOp.<a class="code hl_function" href="classToken.html#a31eae18f897e22a446c82e864dfbf5d4">getType</a>() == <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921af613d73b4e7b570ffd967df4a13c4225">TokenType::MINUS</a>);</div>
+<div class="line"><span class="lineno">   74</span>  CHECK(tokOp.<a class="code hl_function" href="classToken.html#a143dd2918c6d43f95010e101012a6d2e">getLexeme</a>() == <span class="stringliteral">&quot;-&quot;</span>);</div>
+<div class="line"><span class="lineno">   75</span> </div>
+<div class="line"><span class="lineno">   76</span>  std::any opLiteral = tokOp.<a class="code hl_function" href="classToken.html#a46bd29eb731d9dbd6d66893fd92c3e2d">getLiteral</a>();</div>
+<div class="line"><span class="lineno">   77</span>  CHECK(opLiteral.type() == <span class="keyword">typeid</span>(std::nullptr_t));</div>
+<div class="line"><span class="lineno">   78</span>}</div>
+<div class="ttc" id="aclassBinary_html"><div class="ttname"><a href="classBinary.html">Binary</a></div><div class="ttdoc">Class representing a binary expression.</div><div class="ttdef"><b>Definition</b> <a href="expr_8hpp_source.html#l00053">expr.hpp:53</a></div></div>
+<div class="ttc" id="aclassLiteral_html"><div class="ttname"><a href="classLiteral.html">Literal</a></div><div class="ttdoc">Class representing a literal expression.</div><div class="ttdef"><b>Definition</b> <a href="expr_8hpp_source.html#l00101">expr.hpp:101</a></div></div>
+<div class="ttc" id="aclassToken_html_a143dd2918c6d43f95010e101012a6d2e"><div class="ttname"><a href="classToken.html#a143dd2918c6d43f95010e101012a6d2e">Token::getLexeme</a></div><div class="ttdeci">std::string getLexeme() const</div><div class="ttdef"><b>Definition</b> <a href="token_8cpp_source.html#l00010">token.cpp:10</a></div></div>
+<div class="ttc" id="aclassToken_html_a31eae18f897e22a446c82e864dfbf5d4"><div class="ttname"><a href="classToken.html#a31eae18f897e22a446c82e864dfbf5d4">Token::getType</a></div><div class="ttdeci">TokenType getType() const</div><div class="ttdef"><b>Definition</b> <a href="token_8cpp_source.html#l00008">token.cpp:8</a></div></div>
+<div class="ttc" id="aclassToken_html_a46bd29eb731d9dbd6d66893fd92c3e2d"><div class="ttname"><a href="classToken.html#a46bd29eb731d9dbd6d66893fd92c3e2d">Token::getLiteral</a></div><div class="ttdeci">std::any getLiteral() const</div><div class="ttdef"><b>Definition</b> <a href="token_8cpp_source.html#l00012">token.cpp:12</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921af613d73b4e7b570ffd967df4a13c4225"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921af613d73b4e7b570ffd967df4a13c4225">MINUS</a></div><div class="ttdeci">@ MINUS</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00016">tokenType.hpp:16</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a1c6dc08baf069a39f296b5b131204215" name="a1c6dc08baf069a39f296b5b131204215"></a>
@@ -190,12 +268,23 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="exprTest_8cpp_a1c6dc08baf069a39f296b5b131204215_cgraph.png" border="0" usemap="#aexprTest_8cpp_a1c6dc08baf069a39f296b5b131204215_cgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="exprTest_8cpp_source.html#l00011">11</a> of file <a class="el" href="exprTest_8cpp_source.html">exprTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   11</span>                                                           {</div>
+<div class="line"><span class="lineno">   12</span>  <a class="code hl_class" href="classLiteral.html">Literal</a> innerLiteral(1);</div>
+<div class="line"><span class="lineno">   13</span>  <a class="code hl_class" href="classGrouping.html">Grouping</a> groupingExpr(std::make_shared&lt;Literal&gt;(innerLiteral));</div>
+<div class="line"><span class="lineno">   14</span> </div>
+<div class="line"><span class="lineno">   15</span>  <span class="comment">// Check if it&#39;s a pointer to a Literal class object</span></div>
+<div class="line"><span class="lineno">   16</span>  std::shared_ptr&lt;Literal&gt; literalPtr =</div>
+<div class="line"><span class="lineno">   17</span>      std::dynamic_pointer_cast&lt;Literal&gt;(groupingExpr.getExpression());</div>
+<div class="line"><span class="lineno">   18</span>  REQUIRE(literalPtr != <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">   19</span> </div>
+<div class="line"><span class="lineno">   20</span>  <span class="comment">// Check if the Literal object has the expected value</span></div>
+<div class="line"><span class="lineno">   21</span>  CHECK(literalPtr-&gt;getValue().type() == <span class="keyword">typeid</span>(<span class="keywordtype">int</span>));</div>
+<div class="line"><span class="lineno">   22</span>  CHECK(std::any_cast&lt;int&gt;(literalPtr-&gt;getValue()) == 1);</div>
+<div class="line"><span class="lineno">   23</span>}</div>
+<div class="ttc" id="aclassGrouping_html"><div class="ttname"><a href="classGrouping.html">Grouping</a></div><div class="ttdoc">Class representing a grouping expression.</div><div class="ttdef"><b>Definition</b> <a href="expr_8hpp_source.html#l00079">expr.hpp:79</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ad2d7c266dbfb58fb80c44c8a3dd2f5ba" name="ad2d7c266dbfb58fb80c44c8a3dd2f5ba"></a>
@@ -223,12 +312,15 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="exprTest_8cpp_ad2d7c266dbfb58fb80c44c8a3dd2f5ba_cgraph.png" border="0" usemap="#aexprTest_8cpp_ad2d7c266dbfb58fb80c44c8a3dd2f5ba_cgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="exprTest_8cpp_source.html#l00004">4</a> of file <a class="el" href="exprTest_8cpp_source.html">exprTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">    4</span>                                                         {</div>
+<div class="line"><span class="lineno">    5</span>  <a class="code hl_class" href="classLiteral.html">Literal</a> literalExpr(1);</div>
+<div class="line"><span class="lineno">    6</span> </div>
+<div class="line"><span class="lineno">    7</span>  REQUIRE(literalExpr.getValue().type() == <span class="keyword">typeid</span>(<span class="keywordtype">int</span>));</div>
+<div class="line"><span class="lineno">    8</span>  CHECK(std::any_cast&lt;int&gt;(literalExpr.getValue()) == 1);</div>
+<div class="line"><span class="lineno">    9</span>}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ace11fe8c67ee780e46dad07b414028f0" name="ace11fe8c67ee780e46dad07b414028f0"></a>
@@ -257,6 +349,75 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="exprTest_8cpp_source.html#l00113">113</a> of file <a class="el" href="exprTest_8cpp_source.html">exprTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  113</span>                                                     {</div>
+<div class="line"><span class="lineno">  114</span>  <span class="comment">// Literal true and false values</span></div>
+<div class="line"><span class="lineno">  115</span>  <a class="code hl_class" href="classToken.html">Token</a> trueToken{<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa82764c3079aea4e60c80e45befbb839">TokenType::TRUE</a>, <span class="stringliteral">&quot;true&quot;</span>, <span class="keyword">true</span>, 1};</div>
+<div class="line"><span class="lineno">  116</span>  <a class="code hl_class" href="classToken.html">Token</a> falseToken{<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa1e095cc966dbecf6a0d8aad75348d1a">TokenType::FALSE</a>, <span class="stringliteral">&quot;false&quot;</span>, <span class="keyword">false</span>, 2};</div>
+<div class="line"><span class="lineno">  117</span> </div>
+<div class="line"><span class="lineno">  118</span>  SECTION(<span class="stringliteral">&quot;And operator&quot;</span>) {</div>
+<div class="line"><span class="lineno">  119</span>    <a class="code hl_class" href="classToken.html">Token</a> op{<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a865555c9f2e0458a7078486aa1b3254f">TokenType::AND</a>, <span class="stringliteral">&quot;and&quot;</span>, <span class="keyword">nullptr</span>, 1};</div>
+<div class="line"><span class="lineno">  120</span>    std::shared_ptr&lt;Literal&gt; left =</div>
+<div class="line"><span class="lineno">  121</span>        std::make_shared&lt;Literal&gt;(trueToken.getLiteral());</div>
+<div class="line"><span class="lineno">  122</span>    std::shared_ptr&lt;Literal&gt; right =</div>
+<div class="line"><span class="lineno">  123</span>        std::make_shared&lt;Literal&gt;(falseToken.getLiteral());</div>
+<div class="line"><span class="lineno">  124</span>    std::shared_ptr&lt;Logical&gt; logicExpr =</div>
+<div class="line"><span class="lineno">  125</span>        std::make_shared&lt;Logical&gt;(left, op, right);</div>
+<div class="line"><span class="lineno">  126</span> </div>
+<div class="line"><span class="lineno">  127</span>    REQUIRE(std::dynamic_pointer_cast&lt;Literal&gt;(logicExpr-&gt;getLeft()) !=</div>
+<div class="line"><span class="lineno">  128</span>            <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">  129</span>    std::shared_ptr&lt;Literal&gt; leftPtr =</div>
+<div class="line"><span class="lineno">  130</span>        std::dynamic_pointer_cast&lt;Literal&gt;(logicExpr-&gt;getLeft());</div>
+<div class="line"><span class="lineno">  131</span>    REQUIRE(leftPtr != <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">  132</span>    REQUIRE(leftPtr-&gt;getValue().type() == <span class="keyword">typeid</span>(<span class="keywordtype">bool</span>));</div>
+<div class="line"><span class="lineno">  133</span>    CHECK(std::any_cast&lt;bool&gt;(leftPtr-&gt;getValue()) == <span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">  134</span> </div>
+<div class="line"><span class="lineno">  135</span>    REQUIRE(std::dynamic_pointer_cast&lt;Literal&gt;(logicExpr-&gt;getRight()) !=</div>
+<div class="line"><span class="lineno">  136</span>            <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">  137</span>    std::shared_ptr&lt;Literal&gt; rightPtr =</div>
+<div class="line"><span class="lineno">  138</span>        std::dynamic_pointer_cast&lt;Literal&gt;(logicExpr-&gt;getRight());</div>
+<div class="line"><span class="lineno">  139</span>    REQUIRE(rightPtr != <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">  140</span>    REQUIRE(rightPtr-&gt;getValue().type() == <span class="keyword">typeid</span>(<span class="keywordtype">bool</span>));</div>
+<div class="line"><span class="lineno">  141</span>    CHECK(std::any_cast&lt;bool&gt;(rightPtr-&gt;getValue()) == <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  142</span> </div>
+<div class="line"><span class="lineno">  143</span>    REQUIRE(<span class="keyword">typeid</span>(logicExpr-&gt;getOp()) == <span class="keyword">typeid</span>(<a class="code hl_class" href="classToken.html">Token</a>));</div>
+<div class="line"><span class="lineno">  144</span>    CHECK(logicExpr-&gt;getOp().getType() == <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a865555c9f2e0458a7078486aa1b3254f">TokenType::AND</a>);</div>
+<div class="line"><span class="lineno">  145</span>  }</div>
+<div class="line"><span class="lineno">  146</span> </div>
+<div class="line"><span class="lineno">  147</span>  SECTION(<span class="stringliteral">&quot;And operator&quot;</span>) {</div>
+<div class="line"><span class="lineno">  148</span>    <a class="code hl_class" href="classToken.html">Token</a> op{<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a96727447c0ad447987df1c6415aef074">TokenType::OR</a>, <span class="stringliteral">&quot;or&quot;</span>, <span class="keyword">nullptr</span>, 1};</div>
+<div class="line"><span class="lineno">  149</span>    std::shared_ptr&lt;Literal&gt; left =</div>
+<div class="line"><span class="lineno">  150</span>        std::make_shared&lt;Literal&gt;(trueToken.getLiteral());</div>
+<div class="line"><span class="lineno">  151</span>    std::shared_ptr&lt;Literal&gt; right =</div>
+<div class="line"><span class="lineno">  152</span>        std::make_shared&lt;Literal&gt;(falseToken.getLiteral());</div>
+<div class="line"><span class="lineno">  153</span>    std::shared_ptr&lt;Logical&gt; logicExpr =</div>
+<div class="line"><span class="lineno">  154</span>        std::make_shared&lt;Logical&gt;(left, op, right);</div>
+<div class="line"><span class="lineno">  155</span> </div>
+<div class="line"><span class="lineno">  156</span>    REQUIRE(std::dynamic_pointer_cast&lt;Literal&gt;(logicExpr-&gt;getLeft()) !=</div>
+<div class="line"><span class="lineno">  157</span>            <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">  158</span>    std::shared_ptr&lt;Literal&gt; leftPtr =</div>
+<div class="line"><span class="lineno">  159</span>        std::dynamic_pointer_cast&lt;Literal&gt;(logicExpr-&gt;getLeft());</div>
+<div class="line"><span class="lineno">  160</span>    REQUIRE(leftPtr != <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">  161</span>    REQUIRE(leftPtr-&gt;getValue().type() == <span class="keyword">typeid</span>(<span class="keywordtype">bool</span>));</div>
+<div class="line"><span class="lineno">  162</span>    CHECK(std::any_cast&lt;bool&gt;(leftPtr-&gt;getValue()) == <span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">  163</span> </div>
+<div class="line"><span class="lineno">  164</span>    REQUIRE(std::dynamic_pointer_cast&lt;Literal&gt;(logicExpr-&gt;getRight()) !=</div>
+<div class="line"><span class="lineno">  165</span>            <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">  166</span>    std::shared_ptr&lt;Literal&gt; rightPtr =</div>
+<div class="line"><span class="lineno">  167</span>        std::dynamic_pointer_cast&lt;Literal&gt;(logicExpr-&gt;getRight());</div>
+<div class="line"><span class="lineno">  168</span>    REQUIRE(rightPtr != <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">  169</span>    REQUIRE(rightPtr-&gt;getValue().type() == <span class="keyword">typeid</span>(<span class="keywordtype">bool</span>));</div>
+<div class="line"><span class="lineno">  170</span>    CHECK(std::any_cast&lt;bool&gt;(rightPtr-&gt;getValue()) == <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  171</span> </div>
+<div class="line"><span class="lineno">  172</span>    REQUIRE(<span class="keyword">typeid</span>(logicExpr-&gt;getOp()) == <span class="keyword">typeid</span>(<a class="code hl_class" href="classToken.html">Token</a>));</div>
+<div class="line"><span class="lineno">  173</span>    CHECK(logicExpr-&gt;getOp().getType() == <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a96727447c0ad447987df1c6415aef074">TokenType::OR</a>);</div>
+<div class="line"><span class="lineno">  174</span>  }</div>
+<div class="line"><span class="lineno">  175</span>}</div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a865555c9f2e0458a7078486aa1b3254f"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a865555c9f2e0458a7078486aa1b3254f">AND</a></div><div class="ttdeci">@ AND</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00038">tokenType.hpp:38</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a96727447c0ad447987df1c6415aef074"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a96727447c0ad447987df1c6415aef074">OR</a></div><div class="ttdeci">@ OR</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00039">tokenType.hpp:39</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921aa1e095cc966dbecf6a0d8aad75348d1a"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa1e095cc966dbecf6a0d8aad75348d1a">FALSE</a></div><div class="ttdeci">@ FALSE</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00043">tokenType.hpp:43</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921aa82764c3079aea4e60c80e45befbb839"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa82764c3079aea4e60c80e45befbb839">TRUE</a></div><div class="ttdeci">@ TRUE</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00042">tokenType.hpp:42</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="af46c99fa38ede76a0411394f784c16ee" name="af46c99fa38ede76a0411394f784c16ee"></a>
@@ -284,12 +445,34 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="exprTest_8cpp_af46c99fa38ede76a0411394f784c16ee_cgraph.png" border="0" usemap="#aexprTest_8cpp_af46c99fa38ede76a0411394f784c16ee_cgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="exprTest_8cpp_source.html#l00025">25</a> of file <a class="el" href="exprTest_8cpp_source.html">exprTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   25</span>                                                     {</div>
+<div class="line"><span class="lineno">   26</span>  <a class="code hl_class" href="classToken.html">Token</a> op{<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921af613d73b4e7b570ffd967df4a13c4225">TokenType::MINUS</a>, <span class="stringliteral">&quot;-&quot;</span>, <span class="keyword">nullptr</span>, 1};</div>
+<div class="line"><span class="lineno">   27</span>  <a class="code hl_class" href="classLiteral.html">Literal</a> innerLiteral(1);</div>
+<div class="line"><span class="lineno">   28</span>  <a class="code hl_class" href="classUnary.html">Unary</a> unaryExpr(op, std::make_shared&lt;Literal&gt;(innerLiteral));</div>
+<div class="line"><span class="lineno">   29</span> </div>
+<div class="line"><span class="lineno">   30</span>  <span class="comment">// Check right side of the expression</span></div>
+<div class="line"><span class="lineno">   31</span>  std::shared_ptr&lt;Literal&gt; rightPtr =</div>
+<div class="line"><span class="lineno">   32</span>      std::dynamic_pointer_cast&lt;Literal&gt;(unaryExpr.getRight());</div>
+<div class="line"><span class="lineno">   33</span>  REQUIRE(rightPtr != <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">   34</span>  CHECK(rightPtr-&gt;getValue().type() == <span class="keyword">typeid</span>(<span class="keywordtype">int</span>));</div>
+<div class="line"><span class="lineno">   35</span>  CHECK(std::any_cast&lt;int&gt;(rightPtr-&gt;getValue()) == 1);</div>
+<div class="line"><span class="lineno">   36</span> </div>
+<div class="line"><span class="lineno">   37</span>  <span class="comment">// Check if the operator is correct</span></div>
+<div class="line"><span class="lineno">   38</span>  <a class="code hl_class" href="classToken.html">Token</a> tokOp = std::any_cast&lt;Token&gt;(unaryExpr.getOp());</div>
+<div class="line"><span class="lineno">   39</span> </div>
+<div class="line"><span class="lineno">   40</span>  REQUIRE(<span class="keyword">typeid</span>(tokOp) == <span class="keyword">typeid</span>(<a class="code hl_class" href="classToken.html">Token</a>));</div>
+<div class="line"><span class="lineno">   41</span>  CHECK(tokOp.<a class="code hl_function" href="classToken.html#a31eae18f897e22a446c82e864dfbf5d4">getType</a>() == <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921af613d73b4e7b570ffd967df4a13c4225">TokenType::MINUS</a>);</div>
+<div class="line"><span class="lineno">   42</span>  CHECK(tokOp.<a class="code hl_function" href="classToken.html#a143dd2918c6d43f95010e101012a6d2e">getLexeme</a>() == <span class="stringliteral">&quot;-&quot;</span>);</div>
+<div class="line"><span class="lineno">   43</span>  CHECK(tokOp.<a class="code hl_function" href="classToken.html#aabfcea7b4d2df9591a87095440764993">getLine</a>() == 1);</div>
+<div class="line"><span class="lineno">   44</span> </div>
+<div class="line"><span class="lineno">   45</span>  std::any opLiteral = tokOp.<a class="code hl_function" href="classToken.html#a46bd29eb731d9dbd6d66893fd92c3e2d">getLiteral</a>();</div>
+<div class="line"><span class="lineno">   46</span>  CHECK(opLiteral.type() == <span class="keyword">typeid</span>(std::nullptr_t));</div>
+<div class="line"><span class="lineno">   47</span>}</div>
+<div class="ttc" id="aclassToken_html_aabfcea7b4d2df9591a87095440764993"><div class="ttname"><a href="classToken.html#aabfcea7b4d2df9591a87095440764993">Token::getLine</a></div><div class="ttdeci">int getLine() const</div><div class="ttdef"><b>Definition</b> <a href="token_8cpp_source.html#l00014">token.cpp:14</a></div></div>
+<div class="ttc" id="aclassUnary_html"><div class="ttname"><a href="classUnary.html">Unary</a></div><div class="ttdoc">Class representing a unary expression.</div><div class="ttdef"><b>Definition</b> <a href="expr_8hpp_source.html#l00122">expr.hpp:122</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a1c43e2795a379eab78592fdf71668c8b" name="a1c43e2795a379eab78592fdf71668c8b"></a>
@@ -318,12 +501,28 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="exprTest_8cpp_source.html#l00080">80</a> of file <a class="el" href="exprTest_8cpp_source.html">exprTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   80</span>                                                           {</div>
+<div class="line"><span class="lineno">   81</span>  SECTION(<span class="stringliteral">&quot;Variable expression with name&quot;</span>) {</div>
+<div class="line"><span class="lineno">   82</span>    <a class="code hl_class" href="classToken.html">Token</a> varToken{<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a84f8ae2490f9e4bd2321fd21f4b0e807">TokenType::IDENTIFIER</a>, <span class="stringliteral">&quot;x&quot;</span>, <span class="keyword">nullptr</span>, 1};</div>
+<div class="line"><span class="lineno">   83</span>    std::shared_ptr&lt;Variable&gt; varExpr = std::make_shared&lt;Variable&gt;(varToken);</div>
+<div class="line"><span class="lineno">   84</span> </div>
+<div class="line"><span class="lineno">   85</span>    REQUIRE(<span class="keyword">typeid</span>(varExpr-&gt;getName()) == <span class="keyword">typeid</span>(<a class="code hl_class" href="classToken.html">Token</a>));</div>
+<div class="line"><span class="lineno">   86</span>    REQUIRE(varExpr-&gt;getName().getType() == <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a84f8ae2490f9e4bd2321fd21f4b0e807">TokenType::IDENTIFIER</a>);</div>
+<div class="line"><span class="lineno">   87</span>    CHECK(varExpr-&gt;getName().getLexeme() == <span class="stringliteral">&quot;x&quot;</span>);</div>
+<div class="line"><span class="lineno">   88</span>  }</div>
+<div class="line"><span class="lineno">   89</span>}</div>
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_13e138d54eb8818da29c3992edef070a.html">test</a></li><li class="navelem"><a class="el" href="exprTest_8cpp.html">exprTest.cpp</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -23,6 +27,7 @@
   <td id="projectalign">
    <div id="projectname">Simplified C/C++ (GSC)
    </div>
+   <div id="projectbrief">A Turing-complete interpreter developed for a compiler course</div>
   </td>
  </tr>
  </tbody>
@@ -46,6 +51,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classToken.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,10 +89,10 @@ $(function() {
 </div>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classToken-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">Token Class Reference</div></div>
 </div><!--header-->
@@ -83,12 +105,12 @@ $(function() {
 <div class="dynheader">
 Collaboration diagram for Token:</div>
 <div class="dyncontent">
-<div class="center"><img src="classToken__coll__graph.png" border="0" usemap="#aToken_coll__map" alt="Collaboration graph"/></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classToken__coll__graph.svg" width="375" height="434"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a52d0d3e901c899c90842edd5ff0b628e" id="r_a52d0d3e901c899c90842edd5ff0b628e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classToken.html#a52d0d3e901c899c90842edd5ff0b628e">Token</a> (<a class="el" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> type, std::string lexeme, std::any literal, int line)</td></tr>
+<tr class="memitem:a52d0d3e901c899c90842edd5ff0b628e" id="r_a52d0d3e901c899c90842edd5ff0b628e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classToken.html#a52d0d3e901c899c90842edd5ff0b628e">Token</a> (<a class="el" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> <a class="el" href="classToken.html#a64d8c9cf9474efe98c4f1e0edfcdeb51">type</a>, std::string <a class="el" href="classToken.html#add3e0a576c641804bf1755f0ff4a9fa1">lexeme</a>, std::any <a class="el" href="classToken.html#adf9757b3ffca718b695852fcbb3b32f1">literal</a>, int <a class="el" href="classToken.html#a602ba6a6fb902b7d111696371bd60ac3">line</a>)</td></tr>
 <tr class="memdesc:a52d0d3e901c899c90842edd5ff0b628e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classToken.html" title="Represents a token in the source code.">Token</a> object.  <br /></td></tr>
 <tr class="separator:a52d0d3e901c899c90842edd5ff0b628e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a31eae18f897e22a446c82e864dfbf5d4" id="r_a31eae18f897e22a446c82e864dfbf5d4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classToken.html#a31eae18f897e22a446c82e864dfbf5d4">getType</a> () const</td></tr>
@@ -101,10 +123,23 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aabfcea7b4d2df9591a87095440764993"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f1c3f5f607e9b576b4202b108f13c60" id="r_a6f1c3f5f607e9b576b4202b108f13c60"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classToken.html#a6f1c3f5f607e9b576b4202b108f13c60">toString</a> () const</td></tr>
 <tr class="separator:a6f1c3f5f607e9b576b4202b108f13c60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a64d8c9cf9474efe98c4f1e0edfcdeb51" id="r_a64d8c9cf9474efe98c4f1e0edfcdeb51"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classToken.html#a64d8c9cf9474efe98c4f1e0edfcdeb51">type</a></td></tr>
+<tr class="separator:a64d8c9cf9474efe98c4f1e0edfcdeb51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add3e0a576c641804bf1755f0ff4a9fa1" id="r_add3e0a576c641804bf1755f0ff4a9fa1"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classToken.html#add3e0a576c641804bf1755f0ff4a9fa1">lexeme</a></td></tr>
+<tr class="separator:add3e0a576c641804bf1755f0ff4a9fa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf9757b3ffca718b695852fcbb3b32f1" id="r_adf9757b3ffca718b695852fcbb3b32f1"><td class="memItemLeft" align="right" valign="top">const std::any&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classToken.html#adf9757b3ffca718b695852fcbb3b32f1">literal</a></td></tr>
+<tr class="separator:adf9757b3ffca718b695852fcbb3b32f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a602ba6a6fb902b7d111696371bd60ac3" id="r_a602ba6a6fb902b7d111696371bd60ac3"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classToken.html#a602ba6a6fb902b7d111696371bd60ac3">line</a></td></tr>
+<tr class="separator:a602ba6a6fb902b7d111696371bd60ac3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents a token in the source code. </p>
 <p>The <a class="el" href="classToken.html" title="Represents a token in the source code.">Token</a> class encapsulates the type, lexeme, literal value, and line number of a token. It provides a method to convert the token to a string representation. </p>
+
+<p class="definition">Definition at line <a class="el" href="token_8hpp_source.html#l00014">14</a> of file <a class="el" href="token_8hpp_source.html">token.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a52d0d3e901c899c90842edd5ff0b628e" name="a52d0d3e901c899c90842edd5ff0b628e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a52d0d3e901c899c90842edd5ff0b628e">&#9670;&#160;</a></span>Token()</h2>
@@ -158,6 +193,14 @@ Public Member Functions</h2></td></tr>
 <dd>
 The lexeme and literal values are moved into the object to avoid copying. </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="token_8cpp_source.html#l00004">4</a> of file <a class="el" href="token_8cpp_source.html">token.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">    5</span>    : <a class="code hl_variable" href="classToken.html#a64d8c9cf9474efe98c4f1e0edfcdeb51">type</a>{<a class="code hl_variable" href="classToken.html#a64d8c9cf9474efe98c4f1e0edfcdeb51">type</a>}, <a class="code hl_variable" href="classToken.html#add3e0a576c641804bf1755f0ff4a9fa1">lexeme</a>{std::move(<a class="code hl_variable" href="classToken.html#add3e0a576c641804bf1755f0ff4a9fa1">lexeme</a>)}, <a class="code hl_variable" href="classToken.html#adf9757b3ffca718b695852fcbb3b32f1">literal</a>{std::move(<a class="code hl_variable" href="classToken.html#adf9757b3ffca718b695852fcbb3b32f1">literal</a>)},</div>
+<div class="line"><span class="lineno">    6</span>      <a class="code hl_variable" href="classToken.html#a602ba6a6fb902b7d111696371bd60ac3">line</a>{<a class="code hl_variable" href="classToken.html#a602ba6a6fb902b7d111696371bd60ac3">line</a>} {}</div>
+<div class="ttc" id="aclassToken_html_a602ba6a6fb902b7d111696371bd60ac3"><div class="ttname"><a href="classToken.html#a602ba6a6fb902b7d111696371bd60ac3">Token::line</a></div><div class="ttdeci">const int line</div><div class="ttdef"><b>Definition</b> <a href="token_8hpp_source.html#l00019">token.hpp:19</a></div></div>
+<div class="ttc" id="aclassToken_html_a64d8c9cf9474efe98c4f1e0edfcdeb51"><div class="ttname"><a href="classToken.html#a64d8c9cf9474efe98c4f1e0edfcdeb51">Token::type</a></div><div class="ttdeci">const TokenType type</div><div class="ttdef"><b>Definition</b> <a href="token_8hpp_source.html#l00016">token.hpp:16</a></div></div>
+<div class="ttc" id="aclassToken_html_add3e0a576c641804bf1755f0ff4a9fa1"><div class="ttname"><a href="classToken.html#add3e0a576c641804bf1755f0ff4a9fa1">Token::lexeme</a></div><div class="ttdeci">const std::string lexeme</div><div class="ttdef"><b>Definition</b> <a href="token_8hpp_source.html#l00017">token.hpp:17</a></div></div>
+<div class="ttc" id="aclassToken_html_adf9757b3ffca718b695852fcbb3b32f1"><div class="ttname"><a href="classToken.html#adf9757b3ffca718b695852fcbb3b32f1">Token::literal</a></div><div class="ttdeci">const std::any literal</div><div class="ttdef"><b>Definition</b> <a href="token_8hpp_source.html#l00018">token.hpp:18</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -175,12 +218,10 @@ The lexeme and literal values are moved into the object to avoid copying. </dd><
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classToken_a143dd2918c6d43f95010e101012a6d2e_icgraph.png" border="0" usemap="#aclassToken_a143dd2918c6d43f95010e101012a6d2e_icgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="token_8cpp_source.html#l00010">10</a> of file <a class="el" href="token_8cpp_source.html">token.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   10</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classToken.html#add3e0a576c641804bf1755f0ff4a9fa1">lexeme</a>; }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="aabfcea7b4d2df9591a87095440764993" name="aabfcea7b4d2df9591a87095440764993"></a>
@@ -197,12 +238,10 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classToken_aabfcea7b4d2df9591a87095440764993_icgraph.png" border="0" usemap="#aclassToken_aabfcea7b4d2df9591a87095440764993_icgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="token_8cpp_source.html#l00014">14</a> of file <a class="el" href="token_8cpp_source.html">token.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   14</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classToken.html#a602ba6a6fb902b7d111696371bd60ac3">line</a>; }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a46bd29eb731d9dbd6d66893fd92c3e2d" name="a46bd29eb731d9dbd6d66893fd92c3e2d"></a>
@@ -219,12 +258,10 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classToken_a46bd29eb731d9dbd6d66893fd92c3e2d_icgraph.png" border="0" usemap="#aclassToken_a46bd29eb731d9dbd6d66893fd92c3e2d_icgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="token_8cpp_source.html#l00012">12</a> of file <a class="el" href="token_8cpp_source.html">token.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   12</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classToken.html#adf9757b3ffca718b695852fcbb3b32f1">literal</a>; }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a31eae18f897e22a446c82e864dfbf5d4" name="a31eae18f897e22a446c82e864dfbf5d4"></a>
@@ -241,12 +278,10 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classToken_a31eae18f897e22a446c82e864dfbf5d4_icgraph.png" border="0" usemap="#aclassToken_a31eae18f897e22a446c82e864dfbf5d4_icgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="token_8cpp_source.html#l00008">8</a> of file <a class="el" href="token_8cpp_source.html">token.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">    8</span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classToken.html#a64d8c9cf9474efe98c4f1e0edfcdeb51">type</a>; }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a6f1c3f5f607e9b576b4202b108f13c60" name="a6f1c3f5f607e9b576b4202b108f13c60"></a>
@@ -263,22 +298,156 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classToken_a6f1c3f5f607e9b576b4202b108f13c60_icgraph.png" border="0" usemap="#aclassToken_a6f1c3f5f607e9b576b4202b108f13c60_icgraph" alt=""/></div>
+
+<p class="definition">Definition at line <a class="el" href="token_8cpp_source.html#l00016">16</a> of file <a class="el" href="token_8cpp_source.html">token.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   16</span>                                {</div>
+<div class="line"><span class="lineno">   17</span>  std::string literal_str;</div>
+<div class="line"><span class="lineno">   18</span> </div>
+<div class="line"><span class="lineno">   19</span>  <span class="keywordflow">switch</span> (<a class="code hl_variable" href="classToken.html#a64d8c9cf9474efe98c4f1e0edfcdeb51">type</a>) {</div>
+<div class="line"><span class="lineno">   20</span>  <span class="keywordflow">case</span> (<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa82764c3079aea4e60c80e45befbb839">TRUE</a>):</div>
+<div class="line"><span class="lineno">   21</span>    literal_str = <span class="stringliteral">&quot;true&quot;</span>;</div>
+<div class="line"><span class="lineno">   22</span>    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   23</span>  <span class="keywordflow">case</span> (<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa1e095cc966dbecf6a0d8aad75348d1a">FALSE</a>):</div>
+<div class="line"><span class="lineno">   24</span>    literal_str = <span class="stringliteral">&quot;false&quot;</span>;</div>
+<div class="line"><span class="lineno">   25</span>    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   26</span>  <span class="keywordflow">case</span> (<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a12a90dfe20486bbe3e075afcd19ef2d0">NUMBER</a>):</div>
+<div class="line"><span class="lineno">   27</span>    literal_str = std::to_string(std::any_cast&lt;int&gt;(<a class="code hl_variable" href="classToken.html#adf9757b3ffca718b695852fcbb3b32f1">literal</a>));</div>
+<div class="line"><span class="lineno">   28</span>    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   29</span>  <span class="keywordflow">case</span> (<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aee847e634a4297b274316de8a8ca9921">STRING</a>):</div>
+<div class="line"><span class="lineno">   30</span>    <span class="keywordflow">try</span> {</div>
+<div class="line"><span class="lineno">   31</span>      literal_str = std::any_cast&lt;std::string&gt;(<a class="code hl_variable" href="classToken.html#adf9757b3ffca718b695852fcbb3b32f1">literal</a>);</div>
+<div class="line"><span class="lineno">   32</span>    } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::bad_any_cast &amp;e) {</div>
+<div class="line"><span class="lineno">   33</span>      literal_str =</div>
+<div class="line"><span class="lineno">   34</span>          <span class="keyword">static_cast&lt;</span>std::string<span class="keyword">&gt;</span>(std::any_cast&lt;const char *&gt;(<a class="code hl_variable" href="classToken.html#adf9757b3ffca718b695852fcbb3b32f1">literal</a>));</div>
+<div class="line"><span class="lineno">   35</span>    }</div>
+<div class="line"><span class="lineno">   36</span>    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   37</span>  <span class="keywordflow">case</span> (<a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a84f8ae2490f9e4bd2321fd21f4b0e807">IDENTIFIER</a>):</div>
+<div class="line"><span class="lineno">   38</span>    literal_str = <a class="code hl_variable" href="classToken.html#add3e0a576c641804bf1755f0ff4a9fa1">lexeme</a>;</div>
+<div class="line"><span class="lineno">   39</span>    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   40</span>  <span class="keywordflow">default</span>:</div>
+<div class="line"><span class="lineno">   41</span>    literal_str = <span class="stringliteral">&quot;nil&quot;</span>;</div>
+<div class="line"><span class="lineno">   42</span>    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   43</span>  }</div>
+<div class="line"><span class="lineno">   44</span> </div>
+<div class="line"><span class="lineno">   45</span>  return ::toString(<a class="code hl_variable" href="classToken.html#a64d8c9cf9474efe98c4f1e0edfcdeb51">type</a>) + <span class="stringliteral">&quot; &quot;</span> + <a class="code hl_variable" href="classToken.html#add3e0a576c641804bf1755f0ff4a9fa1">lexeme</a> + <span class="stringliteral">&quot; &quot;</span> + literal_str;</div>
+<div class="line"><span class="lineno">   46</span>}</div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a12a90dfe20486bbe3e075afcd19ef2d0"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a12a90dfe20486bbe3e075afcd19ef2d0">NUMBER</a></div><div class="ttdeci">@ NUMBER</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00035">tokenType.hpp:35</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a84f8ae2490f9e4bd2321fd21f4b0e807"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a84f8ae2490f9e4bd2321fd21f4b0e807">IDENTIFIER</a></div><div class="ttdeci">@ IDENTIFIER</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00033">tokenType.hpp:33</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921aa1e095cc966dbecf6a0d8aad75348d1a"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa1e095cc966dbecf6a0d8aad75348d1a">FALSE</a></div><div class="ttdeci">@ FALSE</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00043">tokenType.hpp:43</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921aa82764c3079aea4e60c80e45befbb839"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa82764c3079aea4e60c80e45befbb839">TRUE</a></div><div class="ttdeci">@ TRUE</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00042">tokenType.hpp:42</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921aee847e634a4297b274316de8a8ca9921"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aee847e634a4297b274316de8a8ca9921">STRING</a></div><div class="ttdeci">@ STRING</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00034">tokenType.hpp:34</a></div></div>
+</div><!-- fragment -->
 </div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="add3e0a576c641804bf1755f0ff4a9fa1" name="add3e0a576c641804bf1755f0ff4a9fa1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add3e0a576c641804bf1755f0ff4a9fa1">&#9670;&#160;</a></span>lexeme</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::string Token::lexeme</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="token_8hpp_source.html#l00017">17</a> of file <a class="el" href="token_8hpp_source.html">token.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a602ba6a6fb902b7d111696371bd60ac3" name="a602ba6a6fb902b7d111696371bd60ac3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a602ba6a6fb902b7d111696371bd60ac3">&#9670;&#160;</a></span>line</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int Token::line</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="token_8hpp_source.html#l00019">19</a> of file <a class="el" href="token_8hpp_source.html">token.hpp</a>.</p>
+
+</div>
+</div>
+<a id="adf9757b3ffca718b695852fcbb3b32f1" name="adf9757b3ffca718b695852fcbb3b32f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf9757b3ffca718b695852fcbb3b32f1">&#9670;&#160;</a></span>literal</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::any Token::literal</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="token_8hpp_source.html#l00018">18</a> of file <a class="el" href="token_8hpp_source.html">token.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a64d8c9cf9474efe98c4f1e0edfcdeb51" name="a64d8c9cf9474efe98c4f1e0edfcdeb51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64d8c9cf9474efe98c4f1e0edfcdeb51">&#9670;&#160;</a></span>type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921">TokenType</a> Token::type</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="token_8hpp_source.html#l00016">16</a> of file <a class="el" href="token_8hpp_source.html">token.hpp</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>lib/gsc/<a class="el" href="token_8hpp_source.html">token.hpp</a></li>
-<li>src/<a class="el" href="token_8cpp.html">token.cpp</a></li>
+<li>src/<a class="el" href="token_8cpp_source.html">token.cpp</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="classToken.html">Token</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

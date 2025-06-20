@@ -1,0 +1,7 @@
+<map id="Logical" name="Logical">
+<area shape="rect" id="Node000001" title="Class representing a logical expression." alt="" coords="71,133,165,319"/>
+<area shape="rect" id="Node000002" href="$classExpr.html" title="Abstract base class for expressions." alt="" coords="5,13,87,78"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="66,89,83,132,79,134,61,91"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="111,5,269,85"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="172,99,157,134,153,132,167,97"/>
+</map>

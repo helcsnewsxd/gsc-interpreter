@@ -1,0 +1,5 @@
+<map id="Environment" name="Environment">
+<area shape="rect" id="Node000001" title="Represents an environment for variable storage in the GSC interpreter." alt="" coords="43,133,164,299"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,201,85"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="106,99,106,133,101,133,101,99"/>
+</map>

@@ -1,0 +1,16 @@
+<map id="Environment" name="Environment">
+<area shape="rect" id="Node000001" title="Represents an environment for variable storage in the GSC interpreter." alt="" coords="64,405,185,551"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="13,613,237,679"/>
+<area shape="poly" id="edge3_Node000003_Node000001" title=" " alt="" coords="91,551,89,570,91,589,95,597,89,599,86,590,83,570,86,550"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,263,201,343"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="112,356,118,405,113,405,107,357"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="124,613,125,589,125,567,130,567,130,589,129,613"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="226,263,381,343"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="265,345,199,409,195,405,261,341"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="221,135,300,200"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="267,200,275,238,278,247,273,249,270,239,262,201"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="195,5,326,85"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="263,99,263,134,258,134,258,99"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="324,135,363,200"/>
+<area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="336,201,322,248,317,246,331,199"/>
+</map>

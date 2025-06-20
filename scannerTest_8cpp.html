@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -23,6 +27,7 @@
   <td id="projectalign">
    <div id="projectname">Simplified C/C++ (GSC)
    </div>
+   <div id="projectbrief">A Turing-complete interpreter developed for a compiler course</div>
   </td>
  </tr>
  </tbody>
@@ -46,6 +51,23 @@ $(function() {
 /* @license-end */
 </script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('scannerTest_8cpp.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -67,11 +89,6 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_13e138d54eb8818da29c3992edef070a.html">test</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
@@ -86,9 +103,11 @@ $(function() {
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for scannerTest.cpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="scannerTest_8cpp__incl.png" border="0" usemap="#atest_2scannerTest_8cpp" alt=""/></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="scannerTest_8cpp__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
-</div><table class="memberdecls">
+</div>
+<p><a href="scannerTest_8cpp_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a9cb0af2dffdd321d15974436e3953f64" id="r_a9cb0af2dffdd321d15974436e3953f64"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a> (const std::vector&lt; <a class="el" href="classToken.html">Token</a> &gt; &amp;tokens, int expectedSize)</td></tr>
@@ -107,7 +126,7 @@ Functions</h2></td></tr>
 <tr class="separator:a589f22582df1c77b146c9cfca9f63ea9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98682d757443df50a081f56d56448546" id="r_a98682d757443df50a081f56d56448546"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scannerTest_8cpp.html#a98682d757443df50a081f56d56448546">TEST_CASE</a> (&quot;Scanner for identifier token&quot;, &quot;[scanner][literals]&quot;)</td></tr>
 <tr class="separator:a98682d757443df50a081f56d56448546"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a234e70dc7b9b2e1f12575f14a6eb4149" id="r_a234e70dc7b9b2e1f12575f14a6eb4149"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scannerTest_8cpp.html#a234e70dc7b9b2e1f12575f14a6eb4149">TEST_CASE</a> (&quot;Scacnner for keywords&quot;, &quot;[scanner][keywords]&quot;)</td></tr>
+<tr class="memitem:a234e70dc7b9b2e1f12575f14a6eb4149" id="r_a234e70dc7b9b2e1f12575f14a6eb4149"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scannerTest_8cpp.html#a234e70dc7b9b2e1f12575f14a6eb4149">TEST_CASE</a> (&quot;Scacnner for keywords&quot;, &quot;[scanner][<a class="el" href="scanner_8hpp.html#a347128235740c877788494e55df42e3b">keywords</a>]&quot;)</td></tr>
 <tr class="separator:a234e70dc7b9b2e1f12575f14a6eb4149"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d4ac0fa9b58c9379655db85f31d5b62" id="r_a5d4ac0fa9b58c9379655db85f31d5b62"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="scannerTest_8cpp.html#a5d4ac0fa9b58c9379655db85f31d5b62">TEST_CASE</a> (&quot;Scanner for multiple combinations&quot;, &quot;[scanner][general_program]&quot;)</td></tr>
 <tr class="separator:a5d4ac0fa9b58c9379655db85f31d5b62"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -138,17 +157,20 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="scannerTest_8cpp_ad2495ad1ad09176881fb62138f05787f_cgraph.png" border="0" usemap="#ascannerTest_8cpp_ad2495ad1ad09176881fb62138f05787f_cgraph" alt=""/></div>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="scannerTest_8cpp_ad2495ad1ad09176881fb62138f05787f_icgraph.png" border="0" usemap="#ascannerTest_8cpp_ad2495ad1ad09176881fb62138f05787f_icgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="scannerTest_8cpp_source.html#l00011">11</a> of file <a class="el" href="scannerTest_8cpp_source.html">scannerTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   11</span>                                                     {</div>
+<div class="line"><span class="lineno">   12</span>  CHECK(token.<a class="code hl_function" href="classToken.html#a31eae18f897e22a446c82e864dfbf5d4">getType</a>() == <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a7ea291c26de584b23fd7f9111784f860">TokenType::END_OF_FILE</a>);</div>
+<div class="line"><span class="lineno">   13</span>  CHECK(token.<a class="code hl_function" href="classToken.html#a143dd2918c6d43f95010e101012a6d2e">getLexeme</a>() == <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><span class="lineno">   14</span>  CHECK(token.<a class="code hl_function" href="classToken.html#a46bd29eb731d9dbd6d66893fd92c3e2d">getLiteral</a>().type() == <span class="keyword">typeid</span>(std::nullptr_t));</div>
+<div class="line"><span class="lineno">   15</span>  CHECK(token.<a class="code hl_function" href="classToken.html#aabfcea7b4d2df9591a87095440764993">getLine</a>() == line);</div>
+<div class="line"><span class="lineno">   16</span>}</div>
+<div class="ttc" id="aclassToken_html_a143dd2918c6d43f95010e101012a6d2e"><div class="ttname"><a href="classToken.html#a143dd2918c6d43f95010e101012a6d2e">Token::getLexeme</a></div><div class="ttdeci">std::string getLexeme() const</div><div class="ttdef"><b>Definition</b> <a href="token_8cpp_source.html#l00010">token.cpp:10</a></div></div>
+<div class="ttc" id="aclassToken_html_a31eae18f897e22a446c82e864dfbf5d4"><div class="ttname"><a href="classToken.html#a31eae18f897e22a446c82e864dfbf5d4">Token::getType</a></div><div class="ttdeci">TokenType getType() const</div><div class="ttdef"><b>Definition</b> <a href="token_8cpp_source.html#l00008">token.cpp:8</a></div></div>
+<div class="ttc" id="aclassToken_html_a46bd29eb731d9dbd6d66893fd92c3e2d"><div class="ttname"><a href="classToken.html#a46bd29eb731d9dbd6d66893fd92c3e2d">Token::getLiteral</a></div><div class="ttdeci">std::any getLiteral() const</div><div class="ttdef"><b>Definition</b> <a href="token_8cpp_source.html#l00012">token.cpp:12</a></div></div>
+<div class="ttc" id="aclassToken_html_aabfcea7b4d2df9591a87095440764993"><div class="ttname"><a href="classToken.html#aabfcea7b4d2df9591a87095440764993">Token::getLine</a></div><div class="ttdeci">int getLine() const</div><div class="ttdef"><b>Definition</b> <a href="token_8cpp_source.html#l00014">token.cpp:14</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a7ea291c26de584b23fd7f9111784f860"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a7ea291c26de584b23fd7f9111784f860">END_OF_FILE</a></div><div class="ttdeci">@ END_OF_FILE</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00051">tokenType.hpp:50</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a460971eabd5ce2d15d3e64a93259831e" name="a460971eabd5ce2d15d3e64a93259831e"></a>
@@ -182,17 +204,17 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="scannerTest_8cpp_a460971eabd5ce2d15d3e64a93259831e_cgraph.png" border="0" usemap="#ascannerTest_8cpp_a460971eabd5ce2d15d3e64a93259831e_cgraph" alt=""/></div>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="scannerTest_8cpp_a460971eabd5ce2d15d3e64a93259831e_icgraph.png" border="0" usemap="#ascannerTest_8cpp_a460971eabd5ce2d15d3e64a93259831e_icgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="scannerTest_8cpp_source.html#l00034">34</a> of file <a class="el" href="scannerTest_8cpp_source.html">scannerTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   34</span>                                                                    {</div>
+<div class="line"><span class="lineno">   35</span>  CHECK(token.<a class="code hl_function" href="classToken.html#a31eae18f897e22a446c82e864dfbf5d4">getType</a>() == <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a12a90dfe20486bbe3e075afcd19ef2d0">TokenType::NUMBER</a>);</div>
+<div class="line"><span class="lineno">   36</span>  CHECK(token.<a class="code hl_function" href="classToken.html#a143dd2918c6d43f95010e101012a6d2e">getLexeme</a>() == std::to_string(number));</div>
+<div class="line"><span class="lineno">   37</span>  CHECK(token.<a class="code hl_function" href="classToken.html#a46bd29eb731d9dbd6d66893fd92c3e2d">getLiteral</a>().type() == <span class="keyword">typeid</span>(<span class="keywordtype">int</span>));</div>
+<div class="line"><span class="lineno">   38</span>  CHECK(std::any_cast&lt;int&gt;(token.<a class="code hl_function" href="classToken.html#a46bd29eb731d9dbd6d66893fd92c3e2d">getLiteral</a>()) == number);</div>
+<div class="line"><span class="lineno">   39</span>  CHECK(token.<a class="code hl_function" href="classToken.html#aabfcea7b4d2df9591a87095440764993">getLine</a>() == line);</div>
+<div class="line"><span class="lineno">   40</span>}</div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a12a90dfe20486bbe3e075afcd19ef2d0"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a12a90dfe20486bbe3e075afcd19ef2d0">NUMBER</a></div><div class="ttdeci">@ NUMBER</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00035">tokenType.hpp:35</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a8ca6d115c44809c30668348a91e197d5" name="a8ca6d115c44809c30668348a91e197d5"></a>
@@ -232,17 +254,15 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="scannerTest_8cpp_a8ca6d115c44809c30668348a91e197d5_cgraph.png" border="0" usemap="#ascannerTest_8cpp_a8ca6d115c44809c30668348a91e197d5_cgraph" alt=""/></div>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="scannerTest_8cpp_a8ca6d115c44809c30668348a91e197d5_icgraph.png" border="0" usemap="#ascannerTest_8cpp_a8ca6d115c44809c30668348a91e197d5_icgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="scannerTest_8cpp_source.html#l00018">18</a> of file <a class="el" href="scannerTest_8cpp_source.html">scannerTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   19</span>                                                            {</div>
+<div class="line"><span class="lineno">   20</span>  CHECK(token.<a class="code hl_function" href="classToken.html#a31eae18f897e22a446c82e864dfbf5d4">getType</a>() == tokenType);</div>
+<div class="line"><span class="lineno">   21</span>  CHECK(token.<a class="code hl_function" href="classToken.html#a143dd2918c6d43f95010e101012a6d2e">getLexeme</a>() == lexeme);</div>
+<div class="line"><span class="lineno">   22</span>  CHECK(token.<a class="code hl_function" href="classToken.html#a46bd29eb731d9dbd6d66893fd92c3e2d">getLiteral</a>().type() == <span class="keyword">typeid</span>(std::nullptr_t));</div>
+<div class="line"><span class="lineno">   23</span>  CHECK(token.<a class="code hl_function" href="classToken.html#aabfcea7b4d2df9591a87095440764993">getLine</a>() == line);</div>
+<div class="line"><span class="lineno">   24</span>}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="aec6ff788fa30cc93e9e0386e65814231" name="aec6ff788fa30cc93e9e0386e65814231"></a>
@@ -276,17 +296,17 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="scannerTest_8cpp_aec6ff788fa30cc93e9e0386e65814231_cgraph.png" border="0" usemap="#ascannerTest_8cpp_aec6ff788fa30cc93e9e0386e65814231_cgraph" alt=""/></div>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="scannerTest_8cpp_aec6ff788fa30cc93e9e0386e65814231_icgraph.png" border="0" usemap="#ascannerTest_8cpp_aec6ff788fa30cc93e9e0386e65814231_icgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="scannerTest_8cpp_source.html#l00026">26</a> of file <a class="el" href="scannerTest_8cpp_source.html">scannerTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   26</span>                                                                        {</div>
+<div class="line"><span class="lineno">   27</span>  CHECK(token.<a class="code hl_function" href="classToken.html#a31eae18f897e22a446c82e864dfbf5d4">getType</a>() == <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aee847e634a4297b274316de8a8ca9921">TokenType::STRING</a>);</div>
+<div class="line"><span class="lineno">   28</span>  CHECK(token.<a class="code hl_function" href="classToken.html#a143dd2918c6d43f95010e101012a6d2e">getLexeme</a>() == <span class="stringliteral">&quot;\&quot;&quot;</span> + word + <span class="stringliteral">&quot;\&quot;&quot;</span>);</div>
+<div class="line"><span class="lineno">   29</span>  CHECK(token.<a class="code hl_function" href="classToken.html#a46bd29eb731d9dbd6d66893fd92c3e2d">getLiteral</a>().type() == <span class="keyword">typeid</span>(std::string));</div>
+<div class="line"><span class="lineno">   30</span>  CHECK(std::any_cast&lt;std::string&gt;(token.<a class="code hl_function" href="classToken.html#a46bd29eb731d9dbd6d66893fd92c3e2d">getLiteral</a>()) == word);</div>
+<div class="line"><span class="lineno">   31</span>  CHECK(token.<a class="code hl_function" href="classToken.html#aabfcea7b4d2df9591a87095440764993">getLine</a>() == line);</div>
+<div class="line"><span class="lineno">   32</span>}</div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921aee847e634a4297b274316de8a8ca9921"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aee847e634a4297b274316de8a8ca9921">STRING</a></div><div class="ttdeci">@ STRING</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00034">tokenType.hpp:34</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a9cb0af2dffdd321d15974436e3953f64" name="a9cb0af2dffdd321d15974436e3953f64"></a>
@@ -314,12 +334,12 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="scannerTest_8cpp_a9cb0af2dffdd321d15974436e3953f64_icgraph.png" border="0" usemap="#ascannerTest_8cpp_a9cb0af2dffdd321d15974436e3953f64_icgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="scannerTest_8cpp_source.html#l00007">7</a> of file <a class="el" href="scannerTest_8cpp_source.html">scannerTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">    7</span>                                                                      {</div>
+<div class="line"><span class="lineno">    8</span>  REQUIRE(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(tokens.size()) == expectedSize);</div>
+<div class="line"><span class="lineno">    9</span>}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a234e70dc7b9b2e1f12575f14a6eb4149" name="a234e70dc7b9b2e1f12575f14a6eb4149"></a>
@@ -347,12 +367,136 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="scannerTest_8cpp_a234e70dc7b9b2e1f12575f14a6eb4149_cgraph.png" border="0" usemap="#ascannerTest_8cpp_a234e70dc7b9b2e1f12575f14a6eb4149_cgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="scannerTest_8cpp_source.html#l00322">322</a> of file <a class="el" href="scannerTest_8cpp_source.html">scannerTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  322</span>                                                          {</div>
+<div class="line"><span class="lineno">  323</span>  SECTION(<span class="stringliteral">&quot;And&quot;</span>) {</div>
+<div class="line"><span class="lineno">  324</span>    <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{<span class="stringliteral">&quot;and&quot;</span>};</div>
+<div class="line"><span class="lineno">  325</span>    scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
+<div class="line"><span class="lineno">  326</span>    std::vector&lt;Token&gt; tokens = scanner.getTokens();</div>
+<div class="line"><span class="lineno">  327</span> </div>
+<div class="line"><span class="lineno">  328</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a>(tokens, 2);</div>
+<div class="line"><span class="lineno">  329</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a8ca6d115c44809c30668348a91e197d5">checkSimpleTokens</a>(tokens[0], <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a865555c9f2e0458a7078486aa1b3254f">TokenType::AND</a>, <span class="stringliteral">&quot;and&quot;</span>);</div>
+<div class="line"><span class="lineno">  330</span>    <a class="code hl_function" href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a>(tokens[1]);</div>
+<div class="line"><span class="lineno">  331</span>  }</div>
+<div class="line"><span class="lineno">  332</span> </div>
+<div class="line"><span class="lineno">  333</span>  SECTION(<span class="stringliteral">&quot;Or&quot;</span>) {</div>
+<div class="line"><span class="lineno">  334</span>    <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{<span class="stringliteral">&quot;or&quot;</span>};</div>
+<div class="line"><span class="lineno">  335</span>    scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
+<div class="line"><span class="lineno">  336</span>    std::vector&lt;Token&gt; tokens = scanner.getTokens();</div>
+<div class="line"><span class="lineno">  337</span> </div>
+<div class="line"><span class="lineno">  338</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a>(tokens, 2);</div>
+<div class="line"><span class="lineno">  339</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a8ca6d115c44809c30668348a91e197d5">checkSimpleTokens</a>(tokens[0], <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a96727447c0ad447987df1c6415aef074">TokenType::OR</a>, <span class="stringliteral">&quot;or&quot;</span>);</div>
+<div class="line"><span class="lineno">  340</span>    <a class="code hl_function" href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a>(tokens[1]);</div>
+<div class="line"><span class="lineno">  341</span>  }</div>
+<div class="line"><span class="lineno">  342</span> </div>
+<div class="line"><span class="lineno">  343</span>  SECTION(<span class="stringliteral">&quot;If&quot;</span>) {</div>
+<div class="line"><span class="lineno">  344</span>    <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{<span class="stringliteral">&quot;if&quot;</span>};</div>
+<div class="line"><span class="lineno">  345</span>    scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
+<div class="line"><span class="lineno">  346</span>    std::vector&lt;Token&gt; tokens = scanner.getTokens();</div>
+<div class="line"><span class="lineno">  347</span> </div>
+<div class="line"><span class="lineno">  348</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a>(tokens, 2);</div>
+<div class="line"><span class="lineno">  349</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a8ca6d115c44809c30668348a91e197d5">checkSimpleTokens</a>(tokens[0], <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a252802eda493fb6b4a279c4452acb547">TokenType::IF</a>, <span class="stringliteral">&quot;if&quot;</span>);</div>
+<div class="line"><span class="lineno">  350</span>    <a class="code hl_function" href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a>(tokens[1]);</div>
+<div class="line"><span class="lineno">  351</span>  }</div>
+<div class="line"><span class="lineno">  352</span> </div>
+<div class="line"><span class="lineno">  353</span>  SECTION(<span class="stringliteral">&quot;Else&quot;</span>) {</div>
+<div class="line"><span class="lineno">  354</span>    <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{<span class="stringliteral">&quot;else&quot;</span>};</div>
+<div class="line"><span class="lineno">  355</span>    scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
+<div class="line"><span class="lineno">  356</span>    std::vector&lt;Token&gt; tokens = scanner.getTokens();</div>
+<div class="line"><span class="lineno">  357</span> </div>
+<div class="line"><span class="lineno">  358</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a>(tokens, 2);</div>
+<div class="line"><span class="lineno">  359</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a8ca6d115c44809c30668348a91e197d5">checkSimpleTokens</a>(tokens[0], <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a90d649d830ea440c8b8a56c7ef23c426">TokenType::ELSE</a>, <span class="stringliteral">&quot;else&quot;</span>);</div>
+<div class="line"><span class="lineno">  360</span>    <a class="code hl_function" href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a>(tokens[1]);</div>
+<div class="line"><span class="lineno">  361</span>  }</div>
+<div class="line"><span class="lineno">  362</span> </div>
+<div class="line"><span class="lineno">  363</span>  SECTION(<span class="stringliteral">&quot;While&quot;</span>) {</div>
+<div class="line"><span class="lineno">  364</span>    <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{<span class="stringliteral">&quot;while&quot;</span>};</div>
+<div class="line"><span class="lineno">  365</span>    scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
+<div class="line"><span class="lineno">  366</span>    std::vector&lt;Token&gt; tokens = scanner.getTokens();</div>
+<div class="line"><span class="lineno">  367</span> </div>
+<div class="line"><span class="lineno">  368</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a>(tokens, 2);</div>
+<div class="line"><span class="lineno">  369</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a8ca6d115c44809c30668348a91e197d5">checkSimpleTokens</a>(tokens[0], <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a3278fd035226215822c903790a1eee73">TokenType::WHILE</a>, <span class="stringliteral">&quot;while&quot;</span>);</div>
+<div class="line"><span class="lineno">  370</span>    <a class="code hl_function" href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a>(tokens[1]);</div>
+<div class="line"><span class="lineno">  371</span>  }</div>
+<div class="line"><span class="lineno">  372</span> </div>
+<div class="line"><span class="lineno">  373</span>  SECTION(<span class="stringliteral">&quot;For&quot;</span>) {</div>
+<div class="line"><span class="lineno">  374</span>    <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{<span class="stringliteral">&quot;for&quot;</span>};</div>
+<div class="line"><span class="lineno">  375</span>    scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
+<div class="line"><span class="lineno">  376</span>    std::vector&lt;Token&gt; tokens = scanner.getTokens();</div>
+<div class="line"><span class="lineno">  377</span> </div>
+<div class="line"><span class="lineno">  378</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a>(tokens, 2);</div>
+<div class="line"><span class="lineno">  379</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a8ca6d115c44809c30668348a91e197d5">checkSimpleTokens</a>(tokens[0], <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa809654855caa62449850d9122fd77a8">TokenType::FOR</a>, <span class="stringliteral">&quot;for&quot;</span>);</div>
+<div class="line"><span class="lineno">  380</span>    <a class="code hl_function" href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a>(tokens[1]);</div>
+<div class="line"><span class="lineno">  381</span>  }</div>
+<div class="line"><span class="lineno">  382</span> </div>
+<div class="line"><span class="lineno">  383</span>  SECTION(<span class="stringliteral">&quot;True&quot;</span>) {</div>
+<div class="line"><span class="lineno">  384</span>    <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{<span class="stringliteral">&quot;true&quot;</span>};</div>
+<div class="line"><span class="lineno">  385</span>    scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
+<div class="line"><span class="lineno">  386</span>    std::vector&lt;Token&gt; tokens = scanner.getTokens();</div>
+<div class="line"><span class="lineno">  387</span> </div>
+<div class="line"><span class="lineno">  388</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a>(tokens, 2);</div>
+<div class="line"><span class="lineno">  389</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a8ca6d115c44809c30668348a91e197d5">checkSimpleTokens</a>(tokens[0], <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa82764c3079aea4e60c80e45befbb839">TokenType::TRUE</a>, <span class="stringliteral">&quot;true&quot;</span>);</div>
+<div class="line"><span class="lineno">  390</span>    <a class="code hl_function" href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a>(tokens[1]);</div>
+<div class="line"><span class="lineno">  391</span>  }</div>
+<div class="line"><span class="lineno">  392</span> </div>
+<div class="line"><span class="lineno">  393</span>  SECTION(<span class="stringliteral">&quot;False&quot;</span>) {</div>
+<div class="line"><span class="lineno">  394</span>    <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{<span class="stringliteral">&quot;false&quot;</span>};</div>
+<div class="line"><span class="lineno">  395</span>    scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
+<div class="line"><span class="lineno">  396</span>    std::vector&lt;Token&gt; tokens = scanner.getTokens();</div>
+<div class="line"><span class="lineno">  397</span> </div>
+<div class="line"><span class="lineno">  398</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a>(tokens, 2);</div>
+<div class="line"><span class="lineno">  399</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a8ca6d115c44809c30668348a91e197d5">checkSimpleTokens</a>(tokens[0], <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa1e095cc966dbecf6a0d8aad75348d1a">TokenType::FALSE</a>, <span class="stringliteral">&quot;false&quot;</span>);</div>
+<div class="line"><span class="lineno">  400</span>    <a class="code hl_function" href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a>(tokens[1]);</div>
+<div class="line"><span class="lineno">  401</span>  }</div>
+<div class="line"><span class="lineno">  402</span> </div>
+<div class="line"><span class="lineno">  403</span>  SECTION(<span class="stringliteral">&quot;Nil&quot;</span>) {</div>
+<div class="line"><span class="lineno">  404</span>    <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{<span class="stringliteral">&quot;nil&quot;</span>};</div>
+<div class="line"><span class="lineno">  405</span>    scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
+<div class="line"><span class="lineno">  406</span>    std::vector&lt;Token&gt; tokens = scanner.getTokens();</div>
+<div class="line"><span class="lineno">  407</span> </div>
+<div class="line"><span class="lineno">  408</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a>(tokens, 2);</div>
+<div class="line"><span class="lineno">  409</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a8ca6d115c44809c30668348a91e197d5">checkSimpleTokens</a>(tokens[0], <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a682466b7669a81b39a8d657274fd4b95">TokenType::NIL</a>, <span class="stringliteral">&quot;nil&quot;</span>);</div>
+<div class="line"><span class="lineno">  410</span>    <a class="code hl_function" href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a>(tokens[1]);</div>
+<div class="line"><span class="lineno">  411</span>  }</div>
+<div class="line"><span class="lineno">  412</span> </div>
+<div class="line"><span class="lineno">  413</span>  SECTION(<span class="stringliteral">&quot;Print&quot;</span>) {</div>
+<div class="line"><span class="lineno">  414</span>    <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{<span class="stringliteral">&quot;print&quot;</span>};</div>
+<div class="line"><span class="lineno">  415</span>    scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
+<div class="line"><span class="lineno">  416</span>    std::vector&lt;Token&gt; tokens = scanner.getTokens();</div>
+<div class="line"><span class="lineno">  417</span> </div>
+<div class="line"><span class="lineno">  418</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a>(tokens, 2);</div>
+<div class="line"><span class="lineno">  419</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a8ca6d115c44809c30668348a91e197d5">checkSimpleTokens</a>(tokens[0], <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921ab107229d44d042caa8ab8df4c8acaa1f">TokenType::PRINT</a>, <span class="stringliteral">&quot;print&quot;</span>);</div>
+<div class="line"><span class="lineno">  420</span>    <a class="code hl_function" href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a>(tokens[1]);</div>
+<div class="line"><span class="lineno">  421</span>  }</div>
+<div class="line"><span class="lineno">  422</span> </div>
+<div class="line"><span class="lineno">  423</span>  SECTION(<span class="stringliteral">&quot;Var&quot;</span>) {</div>
+<div class="line"><span class="lineno">  424</span>    <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{<span class="stringliteral">&quot;var&quot;</span>};</div>
+<div class="line"><span class="lineno">  425</span>    scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
+<div class="line"><span class="lineno">  426</span>    std::vector&lt;Token&gt; tokens = scanner.getTokens();</div>
+<div class="line"><span class="lineno">  427</span> </div>
+<div class="line"><span class="lineno">  428</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a>(tokens, 2);</div>
+<div class="line"><span class="lineno">  429</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a8ca6d115c44809c30668348a91e197d5">checkSimpleTokens</a>(tokens[0], <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921af68346ce0bfce7ab2ca0a240f5132863">TokenType::VAR</a>, <span class="stringliteral">&quot;var&quot;</span>);</div>
+<div class="line"><span class="lineno">  430</span>    <a class="code hl_function" href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a>(tokens[1]);</div>
+<div class="line"><span class="lineno">  431</span>  }</div>
+<div class="line"><span class="lineno">  432</span>}</div>
+<div class="ttc" id="aclassScanner_html"><div class="ttname"><a href="classScanner.html">Scanner</a></div><div class="ttdoc">Lexical analyzer for the GSC programming language.</div><div class="ttdef"><b>Definition</b> <a href="scanner_8hpp_source.html#l00023">scanner.hpp:23</a></div></div>
+<div class="ttc" id="aclassScanner_html_ac13eb6af23aada11ff2525f02577cd8e"><div class="ttname"><a href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">Scanner::scanTokens</a></div><div class="ttdeci">void scanTokens()</div><div class="ttdoc">Scans the entire source code and generates a list of tokens.</div><div class="ttdef"><b>Definition</b> <a href="scanner_8cpp_source.html#l00171">scanner.cpp:171</a></div></div>
+<div class="ttc" id="ascannerTest_8cpp_html_a8ca6d115c44809c30668348a91e197d5"><div class="ttname"><a href="scannerTest_8cpp.html#a8ca6d115c44809c30668348a91e197d5">checkSimpleTokens</a></div><div class="ttdeci">void checkSimpleTokens(const Token &amp;token, const TokenType &amp;tokenType, std::string_view lexeme, int line=1)</div><div class="ttdef"><b>Definition</b> <a href="scannerTest_8cpp_source.html#l00018">scannerTest.cpp:18</a></div></div>
+<div class="ttc" id="ascannerTest_8cpp_html_a9cb0af2dffdd321d15974436e3953f64"><div class="ttname"><a href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a></div><div class="ttdeci">void checkTokenSize(const std::vector&lt; Token &gt; &amp;tokens, int expectedSize)</div><div class="ttdef"><b>Definition</b> <a href="scannerTest_8cpp_source.html#l00007">scannerTest.cpp:7</a></div></div>
+<div class="ttc" id="ascannerTest_8cpp_html_ad2495ad1ad09176881fb62138f05787f"><div class="ttname"><a href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a></div><div class="ttdeci">void checkEOFToken(const Token &amp;token, int line=1)</div><div class="ttdef"><b>Definition</b> <a href="scannerTest_8cpp_source.html#l00011">scannerTest.cpp:11</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a252802eda493fb6b4a279c4452acb547"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a252802eda493fb6b4a279c4452acb547">IF</a></div><div class="ttdeci">@ IF</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00040">tokenType.hpp:40</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a3278fd035226215822c903790a1eee73"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a3278fd035226215822c903790a1eee73">WHILE</a></div><div class="ttdeci">@ WHILE</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00045">tokenType.hpp:45</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a682466b7669a81b39a8d657274fd4b95"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a682466b7669a81b39a8d657274fd4b95">NIL</a></div><div class="ttdeci">@ NIL</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00046">tokenType.hpp:46</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a865555c9f2e0458a7078486aa1b3254f"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a865555c9f2e0458a7078486aa1b3254f">AND</a></div><div class="ttdeci">@ AND</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00038">tokenType.hpp:38</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a90d649d830ea440c8b8a56c7ef23c426"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a90d649d830ea440c8b8a56c7ef23c426">ELSE</a></div><div class="ttdeci">@ ELSE</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00041">tokenType.hpp:41</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a96727447c0ad447987df1c6415aef074"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a96727447c0ad447987df1c6415aef074">OR</a></div><div class="ttdeci">@ OR</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00039">tokenType.hpp:39</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921aa1e095cc966dbecf6a0d8aad75348d1a"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa1e095cc966dbecf6a0d8aad75348d1a">FALSE</a></div><div class="ttdeci">@ FALSE</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00043">tokenType.hpp:43</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921aa809654855caa62449850d9122fd77a8"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa809654855caa62449850d9122fd77a8">FOR</a></div><div class="ttdeci">@ FOR</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00044">tokenType.hpp:44</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921aa82764c3079aea4e60c80e45befbb839"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aa82764c3079aea4e60c80e45befbb839">TRUE</a></div><div class="ttdeci">@ TRUE</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00042">tokenType.hpp:42</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921ab107229d44d042caa8ab8df4c8acaa1f"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921ab107229d44d042caa8ab8df4c8acaa1f">PRINT</a></div><div class="ttdeci">@ PRINT</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00047">tokenType.hpp:47</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921af68346ce0bfce7ab2ca0a240f5132863"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921af68346ce0bfce7ab2ca0a240f5132863">VAR</a></div><div class="ttdeci">@ VAR</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00048">tokenType.hpp:48</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a98682d757443df50a081f56d56448546" name="a98682d757443df50a081f56d56448546"></a>
@@ -380,12 +524,72 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="scannerTest_8cpp_a98682d757443df50a081f56d56448546_cgraph.png" border="0" usemap="#ascannerTest_8cpp_a98682d757443df50a081f56d56448546_cgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="scannerTest_8cpp_source.html#l00262">262</a> of file <a class="el" href="scannerTest_8cpp_source.html">scannerTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  262</span>                                                                 {</div>
+<div class="line"><span class="lineno">  263</span>  SECTION(<span class="stringliteral">&quot;String without newlines&quot;</span>) {</div>
+<div class="line"><span class="lineno">  264</span>    <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{<span class="stringliteral">&quot;\&quot;Hello, World!\&quot;&quot;</span>};</div>
+<div class="line"><span class="lineno">  265</span>    scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
+<div class="line"><span class="lineno">  266</span>    std::vector&lt;Token&gt; tokens = scanner.getTokens();</div>
+<div class="line"><span class="lineno">  267</span> </div>
+<div class="line"><span class="lineno">  268</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a>(tokens, 2);</div>
+<div class="line"><span class="lineno">  269</span>    <a class="code hl_function" href="scannerTest_8cpp.html#aec6ff788fa30cc93e9e0386e65814231">checkStringToken</a>(tokens[0], <span class="stringliteral">&quot;Hello, World!&quot;</span>);</div>
+<div class="line"><span class="lineno">  270</span>    <a class="code hl_function" href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a>(tokens[1]);</div>
+<div class="line"><span class="lineno">  271</span>  }</div>
+<div class="line"><span class="lineno">  272</span> </div>
+<div class="line"><span class="lineno">  273</span>  SECTION(<span class="stringliteral">&quot;String with newlines&quot;</span>) {</div>
+<div class="line"><span class="lineno">  274</span>    <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{<span class="stringliteral">&quot;\&quot;Hello, \nWorld!\&quot;&quot;</span>};</div>
+<div class="line"><span class="lineno">  275</span>    scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
+<div class="line"><span class="lineno">  276</span>    std::vector&lt;Token&gt; tokens = scanner.getTokens();</div>
+<div class="line"><span class="lineno">  277</span> </div>
+<div class="line"><span class="lineno">  278</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a>(tokens, 2);</div>
+<div class="line"><span class="lineno">  279</span>    <a class="code hl_function" href="scannerTest_8cpp.html#aec6ff788fa30cc93e9e0386e65814231">checkStringToken</a>(tokens[0], <span class="stringliteral">&quot;Hello, \nWorld!&quot;</span>, 2);</div>
+<div class="line"><span class="lineno">  280</span>    <a class="code hl_function" href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a>(tokens[1], 2);</div>
+<div class="line"><span class="lineno">  281</span>  }</div>
+<div class="line"><span class="lineno">  282</span> </div>
+<div class="line"><span class="lineno">  283</span>  SECTION(<span class="stringliteral">&quot;String (unterminated string error)&quot;</span>) {</div>
+<div class="line"><span class="lineno">  284</span>    <span class="comment">// Hide the error output</span></div>
+<div class="line"><span class="lineno">  285</span>    std::ostringstream oss;</div>
+<div class="line"><span class="lineno">  286</span>    <span class="keyword">auto</span> oldCerr = std::cerr.rdbuf(oss.rdbuf());</div>
+<div class="line"><span class="lineno">  287</span> </div>
+<div class="line"><span class="lineno">  288</span>    <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{<span class="stringliteral">&quot;\&quot;Hello, World!&quot;</span>};</div>
+<div class="line"><span class="lineno">  289</span>    scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
+<div class="line"><span class="lineno">  290</span>    std::vector&lt;Token&gt; tokens = scanner.getTokens();</div>
+<div class="line"><span class="lineno">  291</span> </div>
+<div class="line"><span class="lineno">  292</span>    CHECK(<a class="code hl_variable" href="error_8hpp.html#a5acd1c773774df929c1a561128c90189">hadError</a> == <span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">  293</span> </div>
+<div class="line"><span class="lineno">  294</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a>(tokens, 1);</div>
+<div class="line"><span class="lineno">  295</span>    <a class="code hl_function" href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a>(tokens[0], 1);</div>
+<div class="line"><span class="lineno">  296</span> </div>
+<div class="line"><span class="lineno">  297</span>    <span class="comment">// Restore the original cerr buffer</span></div>
+<div class="line"><span class="lineno">  298</span>    std::cerr.rdbuf(oldCerr);</div>
+<div class="line"><span class="lineno">  299</span>  }</div>
+<div class="line"><span class="lineno">  300</span> </div>
+<div class="line"><span class="lineno">  301</span>  SECTION(<span class="stringliteral">&quot;Number&quot;</span>) {</div>
+<div class="line"><span class="lineno">  302</span>    <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{<span class="stringliteral">&quot;12345&quot;</span>};</div>
+<div class="line"><span class="lineno">  303</span>    scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
+<div class="line"><span class="lineno">  304</span>    std::vector&lt;Token&gt; tokens = scanner.getTokens();</div>
+<div class="line"><span class="lineno">  305</span> </div>
+<div class="line"><span class="lineno">  306</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a>(tokens, 2);</div>
+<div class="line"><span class="lineno">  307</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a460971eabd5ce2d15d3e64a93259831e">checkNumberToken</a>(tokens[0], 12345);</div>
+<div class="line"><span class="lineno">  308</span>    <a class="code hl_function" href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a>(tokens[1]);</div>
+<div class="line"><span class="lineno">  309</span>  }</div>
+<div class="line"><span class="lineno">  310</span> </div>
+<div class="line"><span class="lineno">  311</span>  SECTION(<span class="stringliteral">&quot;Identifier&quot;</span>) {</div>
+<div class="line"><span class="lineno">  312</span>    <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{<span class="stringliteral">&quot;_myVar123&quot;</span>};</div>
+<div class="line"><span class="lineno">  313</span>    scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
+<div class="line"><span class="lineno">  314</span>    std::vector&lt;Token&gt; tokens = scanner.getTokens();</div>
+<div class="line"><span class="lineno">  315</span> </div>
+<div class="line"><span class="lineno">  316</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a>(tokens, 2);</div>
+<div class="line"><span class="lineno">  317</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a8ca6d115c44809c30668348a91e197d5">checkSimpleTokens</a>(tokens[0], <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a84f8ae2490f9e4bd2321fd21f4b0e807">TokenType::IDENTIFIER</a>, <span class="stringliteral">&quot;_myVar123&quot;</span>);</div>
+<div class="line"><span class="lineno">  318</span>    <a class="code hl_function" href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a>(tokens[1]);</div>
+<div class="line"><span class="lineno">  319</span>  }</div>
+<div class="line"><span class="lineno">  320</span>}</div>
+<div class="ttc" id="aerror_8hpp_html_a5acd1c773774df929c1a561128c90189"><div class="ttname"><a href="error_8hpp.html#a5acd1c773774df929c1a561128c90189">hadError</a></div><div class="ttdeci">bool hadError</div><div class="ttdef"><b>Definition</b> <a href="error_8hpp_source.html#l00006">error.hpp:6</a></div></div>
+<div class="ttc" id="ascannerTest_8cpp_html_a460971eabd5ce2d15d3e64a93259831e"><div class="ttname"><a href="scannerTest_8cpp.html#a460971eabd5ce2d15d3e64a93259831e">checkNumberToken</a></div><div class="ttdeci">void checkNumberToken(const Token &amp;token, int number, int line=1)</div><div class="ttdef"><b>Definition</b> <a href="scannerTest_8cpp_source.html#l00034">scannerTest.cpp:34</a></div></div>
+<div class="ttc" id="ascannerTest_8cpp_html_aec6ff788fa30cc93e9e0386e65814231"><div class="ttname"><a href="scannerTest_8cpp.html#aec6ff788fa30cc93e9e0386e65814231">checkStringToken</a></div><div class="ttdeci">void checkStringToken(const Token &amp;token, std::string word, int line=1)</div><div class="ttdef"><b>Definition</b> <a href="scannerTest_8cpp_source.html#l00026">scannerTest.cpp:26</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a84f8ae2490f9e4bd2321fd21f4b0e807"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a84f8ae2490f9e4bd2321fd21f4b0e807">IDENTIFIER</a></div><div class="ttdeci">@ IDENTIFIER</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00033">tokenType.hpp:33</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a5d4ac0fa9b58c9379655db85f31d5b62" name="a5d4ac0fa9b58c9379655db85f31d5b62"></a>
@@ -413,12 +617,37 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="scannerTest_8cpp_a5d4ac0fa9b58c9379655db85f31d5b62_cgraph.png" border="0" usemap="#ascannerTest_8cpp_a5d4ac0fa9b58c9379655db85f31d5b62_cgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="scannerTest_8cpp_source.html#l00434">434</a> of file <a class="el" href="scannerTest_8cpp_source.html">scannerTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  434</span>                                                                             {</div>
+<div class="line"><span class="lineno">  435</span>  SECTION(<span class="stringliteral">&quot;Fibonacci&quot;</span>) {</div>
+<div class="line"><span class="lineno">  436</span>    std::string program = R<span class="stringliteral">&quot;( var a = 0;</span></div>
+<div class="line"><span class="lineno">  437</span><span class="stringliteral">                              var b = 1;</span></div>
+<div class="line"><span class="lineno">  438</span><span class="stringliteral">                              var c = 0;</span></div>
+<div class="line"><span class="lineno">  439</span><span class="stringliteral"></span> </div>
+<div class="line"><span class="lineno">  440</span><span class="stringliteral">                              while (c &lt; 100) {</span></div>
+<div class="line"><span class="lineno">  441</span><span class="stringliteral">                                print c;</span></div>
+<div class="line"><span class="lineno">  442</span><span class="stringliteral">                                c = a + b;</span></div>
+<div class="line"><span class="lineno">  443</span><span class="stringliteral">                                a = b;</span></div>
+<div class="line"><span class="lineno">  444</span><span class="stringliteral">                                b = c;</span></div>
+<div class="line"><span class="lineno">  445</span><span class="stringliteral">                              })&quot;;</span></div>
+<div class="line"><span class="lineno">  446</span><span class="stringliteral"></span> </div>
+<div class="line"><span class="lineno">  447</span><span class="stringliteral">    <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{program};</span></div>
+<div class="line"><span class="lineno">  448</span><span class="stringliteral">    scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</span></div>
+<div class="line"><span class="lineno">  449</span><span class="stringliteral">    std::vector&lt;Token&gt; tokens = scanner.getTokens();</span></div>
+<div class="line"><span class="lineno">  450</span><span class="stringliteral"></span> </div>
+<div class="line"><span class="lineno">  451</span><span class="stringliteral">    CHECK(tokens.size() == 41);</span></div>
+<div class="line"><span class="lineno">  452</span><span class="stringliteral">    <a class="code hl_function" href="scannerTest_8cpp.html#a8ca6d115c44809c30668348a91e197d5">checkSimpleTokens</a>(tokens[0], <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921af68346ce0bfce7ab2ca0a240f5132863">TokenType::VAR</a>, </span><span class="stringliteral">&quot;var&quot;</span>, 1);</div>
+<div class="line"><span class="lineno">  453</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a8ca6d115c44809c30668348a91e197d5">checkSimpleTokens</a>(tokens[12], <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a59a84258a4cb9025b567ee5139455029">TokenType::EQUAL</a>, <span class="stringliteral">&quot;=&quot;</span>, 3);</div>
+<div class="line"><span class="lineno">  454</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a8ca6d115c44809c30668348a91e197d5">checkSimpleTokens</a>(tokens[15], <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a3278fd035226215822c903790a1eee73">TokenType::WHILE</a>, <span class="stringliteral">&quot;while&quot;</span>, 5);</div>
+<div class="line"><span class="lineno">  455</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a460971eabd5ce2d15d3e64a93259831e">checkNumberToken</a>(tokens[19], 100, 5);</div>
+<div class="line"><span class="lineno">  456</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a8ca6d115c44809c30668348a91e197d5">checkSimpleTokens</a>(tokens[39], <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a720e33700869f857881e7f50bdfb6943">TokenType::RIGHT_BRACE</a>, <span class="stringliteral">&quot;}&quot;</span>, 10);</div>
+<div class="line"><span class="lineno">  457</span>    <a class="code hl_function" href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a>(tokens.back(), 10);</div>
+<div class="line"><span class="lineno">  458</span>  }</div>
+<div class="line"><span class="lineno">  459</span>}</div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a59a84258a4cb9025b567ee5139455029"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a59a84258a4cb9025b567ee5139455029">EQUAL</a></div><div class="ttdeci">@ EQUAL</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00025">tokenType.hpp:25</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a720e33700869f857881e7f50bdfb6943"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a720e33700869f857881e7f50bdfb6943">RIGHT_BRACE</a></div><div class="ttdeci">@ RIGHT_BRACE</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00015">tokenType.hpp:15</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ae5642181526f8e4900b00890b11e4ac1" name="ae5642181526f8e4900b00890b11e4ac1"></a>
@@ -446,12 +675,46 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="scannerTest_8cpp_ae5642181526f8e4900b00890b11e4ac1_cgraph.png" border="0" usemap="#ascannerTest_8cpp_ae5642181526f8e4900b00890b11e4ac1_cgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="scannerTest_8cpp_source.html#l00042">42</a> of file <a class="el" href="scannerTest_8cpp_source.html">scannerTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   42</span>                                                                    {</div>
+<div class="line"><span class="lineno">   43</span>  SECTION(<span class="stringliteral">&quot;Empty program&quot;</span>) {</div>
+<div class="line"><span class="lineno">   44</span>    <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{<span class="stringliteral">&quot;&quot;</span>};</div>
+<div class="line"><span class="lineno">   45</span>    scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
+<div class="line"><span class="lineno">   46</span> </div>
+<div class="line"><span class="lineno">   47</span>    std::vector&lt;Token&gt; tokens = scanner.getTokens();</div>
+<div class="line"><span class="lineno">   48</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a>(tokens, 1);</div>
+<div class="line"><span class="lineno">   49</span>    <a class="code hl_function" href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a>(tokens[0], 1);</div>
+<div class="line"><span class="lineno">   50</span>  }</div>
+<div class="line"><span class="lineno">   51</span> </div>
+<div class="line"><span class="lineno">   52</span>  SECTION(<span class="stringliteral">&quot;With spaces&quot;</span>) {</div>
+<div class="line"><span class="lineno">   53</span>    <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{<span class="stringliteral">&quot; \t\r&quot;</span>};</div>
+<div class="line"><span class="lineno">   54</span>    scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
+<div class="line"><span class="lineno">   55</span> </div>
+<div class="line"><span class="lineno">   56</span>    std::vector&lt;Token&gt; tokens = scanner.getTokens();</div>
+<div class="line"><span class="lineno">   57</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a>(tokens, 1);</div>
+<div class="line"><span class="lineno">   58</span>    <a class="code hl_function" href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a>(tokens[0], 1);</div>
+<div class="line"><span class="lineno">   59</span>  }</div>
+<div class="line"><span class="lineno">   60</span> </div>
+<div class="line"><span class="lineno">   61</span>  SECTION(<span class="stringliteral">&quot;With newlines&quot;</span>) {</div>
+<div class="line"><span class="lineno">   62</span>    <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{<span class="stringliteral">&quot;\n\n\n&quot;</span>};</div>
+<div class="line"><span class="lineno">   63</span>    scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
+<div class="line"><span class="lineno">   64</span> </div>
+<div class="line"><span class="lineno">   65</span>    std::vector&lt;Token&gt; tokens = scanner.getTokens();</div>
+<div class="line"><span class="lineno">   66</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a>(tokens, 1);</div>
+<div class="line"><span class="lineno">   67</span>    <a class="code hl_function" href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a>(tokens[0], 4);</div>
+<div class="line"><span class="lineno">   68</span>  }</div>
+<div class="line"><span class="lineno">   69</span> </div>
+<div class="line"><span class="lineno">   70</span>  SECTION(<span class="stringliteral">&quot;With comments&quot;</span>) {</div>
+<div class="line"><span class="lineno">   71</span>    <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{<span class="stringliteral">&quot;// This is a comment\n&quot;</span>};</div>
+<div class="line"><span class="lineno">   72</span>    scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
+<div class="line"><span class="lineno">   73</span> </div>
+<div class="line"><span class="lineno">   74</span>    std::vector&lt;Token&gt; tokens = scanner.getTokens();</div>
+<div class="line"><span class="lineno">   75</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a>(tokens, 1);</div>
+<div class="line"><span class="lineno">   76</span>    <a class="code hl_function" href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a>(tokens[0], 2);</div>
+<div class="line"><span class="lineno">   77</span>  }</div>
+<div class="line"><span class="lineno">   78</span>}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a589f22582df1c77b146c9cfca9f63ea9" name="a589f22582df1c77b146c9cfca9f63ea9"></a>
@@ -479,18 +742,215 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="scannerTest_8cpp_a589f22582df1c77b146c9cfca9f63ea9_cgraph.png" border="0" usemap="#ascannerTest_8cpp_a589f22582df1c77b146c9cfca9f63ea9_cgraph" alt=""/></div>
-</div>
 
+<p class="definition">Definition at line <a class="el" href="scannerTest_8cpp_source.html#l00080">80</a> of file <a class="el" href="scannerTest_8cpp_source.html">scannerTest.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   80</span>                                                                       {</div>
+<div class="line"><span class="lineno">   81</span>  SECTION(<span class="stringliteral">&quot;Left parenthesis&quot;</span>) {</div>
+<div class="line"><span class="lineno">   82</span>    <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{<span class="stringliteral">&quot;(&quot;</span>};</div>
+<div class="line"><span class="lineno">   83</span>    scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
+<div class="line"><span class="lineno">   84</span> </div>
+<div class="line"><span class="lineno">   85</span>    std::vector&lt;Token&gt; tokens = scanner.getTokens();</div>
+<div class="line"><span class="lineno">   86</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a>(tokens, 2);</div>
+<div class="line"><span class="lineno">   87</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a8ca6d115c44809c30668348a91e197d5">checkSimpleTokens</a>(tokens[0], <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aaf335b8436483ffd007e0c1e0ba82374">TokenType::LEFT_PAREN</a>, <span class="stringliteral">&quot;(&quot;</span>);</div>
+<div class="line"><span class="lineno">   88</span>    <a class="code hl_function" href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a>(tokens[1], 1);</div>
+<div class="line"><span class="lineno">   89</span>  }</div>
+<div class="line"><span class="lineno">   90</span> </div>
+<div class="line"><span class="lineno">   91</span>  SECTION(<span class="stringliteral">&quot;Right parenthesis&quot;</span>) {</div>
+<div class="line"><span class="lineno">   92</span>    <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{<span class="stringliteral">&quot;)&quot;</span>};</div>
+<div class="line"><span class="lineno">   93</span>    scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
+<div class="line"><span class="lineno">   94</span> </div>
+<div class="line"><span class="lineno">   95</span>    std::vector&lt;Token&gt; tokens = scanner.getTokens();</div>
+<div class="line"><span class="lineno">   96</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a>(tokens, 2);</div>
+<div class="line"><span class="lineno">   97</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a8ca6d115c44809c30668348a91e197d5">checkSimpleTokens</a>(tokens[0], <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aef839b132f4710b720af9322523f64e8">TokenType::RIGHT_PAREN</a>, <span class="stringliteral">&quot;)&quot;</span>);</div>
+<div class="line"><span class="lineno">   98</span>    <a class="code hl_function" href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a>(tokens[1], 1);</div>
+<div class="line"><span class="lineno">   99</span>  }</div>
+<div class="line"><span class="lineno">  100</span> </div>
+<div class="line"><span class="lineno">  101</span>  SECTION(<span class="stringliteral">&quot;Left brace&quot;</span>) {</div>
+<div class="line"><span class="lineno">  102</span>    <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{<span class="stringliteral">&quot;{&quot;</span>};</div>
+<div class="line"><span class="lineno">  103</span>    scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
+<div class="line"><span class="lineno">  104</span> </div>
+<div class="line"><span class="lineno">  105</span>    std::vector&lt;Token&gt; tokens = scanner.getTokens();</div>
+<div class="line"><span class="lineno">  106</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a>(tokens, 2);</div>
+<div class="line"><span class="lineno">  107</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a8ca6d115c44809c30668348a91e197d5">checkSimpleTokens</a>(tokens[0], <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aad080c3559b964f64a0bf3babee794ae">TokenType::LEFT_BRACE</a>, <span class="stringliteral">&quot;{&quot;</span>);</div>
+<div class="line"><span class="lineno">  108</span>    <a class="code hl_function" href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a>(tokens[1], 1);</div>
+<div class="line"><span class="lineno">  109</span>  }</div>
+<div class="line"><span class="lineno">  110</span> </div>
+<div class="line"><span class="lineno">  111</span>  SECTION(<span class="stringliteral">&quot;Right brace&quot;</span>) {</div>
+<div class="line"><span class="lineno">  112</span>    <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{<span class="stringliteral">&quot;}&quot;</span>};</div>
+<div class="line"><span class="lineno">  113</span>    scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
+<div class="line"><span class="lineno">  114</span> </div>
+<div class="line"><span class="lineno">  115</span>    std::vector&lt;Token&gt; tokens = scanner.getTokens();</div>
+<div class="line"><span class="lineno">  116</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a>(tokens, 2);</div>
+<div class="line"><span class="lineno">  117</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a8ca6d115c44809c30668348a91e197d5">checkSimpleTokens</a>(tokens[0], <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a720e33700869f857881e7f50bdfb6943">TokenType::RIGHT_BRACE</a>, <span class="stringliteral">&quot;}&quot;</span>);</div>
+<div class="line"><span class="lineno">  118</span>    <a class="code hl_function" href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a>(tokens[1], 1);</div>
+<div class="line"><span class="lineno">  119</span>  }</div>
+<div class="line"><span class="lineno">  120</span> </div>
+<div class="line"><span class="lineno">  121</span>  SECTION(<span class="stringliteral">&quot;Minus&quot;</span>) {</div>
+<div class="line"><span class="lineno">  122</span>    <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{<span class="stringliteral">&quot;-&quot;</span>};</div>
+<div class="line"><span class="lineno">  123</span>    scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
+<div class="line"><span class="lineno">  124</span> </div>
+<div class="line"><span class="lineno">  125</span>    std::vector&lt;Token&gt; tokens = scanner.getTokens();</div>
+<div class="line"><span class="lineno">  126</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a>(tokens, 2);</div>
+<div class="line"><span class="lineno">  127</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a8ca6d115c44809c30668348a91e197d5">checkSimpleTokens</a>(tokens[0], <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921af613d73b4e7b570ffd967df4a13c4225">TokenType::MINUS</a>, <span class="stringliteral">&quot;-&quot;</span>);</div>
+<div class="line"><span class="lineno">  128</span>    <a class="code hl_function" href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a>(tokens[1], 1);</div>
+<div class="line"><span class="lineno">  129</span>  }</div>
+<div class="line"><span class="lineno">  130</span> </div>
+<div class="line"><span class="lineno">  131</span>  SECTION(<span class="stringliteral">&quot;Plus&quot;</span>) {</div>
+<div class="line"><span class="lineno">  132</span>    <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{<span class="stringliteral">&quot;+&quot;</span>};</div>
+<div class="line"><span class="lineno">  133</span>    scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
+<div class="line"><span class="lineno">  134</span> </div>
+<div class="line"><span class="lineno">  135</span>    std::vector&lt;Token&gt; tokens = scanner.getTokens();</div>
+<div class="line"><span class="lineno">  136</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a>(tokens, 2);</div>
+<div class="line"><span class="lineno">  137</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a8ca6d115c44809c30668348a91e197d5">checkSimpleTokens</a>(tokens[0], <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a87fe59ef12c3d13dc2a4d14c9b16c1f9">TokenType::PLUS</a>, <span class="stringliteral">&quot;+&quot;</span>);</div>
+<div class="line"><span class="lineno">  138</span>    <a class="code hl_function" href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a>(tokens[1], 1);</div>
+<div class="line"><span class="lineno">  139</span>  }</div>
+<div class="line"><span class="lineno">  140</span> </div>
+<div class="line"><span class="lineno">  141</span>  SECTION(<span class="stringliteral">&quot;Semicolon&quot;</span>) {</div>
+<div class="line"><span class="lineno">  142</span>    <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{<span class="stringliteral">&quot;;&quot;</span>};</div>
+<div class="line"><span class="lineno">  143</span>    scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
+<div class="line"><span class="lineno">  144</span> </div>
+<div class="line"><span class="lineno">  145</span>    std::vector&lt;Token&gt; tokens = scanner.getTokens();</div>
+<div class="line"><span class="lineno">  146</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a>(tokens, 2);</div>
+<div class="line"><span class="lineno">  147</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a8ca6d115c44809c30668348a91e197d5">checkSimpleTokens</a>(tokens[0], <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a55eebe3c7e08b49cd5969442f4f8c4ce">TokenType::SEMICOLON</a>, <span class="stringliteral">&quot;;&quot;</span>);</div>
+<div class="line"><span class="lineno">  148</span>    <a class="code hl_function" href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a>(tokens[1], 1);</div>
+<div class="line"><span class="lineno">  149</span>  }</div>
+<div class="line"><span class="lineno">  150</span> </div>
+<div class="line"><span class="lineno">  151</span>  SECTION(<span class="stringliteral">&quot;Semicolon&quot;</span>) {</div>
+<div class="line"><span class="lineno">  152</span>    <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{<span class="stringliteral">&quot;;&quot;</span>};</div>
+<div class="line"><span class="lineno">  153</span>    scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
+<div class="line"><span class="lineno">  154</span> </div>
+<div class="line"><span class="lineno">  155</span>    std::vector&lt;Token&gt; tokens = scanner.getTokens();</div>
+<div class="line"><span class="lineno">  156</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a>(tokens, 2);</div>
+<div class="line"><span class="lineno">  157</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a8ca6d115c44809c30668348a91e197d5">checkSimpleTokens</a>(tokens[0], <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a55eebe3c7e08b49cd5969442f4f8c4ce">TokenType::SEMICOLON</a>, <span class="stringliteral">&quot;;&quot;</span>);</div>
+<div class="line"><span class="lineno">  158</span>    <a class="code hl_function" href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a>(tokens[1], 1);</div>
+<div class="line"><span class="lineno">  159</span>  }</div>
+<div class="line"><span class="lineno">  160</span> </div>
+<div class="line"><span class="lineno">  161</span>  SECTION(<span class="stringliteral">&quot;Star&quot;</span>) {</div>
+<div class="line"><span class="lineno">  162</span>    <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{<span class="stringliteral">&quot;*&quot;</span>};</div>
+<div class="line"><span class="lineno">  163</span>    scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
+<div class="line"><span class="lineno">  164</span> </div>
+<div class="line"><span class="lineno">  165</span>    std::vector&lt;Token&gt; tokens = scanner.getTokens();</div>
+<div class="line"><span class="lineno">  166</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a>(tokens, 2);</div>
+<div class="line"><span class="lineno">  167</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a8ca6d115c44809c30668348a91e197d5">checkSimpleTokens</a>(tokens[0], <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a9d398750ed310ae69cd070016810e4dc">TokenType::STAR</a>, <span class="stringliteral">&quot;*&quot;</span>);</div>
+<div class="line"><span class="lineno">  168</span>    <a class="code hl_function" href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a>(tokens[1], 1);</div>
+<div class="line"><span class="lineno">  169</span>  }</div>
+<div class="line"><span class="lineno">  170</span> </div>
+<div class="line"><span class="lineno">  171</span>  SECTION(<span class="stringliteral">&quot;Bang&quot;</span>) {</div>
+<div class="line"><span class="lineno">  172</span>    <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{<span class="stringliteral">&quot;!&quot;</span>};</div>
+<div class="line"><span class="lineno">  173</span>    scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
+<div class="line"><span class="lineno">  174</span> </div>
+<div class="line"><span class="lineno">  175</span>    std::vector&lt;Token&gt; tokens = scanner.getTokens();</div>
+<div class="line"><span class="lineno">  176</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a>(tokens, 2);</div>
+<div class="line"><span class="lineno">  177</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a8ca6d115c44809c30668348a91e197d5">checkSimpleTokens</a>(tokens[0], <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a220fa389cdbdc1e8cd33f70c1f793d3c">TokenType::BANG</a>, <span class="stringliteral">&quot;!&quot;</span>);</div>
+<div class="line"><span class="lineno">  178</span>    <a class="code hl_function" href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a>(tokens[1], 1);</div>
+<div class="line"><span class="lineno">  179</span>  }</div>
+<div class="line"><span class="lineno">  180</span> </div>
+<div class="line"><span class="lineno">  181</span>  SECTION(<span class="stringliteral">&quot;Bang equal&quot;</span>) {</div>
+<div class="line"><span class="lineno">  182</span>    <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{<span class="stringliteral">&quot;!=&quot;</span>};</div>
+<div class="line"><span class="lineno">  183</span>    scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
+<div class="line"><span class="lineno">  184</span> </div>
+<div class="line"><span class="lineno">  185</span>    std::vector&lt;Token&gt; tokens = scanner.getTokens();</div>
+<div class="line"><span class="lineno">  186</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a>(tokens, 2);</div>
+<div class="line"><span class="lineno">  187</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a8ca6d115c44809c30668348a91e197d5">checkSimpleTokens</a>(tokens[0], <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a783d53dd60297984dc8336d5f80cb275">TokenType::BANG_EQUAL</a>, <span class="stringliteral">&quot;!=&quot;</span>);</div>
+<div class="line"><span class="lineno">  188</span>    <a class="code hl_function" href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a>(tokens[1], 1);</div>
+<div class="line"><span class="lineno">  189</span>  }</div>
+<div class="line"><span class="lineno">  190</span> </div>
+<div class="line"><span class="lineno">  191</span>  SECTION(<span class="stringliteral">&quot;Equal&quot;</span>) {</div>
+<div class="line"><span class="lineno">  192</span>    <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{<span class="stringliteral">&quot;=&quot;</span>};</div>
+<div class="line"><span class="lineno">  193</span>    scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
+<div class="line"><span class="lineno">  194</span> </div>
+<div class="line"><span class="lineno">  195</span>    std::vector&lt;Token&gt; tokens = scanner.getTokens();</div>
+<div class="line"><span class="lineno">  196</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a>(tokens, 2);</div>
+<div class="line"><span class="lineno">  197</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a8ca6d115c44809c30668348a91e197d5">checkSimpleTokens</a>(tokens[0], <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a59a84258a4cb9025b567ee5139455029">TokenType::EQUAL</a>, <span class="stringliteral">&quot;=&quot;</span>);</div>
+<div class="line"><span class="lineno">  198</span>    <a class="code hl_function" href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a>(tokens[1], 1);</div>
+<div class="line"><span class="lineno">  199</span>  }</div>
+<div class="line"><span class="lineno">  200</span> </div>
+<div class="line"><span class="lineno">  201</span>  SECTION(<span class="stringliteral">&quot;Equal equal&quot;</span>) {</div>
+<div class="line"><span class="lineno">  202</span>    <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{<span class="stringliteral">&quot;==&quot;</span>};</div>
+<div class="line"><span class="lineno">  203</span>    scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
+<div class="line"><span class="lineno">  204</span> </div>
+<div class="line"><span class="lineno">  205</span>    std::vector&lt;Token&gt; tokens = scanner.getTokens();</div>
+<div class="line"><span class="lineno">  206</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a>(tokens, 2);</div>
+<div class="line"><span class="lineno">  207</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a8ca6d115c44809c30668348a91e197d5">checkSimpleTokens</a>(tokens[0], <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a56bd89f44f205c00adcfe8cb62332f78">TokenType::EQUAL_EQUAL</a>, <span class="stringliteral">&quot;==&quot;</span>);</div>
+<div class="line"><span class="lineno">  208</span>    <a class="code hl_function" href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a>(tokens[1], 1);</div>
+<div class="line"><span class="lineno">  209</span>  }</div>
+<div class="line"><span class="lineno">  210</span> </div>
+<div class="line"><span class="lineno">  211</span>  SECTION(<span class="stringliteral">&quot;Greater&quot;</span>) {</div>
+<div class="line"><span class="lineno">  212</span>    <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{<span class="stringliteral">&quot;&gt;&quot;</span>};</div>
+<div class="line"><span class="lineno">  213</span>    scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
+<div class="line"><span class="lineno">  214</span> </div>
+<div class="line"><span class="lineno">  215</span>    std::vector&lt;Token&gt; tokens = scanner.getTokens();</div>
+<div class="line"><span class="lineno">  216</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a>(tokens, 2);</div>
+<div class="line"><span class="lineno">  217</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a8ca6d115c44809c30668348a91e197d5">checkSimpleTokens</a>(tokens[0], <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a25b5ca2f56d99ba6ffcb5316adac34c1">TokenType::GREATER</a>, <span class="stringliteral">&quot;&gt;&quot;</span>);</div>
+<div class="line"><span class="lineno">  218</span>    <a class="code hl_function" href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a>(tokens[1], 1);</div>
+<div class="line"><span class="lineno">  219</span>  }</div>
+<div class="line"><span class="lineno">  220</span> </div>
+<div class="line"><span class="lineno">  221</span>  SECTION(<span class="stringliteral">&quot;Greater equal&quot;</span>) {</div>
+<div class="line"><span class="lineno">  222</span>    <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{<span class="stringliteral">&quot;&gt;=&quot;</span>};</div>
+<div class="line"><span class="lineno">  223</span>    scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
+<div class="line"><span class="lineno">  224</span> </div>
+<div class="line"><span class="lineno">  225</span>    std::vector&lt;Token&gt; tokens = scanner.getTokens();</div>
+<div class="line"><span class="lineno">  226</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a>(tokens, 2);</div>
+<div class="line"><span class="lineno">  227</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a8ca6d115c44809c30668348a91e197d5">checkSimpleTokens</a>(tokens[0], <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a4495f63771aa2060042a31363e16d4f9">TokenType::GREATER_EQUAL</a>, <span class="stringliteral">&quot;&gt;=&quot;</span>);</div>
+<div class="line"><span class="lineno">  228</span>    <a class="code hl_function" href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a>(tokens[1], 1);</div>
+<div class="line"><span class="lineno">  229</span>  }</div>
+<div class="line"><span class="lineno">  230</span> </div>
+<div class="line"><span class="lineno">  231</span>  SECTION(<span class="stringliteral">&quot;Less&quot;</span>) {</div>
+<div class="line"><span class="lineno">  232</span>    <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{<span class="stringliteral">&quot;&lt;&quot;</span>};</div>
+<div class="line"><span class="lineno">  233</span>    scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
+<div class="line"><span class="lineno">  234</span> </div>
+<div class="line"><span class="lineno">  235</span>    std::vector&lt;Token&gt; tokens = scanner.getTokens();</div>
+<div class="line"><span class="lineno">  236</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a>(tokens, 2);</div>
+<div class="line"><span class="lineno">  237</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a8ca6d115c44809c30668348a91e197d5">checkSimpleTokens</a>(tokens[0], <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a95c736070f99b99eb80d1eac1f4ca60f">TokenType::LESS</a>, <span class="stringliteral">&quot;&lt;&quot;</span>);</div>
+<div class="line"><span class="lineno">  238</span>    <a class="code hl_function" href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a>(tokens[1], 1);</div>
+<div class="line"><span class="lineno">  239</span>  }</div>
+<div class="line"><span class="lineno">  240</span> </div>
+<div class="line"><span class="lineno">  241</span>  SECTION(<span class="stringliteral">&quot;Less equal&quot;</span>) {</div>
+<div class="line"><span class="lineno">  242</span>    <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{<span class="stringliteral">&quot;&lt;=&quot;</span>};</div>
+<div class="line"><span class="lineno">  243</span>    scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
+<div class="line"><span class="lineno">  244</span> </div>
+<div class="line"><span class="lineno">  245</span>    std::vector&lt;Token&gt; tokens = scanner.getTokens();</div>
+<div class="line"><span class="lineno">  246</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a>(tokens, 2);</div>
+<div class="line"><span class="lineno">  247</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a8ca6d115c44809c30668348a91e197d5">checkSimpleTokens</a>(tokens[0], <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921ac7fcbbb467ef6d40ec686d894e26accd">TokenType::LESS_EQUAL</a>, <span class="stringliteral">&quot;&lt;=&quot;</span>);</div>
+<div class="line"><span class="lineno">  248</span>    <a class="code hl_function" href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a>(tokens[1], 1);</div>
+<div class="line"><span class="lineno">  249</span>  }</div>
+<div class="line"><span class="lineno">  250</span> </div>
+<div class="line"><span class="lineno">  251</span>  SECTION(<span class="stringliteral">&quot;Slash&quot;</span>) {</div>
+<div class="line"><span class="lineno">  252</span>    <a class="code hl_class" href="classScanner.html">Scanner</a> scanner{<span class="stringliteral">&quot;/&quot;</span>};</div>
+<div class="line"><span class="lineno">  253</span>    scanner.<a class="code hl_function" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">scanTokens</a>();</div>
+<div class="line"><span class="lineno">  254</span> </div>
+<div class="line"><span class="lineno">  255</span>    std::vector&lt;Token&gt; tokens = scanner.getTokens();</div>
+<div class="line"><span class="lineno">  256</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a9cb0af2dffdd321d15974436e3953f64">checkTokenSize</a>(tokens, 2);</div>
+<div class="line"><span class="lineno">  257</span>    <a class="code hl_function" href="scannerTest_8cpp.html#a8ca6d115c44809c30668348a91e197d5">checkSimpleTokens</a>(tokens[0], <a class="code hl_enumvalue" href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aaabdfe7000ca535236502bb0c87ad944">TokenType::SLASH</a>, <span class="stringliteral">&quot;/&quot;</span>);</div>
+<div class="line"><span class="lineno">  258</span>    <a class="code hl_function" href="scannerTest_8cpp.html#ad2495ad1ad09176881fb62138f05787f">checkEOFToken</a>(tokens[1], 1);</div>
+<div class="line"><span class="lineno">  259</span>  }</div>
+<div class="line"><span class="lineno">  260</span>}</div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a220fa389cdbdc1e8cd33f70c1f793d3c"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a220fa389cdbdc1e8cd33f70c1f793d3c">BANG</a></div><div class="ttdeci">@ BANG</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00023">tokenType.hpp:23</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a25b5ca2f56d99ba6ffcb5316adac34c1"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a25b5ca2f56d99ba6ffcb5316adac34c1">GREATER</a></div><div class="ttdeci">@ GREATER</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00027">tokenType.hpp:27</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a4495f63771aa2060042a31363e16d4f9"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a4495f63771aa2060042a31363e16d4f9">GREATER_EQUAL</a></div><div class="ttdeci">@ GREATER_EQUAL</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00028">tokenType.hpp:28</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a55eebe3c7e08b49cd5969442f4f8c4ce"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a55eebe3c7e08b49cd5969442f4f8c4ce">SEMICOLON</a></div><div class="ttdeci">@ SEMICOLON</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00018">tokenType.hpp:18</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a56bd89f44f205c00adcfe8cb62332f78"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a56bd89f44f205c00adcfe8cb62332f78">EQUAL_EQUAL</a></div><div class="ttdeci">@ EQUAL_EQUAL</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00026">tokenType.hpp:26</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a783d53dd60297984dc8336d5f80cb275"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a783d53dd60297984dc8336d5f80cb275">BANG_EQUAL</a></div><div class="ttdeci">@ BANG_EQUAL</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00024">tokenType.hpp:24</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a87fe59ef12c3d13dc2a4d14c9b16c1f9"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a87fe59ef12c3d13dc2a4d14c9b16c1f9">PLUS</a></div><div class="ttdeci">@ PLUS</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00017">tokenType.hpp:17</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a95c736070f99b99eb80d1eac1f4ca60f"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a95c736070f99b99eb80d1eac1f4ca60f">LESS</a></div><div class="ttdeci">@ LESS</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00029">tokenType.hpp:29</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921a9d398750ed310ae69cd070016810e4dc"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921a9d398750ed310ae69cd070016810e4dc">STAR</a></div><div class="ttdeci">@ STAR</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00020">tokenType.hpp:20</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921aaabdfe7000ca535236502bb0c87ad944"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aaabdfe7000ca535236502bb0c87ad944">SLASH</a></div><div class="ttdeci">@ SLASH</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00019">tokenType.hpp:19</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921aad080c3559b964f64a0bf3babee794ae"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aad080c3559b964f64a0bf3babee794ae">LEFT_BRACE</a></div><div class="ttdeci">@ LEFT_BRACE</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00014">tokenType.hpp:14</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921aaf335b8436483ffd007e0c1e0ba82374"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aaf335b8436483ffd007e0c1e0ba82374">LEFT_PAREN</a></div><div class="ttdeci">@ LEFT_PAREN</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00012">tokenType.hpp:12</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921ac7fcbbb467ef6d40ec686d894e26accd"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921ac7fcbbb467ef6d40ec686d894e26accd">LESS_EQUAL</a></div><div class="ttdeci">@ LESS_EQUAL</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00030">tokenType.hpp:30</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921aef839b132f4710b720af9322523f64e8"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921aef839b132f4710b720af9322523f64e8">RIGHT_PAREN</a></div><div class="ttdeci">@ RIGHT_PAREN</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00013">tokenType.hpp:13</a></div></div>
+<div class="ttc" id="atokenType_8hpp_html_aa520fbf142ba1e7e659590c07da31921af613d73b4e7b570ffd967df4a13c4225"><div class="ttname"><a href="tokenType_8hpp.html#aa520fbf142ba1e7e659590c07da31921af613d73b4e7b570ffd967df4a13c4225">MINUS</a></div><div class="ttdeci">@ MINUS</div><div class="ttdef"><b>Definition</b> <a href="tokenType_8hpp_source.html#l00016">tokenType.hpp:16</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_13e138d54eb8818da29c3992edef070a.html">test</a></li><li class="navelem"><a class="el" href="scannerTest_8cpp.html">scannerTest.cpp</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

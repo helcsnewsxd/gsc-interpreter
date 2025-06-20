@@ -9,6 +9,10 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -23,6 +27,7 @@
   <td id="projectalign">
    <div id="projectname">Simplified C/C++ (GSC)
    </div>
+   <div id="projectbrief">A Turing-complete interpreter developed for a compiler course</div>
   </td>
  </tr>
  </tbody>
@@ -47,6 +52,22 @@ $(function() {
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('functions_func.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -73,25 +94,52 @@ $(function() {
 
 <h3><a id="index_a" name="index_a"></a>- a -</h3><ul>
 <li>accept()&#160;:&#160;<a class="el" href="classAssign.html#a04c8d5ca3670654e293fd82910d3abfe">Assign</a>, <a class="el" href="classBinary.html#ab0cb26a97cc624a2e3357cbe4a1a168b">Binary</a>, <a class="el" href="classBlock.html#a9bf662dc7cfd08a933cc24ef2273b6c2">Block</a>, <a class="el" href="classExpr.html#a748b81a9fcd2a1e226395aa9159d6dba">Expr</a>, <a class="el" href="classExpression.html#a620bbc00abf6a14712dd59bee8ac8702">Expression</a>, <a class="el" href="classGrouping.html#a8724010c9dbdc8428f4a0e99d991a658">Grouping</a>, <a class="el" href="classIf.html#adb345c187520d4765ef4ca4a0114e8ab">If</a>, <a class="el" href="classLiteral.html#afd8598d146e53a498546f1346bd0b455">Literal</a>, <a class="el" href="classLogical.html#afc6671a15e4f04212daaac8a235dbba9">Logical</a>, <a class="el" href="classPrint.html#aaac575831639aef4dc52b1257ff1c3c4">Print</a>, <a class="el" href="classStmt.html#a9294f5c7edf0e1cd384ffae00114b1a6">Stmt</a>, <a class="el" href="classUnary.html#a1770b59b0eb10a47ffce4b2698f558fb">Unary</a>, <a class="el" href="classVar.html#a2567a47329efd75ca05eaad04d737f7c">Var</a>, <a class="el" href="classVariable.html#a075054806dc608221387c41c9d05155d">Variable</a>, <a class="el" href="classWhile.html#a1f73f14dd468263a3f50b0ba86a01d68">While</a></li>
+<li>addToken()&#160;:&#160;<a class="el" href="classScanner.html#af405d417379c6e2373085cea3e8ed304">Scanner</a></li>
+<li>advance()&#160;:&#160;<a class="el" href="classParser.html#a0a312afa6fba1a5391c58dccbe557784">Parser</a>, <a class="el" href="classScanner.html#a48162dd3db322ae58745bacacd98c463">Scanner</a></li>
+<li>andLogical()&#160;:&#160;<a class="el" href="classParser.html#ad4b938e79b2de1850ddae265fdfa44b5">Parser</a></li>
 <li>Assign()&#160;:&#160;<a class="el" href="classAssign.html#ad0d0838095cb3772192f421c450480f3">Assign</a></li>
 <li>assign()&#160;:&#160;<a class="el" href="classEnvironment.html#ae1d4b66d0594f386a93429cb13b4fc68">Environment</a></li>
+<li>assignment()&#160;:&#160;<a class="el" href="classParser.html#afa574c14f701afa5d544f7d74bcb4f45">Parser</a></li>
 </ul>
 
 
 <h3><a id="index_b" name="index_b"></a>- b -</h3><ul>
 <li>Binary()&#160;:&#160;<a class="el" href="classBinary.html#a4a248bd0bf56ad5ca4dcf5e1034c30bc">Binary</a></li>
 <li>Block()&#160;:&#160;<a class="el" href="classBlock.html#af8fa70336a1c76842601c3d6fdca4235">Block</a></li>
+<li>block()&#160;:&#160;<a class="el" href="classParser.html#ab3ef3d42ef1e035e09da51d680fd98d6">Parser</a></li>
+</ul>
+
+
+<h3><a id="index_c" name="index_c"></a>- c -</h3><ul>
+<li>check()&#160;:&#160;<a class="el" href="classParser.html#a4abd386776b53defbfa7b88a4912c684">Parser</a></li>
+<li>checkNumberOperands()&#160;:&#160;<a class="el" href="classInterpreter.html#a4d7a59b3dfc970c0c7424e8638ac64a2">Interpreter</a></li>
+<li>comparison()&#160;:&#160;<a class="el" href="classParser.html#a120d23bbf17ad914d798ef701375eddc">Parser</a></li>
+<li>consume()&#160;:&#160;<a class="el" href="classParser.html#a4a3f75bb1c83a3e6bbaface13a8e03b6">Parser</a></li>
 </ul>
 
 
 <h3><a id="index_d" name="index_d"></a>- d -</h3><ul>
+<li>declaration()&#160;:&#160;<a class="el" href="classParser.html#a8a76d0f7b89d00200efb3ac6b3481c72">Parser</a></li>
 <li>define()&#160;:&#160;<a class="el" href="classEnvironment.html#a49108e1ecc987978b3e56d1f38569ec4">Environment</a></li>
 </ul>
 
 
 <h3><a id="index_e" name="index_e"></a>- e -</h3><ul>
 <li>Environment()&#160;:&#160;<a class="el" href="classEnvironment.html#a8b427c4448d8b7536666837521b9e83d">Environment</a></li>
+<li>equality()&#160;:&#160;<a class="el" href="classParser.html#a13677372c545767c9f29c975a6f83d31">Parser</a></li>
+<li>error()&#160;:&#160;<a class="el" href="classParser.html#ae4d1609bd9645d5e8bb6e93bce1f74d3">Parser</a></li>
+<li>evaluate()&#160;:&#160;<a class="el" href="classInterpreter.html#a3510c65da499fa79de4a2166a5e6b6d2">Interpreter</a></li>
+<li>execute()&#160;:&#160;<a class="el" href="classInterpreter.html#ad4e92bdabaa8fd1f88c1b4ef6844a608">Interpreter</a></li>
+<li>executeBlock()&#160;:&#160;<a class="el" href="classInterpreter.html#a6fcf12e2e6c8d7abc9dbd9ca88752f13">Interpreter</a></li>
 <li>Expression()&#160;:&#160;<a class="el" href="classExpression.html#a455578c659a37f6160ddaec05914f6aa">Expression</a></li>
+<li>expression()&#160;:&#160;<a class="el" href="classParser.html#a884beef0ea98739c4135134b4d023cde">Parser</a></li>
+<li>expressionStatement()&#160;:&#160;<a class="el" href="classParser.html#a9b6375cf58329480985f2529ae038e97">Parser</a></li>
+</ul>
+
+
+<h3><a id="index_f" name="index_f"></a>- f -</h3><ul>
+<li>factor()&#160;:&#160;<a class="el" href="classParser.html#a6c8daf85d7430dafbdd034d98129ad90">Parser</a></li>
+<li>forStatement()&#160;:&#160;<a class="el" href="classParser.html#ae00b1de33c3dd5765bc454107829f1ef">Parser</a></li>
 </ul>
 
 
@@ -121,8 +169,13 @@ $(function() {
 
 
 <h3><a id="index_i" name="index_i"></a>- i -</h3><ul>
+<li>identifier()&#160;:&#160;<a class="el" href="classScanner.html#aa6a22d1ef547c89c856b7fecd8cc0198">Scanner</a></li>
 <li>If()&#160;:&#160;<a class="el" href="classIf.html#aaba164b6cfb7931fa0bb99065eb4dfdf">If</a></li>
+<li>ifStatement()&#160;:&#160;<a class="el" href="classParser.html#a67012843f19372fd42c458e00b89187e">Parser</a></li>
 <li>interpret()&#160;:&#160;<a class="el" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">Interpreter</a></li>
+<li>isAtEnd()&#160;:&#160;<a class="el" href="classParser.html#acf9048fe87ddcc0dc9cfee60311cfae7">Parser</a>, <a class="el" href="classScanner.html#a886d66bcf9d8edd27f46f14f6df3c144">Scanner</a></li>
+<li>isEqual()&#160;:&#160;<a class="el" href="classInterpreter.html#a82000288cce5890776620301ef319a5c">Interpreter</a></li>
+<li>isTruthy()&#160;:&#160;<a class="el" href="classInterpreter.html#a7576d4c42ee0cb7d887b6b70d44ac00c">Interpreter</a></li>
 </ul>
 
 
@@ -132,10 +185,30 @@ $(function() {
 </ul>
 
 
+<h3><a id="index_m" name="index_m"></a>- m -</h3><ul>
+<li>match()&#160;:&#160;<a class="el" href="classParser.html#ae4d4e26fca5493b8c28df006b904b789">Parser</a>, <a class="el" href="classScanner.html#a7e01121d30be42b4c2fdd3cc2a7d6942">Scanner</a></li>
+</ul>
+
+
+<h3><a id="index_n" name="index_n"></a>- n -</h3><ul>
+<li>number()&#160;:&#160;<a class="el" href="classScanner.html#af9eaea0a7203be5e03c7e4ce5c56a01c">Scanner</a></li>
+</ul>
+
+
+<h3><a id="index_o" name="index_o"></a>- o -</h3><ul>
+<li>orLogical()&#160;:&#160;<a class="el" href="classParser.html#a594dadb959e04f534d49d060d3b9547f">Parser</a></li>
+</ul>
+
+
 <h3><a id="index_p" name="index_p"></a>- p -</h3><ul>
 <li>parse()&#160;:&#160;<a class="el" href="classParser.html#aad339c9b8c635db45f4881560b22436b">Parser</a></li>
 <li>Parser()&#160;:&#160;<a class="el" href="classParser.html#afbc83a1187461f5feadbb2ca0d007574">Parser</a></li>
+<li>peek()&#160;:&#160;<a class="el" href="classParser.html#ac9cfa423732f15c2202d60a1cb7249db">Parser</a>, <a class="el" href="classScanner.html#aa5a6d5cab883f737f1ac799dd3434b4f">Scanner</a></li>
+<li>peekNext()&#160;:&#160;<a class="el" href="classScanner.html#a7641b64d926934c5007c3b33191f1422">Scanner</a></li>
+<li>previous()&#160;:&#160;<a class="el" href="classParser.html#a11ec4f1f235a27b8f7f374dd3a71c994">Parser</a></li>
+<li>primary()&#160;:&#160;<a class="el" href="classParser.html#ad2803892a2bf621f021322b5ce4b4fa3">Parser</a></li>
 <li>Print()&#160;:&#160;<a class="el" href="classPrint.html#afcc0f29c05f726d55cb42208431e1972">Print</a></li>
+<li>printStatement()&#160;:&#160;<a class="el" href="classParser.html#a9ce8c6959ce94ed0fc543ff15cc0e64a">Parser</a></li>
 </ul>
 
 
@@ -146,42 +219,51 @@ $(function() {
 
 <h3><a id="index_s" name="index_s"></a>- s -</h3><ul>
 <li>Scanner()&#160;:&#160;<a class="el" href="classScanner.html#a6f18ebbdbaec62fc3173a117e0221d0b">Scanner</a></li>
+<li>scanToken()&#160;:&#160;<a class="el" href="classScanner.html#af81202ca9a22bc0bad655cb6b34b35bc">Scanner</a></li>
 <li>scanTokens()&#160;:&#160;<a class="el" href="classScanner.html#ac13eb6af23aada11ff2525f02577cd8e">Scanner</a></li>
+<li>statement()&#160;:&#160;<a class="el" href="classParser.html#abf9a5322d8f232ac719631de8cdbc763">Parser</a></li>
+<li>string()&#160;:&#160;<a class="el" href="classScanner.html#afd0351d90f66329835b470af6a5000e5">Scanner</a></li>
+<li>stringify()&#160;:&#160;<a class="el" href="classInterpreter.html#a75ce75ac1fd09e17bc38c40e04060052">Interpreter</a></li>
+<li>synchronize()&#160;:&#160;<a class="el" href="classParser.html#a0b291d69599c11db2077222ca385f298">Parser</a></li>
 </ul>
 
 
 <h3><a id="index_t" name="index_t"></a>- t -</h3><ul>
+<li>term()&#160;:&#160;<a class="el" href="classParser.html#aa6dac16b11660cf177cd8b7bdf884847">Parser</a></li>
 <li>Token()&#160;:&#160;<a class="el" href="classToken.html#a52d0d3e901c899c90842edd5ff0b628e">Token</a></li>
 <li>toString()&#160;:&#160;<a class="el" href="classToken.html#a6f1c3f5f607e9b576b4202b108f13c60">Token</a></li>
 </ul>
 
 
 <h3><a id="index_u" name="index_u"></a>- u -</h3><ul>
+<li>unary()&#160;:&#160;<a class="el" href="classParser.html#a623319b2b1de04483f5518de671e5dca">Parser</a></li>
 <li>Unary()&#160;:&#160;<a class="el" href="classUnary.html#afa64ef959e88c2a2dcd4659d73573408">Unary</a></li>
 </ul>
 
 
 <h3><a id="index_v" name="index_v"></a>- v -</h3><ul>
 <li>Var()&#160;:&#160;<a class="el" href="classVar.html#a638323c92bde520b8757af585825e084">Var</a></li>
+<li>varDeclaration()&#160;:&#160;<a class="el" href="classParser.html#a2d1daefca809aa79fe5adf525f1e2690">Parser</a></li>
 <li>Variable()&#160;:&#160;<a class="el" href="classVariable.html#a014010908e8cd6cd8b609f7734ddb184">Variable</a></li>
-<li>visitAssignExpr()&#160;:&#160;<a class="el" href="classExprVisitor.html#ad4ff4a4c19a0e71201deff7beae535f4">ExprVisitor</a></li>
-<li>visitBinaryExpr()&#160;:&#160;<a class="el" href="classExprVisitor.html#a8eb5031d4ba91b4b3952f99f0169fc12">ExprVisitor</a></li>
-<li>visitBlockStmt()&#160;:&#160;<a class="el" href="classStmtVisitor.html#af1d8e7944c0ae05925f46874b6e20013">StmtVisitor</a></li>
-<li>visitExpressionStmt()&#160;:&#160;<a class="el" href="classStmtVisitor.html#a279d83c06a1a88a62bd175b8a883ce8c">StmtVisitor</a></li>
-<li>visitGroupingExpr()&#160;:&#160;<a class="el" href="classExprVisitor.html#a09b98dd33cbb696adebba7eaf4484699">ExprVisitor</a></li>
-<li>visitIfStmt()&#160;:&#160;<a class="el" href="classStmtVisitor.html#aa79c4ee6e7ea194a91f187a3aa6b1ea1">StmtVisitor</a></li>
-<li>visitLiteralExpr()&#160;:&#160;<a class="el" href="classExprVisitor.html#a08572b07b9eca9e1d6ac51b87b2c1c7c">ExprVisitor</a></li>
-<li>visitLogicalExpr()&#160;:&#160;<a class="el" href="classExprVisitor.html#a05e60d13a4d3531a5659b6f1dff466c0">ExprVisitor</a></li>
-<li>visitPrintStmt()&#160;:&#160;<a class="el" href="classStmtVisitor.html#a8bc287a0d1a084a7821902eae24bbfa9">StmtVisitor</a></li>
-<li>visitUnaryExpr()&#160;:&#160;<a class="el" href="classExprVisitor.html#a12acb7dddbf9aab6bc0c40a588188a1e">ExprVisitor</a></li>
-<li>visitVariableExpr()&#160;:&#160;<a class="el" href="classExprVisitor.html#a7331df0a345f0fb755901fc1572f6aa2">ExprVisitor</a></li>
-<li>visitVarStmt()&#160;:&#160;<a class="el" href="classStmtVisitor.html#a9d10e7949ac83818ffb9ad466fa33754">StmtVisitor</a></li>
-<li>visitWhileStmt()&#160;:&#160;<a class="el" href="classStmtVisitor.html#a48d1d3d4a038e30868343a48f2f2fc92">StmtVisitor</a></li>
+<li>visitAssignExpr()&#160;:&#160;<a class="el" href="classExprVisitor.html#ad4ff4a4c19a0e71201deff7beae535f4">ExprVisitor</a>, <a class="el" href="classInterpreter.html#a5180f1940b6125fa14769cda178633cf">Interpreter</a></li>
+<li>visitBinaryExpr()&#160;:&#160;<a class="el" href="classExprVisitor.html#a8eb5031d4ba91b4b3952f99f0169fc12">ExprVisitor</a>, <a class="el" href="classInterpreter.html#a3e22b6f7f14919427d58c2844db610d1">Interpreter</a></li>
+<li>visitBlockStmt()&#160;:&#160;<a class="el" href="classInterpreter.html#ac5527ae425f85eccce93f705d261e157">Interpreter</a>, <a class="el" href="classStmtVisitor.html#af1d8e7944c0ae05925f46874b6e20013">StmtVisitor</a></li>
+<li>visitExpressionStmt()&#160;:&#160;<a class="el" href="classInterpreter.html#a80f49256494469d59911ca9470ac9c9e">Interpreter</a>, <a class="el" href="classStmtVisitor.html#a279d83c06a1a88a62bd175b8a883ce8c">StmtVisitor</a></li>
+<li>visitGroupingExpr()&#160;:&#160;<a class="el" href="classExprVisitor.html#a09b98dd33cbb696adebba7eaf4484699">ExprVisitor</a>, <a class="el" href="classInterpreter.html#a7b5f3d57eb7005391a5a2dac5ec58992">Interpreter</a></li>
+<li>visitIfStmt()&#160;:&#160;<a class="el" href="classInterpreter.html#a80268a968b6a5a75da2e4673e24ff558">Interpreter</a>, <a class="el" href="classStmtVisitor.html#aa79c4ee6e7ea194a91f187a3aa6b1ea1">StmtVisitor</a></li>
+<li>visitLiteralExpr()&#160;:&#160;<a class="el" href="classExprVisitor.html#a08572b07b9eca9e1d6ac51b87b2c1c7c">ExprVisitor</a>, <a class="el" href="classInterpreter.html#a6a58b8f48eb5b4cab12e7eb94a6d61f5">Interpreter</a></li>
+<li>visitLogicalExpr()&#160;:&#160;<a class="el" href="classExprVisitor.html#a05e60d13a4d3531a5659b6f1dff466c0">ExprVisitor</a>, <a class="el" href="classInterpreter.html#aea7d7d65fbb60f0eda75e3612f32c85b">Interpreter</a></li>
+<li>visitPrintStmt()&#160;:&#160;<a class="el" href="classInterpreter.html#a380ad71626df16c3165145401ff7f111">Interpreter</a>, <a class="el" href="classStmtVisitor.html#a8bc287a0d1a084a7821902eae24bbfa9">StmtVisitor</a></li>
+<li>visitUnaryExpr()&#160;:&#160;<a class="el" href="classExprVisitor.html#a12acb7dddbf9aab6bc0c40a588188a1e">ExprVisitor</a>, <a class="el" href="classInterpreter.html#a1879d1ab7a49f07f906209db0db5821d">Interpreter</a></li>
+<li>visitVariableExpr()&#160;:&#160;<a class="el" href="classExprVisitor.html#a7331df0a345f0fb755901fc1572f6aa2">ExprVisitor</a>, <a class="el" href="classInterpreter.html#a60684c29e5be185ec94eaa904931b5dc">Interpreter</a></li>
+<li>visitVarStmt()&#160;:&#160;<a class="el" href="classInterpreter.html#ae3f4197cd0eb1feb9fbf731e0a869d38">Interpreter</a>, <a class="el" href="classStmtVisitor.html#a9d10e7949ac83818ffb9ad466fa33754">StmtVisitor</a></li>
+<li>visitWhileStmt()&#160;:&#160;<a class="el" href="classInterpreter.html#a8a967d1d1b4f87001697f91b0418cb7f">Interpreter</a>, <a class="el" href="classStmtVisitor.html#a48d1d3d4a038e30868343a48f2f2fc92">StmtVisitor</a></li>
 </ul>
 
 
 <h3><a id="index_w" name="index_w"></a>- w -</h3><ul>
 <li>While()&#160;:&#160;<a class="el" href="classWhile.html#a1c9266289b8b4b31d469e7ecad4c5da1">While</a></li>
+<li>whileStatement()&#160;:&#160;<a class="el" href="classParser.html#ad272e80c86ddd7ffd12136744d095c76">Parser</a></li>
 </ul>
 
 
@@ -190,9 +272,12 @@ $(function() {
 <li>~StmtVisitor()&#160;:&#160;<a class="el" href="classStmtVisitor.html#ae29129715d730242bdccd414fdfdac34">StmtVisitor</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

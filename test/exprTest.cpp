@@ -109,3 +109,67 @@ TEST_CASE("Assign expression", "[expression][assign]") {
     CHECK(std::any_cast<int>(valueLiteral->getValue()) == 10);
   }
 }
+
+TEST_CASE("Logic expression", "[expression][logic]") {
+  // Literal true and false values
+  Token trueToken{TokenType::TRUE, "true", true, 1};
+  Token falseToken{TokenType::FALSE, "false", false, 2};
+
+  SECTION("And operator") {
+    Token op{TokenType::AND, "and", nullptr, 1};
+    std::shared_ptr<Literal> left =
+        std::make_shared<Literal>(trueToken.getLiteral());
+    std::shared_ptr<Literal> right =
+        std::make_shared<Literal>(falseToken.getLiteral());
+    std::shared_ptr<Logical> logicExpr =
+        std::make_shared<Logical>(left, op, right);
+
+    REQUIRE(std::dynamic_pointer_cast<Literal>(logicExpr->getLeft()) !=
+            nullptr);
+    std::shared_ptr<Literal> leftPtr =
+        std::dynamic_pointer_cast<Literal>(logicExpr->getLeft());
+    REQUIRE(leftPtr != nullptr);
+    REQUIRE(leftPtr->getValue().type() == typeid(bool));
+    CHECK(std::any_cast<bool>(leftPtr->getValue()) == true);
+
+    REQUIRE(std::dynamic_pointer_cast<Literal>(logicExpr->getRight()) !=
+            nullptr);
+    std::shared_ptr<Literal> rightPtr =
+        std::dynamic_pointer_cast<Literal>(logicExpr->getRight());
+    REQUIRE(rightPtr != nullptr);
+    REQUIRE(rightPtr->getValue().type() == typeid(bool));
+    CHECK(std::any_cast<bool>(rightPtr->getValue()) == false);
+
+    REQUIRE(typeid(logicExpr->getOp()) == typeid(Token));
+    CHECK(logicExpr->getOp().getType() == TokenType::AND);
+  }
+
+  SECTION("And operator") {
+    Token op{TokenType::OR, "or", nullptr, 1};
+    std::shared_ptr<Literal> left =
+        std::make_shared<Literal>(trueToken.getLiteral());
+    std::shared_ptr<Literal> right =
+        std::make_shared<Literal>(falseToken.getLiteral());
+    std::shared_ptr<Logical> logicExpr =
+        std::make_shared<Logical>(left, op, right);
+
+    REQUIRE(std::dynamic_pointer_cast<Literal>(logicExpr->getLeft()) !=
+            nullptr);
+    std::shared_ptr<Literal> leftPtr =
+        std::dynamic_pointer_cast<Literal>(logicExpr->getLeft());
+    REQUIRE(leftPtr != nullptr);
+    REQUIRE(leftPtr->getValue().type() == typeid(bool));
+    CHECK(std::any_cast<bool>(leftPtr->getValue()) == true);
+
+    REQUIRE(std::dynamic_pointer_cast<Literal>(logicExpr->getRight()) !=
+            nullptr);
+    std::shared_ptr<Literal> rightPtr =
+        std::dynamic_pointer_cast<Literal>(logicExpr->getRight());
+    REQUIRE(rightPtr != nullptr);
+    REQUIRE(rightPtr->getValue().type() == typeid(bool));
+    CHECK(std::any_cast<bool>(rightPtr->getValue()) == false);
+
+    REQUIRE(typeid(logicExpr->getOp()) == typeid(Token));
+    CHECK(logicExpr->getOp().getType() == TokenType::OR);
+  }
+}

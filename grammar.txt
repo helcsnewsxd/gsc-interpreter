@@ -4,17 +4,29 @@ declaration ::= varDecl | statement ;
 
 varDecl ::= "var" IDENTIFIER ("=" expression)? ";" ;
 
-statement ::= exprStatement | printStatement | block ;
+statement ::= exprStatement | printStatement | ifStatement
+            | whileStatement | forStatement | block ;
 
 exprStatement ::= expression ";" ;
 
 printStatement ::= "print" expression ";" ;
 
+ifStatement ::= "if" "(" expression ")" statement ("else" statement)? ;
+
+whileStatement ::= "while" "(" expression ")" statement ;
+
+forStatement ::= "for" "(" (varDecl | exprStatement | ";")
+                 expression? ";" expression? ")" statement ;
+
 block ::= '{' declaration* "}" ;
 
 expression ::= assignment ; 
 
-assignment ::= IDENTIFIER "=" assignment | equality ;
+assignment ::= IDENTIFIER "=" assignment | logicOr ;
+
+logicOr ::= logicAnd ( "or" logicAnd )* ;
+
+logicAnd ::= equality ( "and" equality )* ;
 
 equality ::= comparison ( ("!=" | "==") comparison )* ;
 

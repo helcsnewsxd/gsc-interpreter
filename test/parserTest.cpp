@@ -1117,3 +1117,46 @@ TEST_CASE("Parsing an if statement", "[parser][statement][if]") {
     CHECK(std::any_cast<int>(elseLiteralExpr->getValue()) == 2);
   }
 }
+
+TEST_CASE("Parsing while statement", "[parser][statement][while]") {
+  Token whileToken = {TokenType::WHILE, "while", nullptr, 1};
+  Token leftParenToken = {TokenType::LEFT_PAREN, "(", nullptr, 1};
+  Token rightParenToken = {TokenType::RIGHT_PAREN, ")", nullptr, 1};
+  Token trueToken = {TokenType::TRUE, "true", nullptr, 1};
+  Token oneNumToken = {TokenType::NUMBER, "1", 1, 1};
+  Token semicolonToken = {TokenType::SEMICOLON, ";", nullptr, 1};
+  Token EOFToken = {TokenType::END_OF_FILE, "", nullptr, 1};
+
+  std::vector<Token> tokens = {whileToken,      leftParenToken, trueToken,
+                               rightParenToken, oneNumToken,    semicolonToken,
+                               EOFToken};
+  Parser parser(tokens);
+
+  std::vector<std::shared_ptr<Stmt>> statements = parser.parse();
+  REQUIRE(statements.size() == 1);
+  REQUIRE(statements[0] != nullptr);
+  REQUIRE(std::dynamic_pointer_cast<While>(statements[0]) != nullptr);
+  std::shared_ptr<While> whileStmt =
+      std::dynamic_pointer_cast<While>(statements[0]);
+
+  REQUIRE(whileStmt->getCondition() != nullptr);
+  REQUIRE(std::dynamic_pointer_cast<Literal>(whileStmt->getCondition()) !=
+          nullptr);
+  std::shared_ptr<Literal> conditionLiteral =
+      std::dynamic_pointer_cast<Literal>(whileStmt->getCondition());
+  REQUIRE(conditionLiteral->getValue().type() == typeid(bool));
+  CHECK(std::any_cast<bool>(conditionLiteral->getValue()) == true);
+
+  REQUIRE(whileStmt->getBody() != nullptr);
+  REQUIRE(std::dynamic_pointer_cast<Expression>(whileStmt->getBody()) !=
+          nullptr);
+  std::shared_ptr<Expression> bodyExprStmt =
+      std::dynamic_pointer_cast<Expression>(whileStmt->getBody());
+  REQUIRE(bodyExprStmt->getExpression() != nullptr);
+  REQUIRE(std::dynamic_pointer_cast<Literal>(bodyExprStmt->getExpression()) !=
+          nullptr);
+  std::shared_ptr<Literal> bodyLiteralExpr =
+      std::dynamic_pointer_cast<Literal>(bodyExprStmt->getExpression());
+  REQUIRE(bodyLiteralExpr->getValue().type() == typeid(int));
+  CHECK(std::any_cast<int>(bodyLiteralExpr->getValue()) == 1);
+}

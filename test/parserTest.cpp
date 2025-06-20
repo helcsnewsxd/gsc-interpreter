@@ -761,3 +761,180 @@ TEST_CASE("Parse equality expression", "[parser][expression][equality]") {
     CHECK(std::any_cast<int>(rightLiteral->getValue()) == 2);
   }
 }
+
+TEST_CASE("Parsing statements (2 or more)", "[parser][statement][multiple]") {
+  Token oneNumToken = {TokenType::NUMBER, "1", 1, 1};
+  Token twoNumToken = {TokenType::NUMBER, "2", 2, 1};
+  Token threeNumToken = {TokenType::NUMBER, "3", 3, 1};
+  Token plusToken = {TokenType::PLUS, "+", nullptr, 1};
+  Token semicolonToken = {TokenType::SEMICOLON, ";", nullptr, 1};
+  Token EOFToken = {TokenType::END_OF_FILE, "", nullptr, 1};
+
+  std::vector<Token> tokens = {oneNumToken,    plusToken,      twoNumToken,
+                               semicolonToken, threeNumToken,  plusToken,
+                               oneNumToken,    semicolonToken, EOFToken};
+  Parser parser(tokens);
+
+  std::vector<std::shared_ptr<Stmt>> statements = parser.parse();
+  REQUIRE(statements.size() == 2);
+  for (int i = 0; i < 2; i++) {
+    REQUIRE(statements[i] != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<Expression>(statements[i]) != nullptr);
+    std::shared_ptr<Expression> exprStmt =
+        std::dynamic_pointer_cast<Expression>(statements[i]);
+    REQUIRE(exprStmt->getExpression() != nullptr);
+    std::shared_ptr<Expr> expr =
+        std::dynamic_pointer_cast<Expr>(exprStmt->getExpression());
+    REQUIRE(std::dynamic_pointer_cast<Binary>(expr) != nullptr);
+    std::shared_ptr<Binary> binaryExpr =
+        std::dynamic_pointer_cast<Binary>(expr);
+    CHECK(binaryExpr->getOp().getType() == TokenType::PLUS);
+
+    REQUIRE(binaryExpr->getLeft() != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<Literal>(binaryExpr->getLeft()) !=
+            nullptr);
+    std::shared_ptr<Literal> leftLiteral =
+        std::dynamic_pointer_cast<Literal>(binaryExpr->getLeft());
+    REQUIRE(leftLiteral->getValue().type() == typeid(int));
+    CHECK(std::any_cast<int>(leftLiteral->getValue()) == (i == 0 ? 1 : 3));
+
+    REQUIRE(binaryExpr->getRight() != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<Literal>(binaryExpr->getRight()) !=
+            nullptr);
+    std::shared_ptr<Literal> rightLiteral =
+        std::dynamic_pointer_cast<Literal>(binaryExpr->getRight());
+    REQUIRE(rightLiteral->getValue().type() == typeid(int));
+    CHECK(std::any_cast<int>(rightLiteral->getValue()) == (i == 0 ? 2 : 1));
+  }
+}
+
+TEST_CASE("Parsing print statement", "[parser][statement][print]") {
+  Token oneNumToken = {TokenType::NUMBER, "1", 1, 1};
+  Token printToken = {TokenType::PRINT, "print", nullptr, 1};
+  Token semicolonToken = {TokenType::SEMICOLON, ";", nullptr, 1};
+  Token EOFToken = {TokenType::END_OF_FILE, "", nullptr, 1};
+
+  std::vector<Token> tokens = {printToken, oneNumToken, semicolonToken,
+                               EOFToken};
+  Parser parser(tokens);
+
+  std::vector<std::shared_ptr<Stmt>> statements = parser.parse();
+  REQUIRE(statements.size() == 1);
+  REQUIRE(statements[0] != nullptr);
+  REQUIRE(std::dynamic_pointer_cast<Print>(statements[0]) != nullptr);
+  std::shared_ptr<Print> printStmt =
+      std::dynamic_pointer_cast<Print>(statements[0]);
+  REQUIRE(printStmt->getExpression() != nullptr);
+  std::shared_ptr<Expr> expr =
+      std::dynamic_pointer_cast<Expr>(printStmt->getExpression());
+  REQUIRE(std::dynamic_pointer_cast<Literal>(expr) != nullptr);
+  std::shared_ptr<Literal> literalExpr =
+      std::dynamic_pointer_cast<Literal>(expr);
+  REQUIRE(literalExpr->getValue().type() == typeid(int));
+  CHECK(std::any_cast<int>(literalExpr->getValue()) == 1);
+}
+
+TEST_CASE("Parsing block statements", "[oaser][statement][block]") {
+  Token oneNumToken = {TokenType::NUMBER, "1", 1, 1};
+  Token twoNumToken = {TokenType::NUMBER, "2", 2, 1};
+  Token lbraceToken = {TokenType::LEFT_BRACE, "{", nullptr, 1};
+  Token rbraceToken = {TokenType::RIGHT_BRACE, "}", nullptr, 1};
+  Token semicolonToken = {TokenType::SEMICOLON, ";", nullptr, 1};
+  Token EOFToken = {TokenType::END_OF_FILE, "", nullptr, 1};
+
+  std::vector<Token> tokens = {oneNumToken, semicolonToken, lbraceToken,
+                               twoNumToken, semicolonToken, rbraceToken,
+                               EOFToken};
+  Parser parser(tokens);
+
+  std::vector<std::shared_ptr<Stmt>> statements = parser.parse();
+  REQUIRE(statements.size() == 2);
+
+  REQUIRE(statements[0] != nullptr);
+  REQUIRE(std::dynamic_pointer_cast<Expression>(statements[0]) != nullptr);
+  std::shared_ptr<Expression> exprStmt =
+      std::dynamic_pointer_cast<Expression>(statements[0]);
+  REQUIRE(exprStmt->getExpression() != nullptr);
+  std::shared_ptr<Expr> expr =
+      std::dynamic_pointer_cast<Expr>(exprStmt->getExpression());
+  REQUIRE(std::dynamic_pointer_cast<Literal>(expr) != nullptr);
+  std::shared_ptr<Literal> literalExpr =
+      std::dynamic_pointer_cast<Literal>(expr);
+  REQUIRE(literalExpr->getValue().type() == typeid(int));
+  CHECK(std::any_cast<int>(literalExpr->getValue()) == 1);
+
+  REQUIRE(statements[1] != nullptr);
+  REQUIRE(std::dynamic_pointer_cast<Block>(statements[1]) != nullptr);
+  std::shared_ptr<Block> blockStmt =
+      std::dynamic_pointer_cast<Block>(statements[1]);
+  REQUIRE(blockStmt->getStatements().size() == 1);
+  std::shared_ptr<Stmt> blockInnerStmt = blockStmt->getStatements()[0];
+  REQUIRE(blockInnerStmt != nullptr);
+  REQUIRE(std::dynamic_pointer_cast<Expression>(blockInnerStmt) != nullptr);
+  std::shared_ptr<Expression> blockExprStmt =
+      std::dynamic_pointer_cast<Expression>(blockInnerStmt);
+  REQUIRE(blockExprStmt->getExpression() != nullptr);
+  std::shared_ptr<Expr> blockExpr =
+      std::dynamic_pointer_cast<Expr>(blockExprStmt->getExpression());
+  REQUIRE(std::dynamic_pointer_cast<Literal>(blockExpr) != nullptr);
+  std::shared_ptr<Literal> blockLiteralExpr =
+      std::dynamic_pointer_cast<Literal>(blockExpr);
+  REQUIRE(blockLiteralExpr->getValue().type() == typeid(int));
+  CHECK(std::any_cast<int>(blockLiteralExpr->getValue()) == 2);
+}
+
+TEST_CASE("Parsing declaring statements", "[parser][statement][declare]") {
+  Token varToken = {TokenType::VAR, "var", nullptr, 1};
+  Token identifierToken = {TokenType::IDENTIFIER, "x", nullptr, 1};
+  Token equalToken = {TokenType::EQUAL, "=", nullptr, 1};
+  Token oneNumToken = {TokenType::NUMBER, "1", 1, 1};
+  Token semicolonToken = {TokenType::SEMICOLON, ";", nullptr, 1};
+  Token EOFToken = {TokenType::END_OF_FILE, "", nullptr, 1};
+
+  SECTION("Declare a variable without value") {
+    std::vector<Token> tokens = {varToken, identifierToken, semicolonToken,
+                                 EOFToken};
+    Parser parser(tokens);
+
+    std::vector<std::shared_ptr<Stmt>> statements = parser.parse();
+    REQUIRE(statements.size() == 1);
+    REQUIRE(statements[0] != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<Var>(statements[0]) != nullptr);
+    std::shared_ptr<Var> varStmt =
+        std::dynamic_pointer_cast<Var>(statements[0]);
+
+    REQUIRE(varStmt->getName().getType() == TokenType::IDENTIFIER);
+    std::string varName = varStmt->getName().getLexeme();
+    CHECK(varName == "x");
+
+    REQUIRE(varStmt->getInitializer() == nullptr);
+  }
+
+  SECTION("Declare a variable with value") {
+    std::vector<Token> tokens = {varToken,    identifierToken, equalToken,
+                                 oneNumToken, semicolonToken,  EOFToken};
+    Parser parser(tokens);
+
+    std::vector<std::shared_ptr<Stmt>> statements = parser.parse();
+    REQUIRE(statements.size() == 1);
+    REQUIRE(statements[0] != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<Var>(statements[0]) != nullptr);
+    std::shared_ptr<Var> varStmt =
+        std::dynamic_pointer_cast<Var>(statements[0]);
+
+    REQUIRE(varStmt->getName().getType() == TokenType::IDENTIFIER);
+    std::string varName = varStmt->getName().getLexeme();
+    CHECK(varName == "x");
+
+    REQUIRE(varStmt->getInitializer() != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<Expr>(varStmt->getInitializer()) !=
+            nullptr);
+    std::shared_ptr<Expr> initializerExpr =
+        std::dynamic_pointer_cast<Expr>(varStmt->getInitializer());
+    REQUIRE(std::dynamic_pointer_cast<Literal>(initializerExpr) != nullptr);
+    std::shared_ptr<Literal> literalExpr =
+        std::dynamic_pointer_cast<Literal>(initializerExpr);
+    REQUIRE(literalExpr->getValue().type() == typeid(int));
+    CHECK(std::any_cast<int>(literalExpr->getValue()) == 1);
+  }
+}

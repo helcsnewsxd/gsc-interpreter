@@ -606,3 +606,95 @@ TEST_CASE("Interpreting logical short-circuit operators",
   // Restore the original cout buffer
   std::cout.rdbuf(oldCout);
 }
+
+TEST_CASE("Interpreting if-else statement", "[interpreter][statement][if]") {
+  Token trueToken(TokenType::TRUE, "true", true, 1);
+  Token falseToken(TokenType::FALSE, "false", false, 1);
+  Token intToken(TokenType::NUMBER, "42", 42, 1);
+  Token stringToken(TokenType::STRING, "Hello, World!", "Hello, World!", 1);
+
+  // Redirect output to a string stream
+  std::ostringstream oss;
+  auto oldCout = std::cout.rdbuf(oss.rdbuf());
+
+  SECTION("If (alone) case with true condition") {
+    // If(true) print 42;
+    std::shared_ptr<Literal> conditionExpr =
+        std::make_shared<Literal>(trueToken.getLiteral());
+    std::shared_ptr<Expr> condition = conditionExpr;
+    std::shared_ptr<Literal> thenExpr =
+        std::make_shared<Literal>(intToken.getLiteral());
+    std::shared_ptr<Expr> thenBranch = thenExpr;
+    std::shared_ptr<Print> printThen = std::make_shared<Print>(thenBranch);
+    std::shared_ptr<Stmt> thenStmt = printThen;
+    std::shared_ptr<If> ifStmt =
+        std::make_shared<If>(condition, thenStmt, nullptr);
+
+    Interpreter().interpret({ifStmt});
+    CHECK(oss.str() == "42\n");
+  }
+
+  SECTION("If (alone) case with false condition") {
+    // If(false) print 42;
+    std::shared_ptr<Literal> conditionExpr =
+        std::make_shared<Literal>(falseToken.getLiteral());
+    std::shared_ptr<Expr> condition = conditionExpr;
+    std::shared_ptr<Literal> thenExpr =
+        std::make_shared<Literal>(intToken.getLiteral());
+    std::shared_ptr<Expr> thenBranch = thenExpr;
+    std::shared_ptr<Print> printThen = std::make_shared<Print>(thenBranch);
+    std::shared_ptr<Stmt> thenStmt = printThen;
+    std::shared_ptr<If> ifStmt =
+        std::make_shared<If>(condition, thenStmt, nullptr);
+
+    Interpreter().interpret({ifStmt});
+    CHECK(oss.str() == "");
+  }
+
+  SECTION("If-else case with true condition") {
+    // If(true) print 42; else print "Hello, World!";
+    std::shared_ptr<Literal> conditionExpr =
+        std::make_shared<Literal>(trueToken.getLiteral());
+    std::shared_ptr<Expr> condition = conditionExpr;
+    std::shared_ptr<Literal> thenExpr =
+        std::make_shared<Literal>(intToken.getLiteral());
+    std::shared_ptr<Expr> thenBranch = thenExpr;
+    std::shared_ptr<Print> printThen = std::make_shared<Print>(thenBranch);
+    std::shared_ptr<Stmt> thenStmt = printThen;
+    std::shared_ptr<Literal> elseExpr =
+        std::make_shared<Literal>(stringToken.getLiteral());
+    std::shared_ptr<Expr> elseBranch = elseExpr;
+    std::shared_ptr<Print> printElse = std::make_shared<Print>(elseBranch);
+    std::shared_ptr<Stmt> elseStmt = printElse;
+    std::shared_ptr<If> ifStmt =
+        std::make_shared<If>(condition, thenStmt, elseStmt);
+
+    Interpreter().interpret({ifStmt});
+    CHECK(oss.str() == "42\n");
+  }
+
+  SECTION("If-else case with false condition") {
+    // If(false) print 42; else print "Hello, World!";
+    std::shared_ptr<Literal> conditionExpr =
+        std::make_shared<Literal>(falseToken.getLiteral());
+    std::shared_ptr<Expr> condition = conditionExpr;
+    std::shared_ptr<Literal> thenExpr =
+        std::make_shared<Literal>(intToken.getLiteral());
+    std::shared_ptr<Expr> thenBranch = thenExpr;
+    std::shared_ptr<Print> printThen = std::make_shared<Print>(thenBranch);
+    std::shared_ptr<Stmt> thenStmt = printThen;
+    std::shared_ptr<Literal> elseExpr =
+        std::make_shared<Literal>(stringToken.getLiteral());
+    std::shared_ptr<Expr> elseBranch = elseExpr;
+    std::shared_ptr<Print> printElse = std::make_shared<Print>(elseBranch);
+    std::shared_ptr<Stmt> elseStmt = printElse;
+    std::shared_ptr<If> ifStmt =
+        std::make_shared<If>(condition, thenStmt, elseStmt);
+
+    Interpreter().interpret({ifStmt});
+    CHECK(oss.str() == "Hello, World!\n");
+  }
+
+  // Restore the original cout buffer
+  std::cout.rdbuf(oldCout);
+}

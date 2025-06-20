@@ -209,6 +209,16 @@ std::any Interpreter::visitPrintStmt(std::shared_ptr<Print> stmt) {
   return {};
 }
 
+std::any Interpreter::visitIfStmt(std::shared_ptr<If> stmt) {
+  std::any condition = evaluate(stmt->getCondition());
+  if (isTruthy(condition)) {
+    execute(stmt->getThenBranch());
+  } else if (stmt->getElseBranch()) {
+    execute(stmt->getElseBranch());
+  }
+  return {};
+}
+
 std::any Interpreter::visitVarStmt(std::shared_ptr<Var> stmt) {
   std::any value = nullptr;
   if (stmt->getInitializer()) {

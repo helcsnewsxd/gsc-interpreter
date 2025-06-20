@@ -119,3 +119,40 @@ TEST_CASE("If statement", "[statement][if]") {
   REQUIRE(elseLiteral->getValue().type() == typeid(int));
   CHECK(std::any_cast<int>(elseLiteral->getValue()) == 0);
 }
+
+TEST_CASE("While statement", "[statement][while]") {
+  std::shared_ptr<Expr> condition = std::make_shared<Literal>(true);
+  std::shared_ptr<Stmt> body =
+      std::make_shared<Expression>(std::make_shared<Literal>(1));
+  std::shared_ptr<While> whileStmt = std::make_shared<While>(condition, body);
+  std::shared_ptr<Stmt> stmt = std::dynamic_pointer_cast<Stmt>(whileStmt);
+
+  REQUIRE(stmt != nullptr);
+  REQUIRE(std::dynamic_pointer_cast<While>(stmt) != nullptr);
+  std::shared_ptr<While> whileStatement =
+      std::dynamic_pointer_cast<While>(stmt);
+
+  REQUIRE(whileStatement->getCondition() != nullptr);
+  REQUIRE(std::dynamic_pointer_cast<Literal>(whileStatement->getCondition()) !=
+          nullptr);
+  std::shared_ptr<Literal> literalCondition =
+      std::dynamic_pointer_cast<Literal>(whileStatement->getCondition());
+  REQUIRE(literalCondition->getValue().type() == typeid(bool));
+  CHECK(std::any_cast<bool>(literalCondition->getValue()) == true);
+
+  REQUIRE(whileStatement->getBody() != nullptr);
+  REQUIRE(std::dynamic_pointer_cast<Stmt>(whileStatement->getBody()) !=
+          nullptr);
+  std::shared_ptr<Stmt> bodyExpr =
+      std::dynamic_pointer_cast<Stmt>(whileStatement->getBody());
+  REQUIRE(std::dynamic_pointer_cast<Expression>(bodyExpr) != nullptr);
+  std::shared_ptr<Expression> bodyExpression =
+      std::dynamic_pointer_cast<Expression>(bodyExpr);
+  REQUIRE(bodyExpression->getExpression() != nullptr);
+  REQUIRE(std::dynamic_pointer_cast<Literal>(bodyExpression->getExpression()) !=
+          nullptr);
+  std::shared_ptr<Literal> bodyLiteral =
+      std::dynamic_pointer_cast<Literal>(bodyExpression->getExpression());
+  REQUIRE(bodyLiteral->getValue().type() == typeid(int));
+  CHECK(std::any_cast<int>(bodyLiteral->getValue()) == 1);
+}

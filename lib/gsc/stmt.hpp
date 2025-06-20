@@ -10,6 +10,7 @@ class Expression;
 class Print;
 class Var;
 class If;
+class While;
 
 /** @class StmtVisitor
  * @brief Abstract base class for statement visitors.
@@ -24,6 +25,7 @@ public:
   virtual std::any visitPrintStmt(std::shared_ptr<Print> stmt) = 0;
   virtual std::any visitVarStmt(std::shared_ptr<Var> stmt) = 0;
   virtual std::any visitIfStmt(std::shared_ptr<If> stmt) = 0;
+  virtual std::any visitWhileStmt(std::shared_ptr<While> stmt) = 0;
 
   virtual ~StmtVisitor() = default;
 };
@@ -153,4 +155,23 @@ public:
   std::shared_ptr<Stmt> getThenBranch() const { return thenBranch; }
 
   std::shared_ptr<Stmt> getElseBranch() const { return elseBranch; }
+};
+
+class While : public Stmt, public std::enable_shared_from_this<While> {
+private:
+  const std::shared_ptr<Expr> condition;
+  const std::shared_ptr<Stmt> body;
+
+public:
+  While(const std::shared_ptr<Expr> &condition,
+        const std::shared_ptr<Stmt> &body)
+      : condition(std::move(condition)), body(std::move(body)) {}
+
+  std::any accept(StmtVisitor &visitor) override {
+    return visitor.visitWhileStmt(shared_from_this());
+  }
+
+  std::shared_ptr<Expr> getCondition() const { return condition; }
+
+  std::shared_ptr<Stmt> getBody() const { return body; }
 };

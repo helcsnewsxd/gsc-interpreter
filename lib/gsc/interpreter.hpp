@@ -24,6 +24,7 @@ private:
                     std::shared_ptr<Environment> environment);
 
   std::any visitBinaryExpr(std::shared_ptr<Binary> expr) override;
+  std::any visitLogicalExpr(std::shared_ptr<Logical> expr) override;
   std::any visitGroupingExpr(std::shared_ptr<Grouping> expr) override;
   std::any visitLiteralExpr(std::shared_ptr<Literal> expr) override;
   std::any visitUnaryExpr(std::shared_ptr<Unary> expr) override;
@@ -32,6 +33,8 @@ private:
   std::any visitBlockStmt(std::shared_ptr<Block> stmt) override;
   std::any visitExpressionStmt(std::shared_ptr<Expression> stmt) override;
   std::any visitPrintStmt(std::shared_ptr<Print> stmt) override;
+  std::any visitIfStmt(std::shared_ptr<If> stmt) override;
+  std::any visitWhileStmt(std::shared_ptr<While> stmt) override;
   std::any visitVarStmt(std::shared_ptr<Var> stmt) override;
 
   template <class... N>

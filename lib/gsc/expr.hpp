@@ -10,6 +10,7 @@ class Literal;
 class Unary;
 class Assign;
 class Variable;
+class Logical;
 
 /** @class ExprVisitor
  * @brief Abstract base class for expression visitors.
@@ -25,6 +26,7 @@ public:
   virtual std::any visitUnaryExpr(std::shared_ptr<Unary> expr) = 0;
   virtual std::any visitAssignExpr(std::shared_ptr<Assign> expr) = 0;
   virtual std::any visitVariableExpr(std::shared_ptr<Variable> expr) = 0;
+  virtual std::any visitLogicalExpr(std::shared_ptr<Logical> expr) = 0;
 
   virtual ~ExprVisitor() = default;
 };
@@ -177,4 +179,32 @@ public:
   }
 
   Token getName() const { return name; }
+};
+
+/** @class Logical
+ * @brief Class representing a logical expression.
+ *
+ * This class represents a logical expression in the AST, which consists of a
+ * left operand, an operator, and a right operand. It inherits from the Expr
+ * class and implements the accept method for visitor pattern.
+ */
+class Logical : public Expr, public std::enable_shared_from_this<Logical> {
+private:
+  const std::shared_ptr<Expr> left;
+  const Token op;
+  const std::shared_ptr<Expr> right;
+
+public:
+  Logical(std::shared_ptr<Expr> left, Token op, std::shared_ptr<Expr> right)
+      : left(std::move(left)), op(std::move(op)), right(std::move(right)) {}
+
+  std::any accept(ExprVisitor &visitor) override {
+    return visitor.visitLogicalExpr(shared_from_this());
+  }
+
+  std::shared_ptr<Expr> getLeft() const { return left; }
+
+  std::shared_ptr<Expr> getRight() const { return right; }
+
+  Token getOp() const { return op; }
 };

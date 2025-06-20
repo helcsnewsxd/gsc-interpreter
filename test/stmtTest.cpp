@@ -70,3 +70,89 @@ TEST_CASE("Block statement", "[statement][block]") {
       std::dynamic_pointer_cast<Block>(stmt);
   REQUIRE(blockStatement->getStatements().size() == 2);
 }
+
+TEST_CASE("If statement", "[statement][if]") {
+  std::shared_ptr<Expr> condition = std::make_shared<Literal>(true);
+  std::shared_ptr<Stmt> thenBranch =
+      std::make_shared<Expression>(std::make_shared<Literal>(42));
+  std::shared_ptr<Stmt> elseBranch =
+      std::make_shared<Expression>(std::make_shared<Literal>(0));
+  std::shared_ptr<If> ifStmt =
+      std::make_shared<If>(condition, thenBranch, elseBranch);
+  std::shared_ptr<Stmt> stmt = std::dynamic_pointer_cast<Stmt>(ifStmt);
+
+  REQUIRE(stmt != nullptr);
+  REQUIRE(std::dynamic_pointer_cast<If>(stmt) != nullptr);
+  std::shared_ptr<If> ifStatement = std::dynamic_pointer_cast<If>(stmt);
+
+  REQUIRE(ifStatement->getCondition() != nullptr);
+  REQUIRE(std::dynamic_pointer_cast<Literal>(ifStatement->getCondition()) !=
+          nullptr);
+  std::shared_ptr<Literal> literalCondition =
+      std::dynamic_pointer_cast<Literal>(ifStatement->getCondition());
+  REQUIRE(literalCondition->getValue().type() == typeid(bool));
+  CHECK(std::any_cast<bool>(literalCondition->getValue()) == true);
+
+  REQUIRE(ifStatement->getThenBranch() != nullptr);
+  REQUIRE(std::dynamic_pointer_cast<Expression>(ifStatement->getThenBranch()) !=
+          nullptr);
+  std::shared_ptr<Expression> thenExpr =
+      std::dynamic_pointer_cast<Expression>(ifStatement->getThenBranch());
+  REQUIRE(thenExpr->getExpression() != nullptr);
+  REQUIRE(std::dynamic_pointer_cast<Literal>(thenExpr->getExpression()) !=
+          nullptr);
+  std::shared_ptr<Literal> thenLiteral =
+      std::dynamic_pointer_cast<Literal>(thenExpr->getExpression());
+  REQUIRE(thenLiteral->getValue().type() == typeid(int));
+  CHECK(std::any_cast<int>(thenLiteral->getValue()) == 42);
+
+  REQUIRE(ifStatement->getElseBranch() != nullptr);
+  REQUIRE(std::dynamic_pointer_cast<Expression>(ifStatement->getElseBranch()) !=
+          nullptr);
+  std::shared_ptr<Expression> elseExpr =
+      std::dynamic_pointer_cast<Expression>(ifStatement->getElseBranch());
+  REQUIRE(elseExpr->getExpression() != nullptr);
+  REQUIRE(std::dynamic_pointer_cast<Literal>(elseExpr->getExpression()) !=
+          nullptr);
+  std::shared_ptr<Literal> elseLiteral =
+      std::dynamic_pointer_cast<Literal>(elseExpr->getExpression());
+  REQUIRE(elseLiteral->getValue().type() == typeid(int));
+  CHECK(std::any_cast<int>(elseLiteral->getValue()) == 0);
+}
+
+TEST_CASE("While statement", "[statement][while]") {
+  std::shared_ptr<Expr> condition = std::make_shared<Literal>(true);
+  std::shared_ptr<Stmt> body =
+      std::make_shared<Expression>(std::make_shared<Literal>(1));
+  std::shared_ptr<While> whileStmt = std::make_shared<While>(condition, body);
+  std::shared_ptr<Stmt> stmt = std::dynamic_pointer_cast<Stmt>(whileStmt);
+
+  REQUIRE(stmt != nullptr);
+  REQUIRE(std::dynamic_pointer_cast<While>(stmt) != nullptr);
+  std::shared_ptr<While> whileStatement =
+      std::dynamic_pointer_cast<While>(stmt);
+
+  REQUIRE(whileStatement->getCondition() != nullptr);
+  REQUIRE(std::dynamic_pointer_cast<Literal>(whileStatement->getCondition()) !=
+          nullptr);
+  std::shared_ptr<Literal> literalCondition =
+      std::dynamic_pointer_cast<Literal>(whileStatement->getCondition());
+  REQUIRE(literalCondition->getValue().type() == typeid(bool));
+  CHECK(std::any_cast<bool>(literalCondition->getValue()) == true);
+
+  REQUIRE(whileStatement->getBody() != nullptr);
+  REQUIRE(std::dynamic_pointer_cast<Stmt>(whileStatement->getBody()) !=
+          nullptr);
+  std::shared_ptr<Stmt> bodyExpr =
+      std::dynamic_pointer_cast<Stmt>(whileStatement->getBody());
+  REQUIRE(std::dynamic_pointer_cast<Expression>(bodyExpr) != nullptr);
+  std::shared_ptr<Expression> bodyExpression =
+      std::dynamic_pointer_cast<Expression>(bodyExpr);
+  REQUIRE(bodyExpression->getExpression() != nullptr);
+  REQUIRE(std::dynamic_pointer_cast<Literal>(bodyExpression->getExpression()) !=
+          nullptr);
+  std::shared_ptr<Literal> bodyLiteral =
+      std::dynamic_pointer_cast<Literal>(bodyExpression->getExpression());
+  REQUIRE(bodyLiteral->getValue().type() == typeid(int));
+  CHECK(std::any_cast<int>(bodyLiteral->getValue()) == 1);
+}

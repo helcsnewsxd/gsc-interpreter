@@ -9,6 +9,8 @@ class Block;
 class Expression;
 class Print;
 class Var;
+class If;
+class While;
 
 /** @class StmtVisitor
  * @brief Abstract base class for statement visitors.
@@ -22,6 +24,8 @@ public:
   virtual std::any visitExpressionStmt(std::shared_ptr<Expression> expr) = 0;
   virtual std::any visitPrintStmt(std::shared_ptr<Print> stmt) = 0;
   virtual std::any visitVarStmt(std::shared_ptr<Var> stmt) = 0;
+  virtual std::any visitIfStmt(std::shared_ptr<If> stmt) = 0;
+  virtual std::any visitWhileStmt(std::shared_ptr<While> stmt) = 0;
 
   virtual ~StmtVisitor() = default;
 };
@@ -121,4 +125,53 @@ public:
   Token getName() const { return name; }
 
   std::shared_ptr<Expr> getInitializer() const { return initializer; }
+};
+
+/** @class If
+ * @brief Represents an if statement.
+ *
+ * @note This class holds the condition expression, the then branch, and the
+ * else branch, allowing visiting it.
+ */
+class If : public Stmt, public std::enable_shared_from_this<If> {
+private:
+  const std::shared_ptr<Expr> condition;
+  const std::shared_ptr<Stmt> thenBranch;
+  const std::shared_ptr<Stmt> elseBranch;
+
+public:
+  If(const std::shared_ptr<Expr> &condition,
+     const std::shared_ptr<Stmt> &thenBranch,
+     const std::shared_ptr<Stmt> &elseBranch)
+      : condition(std::move(condition)), thenBranch(std::move(thenBranch)),
+        elseBranch(std::move(elseBranch)) {}
+
+  std::any accept(StmtVisitor &visitor) override {
+    return visitor.visitIfStmt(shared_from_this());
+  }
+
+  std::shared_ptr<Expr> getCondition() const { return condition; }
+
+  std::shared_ptr<Stmt> getThenBranch() const { return thenBranch; }
+
+  std::shared_ptr<Stmt> getElseBranch() const { return elseBranch; }
+};
+
+class While : public Stmt, public std::enable_shared_from_this<While> {
+private:
+  const std::shared_ptr<Expr> condition;
+  const std::shared_ptr<Stmt> body;
+
+public:
+  While(const std::shared_ptr<Expr> &condition,
+        const std::shared_ptr<Stmt> &body)
+      : condition(std::move(condition)), body(std::move(body)) {}
+
+  std::any accept(StmtVisitor &visitor) override {
+    return visitor.visitWhileStmt(shared_from_this());
+  }
+
+  std::shared_ptr<Expr> getCondition() const { return condition; }
+
+  std::shared_ptr<Stmt> getBody() const { return body; }
 };

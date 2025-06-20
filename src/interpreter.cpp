@@ -169,6 +169,19 @@ std::any Interpreter::visitBinaryExpr(std::shared_ptr<Binary> expr) {
   }
 }
 
+std::any Interpreter::visitLogicalExpr(std::shared_ptr<Logical> expr) {
+  std::any left = evaluate(expr->getLeft());
+  Token op = expr->getOp();
+
+  // Short-circuit evaluation
+  if ((op.getType() == TokenType::OR && isTruthy(left)) ||
+      (op.getType() == TokenType::AND && !isTruthy(left))) {
+    return left;
+  }
+
+  return evaluate(expr->getRight());
+}
+
 std::any Interpreter::visitAssignExpr(std::shared_ptr<Assign> expr) {
   std::any value = evaluate(expr->getValue());
   environment->assign(expr->getName(), value);
@@ -193,6 +206,23 @@ std::any Interpreter::visitExpressionStmt(std::shared_ptr<Expression> stmt) {
 std::any Interpreter::visitPrintStmt(std::shared_ptr<Print> stmt) {
   std::any value = evaluate(stmt->getExpression());
   std::cout << stringify(value) << std::endl;
+  return {};
+}
+
+std::any Interpreter::visitIfStmt(std::shared_ptr<If> stmt) {
+  std::any condition = evaluate(stmt->getCondition());
+  if (isTruthy(condition)) {
+    execute(stmt->getThenBranch());
+  } else if (stmt->getElseBranch()) {
+    execute(stmt->getElseBranch());
+  }
+  return {};
+}
+
+std::any Interpreter::visitWhileStmt(std::shared_ptr<While> stmt) {
+  while (isTruthy(evaluate(stmt->getCondition()))) {
+    execute(stmt->getBody());
+  }
   return {};
 }
 

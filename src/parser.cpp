@@ -31,6 +31,8 @@ std::shared_ptr<Stmt> Parser::statement() {
     return ifStatement();
   else if (match(TokenType::WHILE))
     return whileStatement();
+  else if (match(TokenType::FOR))
+    return forStatement();
   else if (match(TokenType::LEFT_BRACE))
     return std::make_shared<Block>(block());
   else
@@ -62,6 +64,41 @@ std::shared_ptr<Stmt> Parser::whileStatement() {
 
   std::shared_ptr<Stmt> body = statement();
   return std::make_shared<While>(condition, body);
+}
+
+std::shared_ptr<Stmt> Parser::forStatement() {
+  consume(TokenType::LEFT_PAREN, "Expect '(' after 'for'.");
+
+  std::shared_ptr<Stmt> initializer =
+      match(TokenType::SEMICOLON)
+          ? nullptr
+          : (match(VAR) ? varDeclaration() : expressionStatement());
+
+  std::shared_ptr<Expr> condition =
+      check(TokenType::SEMICOLON) ? nullptr : expression();
+  consume(SEMICOLON, "Expect ';' after loop condition.");
+
+  std::shared_ptr<Expr> increment =
+      check(TokenType::RIGHT_PAREN) ? nullptr : expression();
+  consume(TokenType::RIGHT_PAREN, "Expect ')' after for parameters.");
+
+  std::shared_ptr<Stmt> body = statement();
+
+  // Desugaring for statement
+  if (increment)
+    body = std::make_shared<Block>(std::vector<std::shared_ptr<Stmt>>{
+        body, std::make_shared<Expression>(increment)});
+
+  if (condition == nullptr)
+    condition = std::make_shared<Literal>(true);
+
+  body = std::make_shared<While>(condition, body);
+
+  if (initializer)
+    body = std::make_shared<Block>(
+        std::vector<std::shared_ptr<Stmt>>{initializer, body});
+
+  return body;
 }
 
 std::shared_ptr<Stmt> Parser::varDeclaration() {

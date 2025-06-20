@@ -169,6 +169,19 @@ std::any Interpreter::visitBinaryExpr(std::shared_ptr<Binary> expr) {
   }
 }
 
+std::any Interpreter::visitLogicalExpr(std::shared_ptr<Logical> expr) {
+  std::any left = evaluate(expr->getLeft());
+  Token op = expr->getOp();
+
+  // Short-circuit evaluation
+  if ((op.getType() == TokenType::OR && isTruthy(left)) ||
+      (op.getType() == TokenType::AND && !isTruthy(left))) {
+    return left;
+  }
+
+  return evaluate(expr->getRight());
+}
+
 std::any Interpreter::visitAssignExpr(std::shared_ptr<Assign> expr) {
   std::any value = evaluate(expr->getValue());
   environment->assign(expr->getName(), value);

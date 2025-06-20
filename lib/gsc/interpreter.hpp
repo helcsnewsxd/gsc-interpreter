@@ -24,6 +24,7 @@ private:
                     std::shared_ptr<Environment> environment);
 
   std::any visitBinaryExpr(std::shared_ptr<Binary> expr) override;
+  std::any visitLogicalExpr(std::shared_ptr<Logical> expr) override;
   std::any visitGroupingExpr(std::shared_ptr<Grouping> expr) override;
   std::any visitLiteralExpr(std::shared_ptr<Literal> expr) override;
   std::any visitUnaryExpr(std::shared_ptr<Unary> expr) override;

@@ -698,3 +698,66 @@ TEST_CASE("Interpreting if-else statement", "[interpreter][statement][if]") {
   // Restore the original cout buffer
   std::cout.rdbuf(oldCout);
 }
+
+TEST_CASE("Interpreting While Statement", "[interpreter][statement][while]") {
+  Token falseToken(TokenType::FALSE, "false", false, 1);
+  Token intToken(TokenType::NUMBER, "42", 42, 1);
+  Token intToken2(TokenType::NUMBER, "41", 41, 1);
+  Token oneToken(TokenType::NUMBER, "1", 1, 1);
+  Token xToken(TokenType::IDENTIFIER, "x", "x", 1);
+
+  // Redirect output to a string stream
+  std::ostringstream oss;
+  auto oldCout = std::cout.rdbuf(oss.rdbuf());
+
+  SECTION("While with false condition") {
+    // while(false) print 42;
+    std::shared_ptr<Literal> conditionExpr =
+        std::make_shared<Literal>(falseToken.getLiteral());
+    std::shared_ptr<Expr> condition = conditionExpr;
+    std::shared_ptr<Literal> thenExpr =
+        std::make_shared<Literal>(intToken.getLiteral());
+    std::shared_ptr<Expr> thenBranch = thenExpr;
+    std::shared_ptr<Print> printThen = std::make_shared<Print>(thenBranch);
+    std::shared_ptr<Stmt> thenStmt = printThen;
+    std::shared_ptr<While> whileStmt =
+        std::make_shared<While>(condition, thenStmt);
+    std::vector<std::shared_ptr<Stmt>> statements = {whileStmt};
+
+    Interpreter().interpret(statements);
+    CHECK(oss.str() == "");
+  }
+
+  SECTION("While 2 times condition") {
+    // var x = 42; while(x >= 41) { print x; x = x - 1; }
+    std::shared_ptr<Literal> initExpr =
+        std::make_shared<Literal>(intToken.getLiteral());
+    std::shared_ptr<Expr> initBranch = initExpr;
+    std::shared_ptr<Var> varStmt = std::make_shared<Var>(xToken, initBranch);
+    std::shared_ptr<Stmt> stmt = varStmt;
+    std::shared_ptr<Variable> varExpr = std::make_shared<Variable>(xToken);
+    std::shared_ptr<Binary> conditionExpr = std::make_shared<Binary>(
+        varExpr, Token(TokenType::GREATER_EQUAL, ">=", nullptr, 1),
+        std::make_shared<Literal>(intToken2.getLiteral()));
+    std::shared_ptr<Expr> condition = conditionExpr;
+    std::shared_ptr<Print> printThen = std::make_shared<Print>(varExpr);
+    std::shared_ptr<Binary> decrementExpr = std::make_shared<Binary>(
+        varExpr, Token(TokenType::MINUS, "-", nullptr, 1),
+        std::make_shared<Literal>(oneToken.getLiteral()));
+    std::shared_ptr<Assign> assignExpression =
+        std::make_shared<Assign>(xToken, decrementExpr);
+    std::shared_ptr<Expr> assignExpr = assignExpression;
+    std::shared_ptr<Stmt> assignStmt = std::make_shared<Expression>(assignExpr);
+    std::shared_ptr<Block> blockStmt = std::make_shared<Block>(
+        std::vector<std::shared_ptr<Stmt>>{printThen, assignStmt});
+    std::shared_ptr<While> whileStmt =
+        std::make_shared<While>(condition, blockStmt);
+    std::vector<std::shared_ptr<Stmt>> statements = {stmt, whileStmt};
+
+    Interpreter().interpret(statements);
+    CHECK(oss.str() == "42\n41\n");
+  }
+
+  // Restore the original cout buffer
+  std::cout.rdbuf(oldCout);
+}

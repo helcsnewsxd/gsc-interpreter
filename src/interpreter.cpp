@@ -219,6 +219,13 @@ std::any Interpreter::visitIfStmt(std::shared_ptr<If> stmt) {
   return {};
 }
 
+std::any Interpreter::visitWhileStmt(std::shared_ptr<While> stmt) {
+  while (isTruthy(evaluate(stmt->getCondition()))) {
+    execute(stmt->getBody());
+  }
+  return {};
+}
+
 std::any Interpreter::visitVarStmt(std::shared_ptr<Var> stmt) {
   std::any value = nullptr;
   if (stmt->getInitializer()) {

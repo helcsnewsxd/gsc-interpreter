@@ -938,3 +938,86 @@ TEST_CASE("Parsing declaring statements", "[parser][statement][declare]") {
     CHECK(std::any_cast<int>(literalExpr->getValue()) == 1);
   }
 }
+
+TEST_CASE("Parsing logical operators", "[parser][statement][logical]") {
+  Token trueToken = {TokenType::TRUE, "true", nullptr, 1};
+  Token falseToken = {TokenType::FALSE, "false", nullptr, 1};
+  Token andToken = {TokenType::AND, "and", nullptr, 1};
+  Token orToken = {TokenType::OR, "or", nullptr, 1};
+  Token semicolonToken = {TokenType::SEMICOLON, ";", nullptr, 1};
+  Token EOFToken = {TokenType::END_OF_FILE, "", nullptr, 1};
+
+  SECTION("And statement") {
+    std::vector<Token> tokens = {trueToken, andToken, falseToken,
+                                 semicolonToken, EOFToken};
+    Parser parser(tokens);
+
+    std::vector<std::shared_ptr<Stmt>> statements = parser.parse();
+    REQUIRE(statements.size() == 1);
+    REQUIRE(statements[0] != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<Expression>(statements[0]) != nullptr);
+    std::shared_ptr<Expression> exprStmt =
+        std::dynamic_pointer_cast<Expression>(statements[0]);
+    REQUIRE(exprStmt->getExpression() != nullptr);
+    std::shared_ptr<Expr> expr =
+        std::dynamic_pointer_cast<Expr>(exprStmt->getExpression());
+    REQUIRE(std::dynamic_pointer_cast<Logical>(expr) != nullptr);
+    std::shared_ptr<Logical> logicalExpr =
+        std::dynamic_pointer_cast<Logical>(expr);
+
+    REQUIRE(logicalExpr->getLeft() != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<Literal>(logicalExpr->getLeft()) !=
+            nullptr);
+    std::shared_ptr<Literal> leftLiteral =
+        std::dynamic_pointer_cast<Literal>(logicalExpr->getLeft());
+    REQUIRE(leftLiteral->getValue().type() == typeid(bool));
+    CHECK(std::any_cast<bool>(leftLiteral->getValue()) == true);
+
+    REQUIRE(logicalExpr->getRight() != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<Literal>(logicalExpr->getRight()) !=
+            nullptr);
+    std::shared_ptr<Literal> rightLiteral =
+        std::dynamic_pointer_cast<Literal>(logicalExpr->getRight());
+    REQUIRE(rightLiteral->getValue().type() == typeid(bool));
+    CHECK(std::any_cast<bool>(rightLiteral->getValue()) == false);
+
+    REQUIRE(logicalExpr->getOp().getType() == TokenType::AND);
+  }
+
+  SECTION("Or statement") {
+    std::vector<Token> tokens = {trueToken, orToken, falseToken, semicolonToken,
+                                 EOFToken};
+    Parser parser(tokens);
+
+    std::vector<std::shared_ptr<Stmt>> statements = parser.parse();
+    REQUIRE(statements.size() == 1);
+    REQUIRE(statements[0] != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<Expression>(statements[0]) != nullptr);
+    std::shared_ptr<Expression> exprStmt =
+        std::dynamic_pointer_cast<Expression>(statements[0]);
+    REQUIRE(exprStmt->getExpression() != nullptr);
+    std::shared_ptr<Expr> expr =
+        std::dynamic_pointer_cast<Expr>(exprStmt->getExpression());
+    REQUIRE(std::dynamic_pointer_cast<Logical>(expr) != nullptr);
+    std::shared_ptr<Logical> logicalExpr =
+        std::dynamic_pointer_cast<Logical>(expr);
+
+    REQUIRE(logicalExpr->getLeft() != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<Literal>(logicalExpr->getLeft()) !=
+            nullptr);
+    std::shared_ptr<Literal> leftLiteral =
+        std::dynamic_pointer_cast<Literal>(logicalExpr->getLeft());
+    REQUIRE(leftLiteral->getValue().type() == typeid(bool));
+    CHECK(std::any_cast<bool>(leftLiteral->getValue()) == true);
+
+    REQUIRE(logicalExpr->getRight() != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<Literal>(logicalExpr->getRight()) !=
+            nullptr);
+    std::shared_ptr<Literal> rightLiteral =
+        std::dynamic_pointer_cast<Literal>(logicalExpr->getRight());
+    REQUIRE(rightLiteral->getValue().type() == typeid(bool));
+    CHECK(std::any_cast<bool>(rightLiteral->getValue()) == false);
+
+    REQUIRE(logicalExpr->getOp().getType() == TokenType::OR);
+  }
+}

@@ -68,7 +68,7 @@ std::vector<std::shared_ptr<Stmt>> Parser::block() {
 }
 
 std::shared_ptr<Expr> Parser::assignment() {
-  std::shared_ptr<Expr> expr = equality();
+  std::shared_ptr<Expr> expr = orLogical();
 
   if (match(TokenType::EQUAL)) {
     Token equals = previous();
@@ -80,6 +80,30 @@ std::shared_ptr<Expr> Parser::assignment() {
     }
 
     throw error(equals, "Invalid assignment target.");
+  }
+
+  return expr;
+}
+
+std::shared_ptr<Expr> Parser::orLogical() {
+  std::shared_ptr<Expr> expr = andLogical();
+
+  while (match(TokenType::OR)) {
+    Token operatorToken = previous();
+    std::shared_ptr<Expr> right = andLogical();
+    expr = std::make_shared<Logical>(expr, std::move(operatorToken), right);
+  }
+
+  return expr;
+}
+
+std::shared_ptr<Expr> Parser::andLogical() {
+  std::shared_ptr<Expr> expr = equality();
+
+  while (match(TokenType::AND)) {
+    Token operatorToken = previous();
+    std::shared_ptr<Expr> right = equality();
+    expr = std::make_shared<Logical>(expr, std::move(operatorToken), right);
   }
 
   return expr;

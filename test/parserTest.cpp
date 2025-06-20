@@ -1021,3 +1021,99 @@ TEST_CASE("Parsing logical operators", "[parser][statement][logical]") {
     REQUIRE(logicalExpr->getOp().getType() == TokenType::OR);
   }
 }
+
+TEST_CASE("Parsing an if statement", "[parser][statement][if]") {
+  Token ifToken = {TokenType::IF, "if", nullptr, 1};
+  Token elseToken = {TokenType::ELSE, "else", nullptr, 1};
+  Token leftParenToken = {TokenType::LEFT_PAREN, "(", nullptr, 1};
+  Token rightParenToken = {TokenType::RIGHT_PAREN, ")", nullptr, 1};
+  Token trueToken = {TokenType::TRUE, "true", nullptr, 1};
+  Token oneNumToken = {TokenType::NUMBER, "1", 1, 1};
+  Token twoNumToken = {TokenType::NUMBER, "2", 2, 1};
+  Token semicolonToken = {TokenType::SEMICOLON, ";", nullptr, 1};
+  Token EOFToken = {TokenType::END_OF_FILE, "", nullptr, 1};
+
+  SECTION("If alone case") {
+    std::vector<Token> tokens = {
+        ifToken,     leftParenToken, trueToken, rightParenToken,
+        oneNumToken, semicolonToken, EOFToken};
+    Parser parser(tokens);
+
+    std::vector<std::shared_ptr<Stmt>> statements = parser.parse();
+    REQUIRE(statements.size() == 1);
+    REQUIRE(statements[0] != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<If>(statements[0]) != nullptr);
+    std::shared_ptr<If> ifStmt = std::dynamic_pointer_cast<If>(statements[0]);
+
+    REQUIRE(ifStmt->getCondition() != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<Literal>(ifStmt->getCondition()) !=
+            nullptr);
+    std::shared_ptr<Literal> conditionLiteral =
+        std::dynamic_pointer_cast<Literal>(ifStmt->getCondition());
+    REQUIRE(conditionLiteral->getValue().type() == typeid(bool));
+    CHECK(std::any_cast<bool>(conditionLiteral->getValue()) == true);
+
+    REQUIRE(ifStmt->getThenBranch() != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<Expression>(ifStmt->getThenBranch()) !=
+            nullptr);
+    std::shared_ptr<Expression> thenExprStmt =
+        std::dynamic_pointer_cast<Expression>(ifStmt->getThenBranch());
+    REQUIRE(thenExprStmt->getExpression() != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<Literal>(thenExprStmt->getExpression()) !=
+            nullptr);
+    std::shared_ptr<Literal> thenLiteralExpr =
+        std::dynamic_pointer_cast<Literal>(thenExprStmt->getExpression());
+    REQUIRE(thenLiteralExpr->getValue().type() == typeid(int));
+    CHECK(std::any_cast<int>(thenLiteralExpr->getValue()) == 1);
+
+    REQUIRE(ifStmt->getElseBranch() == nullptr);
+  }
+
+  SECTION("If-else case") {
+    std::vector<Token> tokens = {
+        ifToken,        leftParenToken, trueToken, rightParenToken,
+        oneNumToken,    semicolonToken, elseToken, twoNumToken,
+        semicolonToken, EOFToken};
+    Parser parser(tokens);
+
+    std::vector<std::shared_ptr<Stmt>> statements = parser.parse();
+    REQUIRE(statements.size() == 1);
+    REQUIRE(statements[0] != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<If>(statements[0]) != nullptr);
+    std::shared_ptr<If> ifStmt = std::dynamic_pointer_cast<If>(statements[0]);
+
+    REQUIRE(ifStmt->getCondition() != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<Literal>(ifStmt->getCondition()) !=
+            nullptr);
+    std::shared_ptr<Literal> conditionLiteral =
+        std::dynamic_pointer_cast<Literal>(ifStmt->getCondition());
+    REQUIRE(conditionLiteral->getValue().type() == typeid(bool));
+    CHECK(std::any_cast<bool>(conditionLiteral->getValue()) == true);
+
+    REQUIRE(ifStmt->getThenBranch() != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<Expression>(ifStmt->getThenBranch()) !=
+            nullptr);
+    std::shared_ptr<Expression> thenExprStmt =
+        std::dynamic_pointer_cast<Expression>(ifStmt->getThenBranch());
+    REQUIRE(thenExprStmt->getExpression() != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<Literal>(thenExprStmt->getExpression()) !=
+            nullptr);
+    std::shared_ptr<Literal> thenLiteralExpr =
+        std::dynamic_pointer_cast<Literal>(thenExprStmt->getExpression());
+    REQUIRE(thenLiteralExpr->getValue().type() == typeid(int));
+    CHECK(std::any_cast<int>(thenLiteralExpr->getValue()) == 1);
+
+    REQUIRE(ifStmt->getElseBranch() != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<Expression>(ifStmt->getElseBranch()) !=
+            nullptr);
+    std::shared_ptr<Expression> elseExprStmt =
+        std::dynamic_pointer_cast<Expression>(ifStmt->getElseBranch());
+    REQUIRE(elseExprStmt->getExpression() != nullptr);
+    REQUIRE(std::dynamic_pointer_cast<Literal>(elseExprStmt->getExpression()) !=
+            nullptr);
+    std::shared_ptr<Literal> elseLiteralExpr =
+        std::dynamic_pointer_cast<Literal>(elseExprStmt->getExpression());
+    REQUIRE(elseLiteralExpr->getValue().type() == typeid(int));
+    CHECK(std::any_cast<int>(elseLiteralExpr->getValue()) == 2);
+  }
+}

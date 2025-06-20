@@ -4,11 +4,19 @@ declaration ::= varDecl | statement ;
 
 varDecl ::= "var" IDENTIFIER ("=" expression)? ";" ;
 
-statement ::= exprStatement | printStatement | block ;
+statement ::= exprStatement | printStatement | ifStatement
+            | whileStatement | forStatement | block ;
 
 exprStatement ::= expression ";" ;
 
 printStatement ::= "print" expression ";" ;
+
+ifStatement ::= "if" "(" expression ")" statement ("else" statement)? ;
+
+whileStatement ::= "while" "(" expression ")" statement ;
+
+forStatement ::= "for" "(" (varDecl | exprStatement | ";")
+                 expression? ";" expression? ")" statement ;
 
 block ::= '{' declaration* "}" ;
 

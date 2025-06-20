@@ -50,7 +50,7 @@ You can run them with the following command:
 make test
 ```
 
-Also, there're an automatic documentation generated with Doxygen for the project and it's published in the corresponding GitHub Pages site: [docs](https://helcsnewsxd.github.io/gsc-interpreter/).
+Also, there're an automatic documentation generated with Doxygen for the project and it's published in the corresponding GitHub Pages site: [docs](https://helcsnewsxd.github.io/gsc-interpreter/index.html).
 
 ## Examples
 

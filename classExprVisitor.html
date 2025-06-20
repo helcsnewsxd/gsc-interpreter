@@ -101,6 +101,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a08572b07b9eca9e1d6ac51b87b2c1c7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a12acb7dddbf9aab6bc0c40a588188a1e" id="r_a12acb7dddbf9aab6bc0c40a588188a1e"><td class="memItemLeft" align="right" valign="top">virtual std::any&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classExprVisitor.html#a12acb7dddbf9aab6bc0c40a588188a1e">visitUnaryExpr</a> (std::shared_ptr&lt; <a class="el" href="classUnary.html">Unary</a> &gt; expr)=0</td></tr>
 <tr class="separator:a12acb7dddbf9aab6bc0c40a588188a1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4ff4a4c19a0e71201deff7beae535f4" id="r_ad4ff4a4c19a0e71201deff7beae535f4"><td class="memItemLeft" align="right" valign="top">virtual std::any&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classExprVisitor.html#ad4ff4a4c19a0e71201deff7beae535f4">visitAssignExpr</a> (std::shared_ptr&lt; <a class="el" href="classAssign.html">Assign</a> &gt; expr)=0</td></tr>
+<tr class="separator:ad4ff4a4c19a0e71201deff7beae535f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7331df0a345f0fb755901fc1572f6aa2" id="r_a7331df0a345f0fb755901fc1572f6aa2"><td class="memItemLeft" align="right" valign="top">virtual std::any&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classExprVisitor.html#a7331df0a345f0fb755901fc1572f6aa2">visitVariableExpr</a> (std::shared_ptr&lt; <a class="el" href="classVariable.html">Variable</a> &gt; expr)=0</td></tr>
+<tr class="separator:a7331df0a345f0fb755901fc1572f6aa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afd377bee178f018174231d7c10592826" id="r_afd377bee178f018174231d7c10592826"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classExprVisitor.html#afd377bee178f018174231d7c10592826">~ExprVisitor</a> ()=default</td></tr>
 <tr class="separator:afd377bee178f018174231d7c10592826"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -134,6 +138,37 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ad4ff4a4c19a0e71201deff7beae535f4" name="ad4ff4a4c19a0e71201deff7beae535f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4ff4a4c19a0e71201deff7beae535f4">&#9670;&#160;</a></span>visitAssignExpr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::any ExprVisitor::visitAssignExpr </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classAssign.html">Assign</a> &gt;&#160;</td>
+          <td class="paramname"><em>expr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classExprVisitor_ad4ff4a4c19a0e71201deff7beae535f4_icgraph.png" border="0" usemap="#aclassExprVisitor_ad4ff4a4c19a0e71201deff7beae535f4_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
 <a id="a8eb5031d4ba91b4b3952f99f0169fc12" name="a8eb5031d4ba91b4b3952f99f0169fc12"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8eb5031d4ba91b4b3952f99f0169fc12">&#9670;&#160;</a></span>visitBinaryExpr()</h2>
 
@@ -254,6 +289,37 @@ Here is the caller graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classExprVisitor_a12acb7dddbf9aab6bc0c40a588188a1e_icgraph.png" border="0" usemap="#aclassExprVisitor_a12acb7dddbf9aab6bc0c40a588188a1e_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a7331df0a345f0fb755901fc1572f6aa2" name="a7331df0a345f0fb755901fc1572f6aa2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7331df0a345f0fb755901fc1572f6aa2">&#9670;&#160;</a></span>visitVariableExpr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::any ExprVisitor::visitVariableExpr </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classVariable.html">Variable</a> &gt;&#160;</td>
+          <td class="paramname"><em>expr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classExprVisitor_a7331df0a345f0fb755901fc1572f6aa2_icgraph.png" border="0" usemap="#aclassExprVisitor_a7331df0a345f0fb755901fc1572f6aa2_icgraph" alt=""/></div>
 </div>
 
 </div>

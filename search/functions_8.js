@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['parse_0',['parse',['../classParser.html#ac665654e96249792d2929d6bab95beec',1,'Parser']]],
-  ['parser_1',['Parser',['../classParser.html#afbc83a1187461f5feadbb2ca0d007574',1,'Parser']]],
-  ['print_2',['print',['../classAstPrinter.html#a656a66e96510a3b2ff8edef2c1a5c61c',1,'AstPrinter']]]
+  ['main_0',['main',['../main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main.cpp']]]
 ];

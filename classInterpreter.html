@@ -76,7 +76,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>The <a class="el" href="classInterpreter.html" title="The Interpreter class evaluates expressions in the GSC language.">Interpreter</a> class evaluates expressions in the GSC language.  
+<p>The <a class="el" href="classInterpreter.html" title="The Interpreter class evaluates statements and expressions in the GSC.">Interpreter</a> class evaluates statements and expressions in the GSC.  
  <a href="classInterpreter.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="interpreter_8hpp_source.html">interpreter.hpp</a>&gt;</code></p>
@@ -93,55 +93,55 @@ Collaboration diagram for Interpreter:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a1399e6d166e3e4a97398c0cbf157a78d" id="r_a1399e6d166e3e4a97398c0cbf157a78d"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInterpreter.html#a1399e6d166e3e4a97398c0cbf157a78d">interpret</a> (std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt; expr)</td></tr>
-<tr class="memdesc:a1399e6d166e3e4a97398c0cbf157a78d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interpret the given expression.  <br /></td></tr>
-<tr class="separator:a1399e6d166e3e4a97398c0cbf157a78d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c1b7d9bdd87f579186d14fff68bc06b" id="r_a3c1b7d9bdd87f579186d14fff68bc06b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInterpreter.html#a3c1b7d9bdd87f579186d14fff68bc06b">interpret</a> (const std::vector&lt; std::shared_ptr&lt; <a class="el" href="classStmt.html">Stmt</a> &gt; &gt; &amp;statements)</td></tr>
+<tr class="memdesc:a3c1b7d9bdd87f579186d14fff68bc06b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interpret the given statement list and execute them.  <br /></td></tr>
+<tr class="separator:a3c1b7d9bdd87f579186d14fff68bc06b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classExprVisitor"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classExprVisitor')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classExprVisitor.html">ExprVisitor</a></td></tr>
 <tr class="memitem:afd377bee178f018174231d7c10592826 inherit pub_methods_classExprVisitor" id="r_afd377bee178f018174231d7c10592826"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classExprVisitor.html#afd377bee178f018174231d7c10592826">~ExprVisitor</a> ()=default</td></tr>
 <tr class="separator:afd377bee178f018174231d7c10592826 inherit pub_methods_classExprVisitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classStmtVisitor"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classStmtVisitor')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classStmtVisitor.html">StmtVisitor</a></td></tr>
+<tr class="memitem:ae29129715d730242bdccd414fdfdac34 inherit pub_methods_classStmtVisitor" id="r_ae29129715d730242bdccd414fdfdac34"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStmtVisitor.html#ae29129715d730242bdccd414fdfdac34">~StmtVisitor</a> ()=default</td></tr>
+<tr class="separator:ae29129715d730242bdccd414fdfdac34 inherit pub_methods_classStmtVisitor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>The <a class="el" href="classInterpreter.html" title="The Interpreter class evaluates expressions in the GSC language.">Interpreter</a> class evaluates expressions in the GSC language. </p>
-<dl class="section note"><dt>Note</dt><dd>It implements the <a class="el" href="classExprVisitor.html" title="Abstract base class for expression visitors.">ExprVisitor</a> interface to visit different types of expressions and evaluate them accordingly. The results of the evaluations are returned as std::any types, allowing for flexibility in the types of values that can be returned. </dd></dl>
+<div class="textblock"><p>The <a class="el" href="classInterpreter.html" title="The Interpreter class evaluates statements and expressions in the GSC.">Interpreter</a> class evaluates statements and expressions in the GSC. </p>
+<dl class="section note"><dt>Note</dt><dd>It implements the <a class="el" href="classExprVisitor.html" title="Abstract base class for expression visitors.">ExprVisitor</a> interface to visit different types of expressions and statements, and evaluate them accordingly. The results of the evaluations are returned as std::any types, allowing for flexibility in the types of values that can be returned. </dd></dl>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a1399e6d166e3e4a97398c0cbf157a78d" name="a1399e6d166e3e4a97398c0cbf157a78d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1399e6d166e3e4a97398c0cbf157a78d">&#9670;&#160;</a></span>interpret()</h2>
+<a id="a3c1b7d9bdd87f579186d14fff68bc06b" name="a3c1b7d9bdd87f579186d14fff68bc06b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c1b7d9bdd87f579186d14fff68bc06b">&#9670;&#160;</a></span>interpret()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::string Interpreter::interpret </td>
+          <td class="memname">void Interpreter::interpret </td>
           <td>(</td>
-          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classExpr.html">Expr</a> &gt;&#160;</td>
-          <td class="paramname"><em>expr</em></td><td>)</td>
+          <td class="paramtype">const std::vector&lt; std::shared_ptr&lt; <a class="el" href="classStmt.html">Stmt</a> &gt; &gt; &amp;&#160;</td>
+          <td class="paramname"><em>statements</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Interpret the given expression. </p>
+<p>Interpret the given statement list and execute them. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">expr</td><td>The expression to interpret.</td></tr>
+    <tr><td class="paramname">statements</td><td>A vector of shared pointers to <a class="el" href="classStmt.html" title="Abstract base class for statements.">Stmt</a> objects representing</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>A string representation of the result of the evaluation.</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>This method serves as the entry point for interpreting GSC expressions. </dd>
+<dl class="section note"><dt>Note</dt><dd>This method evaluates the provided statements in the context of the GSC interpreter. </dd>
 <dd>
-It returns a string representation of the evaluated result. </dd>
-<dd>
-If an error occurs during interpretation, it will simply return an empty string, shown an error message to the user and set the <code>hadRuntimeError</code> variable to true. </dd></dl>
+If an error occurs during interpretation, it will shown an error message to the user and set the <code>hadRuntimeError</code> variable to true. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classInterpreter_a1399e6d166e3e4a97398c0cbf157a78d_cgraph.png" border="0" usemap="#aclassInterpreter_a1399e6d166e3e4a97398c0cbf157a78d_cgraph" alt=""/></div>
+<div class="center"><img src="classInterpreter_a3c1b7d9bdd87f579186d14fff68bc06b_cgraph.png" border="0" usemap="#aclassInterpreter_a3c1b7d9bdd87f579186d14fff68bc06b_cgraph" alt=""/></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classInterpreter_a1399e6d166e3e4a97398c0cbf157a78d_icgraph.png" border="0" usemap="#aclassInterpreter_a1399e6d166e3e4a97398c0cbf157a78d_icgraph" alt=""/></div>
+<div class="center"><img src="classInterpreter_a3c1b7d9bdd87f579186d14fff68bc06b_icgraph.png" border="0" usemap="#aclassInterpreter_a3c1b7d9bdd87f579186d14fff68bc06b_icgraph" alt=""/></div>
 </div>
 
 </div>

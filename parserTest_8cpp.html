@@ -80,8 +80,10 @@ $(function() {
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="parser_8hpp_source.html">gsc/parser.hpp</a>&quot;</code><br />
 <code>#include &quot;catch2/catch_amalgamated.hpp&quot;</code><br />
-<code>#include &quot;<a class="el" href="astPrinter_8hpp_source.html">dbg/astPrinter.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="expr_8hpp_source.html">gsc/expr.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="stmt_8hpp_source.html">gsc/stmt.hpp</a>&quot;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;memory&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for parserTest.cpp:</div>
 <div class="dyncontent">
@@ -90,8 +92,8 @@ Include dependency graph for parserTest.cpp:</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a8a12852d4a3c9d76a6391533a802b4a1" id="r_a8a12852d4a3c9d76a6391533a802b4a1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parserTest_8cpp.html#a8a12852d4a3c9d76a6391533a802b4a1">TEST_CASE</a> (&quot;Parse an empty experssion&quot;, &quot;[parser][expression][empty]&quot;)</td></tr>
-<tr class="separator:a8a12852d4a3c9d76a6391533a802b4a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a315563ec8109a83640b4e06805019d4b" id="r_a315563ec8109a83640b4e06805019d4b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parserTest_8cpp.html#a315563ec8109a83640b4e06805019d4b">TEST_CASE</a> (&quot;Parse an empty program&quot;, &quot;[parser][program][empty]&quot;)</td></tr>
+<tr class="separator:a315563ec8109a83640b4e06805019d4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55524814b474408c670a590165e022c9" id="r_a55524814b474408c670a590165e022c9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parserTest_8cpp.html#a55524814b474408c670a590165e022c9">TEST_CASE</a> (&quot;Parse a primary expression&quot;, &quot;[parser][expression][primary]&quot;)</td></tr>
 <tr class="separator:a55524814b474408c670a590165e022c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1d55c6632fe39884c96f67beedf783c" id="r_ae1d55c6632fe39884c96f67beedf783c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parserTest_8cpp.html#ae1d55c6632fe39884c96f67beedf783c">TEST_CASE</a> (&quot;Parse an unary expression&quot;, &quot;[parser][expression][unary]&quot;)</td></tr>
@@ -104,10 +106,18 @@ Functions</h2></td></tr>
 <tr class="separator:a7ced63c244d89a0287885227e6ca5879"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a69a12a730a3a398fc4d0bd99420d05e7" id="r_a69a12a730a3a398fc4d0bd99420d05e7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parserTest_8cpp.html#a69a12a730a3a398fc4d0bd99420d05e7">TEST_CASE</a> (&quot;Parse equality expression&quot;, &quot;[parser][expression][equality]&quot;)</td></tr>
 <tr class="separator:a69a12a730a3a398fc4d0bd99420d05e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf508adce65f442ed0c970f650d6a12b" id="r_aaf508adce65f442ed0c970f650d6a12b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parserTest_8cpp.html#aaf508adce65f442ed0c970f650d6a12b">TEST_CASE</a> (&quot;Parsing statements (2 or more)&quot;, &quot;[parser][statement][multiple]&quot;)</td></tr>
+<tr class="separator:aaf508adce65f442ed0c970f650d6a12b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6e05f98550a9d5d394db83d120e1fe7" id="r_ac6e05f98550a9d5d394db83d120e1fe7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parserTest_8cpp.html#ac6e05f98550a9d5d394db83d120e1fe7">TEST_CASE</a> (&quot;Parsing print statement&quot;, &quot;[parser][statement][print]&quot;)</td></tr>
+<tr class="separator:ac6e05f98550a9d5d394db83d120e1fe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a426c450a959f66acc7830754a58ac98e" id="r_a426c450a959f66acc7830754a58ac98e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parserTest_8cpp.html#a426c450a959f66acc7830754a58ac98e">TEST_CASE</a> (&quot;Parsing block statements&quot;, &quot;[oaser][statement][block]&quot;)</td></tr>
+<tr class="separator:a426c450a959f66acc7830754a58ac98e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed73810e8f8494e720796ca982d50ba9" id="r_aed73810e8f8494e720796ca982d50ba9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parserTest_8cpp.html#aed73810e8f8494e720796ca982d50ba9">TEST_CASE</a> (&quot;Parsing declaring statements&quot;, &quot;[parser][statement][declare]&quot;)</td></tr>
+<tr class="separator:aed73810e8f8494e720796ca982d50ba9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a7ced63c244d89a0287885227e6ca5879" name="a7ced63c244d89a0287885227e6ca5879"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7ced63c244d89a0287885227e6ca5879">&#9670;&#160;</a></span>TEST_CASE() <span class="overload">[1/7]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ced63c244d89a0287885227e6ca5879">&#9670;&#160;</a></span>TEST_CASE() <span class="overload">[1/11]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -140,7 +150,7 @@ Here is the call graph for this function:</div>
 </div>
 </div>
 <a id="ac4d51930b2f5f7c73059f13e0d89458b" name="ac4d51930b2f5f7c73059f13e0d89458b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac4d51930b2f5f7c73059f13e0d89458b">&#9670;&#160;</a></span>TEST_CASE() <span class="overload">[2/7]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4d51930b2f5f7c73059f13e0d89458b">&#9670;&#160;</a></span>TEST_CASE() <span class="overload">[2/11]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -173,7 +183,7 @@ Here is the call graph for this function:</div>
 </div>
 </div>
 <a id="a55524814b474408c670a590165e022c9" name="a55524814b474408c670a590165e022c9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a55524814b474408c670a590165e022c9">&#9670;&#160;</a></span>TEST_CASE() <span class="overload">[3/7]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a55524814b474408c670a590165e022c9">&#9670;&#160;</a></span>TEST_CASE() <span class="overload">[3/11]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -206,7 +216,7 @@ Here is the call graph for this function:</div>
 </div>
 </div>
 <a id="a10d080988786e16f4192485cb1c788dc" name="a10d080988786e16f4192485cb1c788dc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a10d080988786e16f4192485cb1c788dc">&#9670;&#160;</a></span>TEST_CASE() <span class="overload">[4/7]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a10d080988786e16f4192485cb1c788dc">&#9670;&#160;</a></span>TEST_CASE() <span class="overload">[4/11]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -238,8 +248,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a8a12852d4a3c9d76a6391533a802b4a1" name="a8a12852d4a3c9d76a6391533a802b4a1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8a12852d4a3c9d76a6391533a802b4a1">&#9670;&#160;</a></span>TEST_CASE() <span class="overload">[5/7]</span></h2>
+<a id="a315563ec8109a83640b4e06805019d4b" name="a315563ec8109a83640b4e06805019d4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a315563ec8109a83640b4e06805019d4b">&#9670;&#160;</a></span>TEST_CASE() <span class="overload">[5/11]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -247,14 +257,14 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname">TEST_CASE </td>
           <td>(</td>
-          <td class="paramtype">&quot;Parse an empty experssion&quot;&#160;</td>
+          <td class="paramtype">&quot;Parse an empty program&quot;&#160;</td>
           <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">&quot;&quot;&#160;</td>
-          <td class="paramname">[parser][expression][empty]&#160;</td>
+          <td class="paramname">[parser][program][empty]&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -266,13 +276,13 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="parserTest_8cpp_a8a12852d4a3c9d76a6391533a802b4a1_cgraph.png" border="0" usemap="#aparserTest_8cpp_a8a12852d4a3c9d76a6391533a802b4a1_cgraph" alt=""/></div>
+<div class="center"><img src="parserTest_8cpp_a315563ec8109a83640b4e06805019d4b_cgraph.png" border="0" usemap="#aparserTest_8cpp_a315563ec8109a83640b4e06805019d4b_cgraph" alt=""/></div>
 </div>
 
 </div>
 </div>
 <a id="ae1d55c6632fe39884c96f67beedf783c" name="ae1d55c6632fe39884c96f67beedf783c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae1d55c6632fe39884c96f67beedf783c">&#9670;&#160;</a></span>TEST_CASE() <span class="overload">[6/7]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1d55c6632fe39884c96f67beedf783c">&#9670;&#160;</a></span>TEST_CASE() <span class="overload">[6/11]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -305,7 +315,7 @@ Here is the call graph for this function:</div>
 </div>
 </div>
 <a id="a69a12a730a3a398fc4d0bd99420d05e7" name="a69a12a730a3a398fc4d0bd99420d05e7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a69a12a730a3a398fc4d0bd99420d05e7">&#9670;&#160;</a></span>TEST_CASE() <span class="overload">[7/7]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a69a12a730a3a398fc4d0bd99420d05e7">&#9670;&#160;</a></span>TEST_CASE() <span class="overload">[7/11]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -333,6 +343,138 @@ Here is the call graph for this function:</div>
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="parserTest_8cpp_a69a12a730a3a398fc4d0bd99420d05e7_cgraph.png" border="0" usemap="#aparserTest_8cpp_a69a12a730a3a398fc4d0bd99420d05e7_cgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a426c450a959f66acc7830754a58ac98e" name="a426c450a959f66acc7830754a58ac98e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a426c450a959f66acc7830754a58ac98e">&#9670;&#160;</a></span>TEST_CASE() <span class="overload">[8/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TEST_CASE </td>
+          <td>(</td>
+          <td class="paramtype">&quot;Parsing block statements&quot;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;&quot;&#160;</td>
+          <td class="paramname">[oaser][statement][block]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="parserTest_8cpp_a426c450a959f66acc7830754a58ac98e_cgraph.png" border="0" usemap="#aparserTest_8cpp_a426c450a959f66acc7830754a58ac98e_cgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="aed73810e8f8494e720796ca982d50ba9" name="aed73810e8f8494e720796ca982d50ba9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed73810e8f8494e720796ca982d50ba9">&#9670;&#160;</a></span>TEST_CASE() <span class="overload">[9/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TEST_CASE </td>
+          <td>(</td>
+          <td class="paramtype">&quot;Parsing declaring statements&quot;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;&quot;&#160;</td>
+          <td class="paramname">[parser][statement][declare]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="parserTest_8cpp_aed73810e8f8494e720796ca982d50ba9_cgraph.png" border="0" usemap="#aparserTest_8cpp_aed73810e8f8494e720796ca982d50ba9_cgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="ac6e05f98550a9d5d394db83d120e1fe7" name="ac6e05f98550a9d5d394db83d120e1fe7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6e05f98550a9d5d394db83d120e1fe7">&#9670;&#160;</a></span>TEST_CASE() <span class="overload">[10/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TEST_CASE </td>
+          <td>(</td>
+          <td class="paramtype">&quot;Parsing print statement&quot;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;&quot;&#160;</td>
+          <td class="paramname">[parser][statement][print]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="parserTest_8cpp_ac6e05f98550a9d5d394db83d120e1fe7_cgraph.png" border="0" usemap="#aparserTest_8cpp_ac6e05f98550a9d5d394db83d120e1fe7_cgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="aaf508adce65f442ed0c970f650d6a12b" name="aaf508adce65f442ed0c970f650d6a12b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf508adce65f442ed0c970f650d6a12b">&#9670;&#160;</a></span>TEST_CASE() <span class="overload">[11/11]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TEST_CASE </td>
+          <td>(</td>
+          <td class="paramtype">&quot;Parsing statements (2 or more)&quot;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;&quot;&#160;</td>
+          <td class="paramname">[parser][statement][multiple]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="parserTest_8cpp_aaf508adce65f442ed0c970f650d6a12b_cgraph.png" border="0" usemap="#aparserTest_8cpp_aaf508adce65f442ed0c970f650d6a12b_cgraph" alt=""/></div>
 </div>
 
 </div>
